@@ -161,6 +161,8 @@ function draw() {
     background(10);
     updateParams();
 
+    orbitControl()
+
     let attrfft = fft.analyze();
     let wave = fft.waveform();
     let unitWidth = width/16;
