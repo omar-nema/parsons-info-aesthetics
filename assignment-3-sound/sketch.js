@@ -12,7 +12,7 @@ let maxOctave = 30;
 var noiseoff = 0;
 var rotateYAmt = 0;
 let sphereDetail = 5;
-let rotateAmt = 70;
+let rotateAmt = 90;
 
 var settings;
 var myAngle = 30;
@@ -122,7 +122,7 @@ function drawSpheres(){
         yval = random(-height/2, height/2);
         zval = random(0, 200)
         n = fft.getEnergy(bands[i].lo, bands[i].hi)
-        let ptSize = map(n, 0,255, 18, 20);
+        let ptSize = map(n, 0,255, 25, 27);
 
         col = getBandColor(bands[i].ctr);
         str = color(col);
@@ -171,13 +171,14 @@ function draw() {
 
     //change default perspective
     rotateX(rotateAmt) 
+    translate(0, 0, -100)
 
     //create horizon grid
     push ()
     noFill()
     strokeWeight(0.5)
     stroke(140)
-    translate(-width/2, -height/2, -50)
+    translate(-width/2, -height/2, -100)
     for (var y=0; y<scl; y++){
         for (var x=0; x<scl; x++){
             rect(x*unitWidth, y*unitHt, unitWidth, unitHt)
