@@ -1,5 +1,8 @@
 body {
-  height: 200px;
-  color: 'blue';
+  background: rgb(10,10,10);
+  
+}/*# sourceMappingURL=style.css.map */
+
+canvas {
+  margin-top: 50px;
 }
-/*# sourceMappingURL=style.css.map */
