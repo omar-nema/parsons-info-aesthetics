@@ -3,7 +3,7 @@ let btnPlayPause;
 let paramReverb, sliderReverb, sliderPan, sliderAmp;
 let effectReverb, effectPan, effectAmp;
 let attrfft, attrAmp;
-let initFft = 512;
+let initFft = 1024;
 let spheres = [];
 let peakDetect;
 let minOctave = 3;
