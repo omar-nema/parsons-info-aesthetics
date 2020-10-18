@@ -26,7 +26,7 @@ function preload() {
 
 function setup() {
     //ui elements
-    createCanvas(windowWidth*.9, windowHeight*.9, WEBGL)   
+    createCanvas(windowWidth, windowHeight, WEBGL)   
 
     settings = QuickSettings.create(20, 20, 'Sound Properties');
     settings.addButton('play/pause', playPause); 
@@ -81,7 +81,6 @@ function pTrack(){
 
 //make the track loop
 function playPause(){
-    console.log(track.currentTime())
     if (track.isPlaying() == true){
         noLoop()
         setTimeout(pTrack,30); //very janky
@@ -129,10 +128,11 @@ function drawSpheres(){
         str = color(col);
         str2 = color(col);
         str.setAlpha(map(n, 0,255, 10, 250))
-        str2.setAlpha(map(n, 0,255, 30, 250))
+        str2.setAlpha(map(n, 0,255, 70, 250))
         // str2 = str;
         // str.setAlpha(map(n, 0,255, 10, 130))
         fill (str)
+        strokeWeight(0.5)
         stroke(str2);
         //stroke('black')
 
@@ -173,9 +173,9 @@ function draw() {
     //create horizon grid
     push ()
     noFill()
-    strokeWeight(0.2)
+    strokeWeight(0.5)
     stroke(140)
-    translate(-width/2, -height/2, 0)
+    translate(-width/2, -height/2, -50)
     for (var y=0; y<scl; y++){
         for (var x=0; x<scl; x++){
             rect(x*unitWidth, y*unitHt, unitWidth, unitHt)
