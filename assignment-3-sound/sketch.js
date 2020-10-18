@@ -14,6 +14,8 @@ var rotateYAmt = 0;
 let sphereDetail = 5;
 let rotateAmt = 90;
 
+let ptMin = 17;
+
 var settings;
 var myAngle = 30;
 var myColor = '#eeee00';
@@ -122,13 +124,13 @@ function drawSpheres(){
         yval = random(-height/2, height/2);
         zval = random(0, 200)
         n = fft.getEnergy(bands[i].lo, bands[i].hi)
-        let ptSize = map(n, 0,255, 25, 27);
+        let ptSize = map(n, 0,255, ptMin, ptMin*1.07);
 
         col = getBandColor(bands[i].ctr);
         str = color(col);
         str2 = color(col);
         str.setAlpha(map(n, 0,255, 10, 250))
-        str2.setAlpha(map(n, 0,255, 70, 250))
+        str2.setAlpha(map(n, 0,255, 50, 250))
         // str2 = str;
         // str.setAlpha(map(n, 0,255, 10, 130))
         fill (str)
