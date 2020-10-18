@@ -74,10 +74,20 @@ function initSpheres(){
     console.log('sphere obj', spheres);
 }
 
+
+function pTrack(){
+    track.pause()
+}
+
+//make the track loop
 function playPause(){
+    console.log(track.currentTime())
     if (track.isPlaying() == true){
-        track.pause()
+        noLoop()
+        setTimeout(pTrack,30); //very janky
+
     } else {
+        loop();
         track.play();
     }
 }
