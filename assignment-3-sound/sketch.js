@@ -65,7 +65,7 @@ function setup() {
     userStartAudio();
 
     initSpheres();
-    background(40);
+    background(10);
     uiInit();
 } 
 
