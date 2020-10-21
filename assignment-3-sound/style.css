@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+
+* {
+  font-family: 'IBM Plex Mono', monospace !important;
+}
+
 body {
   background: rgb(10,10,10);
   overflow: hidden;
@@ -6,4 +13,72 @@ body {
 
 canvas {
   margin-top: 50px;
+}
+
+.qs_content {
+  background-color: #2a2a2b !important;
+  text-transform: capitalize;
+  color: #dedede;
+  font-weight: 400 !important;
+}
+.qs_container {
+  background: none !important;
+}
+.qs_main {
+  opacity: 0;
+  transition: .5s;
+}
+.qs_title_bar {
+  text-align: center;
+  background: #414148 !important;
+  color: white !important ;
+  font-size: 13px;
+  font-weight: 400 !important;
+}
+b {
+  font-weight: 500 !important;
+}
+.qs_button {
+  border: none !important;
+  background: black !important;
+  color: white !important;
+  cursor: pointer;
+  font-weight: 600;
+}
+.qs_button:hover {
+  opacity: 0.8;
+}
+
+
+#msg {
+
+  max-width: 800px;
+  height: auto;
+  top: 50px;
+  color: #ececbf;
+  background: #2a2a2b;
+  transition: .5s;
+  opacity: 0;
+}
+.floating {
+  transform: translateX(-50%) translateY(-50%);
+  left: 50%;  
+  position: absolute;
+  width: auto;  
+  padding: 10px 15px;  
+  font-weight: 600;  
+}
+#btn-init {
+  top: 50%;
+  color: white;
+  background: #7c24c9;
+  font-size: 18px;
+  padding: 15px 20px;
+  border: 10px;
+  cursor: pointer;
+  transition: .2s;
+  opacity: 0;
+}
+#btn-init:hover {
+  opacity: 0.8;
 }

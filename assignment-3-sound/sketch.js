@@ -1,9 +1,12 @@
 let track;
-let btnPlayPause;
 let paramReverb, sliderReverb, sliderPan, sliderAmp;
 let paramFreqMin, paramFreqMax;
 let paramDelay = 0;
-let effectReverb, effectPan, effectAmp, effectFilterLo, effectFilterHi, effectDelay;
+let effectReverb, effectAmp, effectFilterLo, effectFilterHi, effectDelay;
+let effectPan, paramPan;
+
+let effectDistort, paramDistort;
+
 let attrfft, attrAmp;
 let initFft = 1024;
 let spheres = [];
@@ -32,25 +35,29 @@ function preload() {
 
 function setup() {
     //ui elements
-    createCanvas(windowWidth, windowHeight, WEBGL)   
+    createCanvas(windowWidth, windowHeight, WEBGL)   ;
 
     settings = QuickSettings.create(20, 20, 'Sound Properties');
-    settings.addButton('play/pause', playPause); 
+    settings.addButton('Pause', playPause); 
     settings.addRange('reverb', 0, 1, 0, .1);
     settings.addRange('amplitude', minOctave, maxOctave, 7, 1);   
     settings.addRange('pan', -1, 1, 0, .2);      
     settings.addRange('delay',0, 1, 0, .1)
-
-    
+    settings.addRange('distortion', 0, .1, 0, .01)
     //init effects
 
     track.disconnect();
     effectReverb = new p5.Reverb();
     effectDelay = new p5.Delay();
+    effectPanner = new p5.Panner3D();
+    effectDistort = new p5.Distortion();
     effectReverb.process(track,1, .5)
     effectDelay.process(track, 0.12, .7, 2300);
+    effectDistort.process(track);
+  
+
     effectDelay.drywet(0);
-    effectReverb.chain(effectDelay)
+    effectReverb.chain(effectDelay, effectDistort)
     track.connect(effectReverb)
     fft = new p5.FFT(.4, initFft);
 
@@ -58,8 +65,8 @@ function setup() {
     userStartAudio();
 
     initSpheres();
-    background(40)
-
+    background(40);
+    uiInit();
 } 
 
 function initSpheres(){
@@ -94,17 +101,6 @@ function pTrack(){
     track.pause()
 }
 
-//make the track loop
-function playPause(){
-    if (track.isPlaying() == true){
-        noLoop()
-        setTimeout(pTrack,30); //very janky
-
-    } else {
-        loop()
-        track.play();
-    }
-}
 
 function updateParams(){
     sliderParams = settings.getValuesAsJSON()
@@ -118,6 +114,8 @@ function updateParams(){
     paramFreqMax = sliderParams['max freq']
     paramDelay = sliderParams.delay;
     effectDelay.drywet(paramDelay);
+    paramDistort = sliderParams.distortion/2.5;
+    effectDistort.set(paramDistort.toString(), 'none');  
 }
 
 var freqColorBands = [0, 250, 500, 2000, 4000, 6000];
@@ -170,12 +168,23 @@ function drawSpheres(){
         }
         translate(pt.currX*rScale,pt.currY*rScale, (pt.z + 10)*rScale)
         rotateX(-rotateAmt)
-        pt.rotate += random(0.8, 1.5) 
+
+        if (paramDistort > 0){
+            minSize = map(paramDistort*2.5, 0, .1, .999, .87);
+            maxSize = map(paramDistort*2.5, 0, .1, 1.13, 1.001);
+            ptSize = random(ptSize*minSize, ptSize*maxSize);
+        }
+        if (paramDelay == 0){
+            pt.rotate += random(0.3, .8);
+            rotateY(pt.rotate)
+        }
+        
         sphere(ptSize, sphereDetail, sphereDetail)
 
         var alpha = str2.levels[3];
         var currAlpha = alpha;
         for (var x=0; x<paramDelay; x+= 0.1){
+            currRotation = 0;
             translate(0, 0, ptSize*.3);
             push ()
             currAlpha *= 0.9;
@@ -186,10 +195,8 @@ function drawSpheres(){
             sphere(ptSize, sphereDetail, sphereDetail)
             pop ()
         }
-
-
-        rotateY(pt.rotate)
-
+      
+        
         pop ()
     }  
     // rotateYAmt += 1 * rotateMult;
@@ -202,7 +209,6 @@ function draw() {
     background(10);
     updateParams();
     orbitControl()
-
     let attrfft = fft.analyze();
     let wave = fft.waveform();
     let unitWidth = width/16;
