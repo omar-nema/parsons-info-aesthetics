@@ -1,7 +1,9 @@
 let track;
 let btnPlayPause;
 let paramReverb, sliderReverb, sliderPan, sliderAmp;
-let effectReverb, effectPan, effectAmp;
+let paramFreqMin, paramFreqMax;
+let paramDelay = 0;
+let effectReverb, effectPan, effectAmp, effectFilterLo, effectFilterHi, effectDelay;
 let attrfft, attrAmp;
 let initFft = 1024;
 let spheres = [];
@@ -22,8 +24,10 @@ var myColor = '#eeee00';
 
 function preload() {
     // soundFormats('wav')
-    track = loadSound('hecker.mp3')  
-    //track = loadSound('6a.wav') 
+    track = loadSound('hecker.mp3');
+    //    track = loadSound('6a.wav') 
+    track.setLoop(true)
+
 }
 
 function setup() {
@@ -35,20 +39,27 @@ function setup() {
     settings.addRange('reverb', 0, 1, 0, .1);
     settings.addRange('amplitude', minOctave, maxOctave, 7, 1);   
     settings.addRange('pan', -1, 1, 0, .2);      
-  
+    settings.addRange('delay',0, 1, 0, .1)
+
     
     //init effects
-    effectReverb = new p5.Reverb();
+
     track.disconnect();
-    effectReverb.process(track,1, 2)
+    effectReverb = new p5.Reverb();
+    effectDelay = new p5.Delay();
+    effectReverb.process(track,1, .5)
+    effectDelay.process(track, 0.12, .7, 2300);
+    effectDelay.drywet(0);
+    effectReverb.chain(effectDelay)
+    track.connect(effectReverb)
     fft = new p5.FFT(.4, initFft);
-    let bpm = 144;
-    beat = new p5.PeakDetect(2000, 20000, 0.02, 60/(bpm/60))
+
     angleMode(DEGREES)
     userStartAudio();
 
     initSpheres();
     background(40)
+
 } 
 
 function initSpheres(){
@@ -70,11 +81,13 @@ function initSpheres(){
             currX: xVal,
             currY: yVal,
             xPanL: xPanL,
-            xPanR: xPanR
+            xPanR: xPanR,
+            rotate: 0
         })
     }
     console.log('sphere obj', spheres);
 }
+
 
 
 function pTrack(){
@@ -88,25 +101,32 @@ function playPause(){
         setTimeout(pTrack,30); //very janky
 
     } else {
-        loop();
+        loop()
         track.play();
     }
 }
 
 function updateParams(){
-     sliderParams = settings.getValuesAsJSON()
+    sliderParams = settings.getValuesAsJSON()
     paramReverb = sliderParams.reverb;
     effectReverb.drywet(paramReverb);
     effectPan = sliderParams.pan;
     track.pan(effectPan);
     effectAmp = sliderParams.amplitude;
     track.setVolume(effectAmp/maxOctave);
+    paramFreqMin = sliderParams['min freq'];
+    paramFreqMax = sliderParams['max freq']
+    paramDelay = sliderParams.delay;
+    effectDelay.drywet(paramDelay);
 }
 
-
 var freqColorBands = [0, 250, 500, 2000, 4000, 6000];
+var freqColorBands = [0, 250, 500, 2000, 4000];
 var freqColors = ['#13ead5', '#8fcbac', '#b9ab85',  '#f98cd4', '#f35fc6', '#ea13b8'];
-var freqColors = ['#13ead5', '#7fcdcf', '#a8afca', '#c58dc4', '#ea13b8', '#ea13b8'];
+var freqColors = ['white', 'green', 'red' ,'#13ead5', '#ea13b8'];
+
+var freqColors = ['#13ead5', '#9413EA',  '#EA1384', '#EA1313', '#EA1313']
+
 
 function getBandColor(bandCtr){
     bandval = max(freqColorBands.filter(d=> d < bandCtr));
@@ -114,9 +134,11 @@ function getBandColor(bandCtr){
     return freqColors[colorIndex];
 }
 
+var rotateMult = 1;
 function drawSpheres(){
     bands = fft.getOctaveBands(effectAmp); 
     rScale = map(paramReverb, 0, 1, .7, 1);
+    
     for (var i=0; i<bands.length; i++){
         
         push ()
@@ -129,14 +151,13 @@ function drawSpheres(){
         col = getBandColor(bands[i].ctr);
         str = color(col);
         str2 = color(col);
-        str.setAlpha(map(n, 0,255, 10, 250))
-        str2.setAlpha(map(n, 0,255, 50, 250))
+        str.setAlpha(map(n, 0,255, 0, 250))
+        str2.setAlpha(map(n, 0,255, 20, 250))
         // str2 = str;
         // str.setAlpha(map(n, 0,255, 10, 130))
         fill (str)
         strokeWeight(0.5)
         stroke(str2);
-        //stroke('black')
 
         pt = spheres[i];
         var moveLeft = 0;
@@ -149,11 +170,29 @@ function drawSpheres(){
         }
         translate(pt.currX*rScale,pt.currY*rScale, (pt.z + 10)*rScale)
         rotateX(-rotateAmt)
-        rotateY(rotateYAmt)
+        pt.rotate += random(0.8, 1.5) 
         sphere(ptSize, sphereDetail, sphereDetail)
+
+        var alpha = str2.levels[3];
+        var currAlpha = alpha;
+        for (var x=0; x<paramDelay; x+= 0.1){
+            translate(0, 0, ptSize*.3);
+            push ()
+            currAlpha *= 0.9;
+            str3 = color(col);
+            str3.setAlpha(currAlpha);
+            stroke(str3);
+            fill(str3)
+            sphere(ptSize, sphereDetail, sphereDetail)
+            pop ()
+        }
+
+
+        rotateY(pt.rotate)
+
         pop ()
     }  
-    rotateYAmt += 1;
+    // rotateYAmt += 1 * rotateMult;
 }
 
 
@@ -162,7 +201,6 @@ function draw() {
 
     background(10);
     updateParams();
-
     orbitControl()
 
     let attrfft = fft.analyze();
@@ -170,6 +208,7 @@ function draw() {
     let unitWidth = width/16;
     let unitHt = height/16;
     let scl = 16;
+
 
     //change default perspective
     rotateX(rotateAmt) 
@@ -180,6 +219,7 @@ function draw() {
     noFill()
     strokeWeight(0.5)
     stroke(140)
+ 
     translate(-width/2, -height/2, -100)
     for (var y=0; y<scl; y++){
         for (var x=0; x<scl; x++){
