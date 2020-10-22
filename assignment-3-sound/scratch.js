@@ -1,1 +1,0 @@
-n = fft.getEnergy(bands[i].lo, bands[i].hi)
