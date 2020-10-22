@@ -26,7 +26,7 @@ var myAngle = 30;
 var myColor = '#eeee00';
 
 function preload() {
-    track = loadSound('./audio/nico.mp3');
+    track = loadSound('./audio/grimes-skin.mp3');
     track.setLoop(true)
 
 }
@@ -47,7 +47,7 @@ function setup() {
     effectDelay.drywet(0);
     effectReverb.chain(effectDelay, effectDistort)
     track.connect(effectReverb)
-    fft = new p5.FFT(.4, initFft);
+    fft = new p5.FFT(.3, initFft);
     userStartAudio();
     initSpheres();
    
