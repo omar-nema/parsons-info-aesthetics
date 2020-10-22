@@ -80,7 +80,7 @@ function initToolips(){
             newDiv = document.createElement('div');
             newDiv.classList.add('slider-'+ i);
             newDiv.classList.add('help');
-            newDiv.innerHTML = '(?)';
+            newDiv.innerHTML = '?';
             d.after(newDiv)
         }
     });

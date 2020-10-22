@@ -124,12 +124,11 @@ b {
 
 .tooltip {
   position: absolute;
-  background: #2a2a2b;
+  background: #292930;
   padding: 10px 15px;
-  box-shadow: 0 1px 4px 1px #232222;
   z-index: 1000;
   opacity: 0;
-  color: white;
+  color: #f0f0f4;
   max-width: 300px;
   border: 1px solid black;
   transition: opacity .3s;
@@ -137,11 +136,16 @@ b {
 }
 .qs-label {
   position: relative;
+  margin-bottom: 7px !important;
 }
 .help {
   position: absolute;
   right: 6px;
   top: 2px;
   cursor: pointer;
-  padding: 3px 10px;
+  padding: 1.5px 6px;
+  border-radius: 100%;
+  font-weight: 600;
+  color: white;
+  background: #020202;
 }
