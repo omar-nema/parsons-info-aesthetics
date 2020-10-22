@@ -1,7 +1,6 @@
 var rotateMult = 1;
 function drawSpheres(){
     bands = fft.getOctaveBands(effectAmp); 
-    rScale = map(paramReverb, 0, 1, .7, 1);
     
     for (var i=0; i<bands.length; i++){
         
@@ -16,11 +15,11 @@ function drawSpheres(){
         str = color(col);
         str2 = color(col);
         str.setAlpha(map(n, 0,255, 0, 250))
-        str2.setAlpha(map(n, 0,255, 20, 250))
+        str2.setAlpha(map(n, 0,255, 10, 240))
         // str2 = str;
         // str.setAlpha(map(n, 0,255, 10, 130))
         fill (str)
-        strokeWeight(0.5)
+        strokeWeight(1)
         stroke(str2);
 
         pt = spheres[i];

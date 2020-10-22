@@ -7,6 +7,8 @@ let effectPan, paramPan;
 
 let effectDistort, paramDistort;
 
+let rScale;
+
 let attrfft, attrAmp;
 let initFft = 1024;
 let spheres = [];
@@ -24,6 +26,9 @@ let ptMin = 17;
 var settings;
 var myAngle = 30;
 var myColor = '#eeee00';
+var rectW;
+var rectH;
+
 
 function preload() {
     track = loadSound('./audio/grimes-skin.mp3');
@@ -54,6 +59,8 @@ function setup() {
     angleMode(DEGREES)
     createQuickSettings();
     uiInit();
+    rectW = width;
+    rectH = height;
 } 
 
 function initSpheres(){
@@ -101,19 +108,14 @@ function updateParams(){
     effectDistort.set(paramDistort.toString(), 'none');  
 }
 
-// var freqColorBands = [0, 250, 500, 2000, 4000, 6000];
 var freqColorBands = [0, 250, 500, 2000, 4000];
-// var freqColors = ['#13ead5', '#8fcbac', '#b9ab85',  '#f98cd4', '#f35fc6', '#ea13b8'];
-// var freqColors = ['white', 'green', 'red' ,'#13ead5', '#ea13b8'];
 var freqColors = ['#13ead5', '#9413EA',  '#EA1384', '#EA1313', '#EA1313']
-
 
 function getBandColor(bandCtr){
     bandval = max(freqColorBands.filter(d=> d < bandCtr));
     colorIndex = freqColorBands.indexOf(bandval);
     return freqColors[colorIndex];
 }
-
 
 function draw() {
 
@@ -122,22 +124,26 @@ function draw() {
     orbitControl()
     let attrfft = fft.analyze();
     let wave = fft.waveform();
-    let unitWidth = width/16;
-    let unitHt = height/16;
-    let scl = 16;
-
 
     //change default perspective
     rotateX(rotateAmt) 
     translate(0, 0, -100)
 
+
     //create horizon grid
+    rScale = map(paramReverb, 0, 1, .7, 1);
+    rectW = rScale*width;
+    rectH = rScale*height;
+
+    let unitWidth = rectW/16;
+    let unitHt = rectH/16;
+    let scl = 16;
     push ()
     noFill()
     strokeWeight(0.5)
-    stroke(140)
+    stroke(140)    
  
-    translate(-width/2, -height/2, -100)
+    translate(-rectW/2, -rectH/2, -100)
     for (var y=0; y<scl; y++){
         for (var x=0; x<scl; x++){
             strokeWeight(1)
