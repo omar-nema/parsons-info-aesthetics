@@ -26,26 +26,16 @@ var myAngle = 30;
 var myColor = '#eeee00';
 
 function preload() {
-    // soundFormats('wav')
     track = loadSound('hecker.mp3');
-    //    track = loadSound('6a.wav') 
     track.setLoop(true)
 
 }
 
 function setup() {
-    //ui elements
     createCanvas(windowWidth, windowHeight, WEBGL)   ;
+    background(10);
 
-    settings = QuickSettings.create(20, 20, 'Sound Properties');
-    settings.addButton('Pause', playPause); 
-    settings.addRange('reverb', 0, 1, 0, .1);
-    settings.addRange('amplitude', minOctave, maxOctave, 7, 1);   
-    settings.addRange('pan', -1, 1, 0, .2);      
-    settings.addRange('delay',0, 1, 0, .1)
-    settings.addRange('distortion', 0, .1, 0, .01)
     //init effects
-
     track.disconnect();
     effectReverb = new p5.Reverb();
     effectDelay = new p5.Delay();
@@ -54,18 +44,15 @@ function setup() {
     effectReverb.process(track,1, .5)
     effectDelay.process(track, 0.12, .7, 2300);
     effectDistort.process(track);
-  
-
     effectDelay.drywet(0);
     effectReverb.chain(effectDelay, effectDistort)
     track.connect(effectReverb)
     fft = new p5.FFT(.4, initFft);
-
-    angleMode(DEGREES)
     userStartAudio();
-
     initSpheres();
-    background(10);
+   
+    angleMode(DEGREES)
+    createQuickSettings();
     uiInit();
 } 
 
@@ -96,10 +83,6 @@ function initSpheres(){
 }
 
 
-
-function pTrack(){
-    track.pause()
-}
 
 
 function updateParams(){

@@ -11,12 +11,13 @@ body {
   
 }/*# sourceMappingURL=style.css.map */
 
+
 canvas {
   margin-top: 50px;
 }
 
 .qs_content {
-  background-color: #2a2a2b !important;
+  background-color: #313139 !important;
   text-transform: capitalize;
   color: #dedede;
   font-weight: 400 !important;
@@ -26,39 +27,76 @@ canvas {
 }
 .qs_main {
   opacity: 0;
-  transition: .5s;
+  transition: opacity .5s;
 }
 .qs_title_bar {
   text-align: center;
-  background: #414148 !important;
+  background: #2a2a30 !important;
   color: white !important ;
   font-size: 13px;
-  font-weight: 400 !important;
+  font-weight: 500 !important;
+  border-bottom: 1px solid black !important;
 }
+.qs_range {
+  background: none !important;
+}
+.qs_range::-webkit-slider-runnable-track {
+  background:#1b1b21 !important;
+}
+/* .qs_range::-webkit-slider-thumb {
+  border: 1px solid black !important;
+
+} */
+
 b {
   font-weight: 500 !important;
 }
-.qs_button {
+.play-btn {
   border: none !important;
   background: black !important;
   color: white !important;
   cursor: pointer;
   font-weight: 600;
+  width: 50px;
+  text-align: center;
+  padding: 8px;
+  margin-top: 5px;
+  letter-spacing: 0.2px;
+  transition: opacity 0.15s;
 }
-.qs_button:hover {
+.play-btn:hover {
   opacity: 0.8;
 }
 
 
 #msg {
 
-  max-width: 800px;
+  max-width: 400px;
   height: auto;
   top: 50px;
   color: #ececbf;
   background: #2a2a2b;
-  transition: .5s;
-  opacity: 0;
+  transition: opacity .5s;
+  top: 30%;
+  text-align: center;
+  background: none;
+  /* opacity: 0; */
+}
+
+.headmain {
+  font-size: 32px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 20px;
+  text-decoration: underline;
+  text-decoration-color: #6e6e6f;
+  letter-spacing: 1px;
+}
+.subtitle {
+  font-size: 18px;
+  color:#d7d5e0;
+  font-weight: 400;
+  margin-bottom:50px;
 }
 .floating {
   transform: translateX(-50%) translateY(-50%);
@@ -69,16 +107,16 @@ b {
   font-weight: 600;  
 }
 #btn-init {
-  top: 50%;
   color: white;
-  background: #7c24c9;
+  background: #651da5;
   font-size: 18px;
   padding: 15px 20px;
   border: 10px;
   cursor: pointer;
-  transition: .2s;
+  transition: opacity .1s;
   opacity: 0;
+  font-weight: 400;
 }
 #btn-init:hover {
-  opacity: 0.8;
+  opacity: 0.8 !important;
 }
