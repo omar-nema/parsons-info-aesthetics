@@ -22,7 +22,7 @@ function uiInit(){
 function createQuickSettings(){
     settings = QuickSettings.create(40, 30, 'Sound Properties');
     settings.addHTML('playback', '<div class="play-btn">Pause</div>');      
-    settings.addHTML('Color Legend', '<img class="legend" src="./legend.svg"/>');    
+    settings.addHTML('Frequency Legend', '<img class="legend" src="./legend.svg"/>');    
     settings.addRange('reverb', 0, 1, 0, .1);
     settings.overrideStyle('reverb', 'background', 'black');
     settings.addRange('amplitude', minOctave, maxOctave, 7, 1);   
@@ -93,27 +93,27 @@ function initToolips(){
 
 function createTooltips(){
     var tipTextLegend = {
-        text: 'Each pulsing particle represents a frequency range from the track (as indicated below). The brighter a sphere pulses, the more active a given frequency range is.',
+        text: '<strong>Audio:</strong> Each pulsing particle represents a frequency range from the track (as indicated by color scale to the left). <br><br><strong>Visual:</strong> The brighter a sphere pulses, the more active a given frequency range is.</div>',
         class: 'slider-1'
     };
     var tipTextReverb = {
-        text: 'Adjusting reverb will change the size of the room that the sound is housed in',
+        text: '<strong>Audio:</strong> Adjusting reverb will change the size of the room that the sound is housed in<br><br><strong>Visual:</strong>Represented by the dispersion of particles in virtual space.',
         class: 'slider-2'
     };
     var tipTextAmplitude = {
-        text: 'Amplitude corresponds to volume. Higher amplitude will create more particles.',
+        text: '<strong>Audio:</strong> Amplitude corresponds to loudness. <br><br><strong>Visual:</strong> Higher amplitude will create more particles.',
         class: 'slider-3'
     };
     var tipTextPan = {
-        text:  'Panning is the distribution of sound across speakers. Panning can concentrate sound on a given side of the sonic field.',
+        text:  '<strong>Audio:</strong> Panning is the distribution of sound across speakers.<br><br><strong>Visual:</strong> Panning will shift particles laterally in virtual space.',
         class: 'slider-4'
     };
     var tipTextDelay = {
-        text: 'Delay will cause frequencies in the track to resonate and linger. Visually, this is represented by individual particles stretching',
+        text: '<strong>Audio:</strong> Delay will cause frequencies in the track to resonate and linger. <br><br><strong>Visual:</strong> Represented by particles stretching',
         class: 'slider-5'
     };
     var tipTextDistortion = {
-        text: 'Distortion alters the signal of a sound, causing a fuzzy, noisy sound. Visually, this is represented by particles vibrating.',
+        text: '<strong>Audio:</strong> Distortion alters the signal of a sound, causing a fuzzy, noisy sound. <br><br><strong>Visual:</strong> Shown with particles vibrating.',
         class: 'slider-6'
     };                
     tooltips.push(tipTextLegend);
