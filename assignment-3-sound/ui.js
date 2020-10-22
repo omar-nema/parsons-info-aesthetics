@@ -49,13 +49,22 @@ function pTrack(){
     track.pause()
 }
 
-function showTooltip(x, y, text){
+function showTooltip(e, d){
+    x = mouseX.toString(); 
+    y = mouseY.toString();
+
+    sliderClass = d.elt.classList[0];
+    check = tooltips.filter(z=> z.class == sliderClass);
+    tipText = '';
+    if (check[0]){
+        tipText = check[0].text;
+    }
     tip = select('.tooltip');
     tip.style('opacity', '1')
     tip.style('left', x +'px');
     tip.style('top', y +'px');
     tip.style('pointer-events', 'inherit')
-    tip.html(text)
+    tip.html(tipText);
 }
 function hideTip(){
     tip.style('opacity', '0').style('pointer-events', 'none')
@@ -77,16 +86,9 @@ function initToolips(){
     });
     tipNeeded = selectAll('.help');
     tipNeeded.forEach((d, i)=>{
-        sliderClass = d.elt.classList[0];
-        check = tooltips.filter(z=> z.class == sliderClass);
-        tipText = '';
-        if (check[0]){
-            tipText = check[0].text;
-        }
-        console.log(tipText)
-        d.mouseOver(e => {showTooltip(mouseX.toString(), mouseY.toString(), tipText)});
+        d.mouseOver(e => showTooltip(e, d));
         d.mouseOut(hideTip);
-    })
+    });
 }
 
 function createTooltips(){
