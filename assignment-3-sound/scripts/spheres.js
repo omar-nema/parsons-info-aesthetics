@@ -35,8 +35,8 @@ function drawSpheres(){
         rotateX(-rotateAmt)
 
         if (paramDistort > 0){
-            minSize = map(paramDistort*2.5, 0, .1, .999, .87);
-            maxSize = map(paramDistort*2.5, 0, .1, 1.13, 1.001);
+            minSize = map(paramDistort*2.5, 0, .1, .999, .90);
+            maxSize = map(paramDistort*2.5, 0, .1, 1.10, 1.001);
             ptSize = random(ptSize*minSize, ptSize*maxSize);
         }
         if (paramDelay == 0){

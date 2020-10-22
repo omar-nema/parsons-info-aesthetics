@@ -86,13 +86,13 @@ b {
 }
 
 .headmain {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 400;
   color: white;
   margin-bottom: 20px;
   text-decoration: underline;
   text-decoration-color: #651da5;
-  letter-spacing: 1px;
+  letter-spacing: 3px;
 
 }
 .subtitle {
