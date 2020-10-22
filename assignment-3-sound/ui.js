@@ -1,3 +1,5 @@
+var tooltips = [];
+
 function uiInit(){
     qs = select('.qs_main');
     msg = select('#msg');
@@ -13,6 +15,7 @@ function uiInit(){
     playBtn = select('.play-btn');
     playBtn.mouseClicked(playPause)
 
+    createTooltips();
     initToolips();
 }
 
@@ -59,20 +62,64 @@ function hideTip(){
 }
 
 function initToolips(){
+    console.log(tooltips)
     legend = select('.legend');
-    legend.mouseOver(e => {showTooltip(mouseX.toString(), mouseY.toString(), tipTextLegend)});
-    legend.mouseOut(hideTip);
+    labels = document.querySelectorAll('.qs_label');
+    labels.forEach( (d, i)=> {
+        if (i > 0){
+            divText = '<div class="me">me</div>';
+            newDiv = document.createElement('div');
+            newDiv.classList.add('slider-'+ i);
+            newDiv.classList.add('help');
+            newDiv.innerHTML = '(?)';
+            d.after(newDiv)
+        }
+    });
+    tipNeeded = selectAll('.help');
+    tipNeeded.forEach((d, i)=>{
+        sliderClass = d.elt.classList[0];
+        check = tooltips.filter(z=> z.class == sliderClass);
+        tipText = '';
+        if (check[0]){
+            tipText = check[0].text;
+        }
+        console.log(tipText)
+        d.mouseOver(e => {showTooltip(mouseX.toString(), mouseY.toString(), tipText)});
+        d.mouseOut(hideTip);
+    })
 }
 
-var tipTextLegend = 'Each pulsing particle represents a frequency range from the track (as indicated below). The brighter a sphere pulses, the more active a given frequency range is.';
+function createTooltips(){
+    var tipTextLegend = {
+        text: 'Each pulsing particle represents a frequency range from the track (as indicated below). The brighter a sphere pulses, the more active a given frequency range is.',
+        class: 'slider-1'
+    };
+    var tipTextReverb = {
+        text: 'Adjusting reverb will change the size of the room that the sound is housed in',
+        class: 'slider-2'
+    };
+    var tipTextAmplitude = {
+        text: 'Amplitude corresponds to volume. Higher amplitude will create more particles.',
+        class: 'slider-3'
+    };
+    var tipTextPan = {
+        text:  'Panning is the distribution of sound across speakers. Panning can concentrate sound on a given side of the sonic field.',
+        class: 'slider-4'
+    };
+    var tipTextDelay = {
+        text: 'Delay will cause frequencies in the track to resonate and linger. Visually, this is represented by individual particles stretching',
+        class: 'slider-5'
+    };
+    var tipTextDistortion = {
+        text: 'Distortion alters the signal of a sound, causing a fuzzy, noisy sound. Visually, this is represented by particles vibrating.',
+        class: 'slider-6'
+    };                
+    tooltips.push(tipTextLegend);
+    tooltips.push(tipTextReverb);
+    tooltips.push(tipTextAmplitude);
+    tooltips.push(tipTextPan);
+    tooltips.push(tipTextDelay);
+    tooltips.push(tipTextDistortion);
+}
 
-var tipTextReverb = 'Adjusting reverb will change the size of the room that the sound is housed in';
-
-var tipTextAmplitude = 'Amplitude corresponds to volume. Higher amplitude will create more particles.';
-
-var tipTextPan = 'Panning is the distribution of sound across speakers. Panning can concentrate sound on a given side of the sonic field.'
-
-var tipTextDelay = 'Delay will cause frequencies in the track to resonate and linger. Visually, this is represented by individual particles stretching'
-
-var tipTextDistortion = 'Distortion alters the signal of a sound, causing a fuzzy, noisy sound. Visually, this is represented by particles vibrating.';
 

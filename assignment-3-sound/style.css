@@ -134,3 +134,13 @@ b {
   transition: opacity .3s;
   font-size: 12px;
 }
+.qs-label {
+  position: relative;
+}
+.help {
+  position: absolute;
+  right: 6px;
+  top: 2px;
+  cursor: pointer;
+  padding: 3px 10px;
+}
