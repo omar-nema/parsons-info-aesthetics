@@ -140,7 +140,7 @@ function draw() {
     translate(-width/2, -height/2, -100)
     for (var y=0; y<scl; y++){
         for (var x=0; x<scl; x++){
-            strokeWeight(2)
+            strokeWeight(1)
             rect(x*unitWidth, y*unitHt, unitWidth, unitHt)
         }
     }

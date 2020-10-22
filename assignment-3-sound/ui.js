@@ -31,14 +31,42 @@ function createQuickSettings(){
     settings.addRange('distortion', 0, .1, 0, .01)
 }
 
+//disable sliders when track is paused
+function disableSettings(){
+    settings.disableControl('amplitude');
+    settings.overrideStyle('amplitude', 'opacity', '0.3');
+    settings.disableControl('reverb');
+    settings.overrideStyle('reverb', 'opacity', '0.3');
+    settings.disableControl('pan');
+    settings.overrideStyle('pan', 'opacity', '0.3');
+    settings.disableControl('delay');
+    settings.overrideStyle('delay', 'opacity', '0.3');
+    settings.disableControl('distortion');
+    settings.overrideStyle('distortion', 'opacity', '0.3');
+}
+function enableSettings(){
+    settings.enableControl('amplitude');
+    settings.overrideStyle('amplitude', 'opacity', '1');
+    settings.enableControl('reverb');
+    settings.overrideStyle('reverb', 'opacity', '1');
+    settings.enableControl('pan');
+    settings.overrideStyle('pan', 'opacity', '1');
+    settings.enableControl('delay');
+    settings.overrideStyle('delay', 'opacity', '1');
+    settings.enableControl('distortion');
+    settings.overrideStyle('distortion', 'opacity', '1');
+}
+
 //make the track loop. called by pause btn/
 function playPause(){
     pauseBtn = select(".play-btn");
     if (track.isPlaying() == true){
+        disableSettings();
         pauseBtn.html('play')
         noLoop()
         setTimeout(pTrack,30); //very janky
     } else {
+        enableSettings();
         pauseBtn.html('pause')
         loop()
         track.play();
@@ -97,7 +125,7 @@ function createTooltips(){
         class: 'slider-1'
     };
     var tipTextReverb = {
-        text: '<strong>Audio:</strong> Adjusting reverb will change the size of the room that the sound is housed in<br><br><strong>Visual:</strong>Represented by the dispersion of particles in virtual space.',
+        text: '<strong>Audio:</strong> Adjusting reverb will change the size of the room that the sound is housed in<br><br><strong>Visual:</strong> Represented by the dispersion of particles in virtual space.',
         class: 'slider-2'
     };
     var tipTextAmplitude = {

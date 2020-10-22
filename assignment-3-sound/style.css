@@ -39,6 +39,7 @@ canvas {
 }
 .qs_range {
   background: none !important;
+  transition: opacity .3s !important;
 }
 .qs_range::-webkit-slider-runnable-track {
   background:#1b1b21 !important;
@@ -148,4 +149,8 @@ b {
   font-weight: 600;
   color: white;
   background: #020202;
+  transition: opacity .1s;
+}
+.help:hover {
+  opacity: .5;
 }
