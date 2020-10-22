@@ -8,7 +8,7 @@
 body {
   background: rgb(10,10,10);
   overflow: hidden;
-  
+  position: relative;
 }/*# sourceMappingURL=style.css.map */
 
 
@@ -80,6 +80,7 @@ b {
   top: 30%;
   text-align: center;
   background: none;
+  opacity: 0;
   /* opacity: 0; */
 }
 
@@ -114,9 +115,22 @@ b {
   border: 10px;
   cursor: pointer;
   transition: opacity .1s;
-  opacity: 0;
   font-weight: 400;
 }
 #btn-init:hover {
   opacity: 0.8 !important;
+}
+
+.tooltip {
+  position: absolute;
+  background: #2a2a2b;
+  padding: 10px 15px;
+  box-shadow: 0 1px 4px 1px #232222;
+  z-index: 1000;
+  opacity: 0;
+  color: white;
+  max-width: 300px;
+  border: 1px solid black;
+  transition: opacity .3s;
+  font-size: 12px;
 }

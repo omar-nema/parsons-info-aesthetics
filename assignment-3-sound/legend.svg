@@ -35,28 +35,28 @@
   <g id="legend" clip-path="url(#clip-legend)">
     <rect width="169" height="39" fill="#313139"/>
     <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_56)">
-      <g id="Ellipse_56-2" data-name="Ellipse 56" transform="translate(8 3)" fill="#13ead5" stroke="#331d1d" stroke-width="1">
+      <g id="Ellipse_56-2" data-name="Ellipse 56" transform="translate(8 3)" fill="#13ead5" stroke="#000" stroke-width="1">
         <circle cx="8.5" cy="8.5" r="8.5" stroke="none"/>
         <circle cx="8.5" cy="8.5" r="8" fill="none"/>
       </g>
     </g>
     <text id="Bass" transform="translate(4 31)" fill="#acacac" font-size="10" font-family="IBMPlexMono, IBM Plex Mono"><tspan x="0" y="0">Bass</tspan></text>
     <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_57)">
-      <g id="Ellipse_57-2" data-name="Ellipse 57" transform="translate(51 3)" fill="#9413ea" stroke="#331d1d" stroke-width="1">
+      <g id="Ellipse_57-2" data-name="Ellipse 57" transform="translate(51 3)" fill="#9413ea" stroke="#000" stroke-width="1">
         <circle cx="8.5" cy="8.5" r="8.5" stroke="none"/>
         <circle cx="8.5" cy="8.5" r="8" fill="none"/>
       </g>
     </g>
     <text id="Low_Mid" data-name="Low Mid" transform="translate(39 31)" fill="#acacac" font-size="10" font-family="IBMPlexMono, IBM Plex Mono"><tspan x="0" y="0">Low Mid</tspan></text>
     <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_58)">
-      <g id="Ellipse_58-2" data-name="Ellipse 58" transform="translate(94 3)" fill="#ea1384" stroke="#331d1d" stroke-width="1">
+      <g id="Ellipse_58-2" data-name="Ellipse 58" transform="translate(94 3)" fill="#ea1384" stroke="#000" stroke-width="1">
         <circle cx="8.5" cy="8.5" r="8.5" stroke="none"/>
         <circle cx="8.5" cy="8.5" r="8" fill="none"/>
       </g>
     </g>
     <text id="Mid" transform="translate(94 31)" fill="#acacac" font-size="10" font-family="IBMPlexMono, IBM Plex Mono"><tspan x="0" y="0">Mid</tspan></text>
     <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_59)">
-      <g id="Ellipse_59-2" data-name="Ellipse 59" transform="translate(137 3)" fill="#ea1313" stroke="#331d1d" stroke-width="1">
+      <g id="Ellipse_59-2" data-name="Ellipse 59" transform="translate(137 3)" fill="#ea1313" stroke="#000" stroke-width="1">
         <circle cx="8.5" cy="8.5" r="8.5" stroke="none"/>
         <circle cx="8.5" cy="8.5" r="8" fill="none"/>
       </g>
