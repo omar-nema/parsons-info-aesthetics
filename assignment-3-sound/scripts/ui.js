@@ -27,7 +27,6 @@ function uiInit(){
         helpMain.style('opacity', '0.3');
         instruction.style('opacity', '1')        
         setTimeout(d=> {
-            console.log('out')
             helpMain.style('opacity', '1');
             instruction.style('opacity', '0')           
         }, 7000)
@@ -116,7 +115,6 @@ function hideTip(){
 }
 
 function initToolips(){
-    console.log(tooltips)
     legend = select('.legend');
     labels = document.querySelectorAll('.qs_label');
     labels.forEach( (d, i)=> {
