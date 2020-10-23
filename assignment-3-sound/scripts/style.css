@@ -106,14 +106,15 @@ b {
   color: white;
   position: absolute;
   right: 50px;
-  font-size: 30px;
+  font-size: 22px;
   top: 30px;
   background: #651da5;
   border-radius: 100%;
-  padding: 4px 15px;
+  padding: 2px 10px;
   cursor: pointer;
   transition: opacity .05s;
   box-shadow: 0px 2px 2px 1px #3c093c;
+  
 }
 .help-main:hover {
   opacity: 0.8;
