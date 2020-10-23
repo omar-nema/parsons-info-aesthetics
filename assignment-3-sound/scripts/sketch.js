@@ -151,6 +151,7 @@ function draw() {
         }
     }
     pop()
+    
 
     strokeWeight(.2)
     stroke(255, 150)

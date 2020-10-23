@@ -5,10 +5,12 @@ function uiInit(){
     msg = select('#msg');
     btnInit = select('#btn-init')
     msg.style('opacity', 1)
+    helpMain = select('.help-main');    
     btnInit.mouseClicked(function(e){
         msg.style('opacity', 0);
         msg.style('pointer-events', 'none');
         qs.style('opacity', .8);
+        helpMain.style('opacity', 1);
         playPause();
     })
 
@@ -19,7 +21,7 @@ function uiInit(){
     initToolips();
 
     //initialize help button
-    helpMain = select('.help-main');
+
     instruction = select('.instruction');
     helpMain.mouseClicked(e => {
         helpMain.style('opacity', '0.3');

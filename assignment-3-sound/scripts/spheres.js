@@ -21,7 +21,7 @@ function drawSpheres(){
         fill (str)
         strokeWeight(1)
         stroke(str2);
-
+    
         pt = spheres[i];
         var moveLeft = 0;
         if (effectPan < 0 && pt.x > 0){

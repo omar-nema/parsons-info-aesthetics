@@ -114,7 +114,7 @@ b {
   cursor: pointer;
   transition: opacity .05s;
   box-shadow: 0px 2px 2px 1px #3c093c;
-  
+  opacity: 0;
 }
 .help-main:hover {
   opacity: 0.8;
