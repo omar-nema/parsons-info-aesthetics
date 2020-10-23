@@ -17,7 +17,22 @@ function uiInit(){
 
     createTooltips();
     initToolips();
+
+    //initialize help button
+    helpMain = select('.help-main');
+    instruction = select('.instruction');
+    helpMain.mouseClicked(e => {
+        helpMain.style('opacity', '0.3');
+        instruction.style('opacity', '1')        
+        setTimeout(d=> {
+            console.log('out')
+            helpMain.style('opacity', '1');
+            instruction.style('opacity', '0')           
+        }, 7000)
+
+    });
 }
+
 
 function createQuickSettings(){
     settings = QuickSettings.create(40, 30, 'Sound Properties');

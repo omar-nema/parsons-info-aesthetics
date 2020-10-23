@@ -101,6 +101,36 @@ b {
   font-weight: 400;
   margin-bottom:50px;
 }
+
+.help-main {
+  color: white;
+  position: absolute;
+  right: 50px;
+  font-size: 30px;
+  top: 30px;
+  background: #651da5;
+  border-radius: 100%;
+  padding: 4px 15px;
+  cursor: pointer;
+  transition: opacity .05s;
+  box-shadow: 0px 2px 2px 1px #3c093c;
+}
+.help-main:hover {
+  opacity: 0.8;
+}
+
+.instruction {
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  transform: translateX(-50%);
+  padding: 10px 15px; 
+  background: #242428;
+  color: white;
+  opacity: 0;
+  transition: opacity .3s;
+  font-size: 14px;
+}
 .floating {
   transform: translateX(-50%) translateY(-50%);
   left: 50%;  
