@@ -39,7 +39,7 @@ function uiInit(){
 function createQuickSettings(){
     settings = QuickSettings.create(40, 30, 'Sound Properties');
     settings.addHTML('playback', '<div class="play-btn">Pause</div>');      
-    settings.addHTML('Frequency Legend', '<img class="legend" src="./visual/legend.svg"/>');    
+    settings.addHTML('Frequency Legend', '<object class="legend" data="./visual/legend.svg"/>');    
     settings.addRange('reverb', 0, 1, 0, .1);
     settings.overrideStyle('reverb', 'background', 'black');
     settings.addRange('amplitude', minOctave, maxOctave, 7, 1);   
@@ -158,7 +158,7 @@ function createTooltips(){
         class: 'slider-5'
     };
     var tipTextDistortion = {
-        text: '<strong>Audio:</strong> Distortion alters the signal of a sound, causing a fuzzy, noisy sound. <br><br><strong>Visual:</strong> Shown with particles vibrating.',
+        text: '<strong>Audio:</strong> Distortion alters audio signal, causing a fuzzy, noisy sound. <br><br><strong>Visual:</strong> Shown with particles vibrating.',
         class: 'slider-6'
     };                
     tooltips.push(tipTextLegend);

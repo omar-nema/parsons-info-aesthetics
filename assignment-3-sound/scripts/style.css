@@ -181,6 +181,7 @@ b {
   color: white;
   background: #020202;
   transition: opacity .1s;
+  z-index: 10000000000000;
 }
 .help:hover {
   opacity: .5;
