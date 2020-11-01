@@ -1,0 +1,211 @@
+Codebook – Created 11/01/2020
+Dataset: ACSPUMS1Y2019
+
+Variables: 
+BDSP - Number of bedrooms
+NP - Number of person records following this housing record
+WGTP - Housing Weight
+BATH - Bathtub or shower
+R60 - Presence of persons 60+
+R65 - Presence of persons 65+
+HHT - Household/family type
+FES - Family type and employment status
+KIT - Complete kitchen facilities
+R18 - Presence of persons <18 in household
+TEN - Tenure
+RMSP - Number of rooms
+ACCESS - Access to the Internet
+HHT2 - Household/family type (includes cohabiting)
+
+
+BDSP - Number of bedrooms
+Topics: 
+Physical Characteristics
+Suggested Weight : WGTP
+Description : 
+Number of bedrooms
+Values: 
+-1 - N/A (GQ)
+0,99 - 0 to 99 bedrooms (Top-coded)
+
+NP - Number of person records following this housing record
+Topics: 
+Household Size and Type
+Families and Household Characteristics
+Suggested Weight : WGTP
+Description : 
+Number of person records following this housing record
+Values: 
+00 - Vacant Unit
+01 - One person record (one person in household or any person in group quarters)
+2,20 - Number of person records (number of persons in household)
+
+WGTP - Housing Weight
+Topics: 
+Description : 
+Housing Weight
+Values: 
+0000 - Group Quarter placeholder record
+1,9999 - Integer weight of housing unit
+
+BATH - Bathtub or shower
+Topics: 
+Physical Characteristics
+Suggested Weight : WGTP
+Description : 
+Bathtub or shower
+Values: 
+0 - N/A (GQ)
+1 - Yes
+2 - No
+
+R60 - Presence of persons 60+
+Topics: 
+Older Population
+Families and Household Characteristics
+Housing
+Suggested Weight : WGTP
+Description : 
+Presence of persons 60+ Variable Universe Description: OCCUPIED
+Values: 
+-1 - Not in universe - missing
+0 - None
+1 - 1 person
+2 - 2 or more persons
+
+R65 - Presence of persons 65+
+Topics: 
+Older Population
+Families and Household Characteristics
+Housing
+Suggested Weight : WGTP
+Description : 
+Presence of persons 65+ Variable Universe Description: OCCUPIED
+Values: 
+-1 - Not in universe - missing
+0 - None
+1 - 1 person
+2 - 2 or more persons
+
+HHT - Household/family type
+Topics: 
+Household Size and Type
+Household and Family
+Families and Living Arrangements
+Families and Household Characteristics
+Suggested Weight : WGTP
+Description : 
+Household/family type
+Values: 
+0 - N/A (GQ/vacant)
+1 - Married couple household
+2 - Other family household: Male householder, no spouse present
+3 - Other family household: Female householder, no spouse present
+4 - Nonfamily household: Male householder: Living alone
+5 - Nonfamily household: Male householder: Not living alone
+6 - Nonfamily household: Female householder: Living alone
+7 - Nonfamily household: Female householder: Not living alone
+
+FES - Family type and employment status
+Topics: 
+Employment and Labor Force Status
+Employment  
+Suggested Weight : WGTP
+Description : 
+Family type and employment status
+Values: 
+0 - N/A (GQ/vacant/not a family/same-sex married-couple families)
+1 - Married-couple family: Husband and wife in LF
+2 - Married-couple family: Husband in labor force, wife not in LF
+3 - Married-couple family: Husband not in LF, wife in LF
+4 - Married-couple family: Neither husband nor wife in LF
+5 - Other family: Male householder, no wife present, in LF
+6 - Other family: Male householder, no wife present, not in LF
+7 - Other family: Female householder, no husband present, in LF
+8 - Other family: Female householder, no husband present, not in LF
+
+KIT - Complete kitchen facilities
+Topics: 
+Physical Characteristics
+Types of Rooms
+Suggested Weight : WGTP
+Description : 
+Complete kitchen facilities
+Values: 
+0 - N/A (GQ)
+1 - Yes, has stove or range, refrigerator, and sink with a faucet
+2 - No
+
+R18 - Presence of persons <18 in household
+Topics: 
+Families and Household Characteristics
+Children
+Suggested Weight : WGTP
+Description : 
+Presence of persons <18 in household Variable Universe Description: OCCUPIED
+Values: 
+-1 - Not in universe - missing
+0 - None
+1 - 1 or more persons under 18
+
+TEN - Tenure
+Topics: 
+Housing
+Housing Units
+Owner/Renter (Tenure)
+Suggested Weight : WGTP
+Description : 
+Tenure
+Values: 
+0 - N/A  (GQ/vacant)
+1 - Owned with mortgage or loan (include home equity loans)
+2 - Owned Free And Clear
+3 - Rented
+4 - Occupied without payment of rent
+
+RMSP - Number of rooms
+Topics: 
+Physical Characteristics
+Suggested Weight : WGTP
+Values: 
+0 - N/A (GQ)
+1,99 - Rooms (Top-coded)
+
+ACCESS - Access to the Internet
+Topics: 
+Computer and Internet Use
+Telephone, Computer, and Internet Access
+Housing
+Physical Characteristics
+Suggested Weight : WGTP
+Description : 
+Access to the Internet
+Values: 
+0 - N/A (GQ/vacant)
+1 - Yes, by paying a cell phone company or Internet service provider
+2 - Yes, without paying a cell phone company or Internet service provider
+3 - No access to the Internet at this house, apartment, or mobile home
+
+HHT2 - Household/family type (includes cohabiting)
+Topics: 
+Household Size and Type
+Suggested Weight : WGTP
+Values: 
+0 - N/A (GQ/vacant)
+01 - Married couple household with own children less than 18
+02 - Married couple household, NO own children less than 18
+03 - Cohabiting couple household with own children less than 18
+04 - Cohabiting couple household, NO own children less than 18
+05 - Female householder, no spouse/partner present, Living alone
+06 - Female householder, no spouse/partner present, with own children less than 18
+07 - Female householder, no spouse/partner present, with relatives, NO own children less than 18
+08 - Female householder, no spouse/partner present, only nonrelatives present
+09 - Male householder, no spouse/partner present, Living alone
+10 - Male householder, no spouse/partner present, with own children less than 18
+11 - Male householder, no spouse/partner present, with relatives, NO own children less than 18
+12 - Male householder, no spouse/partner present, only nonrelatives present
+
+
+
+Selected Geographies (ucgid): 
+7950000US3604110 -- NYC-Queens Community District 5--Ridgewood, Glendale & Middle Village PUMA; New York
