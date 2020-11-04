@@ -1,13 +1,25 @@
 tooltip = d3.select('.tooltip');
-var selectedPuma;
+var selectedPumaId;
+var selectedPumaName;
 
+function cleanPumaName(sel){
+
+    var boroughStart = sel.indexOf('-')
+    var boroughEnd = sel.indexOf(' ');
+    var borough = sel.substring(boroughStart, boroughEnd).replace('-', '');
+
+    var lookup = 'District';
+    var startInd = sel.indexOf(lookup);    
+    var districtNum = sel.substring(startInd, startInd +lookup.length+3).replace('-', '');
+
+    return borough + ' ' + districtNum;
+}
 
 function plotAll(){
-    var currData = getOrigData().get(selectedPuma)
+    var currData = getOrigData().get(parseInt(selectedPumaId))
     var currDataDetail = currData.detail;
     var currDataStats = currData.stats;
-
-    console.log(currDataDetail)
+    console.log('processed detail data ', currDataDetail)
 
     table = d3.select('.housing-data tbody');
     var houseRows = table.selectAll('.row-house').data(currDataDetail, d=> {return d.geo + '-' + d.weightPersons}).join('tr').attr('class', 'row-house');
@@ -24,55 +36,76 @@ function plotAll(){
     updateOccupantColors();
     drawDetails();
     addTooltips();
+    d3.select('.content').classed('loading', false);
+    d3.select('.loading-ind').classed('loading', false);
 }
 
-function draw(){
-    console.log('ready', getOrigData());
-
+function initLookup(){
     var pumaChoices = [];
     pumaId = Array.from(getOrigData().keys());
-    pumaId.forEach((x)=>{
-        pumaChoices.push({
-            value: x,
-            label: 'PUMA ' + x
+    const pumaUrl = 'https://www2.census.gov/geo/docs/reference/puma/2010_PUMA_Names.txt';
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    var pumaIdMap = new Map();
+    d3.csv(proxyurl + pumaUrl).then((arr) => {
+        nypumas = arr.filter(d => d.STATEFP == '36');
+        nypumas.forEach((d)=> {
+            pumaIdMap.set(parseInt(d.PUMA5CE), d['PUMA NAME'])
         })
-    })
+        return pumaIdMap;
+    }).then((idmap)=> {
+        pumaId.forEach((x)=>{
+            pumaChoices.push({
+                value: x,
+                label: idmap.get(x)
+            })
+        });
+     
+        var pumaSelect = new Choices(document.querySelector('.puma-select'), {
+            silent: false,
+            items: [],
+            choices: pumaChoices,
+            renderChoiceLimit: -1,
+            maxItemCount: -1,
+            addItems: true,
+            renderSelectedChoices: 'auto',
+            loadingText: 'Loading...',
+            noResultsText: 'No results found',
+            noChoicesText: 'No choices to choose from',
+            itemSelectText: ''
+        })  
+        selectedPumaId = pumaSelect.getValue(true);
+        selectedPumaName = cleanPumaName(idmap.get(selectedPumaId));
+    
+        document.querySelector('.puma-select').addEventListener('change', function(e){
+            selectedPumaId = pumaSelect.getValue(true);
+            selectedPumaName = cleanPumaName(idmap.get(selectedPumaId));
+            setTimeout(plotAll, 50);
+            //plotAll();
+        });
+        return;
+    }).then(() => plotAll())
+}
 
-    var pumaSelect = new Choices(document.querySelector('.puma-select'), {
-        silent: false,
-        items: [],
-        choices: pumaChoices,
-        renderChoiceLimit: -1,
-        maxItemCount: -1,
-        addItems: true,
-        renderSelectedChoices: 'auto',
-        loadingText: 'Loading...',
-        noResultsText: 'No results found',
-        noChoicesText: 'No choices to choose from',
-        itemSelectText: ''
-    })  
-    selectedPuma = pumaSelect.getValue(true);
-    plotAll();
- 
-    document.querySelector('.puma-select').addEventListener('change', function(e){
-        selectedPuma = pumaSelect.getValue(true);
-        plotAll();
-    });
+async function draw(){
+    console.log('processed data ', getOrigData());
+
+    initLookup();
 
 }
 
 // On average, there are 6 tenants per household in Ridgewood occupying 6 bedrooms. 70% of households speak Spanish, followed by English as the next most common language. About half of tenants live in a multi-generational home. Only 70% of homes have heat, kitchen, and internet access. Rent on average costs $1500 per household.
 
 function drawHousingSummary(d){
-    console.log(d)
-    var beds = 'On average, there are <strong>' + d.personsMedian + ' persons occupying ' + d.bedroomMedian + ' bedrooms</strong> in selected area. ';
+
+    d3.select('.title-sel').text(selectedPumaName);
+    var beds = 'On average, there are <strong>' + d.personsMedian + ' persons occupying ' + d.bedroomMedian + ' bedrooms</strong> in ' + selectedPumaName + '. ';
     var density = '';
     if (d.personsPerRoom > 1){
         density = 'This amounts to <strong>' + d.personsPerRoom + ' persons per room</strong>, which is considered an uncomfortable living arrangement. '
     } else {
         density = 'This amounts to <strong>' + d.personsPerRoom + ' persons per room</strong>, which is considered a comfortable living arrangement. '
     }
-    var inc = 'Selected area has a median household <strong>income of $' + d.incomeMedian + '</strong>'
+    var inc = selectedPumaName + ' has a median household <strong>income of $' + d.incomeMedian + '</strong>'
     if (d.rentMedian){
         inc = inc + ', $' + d.rentMedian + ' of which goes to monthly rent payments.' 
     } else {
