@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function() {
         zipObjects = [];
         boroughZips.forEach(function(d, i){
             obj = {
-               value: d,
+               value: d,    
                label: d,
             };
             zipObjects.push(obj);

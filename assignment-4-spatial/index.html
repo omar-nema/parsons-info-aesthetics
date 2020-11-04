@@ -5,10 +5,76 @@
       <title>sketch</title>
       <link rel="stylesheet" type="text/css" href="./scripts/style.css">
    </head>
-   <div class="tooltip">a real tip yes</div>
+   <!-- <div class="tooltip">a real tip yes</div> -->
    <body>
-      <div id="container">
+      <div class="tooltip"></div>
+      <div class="content">
+         <div class="header-row">
+            <h1 class="header">
+               Living Arrangements in NYC
+            </h1>
+            <p class="overview">
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </p>
+         </div>
+         <div class="container">
+            <h2>
+               Metro Area Selection
+            </h2>
+            <div class="explain">
+               Select an NYC metro area from the PUMA (Public Use Microdata Area) code lookup below to retrieve details on housing distribution and living arrangements.
+            </div>
+            <div class="col-holder">
+               <div>
+                  <div class="search">
+                     <div class="search-label label">Search Metro Area</div>
+                     <select class="search-sel">Ridgewood</select>
+                  </div>
+                  <div class="housing-summary-container">
+                     <div class="summary-label label">Housing Summary</div>
+                     <div class="housing-summary">
+                        No data to display
+                     </div>
+                  </div>
+               </div>
+               <div class="map-cont">
+                  <div class="map"></div>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <h2>
+               <span>Housing and Occupancy Distribution</span> • <span class="title-sel">Ridgewood, Queens</span>
+            </h2>
+            <div class="explain">
+               Shown below are living arrangements in the selected metro area, ordered by frequency of appearance for a person. Each combination of adults, children, and rooms in a household constitute a distinct 'living arrangement'. The table below displays an abstract floor plan for each living arrangement, detail on the number of occupants, as well as demographic statistics.
+            </div>
+            <table class="housing-data">
+               <thead class="table-header">
+                  <tr>
+                     <th>Housing Structure</th>
+                     <th>Occupants</th>
+                     <th>Demographics</th>
+                  </tr>
+ 
+               </thead>
+               <tbody>
+
+               </tbody>
+               <!-- <tr class="table-header">
+                  <th>Housing Structure</th>
+                  <th>Occupants</th>
+                  <th>Details</th>
+               </tr> -->
+               <!-- <tr>
+                  <td>Jill</td>
+                  <td>Smith</td>
+                  <td>50</td>
+               </tr>  -->
+            </div>
+         </table>
       </div>
+
    </body>
 </html>
 <script src="https://d3js.org/d3.v6.min.js"></script>
