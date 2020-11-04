@@ -79,8 +79,8 @@ function initLookup(){
         document.querySelector('.puma-select').addEventListener('change', function(e){
             selectedPumaId = pumaSelect.getValue(true);
             selectedPumaName = cleanPumaName(idmap.get(selectedPumaId));
+            d3.select('.housing-summary').classed('loading-inline', true);
             setTimeout(plotAll, 50);
-            //plotAll();
         });
         return;
     }).then(() => plotAll())
@@ -115,6 +115,7 @@ function drawHousingSummary(d){
 
 
     var txt = beds + density + inc;
+    d3.select('.housing-summary').classed('loading-inline', false);
     d3.select('.housing-summary').html(txt);
 }
 
@@ -309,9 +310,59 @@ function addTooltips(){
                 .style('pointer-events', 'inherit')
                 ;
     })
-    .on('mouseout', function() {
+    // .on('mouseout', function() {
+    //     tooltip.style("opacity", 0).style('pointer-events', 'none');
+    // });
+
+    d3.selectAll('.house-head')
+    .on('mouseover', function(e){
+        tooltip
+        .html('<img style="margin: -8.5px -13.5px" src="./legend-room.svg"/>')
+        .transition().duration(200)
+        .style("opacity", .95)
+        .style("left", (e.pageX) + "px")
+        .style("top", (e.pageY + 22) + "px")
+        .style('pointer-events', 'inherit')
+        ;
+    })
+    .on('mouseout', function(e){
         tooltip.style("opacity", 0).style('pointer-events', 'none');
     });
+
+    d3.selectAll('.demo-head')
+    .on('mouseover', function(e){
+        var tiptext = '<div>Household demographic information for unique combination of occupant composition (quantity and age), and room structure.</div>'
+        ;
+        tooltip
+        .html(tiptext)
+        .transition().duration(200)
+        .style("opacity", .95)
+        .style("left", (e.pageX) + "px")
+        .style("top", (e.pageY + 22) + "px")
+        .style('pointer-events', 'inherit')
+        ;
+    })
+    .on('mouseout', function(e){
+        tooltip.style("opacity", 0).style('pointer-events', 'none');
+    });
+ 
+
+    d3.selectAll('.occ-head')
+    .on('mouseover', function(e){
+        tooltip
+        .html('<img style="margin: -8.5px -13.5px" src="./legend-occupant.svg"/>')
+        .transition().duration(200)
+        .style("opacity", .95)
+        .style("left", (e.pageX) + "px")
+        .style("top", (e.pageY + 22) + "px")
+        .style('pointer-events', 'inherit')
+        ;
+    })
+    .on('mouseout', function(e){
+        tooltip.style("opacity", 0).style('pointer-events', 'none');
+    });
+    
+
 
     d3.selectAll('.occupant-holder')
     .on('mouseover',function(e){
