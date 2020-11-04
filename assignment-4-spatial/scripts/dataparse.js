@@ -8,13 +8,16 @@ document.addEventListener("DOMContentLoaded", function() {
     // var queensurl = 'https://api.census.gov/data/2019/acs/acs1/pums?get=WGTP,PWGTP,GRNTP,HINCP,NRC,TEL,HFL,HHT2,ADJHSG,ADJINC,BATH,ACCESS,KIT,R65,R18,FES&NP=01&NP=2:20&RMSP=1:99&BDSP=0:99&ucgid=7950000US3604101,7950000US3604102,7950000US3604103,7950000US3604104,7950000US3604105,7950000US3604106,7950000US3604107,7950000US3604108,7950000US3604109,7950000US3604110,7950000US3604111,7950000US3604112,7950000US3604113,7950000US3604114';
 
 
-    var queensurl = 'https://api.census.gov/data/2019/acs/acs1/pums?get=WGTP,PWGTP,GRNTP,HINCP,NRC,TEL,HFL,HHT2,ADJHSG,ADJINC,BATH,ACCESS,KIT,R65,R18,FES&NP=01&NP=2:20&RMSP=1:99&BDSP=0:99&ucgid=7950000US3604110,7950000US3604111'
+    // var queensurl = 'https://api.census.gov/data/2019/acs/acs1/pums?get=WGTP,PWGTP,GRNTP,HINCP,NRC,TEL,HFL,HHT2,ADJHSG,ADJINC,BATH,ACCESS,KIT,R65,R18,FES&NP=01&NP=2:20&RMSP=1:99&BDSP=0:99&ucgid=7950000US3604110,7950000US3604111'
     //make api calls in parallel
     // d3.csv(url2).then((t) => {
     //     console.log('BIGDATA', t)
     // });
 
     // var url = 'https://api.census.gov/data/2019/acs/acs1/pums?get=WGTP,GRNTP,HINCP,NRC,TEL,HFL,HHT2,ADJHSG,ADJINC,BATH,ACCESS,KIT,R65,R18,FES&NP=01&NP=2:20&RMSP=1:99&BDSP=0:99&ucgid=7950000US3604110'
+
+
+    var queensurl = 'https://api.census.gov/data/2019/acs/acs1/pums?get=WGTP,PWGTP,GRNTP,HINCP,NRC,TEL,HFL,HHT2,MV,LANX,ADJHSG,ADJINC,BATH,ACCESS,KIT,R65,R18,FES&NP=01&NP=2:20&RMSP=1:99&BDSP=0:99&ucgid=7950000US3604110';
 
     d3.csv(queensurl).then((arr) => {
 
@@ -65,13 +68,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 amenityInternet: internet,
                 amenityHeat: fuel,
                 rent: parseInt(d.GRNTP),
-                income: parseInt(d.ADJINC)*parseInt(d.HINCP)
+                income: parseInt(d.ADJINC)*parseInt(d.HINCP),
+                multiLang: +d.LANX
             }
            }
       
         }); 
     })
- 
     .then((pcd) => {
         
         //aggregate data
@@ -116,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 personsMean: personsMean,
                 childrenMedian: childrenMedian,
                 childrenMean: childrenMean,
-                personsPerRoom: personsMedian/bedroomMedian
+                personsPerRoom: personsMedian/bedroomMedian,
             }
 
             //detailed data at housing combo level

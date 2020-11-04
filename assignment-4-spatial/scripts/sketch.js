@@ -93,7 +93,6 @@ async function draw(){
 
 }
 
-// On average, there are 6 tenants per household in Ridgewood occupying 6 bedrooms. 70% of households speak Spanish, followed by English as the next most common language. About half of tenants live in a multi-generational home. Only 70% of homes have heat, kitchen, and internet access. Rent on average costs $1500 per household.
 
 function drawHousingSummary(d){
 
@@ -111,8 +110,6 @@ function drawHousingSummary(d){
     } else {
         inc = inc + '. '
     }
-    
-
 
     var txt = beds + density + inc;
     d3.select('.housing-summary').classed('loading-inline', false);
@@ -281,7 +278,7 @@ function drawDetails(){
             var txtweight = 'Persons Represented: ' + d.weightPersons;
             var txtrent = '';
             if (d.statsRent){
-                txtrent = 'Median Rent: $' + d.statsIncome;
+                txtrent = 'Median Rent: $' + d.statsRent;
             };
             var txtincome = 'Median Household Income: $' + d.statsIncome;
             var txtstats = '<div>' + txtweight + '<br>' + txtincome + '<br>' + txtrent + '</div>';
