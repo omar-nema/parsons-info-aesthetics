@@ -1,13 +1,16 @@
 tooltip = d3.select('.tooltip');
+var selectedPuma;
 
-function draw(){
-    console.log('ready', getOrigData());
 
-    var currData = getOrigData().get('4110')
+function plotAll(){
+    var currData = getOrigData().get(selectedPuma)
     var currDataDetail = currData.detail;
     var currDataStats = currData.stats;
+
+    console.log(currDataDetail)
+
     table = d3.select('.housing-data tbody');
-    var houseRows = table.selectAll('.row-house').data(currDataDetail).join('tr').attr('class', 'row-house');
+    var houseRows = table.selectAll('.row-house').data(currDataDetail, d=> {return d.geo + '-' + d.weightPersons}).join('tr').attr('class', 'row-house');
     //for some reason select(this)  doesn't work with es6
     houseRows.each(function(d, i){
         var currRow = d3.select(this);
@@ -21,6 +24,40 @@ function draw(){
     updateOccupantColors();
     drawDetails();
     addTooltips();
+}
+
+function draw(){
+    console.log('ready', getOrigData());
+
+    var pumaChoices = [];
+    pumaId = Array.from(getOrigData().keys());
+    pumaId.forEach((x)=>{
+        pumaChoices.push({
+            value: x,
+            label: 'PUMA ' + x
+        })
+    })
+
+    var pumaSelect = new Choices(document.querySelector('.puma-select'), {
+        silent: false,
+        items: [],
+        choices: pumaChoices,
+        renderChoiceLimit: -1,
+        maxItemCount: -1,
+        addItems: true,
+        renderSelectedChoices: 'auto',
+        loadingText: 'Loading...',
+        noResultsText: 'No results found',
+        noChoicesText: 'No choices to choose from',
+        itemSelectText: ''
+    })  
+    selectedPuma = pumaSelect.getValue(true);
+    plotAll();
+ 
+    document.querySelector('.puma-select').addEventListener('change', function(e){
+        selectedPuma = pumaSelect.getValue(true);
+        plotAll();
+    });
 
 }
 

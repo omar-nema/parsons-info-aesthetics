@@ -245,6 +245,7 @@ document.addEventListener("DOMContentLoaded", function() {
         function getCurrZip(){
             return document.querySelector('.zip-select').currentValue;
         }
+        console.log(zipObjects)
         
         var zipSelect = new Choices(document.querySelector('.zip-select'), {
             silent: false,

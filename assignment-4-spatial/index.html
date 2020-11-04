@@ -3,6 +3,7 @@
    <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
       <title>sketch</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"/>
       <link rel="stylesheet" type="text/css" href="./scripts/style.css">
    </head>
    <!-- <div class="tooltip">a real tip yes</div> -->
@@ -28,7 +29,11 @@
                <div>
                   <div class="search">
                      <div class="search-label label">Search Metro Area</div>
-                     <select class="search-sel">Ridgewood</select>
+                     <select class="puma-select">
+                        <label for="pumasel">ZIP Code</label>
+                        <select name="pumasel" id="pumasel">
+                        </select>
+                    </select>
                   </div>
                   <div class="housing-summary-container">
                      <div class="summary-label label">Housing Summary</div>
@@ -47,7 +52,7 @@
                <span>Housing and Occupancy Distribution</span> • <span class="title-sel">Ridgewood, Queens</span>
             </h2>
             <div class="explain">
-               Shown below are living arrangements in the selected metro area, ordered by frequency of appearance for a person. Each combination of adults, children, and rooms in a household constitute a distinct 'living arrangement'. The table below displays an abstract floor plan for each living arrangement, detail on the number of occupants, as well as demographic statistics.
+               Shown below are living arrangements in the selected metro area, ordered by representation (items higher on the list are more common). Each combination of adults, children, and rooms in a household constitute a distinct 'living arrangement'. The table below displays an abstract floor plan for each living arrangement, detail on the number of occupants, as well as demographic statistics.
             </div>
             <table class="housing-data">
                <thead class="table-header">
@@ -77,6 +82,7 @@
 
    </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <script src='./scripts/dataparse.js'></script>
 <script src='./scripts/sketch.js'></script>

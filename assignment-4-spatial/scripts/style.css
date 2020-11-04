@@ -131,8 +131,17 @@ tbody {
     padding-bottom: 5px;
 }
 
-
-
+.choices__inner {
+    padding: 0 5px;
+    background: white;
+    font-weight: 600;
+    font-size: 14px;
+    min-height: 34px !important;
+}
+.choices[data-type*=select-one] .choices__inner {
+    padding-bottom: 0;
+    padding-top: 6px !important;
+}
 
 .housing-unit{
     cursor:pointer;
