@@ -1,6 +1,8 @@
 tooltip = d3.select('.tooltip');
 var selectedPumaId;
 var selectedPumaName;
+var pumaIdMap = new Map();
+var pumaSelect;
 
 function cleanPumaName(sel){
 
@@ -15,7 +17,66 @@ function cleanPumaName(sel){
     return borough + ' ' + districtNum;
 }
 
+function getStatsbyId(pumaid){
+    return getOrigData().get(parseInt(pumaid)).stats;
+}
+
+function draw(){
+    console.log('processed data ', getOrigData());
+    initLookup(); //will initialize lookup and then plot all pieces
+}
+
+function lookupChange(){
+    selectedPumaId = pumaSelect.getValue(true);
+    selectedPumaName = cleanPumaName(pumaIdMap.get(selectedPumaId));
+    d3.select('.housing-summary').classed('loading-inline', true);
+    d3.select('.housing-data').classed('loading-inline', true);
+    setTimeout(plotAll, 50);
+}
+
+function initLookup(){
+    var pumaChoices = [];
+    pumaId = Array.from(getOrigData().keys());
+    d3.csv('./data/2010pumanames.txt').then((arr) => {
+        nypumas = arr.filter(d => d.STATEFP == '36');
+        nypumas.forEach((d)=> {
+            pumaIdMap.set(parseInt(d.PUMA5CE), d['PUMA NAME'])
+        })
+        return pumaIdMap;
+    }).then((idmap)=> {
+        pumaId.forEach((x)=>{
+            pumaChoices.push({
+                value: x,
+                label: idmap.get(x)
+            })
+        });
+     
+        pumaSelect = new Choices(document.querySelector('.puma-select'), {
+            silent: false,
+            items: [],
+            choices: pumaChoices,
+            renderChoiceLimit: -1,
+            maxItemCount: -1,
+            addItems: true,
+            renderSelectedChoices: 'auto',
+            loadingText: 'Loading...',
+            noResultsText: 'No results found',
+            noChoicesText: 'No choices to choose from',
+            itemSelectText: ''
+        })  
+        selectedPumaId = pumaSelect.getValue(true);
+        selectedPumaName = cleanPumaName(idmap.get(selectedPumaId));
+    
+        document.querySelector('.puma-select').addEventListener('change', lookupChange);
+        return;
+    }).then(() => {
+        drawMap();
+        plotAll();
+    });
+}
+
 function plotAll(){
+
     var currData = getOrigData().get(parseInt(selectedPumaId))
     var currDataDetail = currData.detail;
     var currDataStats = currData.stats;
@@ -35,64 +96,81 @@ function plotAll(){
     drawOccupants();
     updateOccupantColors();
     drawDetails();
-    addTooltips();
     d3.select('.content').classed('loading', false);
     d3.select('.loading-ind').classed('loading', false);
+    addTooltips();
+    updateMap();
 }
 
-function initLookup(){
-    var pumaChoices = [];
-    pumaId = Array.from(getOrigData().keys());
-    const pumaUrl = 'https://www2.census.gov/geo/docs/reference/puma/2010_PUMA_Names.txt';
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    var pumaIdMap = new Map();
-    d3.csv(proxyurl + pumaUrl).then((arr) => {
-        nypumas = arr.filter(d => d.STATEFP == '36');
-        nypumas.forEach((d)=> {
-            pumaIdMap.set(parseInt(d.PUMA5CE), d['PUMA NAME'])
-        })
-        return pumaIdMap;
-    }).then((idmap)=> {
-        pumaId.forEach((x)=>{
-            pumaChoices.push({
-                value: x,
-                label: idmap.get(x)
+
+async function drawMap(){
+    map = d3.select('.map').append('svg').append('g').attr('transform', 'translate(0,0) scale(1)');
+    await d3.json('./data/pumageo.geojson').then((geopuma) =>{
+
+        var bbox = d3.select('.map').node().getBoundingClientRect();
+        var mapw = bbox.width-20;
+        d3.select('.map').style('height', mapw.toString() + 'px');
+        bbox = d3.select('.map').node().getBoundingClientRect();
+        var maph = bbox.height-20;
+
+        
+        projection = d3.geoIdentity().fitSize([mapw, mapw], geopuma);
+        path = d3.geoPath().projection(projection);
+        var colorScaleDensity = d3.scaleSequential().domain([1,3]).range(['rgb(203, 205, 222)', 'rgb(216 17 100)']);
+
+        map
+            .selectAll('path')
+            .data(geopuma.features)
+            .join('path')
+            .attr('d', path)
+            .attr('class', d => 'puma-path ' + d.properties.puma)
+            .attr('stroke', 'rgba(0,0,0,.1)')
+            .attr('fill', d=> {
+                var mapid = parseInt(d.properties.puma);
+                if (getOrigData().get(mapid)){
+                    stats = getStatsbyId(mapid);
+                    return colorScaleDensity(stats.personsPerRoom);
+                } else {
+                    return 'rgba(0,0,0,.1)'
+                }
             })
-        });
-     
-        var pumaSelect = new Choices(document.querySelector('.puma-select'), {
-            silent: false,
-            items: [],
-            choices: pumaChoices,
-            renderChoiceLimit: -1,
-            maxItemCount: -1,
-            addItems: true,
-            renderSelectedChoices: 'auto',
-            loadingText: 'Loading...',
-            noResultsText: 'No results found',
-            noChoicesText: 'No choices to choose from',
-            itemSelectText: ''
-        })  
-        selectedPumaId = pumaSelect.getValue(true);
-        selectedPumaName = cleanPumaName(idmap.get(selectedPumaId));
+            .on('click', function(d,i){
+                data = d3.select(this).data()[0];
+                var mapid = parseInt(data.properties.puma);
+                pumaSelect.setChoiceByValue(mapid); //change input
+                d3.selectAll('.puma-path').classed('active', false);
+                d3.select(this).classed('active', true);
+                lookupChange();
+            })
+        ;
+
+    //ZOOMING FUNCTION IN MAP  
+    var zoom = d3.zoom().translateExtent([[-mapw, -maph], [mapw, maph]]).scaleExtent([1, 5]).on('zoom', zoomed);
+    function zoomed({transform}){
+        map.attr('transform', transform); 
+    }
+    map.call(zoom);
     
-        document.querySelector('.puma-select').addEventListener('change', function(e){
-            selectedPumaId = pumaSelect.getValue(true);
-            selectedPumaName = cleanPumaName(idmap.get(selectedPumaId));
-            d3.select('.housing-summary').classed('loading-inline', true);
-            setTimeout(plotAll, 50);
+    updateMap();
+
+    return;
+});
+    addTooltips();
+    return ;
+    
+}
+
+function updateMap(){
+    d3.selectAll('.puma-path')
+        .classed('active', d=> {
+            var pumaid = parseInt(d.properties.puma);
+            if (pumaid == selectedPumaId){
+                return true;
+            } else {
+                return false;
+            }
         });
-        return;
-    }).then(() => plotAll())
 }
-
-async function draw(){
-    console.log('processed data ', getOrigData());
-
-    initLookup();
-
-}
-
 
 function drawHousingSummary(d){
 
@@ -106,20 +184,22 @@ function drawHousingSummary(d){
     }
     var inc = selectedPumaName + ' has a median household <strong>income of $' + d.incomeMedian + '</strong>'
     if (d.rentMedian){
-        inc = inc + ', $' + d.rentMedian + ' of which goes to monthly rent payments.' 
+        inc = inc + ', $' + d.rentMedian + ' of which goes to monthly rent payments. ' 
     } else {
         inc = inc + '. '
     }
-
+  
     var txt = beds + density + inc;
     d3.select('.housing-summary').classed('loading-inline', false);
+    d3.select('.housing-data').classed('loading-inline', false);
     d3.select('.housing-summary').html(txt);
 }
 
 function drawFloorPlans(){
     //add floor plans
     d3.selectAll('.row-structure').each(function(d,i){
-        var sel = d3.select(this).append('svg').append('g').attr('class', 'housing-unit');
+        var sv = d3.select(this).append('svg');
+        sel = sv.append('g').attr('class', 'housing-unit');
         var r = 26;
         var colNum = 0;
         var rowNum = 0;
@@ -183,7 +263,7 @@ function drawFloorPlans(){
             incrementCol();
         }) ;
 
-
+    
         var nonbedstroke = 3;
 
         //add rooms outside of bedrooms
@@ -201,6 +281,11 @@ function drawFloorPlans(){
                 .attr('class', 'room nonbed')
                 ;
             incrementCol();
+        }
+        if (rowNum > 2){
+            var ht = 100 + (rowNum)*30;
+            console.log('yee', sv)
+            sv.style('height', '300px')
         }
 
     });
@@ -289,7 +374,28 @@ function drawDetails(){
 
 function addTooltips(){
     
-    //add tooltips
+    d3.selectAll('.puma-path')
+    .on('mouseover',function(e){
+        var pumaid = parseInt(d3.select(this).data()[0].properties.puma);
+        var stats = getStatsbyId(pumaid);
+        var name = cleanPumaName(pumaIdMap.get(pumaid));
+        var txtpersonsper = '<div>' + stats.personsPerRoom + ' median persons per room' + '</div>';
+        var txtincome = '<div>' + '$' + stats.incomeMedian + ' median income' + '</div>';
+        var txtrent = '<div>' + '$' + stats.rentMedian + ' median rent' + '</div>';
+        var tiptext = '<div class="tip-header">' + name + '</div>' + txtpersonsper + txtincome + txtrent;
+        tooltip
+            .html(tiptext)
+            .transition().duration(200)
+            .style("opacity", .95)
+            .style("left", (e.pageX) + "px")
+            .style("top", (e.pageY + 22) + "px")
+            .style('pointer-events', 'inherit')
+       ;       
+    })
+    .on('mouseout', function() {
+        tooltip.style("opacity", 0).style('pointer-events', 'none');
+    });
+
     d3.selectAll('.housing-unit')
     .on('mouseover',function(e){
         hd = d3.select(this).data()[0];
@@ -307,9 +413,9 @@ function addTooltips(){
                 .style('pointer-events', 'inherit')
                 ;
     })
-    // .on('mouseout', function() {
-    //     tooltip.style("opacity", 0).style('pointer-events', 'none');
-    // });
+    .on('mouseout', function() {
+        tooltip.style("opacity", 0).style('pointer-events', 'none');
+    });
 
     d3.selectAll('.house-head')
     .on('mouseover', function(e){
@@ -359,7 +465,21 @@ function addTooltips(){
         tooltip.style("opacity", 0).style('pointer-events', 'none');
     });
     
-
+    d3.selectAll('.label-map')
+    .on('mouseover', function(e){
+        tooltip
+        .html('<div>Darker color in the map below indicates more crowdedness (lower number of rooms per person).</div>')
+        .transition().duration(200)
+        .style("opacity", .95)
+        .style("left", (e.pageX) + "px")
+        .style("top", (e.pageY + 22) + "px")
+        .style('pointer-events', 'inherit')
+        ;
+    })
+    .on('mouseout', function(e){
+        tooltip.style("opacity", 0).style('pointer-events', 'none');
+    });
+    
 
     d3.selectAll('.occupant-holder')
     .on('mouseover',function(e){

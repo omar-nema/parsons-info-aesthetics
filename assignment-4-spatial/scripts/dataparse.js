@@ -3,23 +3,7 @@ var dataCleaned = new Map();
 
 document.addEventListener("DOMContentLoaded", function() {
 
-
-
-    // var queensurl = 'https://api.census.gov/data/2019/acs/acs1/pums?get=WGTP,PWGTP,GRNTP,HINCP,NRC,TEL,HFL,HHT2,ADJHSG,ADJINC,BATH,ACCESS,KIT,R65,R18,FES&NP=01&NP=2:20&RMSP=1:99&BDSP=0:99&ucgid=7950000US3604101,7950000US3604102,7950000US3604103,7950000US3604104,7950000US3604105,7950000US3604106,7950000US3604107,7950000US3604108,7950000US3604109,7950000US3604110,7950000US3604111,7950000US3604112,7950000US3604113,7950000US3604114';
-
-
-    // var queensurl = 'https://api.census.gov/data/2019/acs/acs1/pums?get=WGTP,PWGTP,GRNTP,HINCP,NRC,TEL,HFL,HHT2,ADJHSG,ADJINC,BATH,ACCESS,KIT,R65,R18,FES&NP=01&NP=2:20&RMSP=1:99&BDSP=0:99&ucgid=7950000US3604110,7950000US3604111'
-    //make api calls in parallel
-    // d3.csv(url2).then((t) => {
-    //     console.log('BIGDATA', t)
-    // });
-
-    // var url = 'https://api.census.gov/data/2019/acs/acs1/pums?get=WGTP,GRNTP,HINCP,NRC,TEL,HFL,HHT2,ADJHSG,ADJINC,BATH,ACCESS,KIT,R65,R18,FES&NP=01&NP=2:20&RMSP=1:99&BDSP=0:99&ucgid=7950000US3604110'
-
-
-    var queensurl = 'https://api.census.gov/data/2019/acs/acs1/pums?get=WGTP,PWGTP,GRNTP,HINCP,NRC,TEL,HFL,HHT2,MV,LANX,ADJHSG,ADJINC,BATH,ACCESS,KIT,R65,R18,FES&NP=01&NP=2:20&RMSP=1:99&BDSP=0:99&ucgid=7950000US3604110';
-
-    d3.csv(queensurl).then((arr) => {
+    d3.csv('./data/acsallbor.json').then((arr) => {
 
         //data from ACS comes in at person level. need to change to household level
         var dedupeCluster = d3.groups(arr, d=> d['[["WGTP"']+d.GRNTP+d.HINCP+d.NRC+d.NP);
@@ -88,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var persons = [];
             var children = [];
             var rent = [];
+            var wts = [];
             geosplit[1].forEach((geoCluster)=>{
                 geoCluster[1].forEach((rowVal)=>{
                     for (i=0; i<rowVal.weight; i++){
@@ -95,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         bedrooms.push(rowVal.houseBed);
                         persons.push(rowVal.personsNum);
                         children.push(rowVal.personsChild);
+                        wts.push(rowVal.weight)
                         if (rowVal.rent > 0){
                             rent.push(rowVal.rent)
                         }
@@ -109,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var childrenMedian  = d3.median(children);
             var childrenMean  = d3.mean(children);
             var rentMedian = d3.median(rent);
+            var wtTotal = d3.sum(wts)
             //stats at PUMA level
             var summaryStats = {
                 incomeMedian: incomeMedian,
@@ -120,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 childrenMedian: childrenMedian,
                 childrenMean: childrenMean,
                 personsPerRoom: personsMedian/bedroomMedian,
+                weightTotal: wtTotal
             }
 
             //detailed data at housing combo level
