@@ -114,7 +114,7 @@ async function drawMap(){
         var maph = bbox.height-20;
 
         
-        projection = d3.geoIdentity().fitSize([mapw, mapw], geopuma);
+        projection = d3.geoIdentity().fitSize([mapw*.9, maph*.9], geopuma);
         path = d3.geoPath().projection(projection);
         var colorScaleDensity = d3.scaleSequential().domain([1,3]).range(['rgb(203, 205, 222)', 'rgb(216 17 100)']);
 
