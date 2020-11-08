@@ -106,7 +106,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 personsMean: personsMean,
                 childrenMedian: childrenMedian,
                 childrenMean: childrenMean,
-                personsPerRoom: personsMedian/bedroomMedian,
+                personsPerRoom: Math.round(personsMedian/bedroomMedian * 10) / 10,
+                personsPerRoomMean: Math.round(personsMean/bedroomMean * 10) / 10,
                 weightTotal: wtTotal
             }
 

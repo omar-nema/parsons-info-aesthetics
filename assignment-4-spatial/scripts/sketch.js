@@ -129,7 +129,7 @@ async function drawMap(){
                 var mapid = parseInt(d.properties.puma);
                 if (getOrigData().get(mapid)){
                     stats = getStatsbyId(mapid);
-                    return colorScaleDensity(stats.personsPerRoom);
+                    return colorScaleDensity(stats.personsPerRoomMean);
                 } else {
                     return 'rgba(0,0,0,.1)'
                 }
@@ -284,7 +284,6 @@ function drawFloorPlans(){
         }
         if (rowNum > 2){
             var ht = 100 + (rowNum)*30;
-            console.log('yee', sv)
             sv.style('height', '300px')
         }
 
@@ -379,7 +378,8 @@ function addTooltips(){
         var pumaid = parseInt(d3.select(this).data()[0].properties.puma);
         var stats = getStatsbyId(pumaid);
         var name = cleanPumaName(pumaIdMap.get(pumaid));
-        var txtpersonsper = '<div>' + stats.personsPerRoom + ' median persons per room' + '</div>';
+        console.log(stats);
+        var txtpersonsper = '<div>' + stats.personsPerRoomMean + ' median persons per bedroom' + '</div>';
         var txtincome = '<div>' + '$' + stats.incomeMedian + ' median income' + '</div>';
         var txtrent = '<div>' + '$' + stats.rentMedian + ' median rent' + '</div>';
         var tiptext = '<div class="tip-header">' + name + '</div>' + txtpersonsper + txtincome + txtrent;
@@ -468,7 +468,7 @@ function addTooltips(){
     d3.selectAll('.label-map')
     .on('mouseover', function(e){
         tooltip
-        .html('<div>Darker color in the map below indicates more crowdedness (lower number of rooms per person).</div>')
+        .html('<div>Darker color in the map below indicates more crowdedness (lower number of rooms per person). Scroll to zoom. </div>')
         .transition().duration(200)
         .style("opacity", .95)
         .style("left", (e.pageX) + "px")
