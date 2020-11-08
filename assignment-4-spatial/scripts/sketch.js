@@ -175,12 +175,12 @@ function updateMap(){
 function drawHousingSummary(d){
 
     d3.select('.title-sel').text(selectedPumaName);
-    var beds = 'On average, there are <strong>' + d.personsMedian + ' persons occupying ' + d.bedroomMedian + ' bedrooms</strong> in ' + selectedPumaName + '. ';
+    var beds = 'On average, there are <strong>' + d.personsMean + ' persons occupying ' + d.bedroomMean + ' bedrooms</strong> in ' + selectedPumaName + '. ';
     var density = '';
     if (d.personsPerRoom > 1){
-        density = 'This amounts to <strong>' + d.personsPerRoom + ' persons per room</strong>, which is considered an uncomfortable living arrangement. '
+        density = 'This amounts to <strong>' + d.personsPerRoomMean + ' persons per room</strong>, which is considered an uncomfortable living arrangement. '
     } else {
-        density = 'This amounts to <strong>' + d.personsPerRoom + ' persons per room</strong>, which is considered a comfortable living arrangement. '
+        density = 'This amounts to <strong>' + d.personsPerRoomMean + ' persons per room</strong>, which is considered a comfortable living arrangement. '
     }
     var inc = selectedPumaName + ' has a median household <strong>income of $' + d.incomeMedian + '</strong>'
     if (d.rentMedian){
