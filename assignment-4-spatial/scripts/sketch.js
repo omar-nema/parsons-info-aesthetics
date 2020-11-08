@@ -285,7 +285,7 @@ function drawFloorPlans(){
             incrementCol();
         }
         if (rowNum > 1){
-            var ht = 100 + (rowNum-1)*30;
+            var ht = 100 + (rowNum-1)*30; //should not have hardcoded num here
             sv.style('height', ht)
         }
 
