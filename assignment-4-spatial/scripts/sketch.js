@@ -284,9 +284,9 @@ function drawFloorPlans(){
                 ;
             incrementCol();
         }
-        if (rowNum > 2){
-            var ht = 100 + (rowNum)*30;
-            sv.style('height', '300px')
+        if (rowNum > 1){
+            var ht = 100 + (rowNum-1)*30;
+            sv.style('height', ht)
         }
 
     });
