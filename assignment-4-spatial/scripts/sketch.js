@@ -116,7 +116,7 @@ async function drawMap(){
         
         projection = d3.geoIdentity().fitSize([mapw*.9, maph*.9], geopuma);
         path = d3.geoPath().projection(projection);
-        var colorScaleDensity = d3.scaleSequential().domain([1,3]).range(['rgb(203, 205, 222)', 'rgb(216 17 100)']);
+        var colorScaleDensity = d3.scaleSequential().domain([1,2]).range(['#fbfbfb', '#cc296d']);
 
         map
             .selectAll('path')
