@@ -34,8 +34,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             var numAdultsOther = parseInt(d.NP) - parseInt(d.NRC) - parseInt(d.R65);
-
-            //telephone, fuel
            if ( parseInt(d.NP) !== 0 && parseInt(d.BDSP) !== -1 ){
             return {
                 geo: d.PUMA,
@@ -65,37 +63,38 @@ document.addEventListener("DOMContentLoaded", function() {
         var distinct = d3.groups(pcd, d => d.geo, d=> d.personsNum+'-'+d.personsAdultTotal+'-'+d.houseBed+'-'+d.houseRoom);        
         //for each geo, aggregate income and other stats based on distinct housing type
         distinct.forEach((geosplit) => {
-
             //calculate median values
-            var incomes = [];
-            var bedrooms = [];
-            var persons = [];
-            var children = [];
-            var rent = [];
-            var wts = [];
-            geosplit[1].forEach((geoCluster)=>{
-                geoCluster[1].forEach((rowVal)=>{
-                    for (i=0; i<rowVal.weight; i++){
-                        incomes.push(rowVal.income);
-                        bedrooms.push(rowVal.houseBed);
-                        persons.push(rowVal.personsNum);
-                        children.push(rowVal.personsChild);
-                        wts.push(rowVal.weight)
+            var geoIncomes = [];
+            var geoBedrooms = [];
+            var geoPersons = [];
+            var geoChildren = [];
+            var geoRent = [];
+            var geoWtScaledPerson = [];
+            geosplit[1].forEach((geoCluster)=>{ 
+                geoCluster[1].forEach((rowVal)=>{ //housing type level
+                    for (i=0; i<rowVal.weight; i++){ //individual response level
+                        geoIncomes.push(rowVal.income);
+                        geoBedrooms.push(rowVal.houseBed);
+                        geoPersons.push(rowVal.personsNum);
+                        geoChildren.push(rowVal.personsChild);
                         if (rowVal.rent > 0){
-                            rent.push(rowVal.rent)
+                            geoRent.push(rowVal.rent)
                         }
                     }
+                    geoWtScaledPerson.push(rowVal.weight*rowVal.personsNum) 
                 })
             });
-            var incomeMedian = d3.median(incomes);
-            var bedroomMedian  = d3.median(bedrooms);
-            var bedroomMean  = d3.mean(bedrooms);
-            var personsMedian  = d3.median(persons);
-            var personsMean  = d3.mean(persons);
-            var childrenMedian  = d3.median(children);
-            var childrenMean  = d3.mean(children);
-            var rentMedian = d3.median(rent);
-            var wtTotal = d3.sum(wts)
+            var geoPersonsWt = d3.sum(geoWtScaledPerson);
+            var geoWt = geoBedrooms.length; //basically we pushed 1 row per weight value. so taking length array gives you total weight.
+            var incomeMedian = d3.median(geoIncomes);
+            var bedroomMedian  = d3.median(geoBedrooms);
+            var bedroomMean  = d3.mean(geoBedrooms);
+            var personsMedian  = d3.median(geoPersons);
+            var personsMean  = d3.mean(geoPersons);
+            var childrenMedian  = d3.median(geoChildren);
+            var childrenMean  = d3.mean(geoChildren);
+            var rentMedian = d3.median(geoRent);
+      
             //stats at PUMA level
             var summaryStats = {
                 incomeMedian: incomeMedian,
@@ -108,8 +107,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 childrenMean: childrenMean,
                 personsPerRoom: Math.round(personsMedian/bedroomMedian * 10) / 10,
                 personsPerRoomMean: Math.round(personsMean/bedroomMean * 10) / 10,
-                weightTotal: wtTotal
-            }
+                weightTotal: geoWt,
+                weightTotalScaled: geoPersonsWt
+            };
 
             //detailed data at housing combo level
             var geoDetail = geosplit[1].map((grped)=> {
@@ -154,10 +154,11 @@ document.addEventListener("DOMContentLoaded", function() {
                             ind = 0;
                         }
                     }
-                }
+                };
 
                 return {
                     weight: weightTotal,
+                    weightPct: 100*weightPersonsTotal/geoPersonsWt,
                     weightPersons: weightPersonsTotal,
                     geo: d.geo,
                     personsNum: d.personsNum,

@@ -80,7 +80,8 @@ function plotAll(){
     var currData = getOrigData().get(parseInt(selectedPumaId))
     var currDataDetail = currData.detail;
     var currDataStats = currData.stats;
-    console.log('processed detail data ', currDataDetail)
+    console.log('processed detail data ', currDataDetail);
+    console.log('processed stats ', currDataStats)
 
     table = d3.select('.housing-data tbody');
     var houseRows = table.selectAll('.row-house').data(currDataDetail, d=> {return d.geo + '-' + d.weightPersons}).join('tr').attr('class', 'row-house');
@@ -184,12 +185,13 @@ function drawHousingSummary(d){
     }
     var inc = selectedPumaName + ' has a median household <strong>income of $' + d.incomeMedian + '</strong>'
     if (d.rentMedian){
-        inc = inc + ', $' + d.rentMedian + ' of which goes to monthly rent payments. ' 
+        inc = inc + ', $' + d.rentMedian + ' of which goes to monthly rent payments on average. ' 
     } else {
         inc = inc + '. '
     }
+    var rep = d.weightTotal + ' houses are represented in this dataset.'
   
-    var txt = beds + density + inc;
+    var txt = beds + density + inc + rep;
     d3.select('.housing-summary').classed('loading-inline', false);
     d3.select('.housing-data').classed('loading-inline', false);
     d3.select('.housing-summary').html(txt);
@@ -359,13 +361,14 @@ function updateOccupantColors(){
 function drawDetails(){
         //add row details 
         d3.selectAll('.row-details').each(function(d,i){
-            var txtweight = 'Persons Represented: ' + d.weightPersons;
+            var txtweight = 'Pct Representation: ' + Math.round(d.weightPct * 100)/100 + '%';
+            var txtpersons = 'Persons Represented: ' + d.weightPersons;
             var txtrent = '';
             if (d.statsRent){
                 txtrent = 'Median Rent: $' + d.statsRent;
             };
             var txtincome = 'Median Household Income: $' + d.statsIncome;
-            var txtstats = '<div>' + txtweight + '<br>' + txtincome + '<br>' + txtrent + '</div>';
+            var txtstats = '<div>' + txtweight + '<br>' + txtpersons + '<br>' + txtincome + '<br>' + txtrent + '</div>';
             var planVis = d3.select(this).append('div').html(txtstats);
             
         });
@@ -378,7 +381,6 @@ function addTooltips(){
         var pumaid = parseInt(d3.select(this).data()[0].properties.puma);
         var stats = getStatsbyId(pumaid);
         var name = cleanPumaName(pumaIdMap.get(pumaid));
-        console.log(stats);
         var txtpersonsper = '<div>' + stats.personsPerRoomMean + ' median persons per bedroom' + '</div>';
         var txtincome = '<div>' + '$' + stats.incomeMedian + ' median income' + '</div>';
         var txtrent = '<div>' + '$' + stats.rentMedian + ' median rent' + '</div>';
@@ -468,7 +470,7 @@ function addTooltips(){
     d3.selectAll('.label-map')
     .on('mouseover', function(e){
         tooltip
-        .html('<div>Darker color in the map below indicates more crowdedness (lower number of rooms per person). Scroll to zoom. </div>')
+        .html('<div>Darker color in the map below indicates more crowdedness (lower number of rooms per person). </div>')
         .transition().duration(200)
         .style("opacity", .95)
         .style("left", (e.pageX) + "px")
@@ -484,7 +486,6 @@ function addTooltips(){
     d3.selectAll('.occupant-holder')
     .on('mouseover',function(e){
         d = d3.select(this).data()[0];
-        console.log(d);
         var tippersons = d.personsNum + ' persons';
         var tipkids = d.personsChild + ' children';
         var adult = (d.personsAdultElder + d.personsAdultOther) + ' adults';
