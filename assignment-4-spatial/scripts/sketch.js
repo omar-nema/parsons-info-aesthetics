@@ -374,6 +374,22 @@ function drawDetails(){
         });
 };
 
+function showTooltip(html, e){
+    tooltip
+    .html(html)
+    .style("visibility", "visible")
+    .transition().duration(200)
+    .style("opacity", .95)
+    .style("left", (e.pageX) + "px")
+    .style("top", (e.pageY + 22) + "px")
+    .style('pointer-events', 'inherit')
+;    
+}
+
+function hideTooltip(){
+    tooltip.style("opacity", 0).style('pointer-events', 'none').style("visibility", "hidden");
+}
+
 function addTooltips(){
     
     d3.selectAll('.puma-path')
@@ -385,17 +401,11 @@ function addTooltips(){
         var txtincome = '<div>' + '$' + stats.incomeMedian + ' median income' + '</div>';
         var txtrent = '<div>' + '$' + stats.rentMedian + ' median rent' + '</div>';
         var tiptext = '<div class="tip-header">' + name + '</div>' + txtpersonsper + txtincome + txtrent;
-        tooltip
-            .html(tiptext)
-            .transition().duration(200)
-            .style("opacity", .95)
-            .style("left", (e.pageX) + "px")
-            .style("top", (e.pageY + 22) + "px")
-            .style('pointer-events', 'inherit')
-       ;       
+        showTooltip(tiptext, e);
+   
     })
     .on('mouseout', function() {
-        tooltip.style("opacity", 0).style('pointer-events', 'none');
+        hideTooltip();
     });
 
     d3.selectAll('.housing-unit')
@@ -406,82 +416,35 @@ function addTooltips(){
         var txtoccupants = hd.personsNum + ' occupants, ' + personsPerRoom + ' per room';
         var txtrooms = hd.houseRoom + ' total rooms'; 
         var tiptext = '<div class="tip-header">Housing Structure Detail</div><div>' + txtoccupants + '<br>' + txtbeds + '<br>' +  txtrooms +'</div>'
-        tooltip
-                .html(tiptext)
-                .transition().duration(200)
-                .style("opacity", .95)
-                .style("left", (e.pageX) + "px")
-                .style("top", (e.pageY + 22) + "px")
-                .style('pointer-events', 'inherit')
-                ;
+        showTooltip(tiptext, e);
     })
-    .on('mouseout', function() {
-        tooltip.style("opacity", 0).style('pointer-events', 'none');
-    });
+    .on('mouseout', hideTooltip);
 
     d3.selectAll('.house-head')
     .on('mouseover', function(e){
-        tooltip
-        .html('<img style="margin: -8.5px -13.5px" src="./legend-room.svg"/>')
-        .transition().duration(200)
-        .style("opacity", .95)
-        .style("left", (e.pageX) + "px")
-        .style("top", (e.pageY + 22) + "px")
-        .style('pointer-events', 'inherit')
-        ;
+        showTooltip('<img style="margin: -8.5px -13.5px" src="./legend-room.svg"/>',e)
     })
-    .on('mouseout', function(e){
-        tooltip.style("opacity", 0).style('pointer-events', 'none');
-    });
+    .on('mouseout', hideTooltip);
 
     d3.selectAll('.demo-head')
     .on('mouseover', function(e){
         var tiptext = '<div>Household demographic information for unique combination of occupant composition (quantity and age), and room structure.</div>'
-        ;
-        tooltip
-        .html(tiptext)
-        .transition().duration(200)
-        .style("opacity", .95)
-        .style("left", (e.pageX) + "px")
-        .style("top", (e.pageY + 22) + "px")
-        .style('pointer-events', 'inherit')
-        ;
+        showTooltip(tiptext, e);
     })
-    .on('mouseout', function(e){
-        tooltip.style("opacity", 0).style('pointer-events', 'none');
-    });
+    .on('mouseout', hideTooltip);
  
 
     d3.selectAll('.occ-head')
     .on('mouseover', function(e){
-        tooltip
-        .html('<img style="margin: -8.5px -13.5px" src="./legend-occupant.svg"/>')
-        .transition().duration(200)
-        .style("opacity", .95)
-        .style("left", (e.pageX) + "px")
-        .style("top", (e.pageY + 22) + "px")
-        .style('pointer-events', 'inherit')
-        ;
+        var img = '<img style="margin: -8.5px -13.5px" src="./legend-occupant.svg"/>';
+        showTooltip(img, e);
     })
-    .on('mouseout', function(e){
-        tooltip.style("opacity", 0).style('pointer-events', 'none');
-    });
-    
+    .on('mouseout', hideTooltip);
     d3.selectAll('.label-map')
     .on('mouseover', function(e){
-        tooltip
-        .html('<div>Darker color in the map below indicates more crowdedness (lower number of rooms per person). </div>')
-        .transition().duration(200)
-        .style("opacity", .95)
-        .style("left", (e.pageX) + "px")
-        .style("top", (e.pageY + 22) + "px")
-        .style('pointer-events', 'inherit')
-        ;
+        showTooltip('<div>Darker color in the map below indicates more crowdedness (lower number of rooms per person). </div>', e);
     })
-    .on('mouseout', function(e){
-        tooltip.style("opacity", 0).style('pointer-events', 'none');
-    });
-    
+    .on('mouseout',hideTooltip);
 
     d3.selectAll('.occupant-holder')
     .on('mouseover',function(e){
@@ -490,16 +453,7 @@ function addTooltips(){
         var tipkids = d.personsChild + ' children';
         var adult = (d.personsAdultElder + d.personsAdultOther) + ' adults';
         var tiptext = '<div><div class="tip-header">Occupancy Details</div>' + tippersons + '<br>' + adult + '<br>' +  tipkids +'</div>'
-        tooltip
-                .html(tiptext)
-                .transition().duration(200)
-                .style("opacity", .95)
-                .style("left", (e.pageX) + "px")
-                .style("top", (e.pageY + 22) + "px")
-                .style('pointer-events', 'inherit')
-                ;
+        showTooltip(tiptext, e);
     })
-    .on('mouseout', function() {
-        tooltip.style("opacity", 0).style('pointer-events', 'none');
-    });
+    .on('mouseout', hideTooltip);
 }
