@@ -25,7 +25,7 @@ var rectH;
 var settings;
 
 function preload() {
-    track = loadSound('./audio/james-blake.mp3');
+    track = loadSound('./audio/grimes-skin.mp3');
     track.setLoop(true)
 }
 
