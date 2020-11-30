@@ -58,6 +58,11 @@ document.addEventListener("DOMContentLoaded", function() {
         }); 
     })
     .then((pcd) => {
+
+        pcdCopy = pcd.map(d => d);
+        //var t = pcdCopy.forEach(d => d3.csvRow(d));
+        console.log(d3.csvFormat(pcdCopy))
+
         
         //aggregate data
         var distinct = d3.groups(pcd, d => d.geo, d=> d.personsNum+'-'+d.personsAdultTotal+'-'+d.houseBed+'-'+d.houseRoom);        
