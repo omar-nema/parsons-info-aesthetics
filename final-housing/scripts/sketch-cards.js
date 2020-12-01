@@ -6,7 +6,7 @@ function generateCards(datadetail){
             cards = enter.append("div")
             .attr('class', 'card neighb');
 
-            cards.append('div').attr('class', 'card-header').html(d => pumaNameById(d[0]));
+            cards.append('div').attr('class', 'card-header').html(d => shortPumaNameById(d[0]));
             cardData = cards.append('div').attr('class', 'card-data');
             var statobj = [
                 {label: 'Persons Per Room', value: 'personsPerRoomMean'},
@@ -25,33 +25,62 @@ function generateCards(datadetail){
                 cardDataPtScale.append('div').attr('class', 'currval');
             });       
             //footer
-            cards.append('div').attr('class', 'card-details flat-btn').html('View Details');
+            cards.append('div').attr('class', 'card-details flat-btn').html('View Details')
+            .on('click', function(d,i){
+                var sel = d3.select(this)
+                var data = sel.data();
+                var pumaid = parseInt(data[0]);
+                cardSelection(sel, pumaid);
+            })
+            ;
 
         }
     );
    
-    function disableCards(){
-        d3.selectAll('.card').classed('active', false);
-        d3.selectAll('.card-details').classed('disabled', false);
-    }
-
-    d3.selectAll('.card').selectAll('.card-details').on('click', function(d,i){
-        var data = d3.select(this).data();
-        disableCards();
-        d3.select(d3.select(this).node().parentNode).classed('active', true);
-        d3.select(this).classed('active', true);
-        d3.select(this).classed('disabled', true);
-        var pumaid = parseInt(data[0]);
-        d3.select('.housing-overlay').classed('active', true);
-        setCurrentData(pumaid);
-        housingDrilldown();
-    })
     d3.select('.overlay-close').on('click',  () => {
         disableCards();
         d3.select('.housing-overlay').classed('active', false);
     });
 
 }
+
+function disableCards(){
+    d3.selectAll('.card').classed('active', false);
+    d3.selectAll('.card-details').classed('disabled', false);
+}
+
+function cardSelection(sel, pumaid){
+    disableCards();
+    d3.select(sel.node().parentNode).classed('active', true);
+    sel.classed('active', true);
+    sel.classed('disabled', true);
+    d3.select('.housing-overlay').classed('active', true);
+    setCurrentData(pumaid);
+    housingDrilldown();
+}
+
+function generateHighlightCards(datadetail){
+    console.log(datadetail)
+    cards = d3.select('.pane-highlights').selectAll('.card').data(datadetail);
+    cards.join(
+        enter => {
+            cards = enter.append("div")
+            .attr('class', 'card highlight');
+            cards.append('div').attr('class', 'card-header').html(d => d[1].displayName);
+            cardText = cards.append('div').attr('class', 'card-text').html(d=> d[1].displayString)
+   
+            //footer
+            cards.append('div').attr('class', 'card-details flat-btn')
+                .html('View Details')
+                .on('click', function(d,i) {
+                    var sel = d3.select(this);
+                    var pumaid = sel.data()[0][1].metro;
+                    cardSelection(sel, pumaid)
+                });
+        }
+    );
+}
+
 
 function housingDrilldown(){
 

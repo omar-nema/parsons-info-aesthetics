@@ -1,5 +1,8 @@
+// const { stat } = require("fs");
 
 var dataCleaned = new Map();
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -204,10 +207,83 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 async function init(){
+    console.log('processed data ', dataCleaned)
     setCurrentData();
-    await generateIdMap();
-    initLookup(); //will initialize lookup and then plot all pieces
+    await createPumaIdMap();
+    getHighlightData();
+    initLookup();
     draw(dataCleaned);
+}
+
+function helperGetHighlightString(statKey, statData){
+   
+    var highlightString ='';
+    var neighborhood = longPumaNameById(statData.metro);
+    var qualifier = (statData.qualifier == 'min') ? "lowest": "highest";
+    var value = statData.value;
+    var median = statData.median;
+    if (statKey == 'rentMedian'){
+        highlightString = `Residents of ${neighborhood} pay the ${qualifier} in rent: $${value} as compared to a median of $${median}.`;
+    } else if (statKey == 'incomeMedian'){
+        highlightString = `${neighborhood} has the ${qualifier} average income: $${value} as compared to a median of $${median}.`;
+    } else if (statKey == 'personsPerRoomMean'){
+        var qualifier = (statData.qualifier == 'min') ? "least": "most";
+        highlightString = `${neighborhood} is the ${qualifier} crowded neighorhood, with ${value} occupants per room (as compared to a median of ${median}).`;
+    }
+    return highlightString;
+}
+
+//redundancy in initLookup in sketch.js
+var pumaIdMap;
+async function createPumaIdMap(){
+    await d3.csv('./data/2010pumanames.txt').then((arr) => {
+        nypumas = arr.filter(d => d.STATEFP == '36');
+        nypumas.forEach((d)=> {
+            pumaIdMap.set(parseInt(d.PUMA5CE), d['PUMA NAME'])
+        });
+        return pumaIdMap;
+    });
+};
+
+function getPumaIdMap(){
+    return pumaIdMap;
+}
+
+function getHighlightData(){
+    var dataCleanedArray = Array.from(dataCleaned);
+    var statTypes = 
+    [
+        {key: 'personsMin',statKey: 'personsPerRoomMean', statQualifier: 'min', displayName: 'Least Crowded Metro Area'},
+        {key: 'personsMax',statKey: 'personsPerRoomMean', statQualifier: 'max', displayName: 'Most Crowded Metro Area'},
+        {key: 'incomeMedianMin',statKey: 'incomeMedian', statQualifier: 'min', displayName: 'Metro Area with Lowest Income'},
+        {key: 'incomeMedianMax',statKey: 'incomeMedian', statQualifier: 'max', displayName: 'Metro Area with Highest Income'},
+        {key: 'rentMin',statKey: 'rentMedian', statQualifier: 'min', displayName: 'Metro Area with Lowest Rent'},
+        {key: 'rentMax',statKey: 'rentMedian', statQualifier: 'max', displayName: 'Metro Area with Highest Rent'},
+
+    ];
+    var highlightData = new Map();
+    statTypes.forEach(statType=> {
+        var index, val;
+        if (statType.statQualifier == 'max'){
+            index = d3.maxIndex(dataCleanedArray, d=> d[1].stats[statType.statKey]);
+            val = d3.max(dataCleanedArray, d=> d[1].stats[statType.statKey]);
+        } else {
+            index = d3.minIndex(dataCleanedArray, d=> d[1].stats[statType.statKey]);
+            val = d3.min(dataCleanedArray, d=> d[1].stats[statType.statKey]);
+        };
+        var median =  d3.median(dataCleanedArray, d=> d[1].stats[statType.statKey]);
+        var row = dataCleanedArray[index];
+        var statobj = {};
+        statobj['value'] = val;
+        statobj['median'] = median;
+        statobj['metro'] = row[0];
+        statobj['qualifier'] = statType.statQualifier;
+        statobj.displayName = statType.displayName;
+        statobj.displayString = helperGetHighlightString(statType.statKey, statobj);
+    
+        highlightData.set(statType.key, statobj); 
+    });
+    return highlightData;
 }
 
 function getOrigData(){

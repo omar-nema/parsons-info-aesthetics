@@ -1,5 +1,5 @@
-function pumaNameById(pumaid){
-    var sel = pumaIdMap.get(parseInt(pumaid));
+function shortPumaNameById(pumaid){
+    var sel = getPumaIdMap().get(parseInt(pumaid));
     var boroughStart = sel.indexOf('-')
     var boroughEnd = sel.indexOf(' ');
     var borough = sel.substring(boroughStart, boroughEnd).replace('-', '');
@@ -7,11 +7,16 @@ function pumaNameById(pumaid){
     var startInd = sel.indexOf(lookup);    
     var districtNum = sel.substring(startInd, startInd +lookup.length+3).replace('-', '');
     return borough + ' ' + districtNum;
+}
+
+function longPumaNameById(pumaid){
+    var idmap = getPumaIdMap();
+    var fullname = idmap.get(pumaid)
+    return fullname.replace('NYC-', '').replace('Community ', '');
 }
 
 
 function cleanPumaName(sel){
-
     var boroughStart = sel.indexOf('-')
     var boroughEnd = sel.indexOf(' ');
     var borough = sel.substring(boroughStart, boroughEnd).replace('-', '');
@@ -23,19 +28,8 @@ function cleanPumaName(sel){
     return borough + ' ' + districtNum;
 }
 
-async function generateIdMap(){
-    await d3.csv('./data/2010pumanames.txt').then((arr) => {
-        nypumas = arr.filter(d => d.STATEFP == '36');
-        nypumas.forEach((d)=> {
-            pumaIdMap.set(parseInt(d.PUMA5CE), d['PUMA NAME'])
-        });
-        return pumaIdMap;
-    });
-};
 
-    // var currData = getOrigData().get(parseInt(selectedPumaId));
-    // var currDataDetail = currData.detail;
-    // var currDataStats = currData.stats;
+
 
 var selectedPumaId;
 var selectedPumaName;
@@ -46,7 +40,7 @@ var currDataDetail, currDataStats, selectedPumaName, selectedPumaId;
 function setCurrentData(pumainput){
     if (pumainput){
         selectedPumaId = parseInt(pumainput);
-        selectedPumaName = pumaNameById(pumainput) 
+        selectedPumaName = shortPumaNameById(pumainput) 
         var currDataMap = new Map();
         var dataToSet = getOrigData().get(selectedPumaId);
         currDataMap.set(selectedPumaId, dataToSet);
@@ -118,6 +112,7 @@ async function initLookup(){
 async function draw(){
     d3.select('.housing-overlay').classed('active', false);
     generateCards(getCurrentData().map);
+    generateHighlightCards(getHighlightData());
     drawMap()
     
 }
