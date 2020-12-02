@@ -68,7 +68,7 @@ function populateCardBody(){
 
 function generateCards(datadetail){
 
-    var pane = d3.select('.pane-neighb');
+    var pane = d3.select('.pane-neighb .card-holder');
     var cards = pane.selectAll('.card.neighb').data(datadetail, d=> d[0]).join(
         enter => {
             cards = enter.append("div")
@@ -148,7 +148,9 @@ function housingDrilldown(){
         currRow.append('td').attr('class', 'row-details');                
     })
 
+    ///calls functions from sketch-housing file
+
     drawFloorPlans();
-    updateOccupantColors();
-    drawDetails();
+    // updateOccupantColors();
+    // drawDetails();
 }

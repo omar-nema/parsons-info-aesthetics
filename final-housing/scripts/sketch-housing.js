@@ -1,95 +1,111 @@
 function drawFloorPlans(){
     //add floor plans
-    d3.selectAll('.row-structure').each(function(d,i){
-        var sv = d3.select(this).append('svg');
-        sel = sv.append('g').attr('class', 'housing-unit');
-        var r = 26;
-        var colNum = 0;
-        var rowNum = 0;
-        var rectPerRow = 3;
-        var padding = 6;
-        var strokewidth = 1;
-        function incrementCol(){
-            if (colNum == rectPerRow-1){
-                colNum = 0;
-                rowNum++;
-            } else {
-                colNum++;
-            }
-        };
-        var circler = 5;
-        var rectColorScale = d3.scaleSequential().domain([0,3]).range(['rgb(203, 205, 222)', 'rgb(216 17 100)']);
+
+     d3.selectAll('.row-structure').join(
+        
+        enter => {
+        var floor = enter.append('svg');
+        
+        // floor.each(function(d,i){
+        //     console.log(d);
+        //     var sv = d.append('svg');
+        //     d3.select(this).append('svg')
+        // })
+
+        }
+    );
  
-        //add bedrooms and occupants
-        d.houseArray.forEach((x,i) =>{
-            var rectX = (colNum)*(padding+r);
-            var rectY = (rowNum)*(r+padding);
-            var rectCenters = [[r/4, r/4],[3*r/4, r/4],[r/4, 3*r/4],[3*r/4, 3*r/4] ]
+    // d3.selectAll('.row-structure').each(function(d,i){
+    //     var sv = d3.select(this).append('svg');
+        
+    //     sel = sv.append('g').attr('class', 'housing-unit');
+    //     var r = 26;
+    //     var colNum = 0;
+    //     var rowNum = 0;
+    //     var rectPerRow = 3;
+    //     var padding = 6;
+    //     var strokewidth = 1;
+    //     function incrementCol(){
+    //         if (colNum == rectPerRow-1){
+    //             colNum = 0;
+    //             rowNum++;
+    //         } else {
+    //             colNum++;
+    //         }
+    //     };
+    //     var circler = 5;
+    //     var rectColorScale = d3.scaleSequential().domain([0,3]).range(['rgb(203, 205, 222)', 'rgb(216 17 100)']);
+ 
+    //     //add bedrooms and occupants
+    //     d.houseArray.forEach((x,i) =>{
+    //         var rectX = (colNum)*(padding+r);
+    //         var rectY = (rowNum)*(r+padding);
+    //         var rectCenters = [[r/4, r/4],[3*r/4, r/4],[r/4, 3*r/4],[3*r/4, 3*r/4] ]
             
-            sel.append('rect')
-                .attr('width', r)
-                .attr('height', r)
-                .attr('fill', rectColorScale(Math.max(x.length-1, 0)))
-                .attr('x', rectX)
-                .attr('y', rectY)
-                .attr('class', 'room bed')
-                ;
+    //         sel.append('rect')
+    //             .attr('width', r)
+    //             .attr('height', r)
+    //             .attr('fill', rectColorScale(Math.max(x.length-1, 0)))
+    //             .attr('x', rectX)
+    //             .attr('y', rectY)
+    //             .attr('class', 'room bed')
+    //             ;
 
-            var numCircles = 0;
-            x.forEach((z)=> {
-                personInHouse = sel.append('circle').attr('circle', 'house-occupant')
-                    .attr('class', 'occupant ' + z)
-                    .attr('stroke', 'black')
-                    .attr('stroke-width', '1px')
-                    ;
-                //combine with other code
-                ;
-                if (x.length ==1){ //center
-                    personInHouse.attr('r', r/8)
-                        .attr('cx', rectX + r/2)
-                        .attr('cy', rectY + r/2)
-                } else if (x.length ==2){
-                    personInHouse.attr('r', r/8)
-                    .attr('cx', rectX + r/4+(r/2)*numCircles)
-                    .attr('cy', rectY + r/2);
-                    numCircles++;        
-                }
-                else {
-                    personInHouse.attr('r', r/8)
-                    .attr('cx', rectX + rectCenters[numCircles][0])
-                    .attr('cy', rectY + rectCenters[numCircles][1]);
-                    if (numCircles < rectCenters.length-1){
-                        numCircles++; 
-                    }
-                }
-            });
-            incrementCol();
-        }) ;
+    //         var numCircles = 0;
+    //         x.forEach((z)=> {
+    //             personInHouse = sel.append('circle').attr('circle', 'house-occupant')
+    //                 .attr('class', 'occupant ' + z)
+    //                 .attr('stroke', 'black')
+    //                 .attr('stroke-width', '1px')
+    //                 ;
+    //             //combine with other code
+    //             ;
+    //             if (x.length ==1){ //center
+    //                 personInHouse.attr('r', r/8)
+    //                     .attr('cx', rectX + r/2)
+    //                     .attr('cy', rectY + r/2)
+    //             } else if (x.length ==2){
+    //                 personInHouse.attr('r', r/8)
+    //                 .attr('cx', rectX + r/4+(r/2)*numCircles)
+    //                 .attr('cy', rectY + r/2);
+    //                 numCircles++;        
+    //             }
+    //             else {
+    //                 personInHouse.attr('r', r/8)
+    //                 .attr('cx', rectX + rectCenters[numCircles][0])
+    //                 .attr('cy', rectY + rectCenters[numCircles][1]);
+    //                 if (numCircles < rectCenters.length-1){
+    //                     numCircles++; 
+    //                 }
+    //             }
+    //         });
+    //         incrementCol();
+    //     }) ;
 
-        var nonbedstroke = 3;
+    //     var nonbedstroke = 3;
 
-        //add rooms outside of bedrooms
-        for (var i=0; i< (d.houseRoom - d.houseBed); i++){
-            rectX = (colNum)*(padding+r);
-            rectY = (rowNum)*(r+padding);
-            sel.append('rect')
-                .attr('width', r-nonbedstroke)
-                .attr('height', r-nonbedstroke)
-                .attr('x', rectX+nonbedstroke/2)
-                .attr('y', rectY+nonbedstroke/2)
-                .attr('fill', '#1E191C')
-                .attr('stroke', '#1E191C')
-                .attr('stroke-width', nonbedstroke)
-                .attr('class', 'room nonbed')
-                ;
-            incrementCol();
-        }
-        if (rowNum > 1){
-            var ht = 100 + (rowNum-1)*30; //should not have hardcoded num here
-            sv.style('height', ht)
-        }
+    //     //add rooms outside of bedrooms
+    //     for (var i=0; i< (d.houseRoom - d.houseBed); i++){
+    //         rectX = (colNum)*(padding+r);
+    //         rectY = (rowNum)*(r+padding);
+    //         sel.append('rect')
+    //             .attr('width', r-nonbedstroke)
+    //             .attr('height', r-nonbedstroke)
+    //             .attr('x', rectX+nonbedstroke/2)
+    //             .attr('y', rectY+nonbedstroke/2)
+    //             .attr('fill', '#1E191C')
+    //             .attr('stroke', '#1E191C')
+    //             .attr('stroke-width', nonbedstroke)
+    //             .attr('class', 'room nonbed')
+    //             ;
+    //         incrementCol();
+    //     }
+    //     if (rowNum > 1){
+    //         var ht = 100 + (rowNum-1)*30; //should not have hardcoded num here
+    //         sv.style('height', ht)
+    //     }
 
-    });
+    // });
 
 }
 

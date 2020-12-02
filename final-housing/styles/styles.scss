@@ -215,7 +215,16 @@ textarea:focus, input:focus{
     transform: translate(0px);
     pointer-events: inherit;
     height: auto;
-    overflow: inherit;
+    overflow: auto;
+    height: 100%;
+}
+.pane-neighb.sub-pane.active{
+    overflow: hidden;
+}
+.card-holder {
+    height: 95%;
+    overflow: auto;
+    padding-right: 20px;
 }
 .pane-highlights {
     transform: translateX(-150%);
@@ -230,6 +239,7 @@ textarea:focus, input:focus{
 }
 .pane.pane-left {
     position: relative;
+    overflow: hidden;
 }
 
 
