@@ -1,3 +1,18 @@
+async function draw(){
+    d3.select('.housing-overlay').classed('active', false);
+    generateCards(getCurrentData().map);
+    drawMap()
+    addTooltips();
+}
+
+
+var selectedPumaId;
+var selectedPumaName;
+var pumaIdMap = new Map();
+var pumaSelect;
+var currDataDetail, currDataStats, selectedPumaName, selectedPumaId;
+
+//name lookup helpers
 function shortPumaNameById(pumaid){
     var sel = getPumaIdMap().get(parseInt(pumaid));
     var boroughStart = sel.indexOf('-')
@@ -10,33 +25,21 @@ function shortPumaNameById(pumaid){
 }
 
 function longPumaNameById(pumaid){
-    
     var idmap = getPumaIdMap();
     var fullname = idmap.get(pumaid)
     return fullname.replace('NYC-', '').replace('Community ', '').replace('--', ' • ');
 }
 
-
 function cleanPumaName(sel){
     var boroughStart = sel.indexOf('-')
     var boroughEnd = sel.indexOf(' ');
     var borough = sel.substring(boroughStart, boroughEnd).replace('-', '');
-
     var lookup = 'District';
     var startInd = sel.indexOf(lookup);    
     var districtNum = sel.substring(startInd, startInd +lookup.length+3).replace('-', '');
     return borough + ' ' + districtNum;
 }
-
-
-
-
-var selectedPumaId;
-var selectedPumaName;
-var pumaIdMap = new Map();
-var pumaSelect;
-var currDataDetail, currDataStats, selectedPumaName, selectedPumaId;
-
+//get and set
 function setCurrentData(pumainput){
     if (pumainput){
         selectedPumaId = parseInt(pumainput);
@@ -53,7 +56,6 @@ function setCurrentData(pumainput){
         currDataStats = null;
     }
 }
-
 function getCurrentData(){
     return {
         map: currData,
@@ -63,7 +65,7 @@ function getCurrentData(){
         id: selectedPumaId
     }
 }
-
+//lookup init
 async function initLookup(){
     var pumaChoices = [];
     pumaId = Array.from(getOrigData().keys());
@@ -109,13 +111,10 @@ async function initLookup(){
     })
 };
 
-async function draw(){
-    d3.select('.housing-overlay').classed('active', false);
-    generateCards(getCurrentData().map);
-    drawMap()
-    addTooltips();
-}
 
+
+
+//tooltips: break out separately
 
 tooltip = d3.select('.tooltip');
 

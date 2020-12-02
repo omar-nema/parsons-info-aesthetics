@@ -1,17 +1,18 @@
-// const { ENETRESET } = require("constants");
-
-function populateCardBody(){
+function populateCardBody(d, dnode){
     //populate card bodies
     var statobj = [
         {label: 'Persons Per Room', value: 'personsPerRoomMean', percentileval: 'personsPerRoomPercentile', scaledir: -1},
         {label: 'Income', value: 'incomeMedian', percentileval: 'incomePercentile', scaledir: 1},
         {label: 'Rent', value: 'rentMedian', percentileval: 'rentPercentile', scaledir: -1}
     ];
+
+
+
     statobj.forEach((statobj)=> {
 
         var compdata = getComparisonData()[statobj.value];
 
-        cardDataPt = d3.selectAll('.card-data').append('div').attr('class', 'card-data-pt');
+        cardDataPt = dnode.append('div').attr('class', 'card-data-pt');
         //append stat label
         cardDataPt.append('div').attr('class', 'label').html(statobj.label);
         cardDataPtValues = cardDataPt.append('div').attr('class', 'value-holder')
@@ -76,16 +77,9 @@ function generateCards(datadetail){
             cards = enter.append("div")
             .attr('class', 'card neighb');
             cards.append('div').attr('class', 'card-header').html(d => longPumaNameById(d[0]));
-            cardData = cards.append('div').attr('class', 'card-data');
+            cardData = cards.append('div').attr('class', 'card-data').each(function(d){populateCardBody(d, d3.select(this))});
             //footer
-            cards.append('div').attr('class', 'card-details flat-btn').html('View Details')
-            .on('click', function(d,i){
-                var sel = d3.select(this)
-                var data = sel.data();
-                var pumaid = parseInt(data[0]);
-                cardSelection(sel, pumaid);
-            })
-            ;
+            cards.append('div').attr('class', 'card-details flat-btn').html('View Details');
         }
     );
 
@@ -99,7 +93,7 @@ function generateCards(datadetail){
         
             cards.append('div').attr('class', 'card-header').html(d => d[1].highlightData.displayName);
             cards.append('div').attr('class', 'card-text').html(d=> d[1].highlightData.displayString);
-            cards.append('div').attr('class', 'card-data')
+            cards.append('div').attr('class', 'card-data').each(function(d){populateCardBody(d, d3.select(this))})
             
             //footer
             cards.append('div').attr('class', 'card-details flat-btn')
@@ -112,7 +106,15 @@ function generateCards(datadetail){
         }
     );
 
-    populateCardBody();
+    //populateCardBody();
+
+    d3.selectAll('.card-details.flat-btn').on('click', function(d,i){
+        var sel = d3.select(this)
+        var data = sel.data();
+        var pumaid = parseInt(data[0]);
+        cardSelection(sel, pumaid);
+    })
+    ;
    
     d3.select('.overlay-close').on('click',  () => {
         disableCards();
