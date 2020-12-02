@@ -411,6 +411,12 @@ textarea:focus, input:focus {
   position: relative;
 }
 
+.pane-right .pane-overview {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #eae8e8;
+}
+
 .pane-right .map-cont {
   background: #0D0D0D;
   border: 1px dotted #353838;
@@ -555,7 +561,7 @@ textarea:focus, input:focus {
 }
 
 .pane-right .housing-overlay table .row-details {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .pane-right .housing-overlay.active {
