@@ -1,3 +1,5 @@
+// const { ENETRESET } = require("constants");
+
 function populateCardBody(){
     //populate card bodies
     var statobj = [
@@ -139,18 +141,21 @@ function housingDrilldown(){
 
     table = d3.select('.housing-data tbody');
     var currDataDetail = getCurrentData().detail;
-    var houseRows = table.selectAll('.row-house').data(currDataDetail, d=> {return d.geo + '-' + d.weightPersons}).join('tr').attr('class', 'row-house');
-    //for some reason select(this)  doesn't work with es6
-    houseRows.each(function(d, i){
-        var currRow = d3.select(this);
-        currRow.append('td').attr('class', 'row-structure');
-        currRow.append('td').attr('class', 'row-occupants');
-        currRow.append('td').attr('class', 'row-details');                
-    })
+    var houseRows = table.selectAll('.row-house').data(currDataDetail, d=> {return d.geo + '-' + d.weightPersons})
+    .join(enter => {
 
-    ///calls functions from sketch-housing file
+        houseRows = enter.append('tr').attr('class', 'row-house');
+        houseRows.each(function(d, i){
+            var currRow = d3.select(this);
+            currRow.append('td').attr('class', 'row-structure').each(function(d){drawFloorPlans(d, d3.select(this))})
+            //currRow.append('td').attr('class', 'row-occupants');
+            currRow.append('td').attr('class', 'row-details').append('div').attr('class', 'detail-stats');                
+        });
+        ///calls functions from sketch-housing file
+        //drawFloorPlans();
+        updateOccupantColors();
+        populateDetails();
 
-    drawFloorPlans();
-    // updateOccupantColors();
-    // drawDetails();
-}
+    });
+
+};
