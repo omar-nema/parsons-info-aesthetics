@@ -96,15 +96,22 @@ function cardSelection(sel, pumaid){
 }
 
 function generateHighlightCards(datadetail){
-    console.log(datadetail)
+   
     cards = d3.select('.pane-highlights').selectAll('.card').data(datadetail);
     cards.join(
         enter => {
             cards = enter.append("div")
             .attr('class', 'card highlight');
+            
+        
             cards.append('div').attr('class', 'card-header').html(d => d[1].displayName);
-            cardText = cards.append('div').attr('class', 'card-text').html(d=> d[1].displayString)
-   
+            cardText = cards.append('div').attr('class', 'card-text').html(d=> d[1].displayString);
+            cards.append('div').attr('class', 'card-data').html(function(d){
+                //copy pasting pre-created data
+                var copysel = d3.selectAll('.card.neighb .card-data').filter(z=> z[0] == d[1].metro);
+                return copysel['_groups'][0][0].innerHTML;
+            });   
+
             //footer
             cards.append('div').attr('class', 'card-details flat-btn')
                 .html('View Details')
@@ -115,6 +122,7 @@ function generateHighlightCards(datadetail){
                 });
         }
     );
+
 }
 
 
