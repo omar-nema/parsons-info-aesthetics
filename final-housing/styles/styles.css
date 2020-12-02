@@ -300,47 +300,61 @@ textarea:focus, input:focus {
   margin-bottom: 15px;
 }
 
-.pane .card-data-pt {
+.card-data-pt {
   display: inline-block;
   width: 48%;
   margin-bottom: 15px;
 }
 
-.pane .card-data-pt .label {
+.card-data-pt .label {
   color: #c1c1c1;
   margin-bottom: 5px;
 }
 
-.pane .card-data-pt .value {
+.card-data-pt .value {
   display: inline-block;
   margin-right: 20px;
 }
 
-.pane .card-data-pt .scale-holder {
+.card-data-pt .value-holder {
+  cursor: pointer;
+}
+
+.card-data-pt .scale-holder {
   width: 80px;
   position: relative;
   top: -5px;
 }
 
-.pane .card-data-pt .scale, .pane .card-data-pt .currval {
+.card-data-pt .scale, .card-data-pt .statval {
   position: absolute;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
 
-.pane .card-data-pt .scale {
-  background: #1c1b1b;
+.card-data-pt .scale {
+  background: black;
   height: 4px;
   width: 100%;
   border-radius: 10px;
 }
 
-.pane .card-data-pt .currval {
-  width: 10px;
-  height: 10px;
-  border: 3px solid black;
+.card-data-pt .statval {
+  width: 13px;
+  height: 13px;
   border-radius: 100%;
-  background: #b6b4ca;
+  -webkit-box-shadow: 0px 1px 3px 1px #00000059;
+          box-shadow: 0px 1px 3px 1px #00000059;
+  border: 2px solid #b9b9b9;
+}
+
+.card-data-pt .statval.currval {
+  background: #076094;
+}
+
+.card-data-pt .statval.median {
+  background: black;
+  border-color: #585858;
 }
 
 .pane.pane-left .card {
@@ -537,21 +551,25 @@ textarea:focus, input:focus {
 .tooltip {
   position: absolute;
   width: auto;
-  max-width: 300px;
+  max-width: 400px;
   height: auto;
   padding: 10px 15px;
-  font-size: 12px;
+  font-size: 14px;
   background: black;
   border: 0px;
   pointer-events: none;
   -webkit-box-shadow: -1px 3px 3px 0 rgba(0, 0, 0, 0.2);
   box-shadow: -1px 3px 3px 0 rgba(0, 0, 0, 0.2);
-  color: #d7d7d8;
+  color: white;
   line-height: 1.1rem;
   -webkit-transition: opacity .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
   transition: opacity .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
   transition: opacity .15s ease-in-out, box-shadow .15s ease-in-out;
   transition: opacity .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
   opacity: 0;
+}
+
+.tooltip .tip-intro {
+  margin-bottom: 15px;
 }
 /*# sourceMappingURL=styles.css.map */

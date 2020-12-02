@@ -212,6 +212,7 @@ async function init(){
     await createPumaIdMap();
     getHighlightData();
     initLookup();
+    createComparisonData();
     draw(dataCleaned);
 }
 
@@ -247,8 +248,30 @@ async function createPumaIdMap(){
 
 function getPumaIdMap(){
     return pumaIdMap;
+};
+
+//get comparison data in neighborhood view
+var comparisonData;
+function createComparisonData(){
+    var dataCleanedArray = Array.from(dataCleaned);
+    var statTypes = ['personsPerRoomMean', 'incomeMedian', 'rentMedian'];
+    statobj = {};
+    statTypes.forEach( s => {
+        var statvals = {
+            min: d3.min(dataCleanedArray, d=> d[1].stats[s]),
+            median: d3.median(dataCleanedArray, d=> d[1].stats[s]),
+            max: d3.max(dataCleanedArray, d=> d[1].stats[s])
+        };
+        statobj[s] = statvals;
+        
+    });
+    comparisonData = statobj;
+};
+function getComparisonData(){
+    return comparisonData;
 }
 
+//get exreme neighborhoods for highlights section - i.e. lowest rent, highest income, etc
 function getHighlightData(){
     var dataCleanedArray = Array.from(dataCleaned);
     var statTypes = 

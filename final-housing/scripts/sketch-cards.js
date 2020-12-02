@@ -6,7 +6,7 @@ function generateCards(datadetail){
             cards = enter.append("div")
             .attr('class', 'card neighb');
 
-            cards.append('div').attr('class', 'card-header').html(d => shortPumaNameById(d[0]));
+            cards.append('div').attr('class', 'card-header').html(d => longPumaNameById(d[0]));
             cardData = cards.append('div').attr('class', 'card-data');
             var statobj = [
                 {label: 'Persons Per Room', value: 'personsPerRoomMean'},
@@ -14,15 +14,51 @@ function generateCards(datadetail){
                 {label: 'Rent', value: 'rentMedian'}
             ];
             statobj.forEach((statobj)=> {
+
+                var compdata = getComparisonData()[statobj.value];
+
                 cardDataPt = cardData.append('div').attr('class', 'card-data-pt');
                 //append stat label
                 cardDataPt.append('div').attr('class', 'label').html(statobj.label);
-                cardDataPtValues = cardDataPt.append('div').attr('class', 'value-holder');
+                cardDataPtValues = cardDataPt.append('div').attr('class', 'value-holder')
+                    .on('mouseover',function(e){
+                        var pumaname = shortPumaNameById(d3.select(this).data()[0][0]);
+                        var currval = d3.select(this).data()[0][1].stats[statobj.value];
+                        var introline = `<div>${pumaname} ${statobj.label.toLowerCase()} is `;
+                        var amtDiff = Math.abs(Math.round(100*(currval - compdata.median)/compdata.median));
+                        if (currval > compdata.median){
+                            introline =`${introline}${amtDiff}% above median city value</div>`
+                        } else if (currval < compdata.median) {
+                            introline = `${introline}${amtDiff}% below median city value</div>`
+                        } else {
+                            introline =`${introline}${amtDiff} is equal to median city value</div>`
+                        }
+                        var line1 = `<div class="card-data-pt"><div class="label">${statobj.label}</div><div class="value">${currval}</div></div>`;
+                        var line2 = `<div class="card-data-pt"><div class="label">City Median</div><div class="value">${compdata.median}</div></div>`;
+                        var line3 = `<div class="card-data-pt"><div class="label">City Min (Start Scale)</div><div class="value">${compdata.min}</div></div>`;
+                        var line4 = `<div class="card-data-pt"><div class="label">City Max (End Scale)</div><div class="value">${compdata.max}</div></div>`;
+
+                        var tipdata = `<div class="tip-intro">${introline}</div><div class="card-data">${line1}${line2}${line3}${line4}</div>`;
+                
+                        showTooltip(tipdata, e);
+                    })
+                    .on('mouseout', hideTooltip);
+                ;
                 //append stat content
                 cardDataPtValues.append('div').attr('class', 'value').html(d=> d[1].stats[statobj.value]);
                 cardDataPtScale = cardDataPtValues.append('div').attr('class', 'value').append('div').attr('class', 'scale-holder');
                 cardDataPtScale.append('div').attr('class', 'scale');
-                cardDataPtScale.append('div').attr('class', 'currval');
+                cardDataPtScale.each( function(d) {
+                     //min, max, median
+                    //add median dot
+                    var leftamt = 100 * (compdata.median - compdata.min) / (compdata.max);
+                    d3.select(this).append('div').attr('class', 'statval median').style('left', leftamt + '%');
+
+                    //add curr value dot
+                    var currval = d[1].stats[statobj.value];
+                    var leftamt = 100 * (currval - compdata.min) / (compdata.max);
+                    d3.select(this).append('div').attr('class', 'statval currval').style('left', leftamt + '%');
+                })
             });       
             //footer
             cards.append('div').attr('class', 'card-details flat-btn').html('View Details')

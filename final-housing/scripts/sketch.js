@@ -12,7 +12,7 @@ function shortPumaNameById(pumaid){
 function longPumaNameById(pumaid){
     var idmap = getPumaIdMap();
     var fullname = idmap.get(pumaid)
-    return fullname.replace('NYC-', '').replace('Community ', '');
+    return fullname.replace('NYC-', '').replace('Community ', '').replace('--', ' • ');
 }
 
 
@@ -24,7 +24,6 @@ function cleanPumaName(sel){
     var lookup = 'District';
     var startInd = sel.indexOf(lookup);    
     var districtNum = sel.substring(startInd, startInd +lookup.length+3).replace('-', '');
-
     return borough + ' ' + districtNum;
 }
 
@@ -114,7 +113,7 @@ async function draw(){
     generateCards(getCurrentData().map);
     generateHighlightCards(getHighlightData());
     drawMap()
-    
+    addTooltips();
 }
 
 
@@ -137,6 +136,9 @@ function hideTooltip(){
 }
 
 function addTooltips(){
+
+    //tooltips for stat obj not added here. 
+    //this should prob not be a function on its own
     
     d3.selectAll('.puma-path')
     .on('mouseover',function(e){

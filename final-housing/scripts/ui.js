@@ -19,7 +19,10 @@ window.addEventListener("load", function(){
             
         }
 
-    })
+    });
+
+
+
 
 
 

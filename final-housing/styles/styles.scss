@@ -262,43 +262,59 @@ textarea:focus, input:focus{
     .card-data {
         margin-bottom: $margin-text;
     }
-    .card-data-pt {
+  
+
+}
+
+.card-data-pt {
+    display: inline-block;
+    width: 48%;
+    margin-bottom: $margin-text;
+    .label {
+        color: $color-label;
+        margin-bottom: 5px;
+    }
+    .value {
         display: inline-block;
-        width: 48%;
-        margin-bottom: $margin-text;
-        .label {
-            color: $color-label;
-            margin-bottom: 5px;
-        }
-        .value {
-            display: inline-block;
-            margin-right: 20px;
-        }
-        .scale-holder {
-            width: 80px;
-            position: relative;
-            top: -5px;
-        }
-        .scale, .currval {
-            position: absolute;
-            transform: translateY(-50%);
-        }
-        .scale {
-            background:#1c1b1b;
-            height: 4px;
-            width: 100%;
-            border-radius: 10px;
-        }
-        .currval {
-            width: 10px;
-            height: 10px;
-            border: 3px solid black;
-            border-radius: 100%;
-            background: #b6b4ca;
-        }
+        margin-right: 20px;
+    }
+    .value-holder {
+        cursor: pointer;
+    }
+    .scale-holder {
+        width: 80px;
+        position: relative;
+        top: -5px;
+    }
+    .scale, .statval {
+        position: absolute;
+        transform: translateY(-50%);
+    }
+    .scale {
+        background:black;
+        height: 4px;
+        width: 100%;
+        border-radius: 10px;
+    }
+    $color-stat: #272727;
+    .statval {
+        width: 13px;
+        height: 13px;
+        border-radius: 100%;
+        box-shadow: 0px 1px 3px 1px #00000059;
+        border: 2px solid #b9b9b9;
+        
+    }
+    .statval.currval {
+        background:#076094;
+    }
+    .statval.median {
+        background: black;
+        border-color: #585858;
     }
 
 }
+
 .pane.pane-left .card {
     margin-bottom: $margin-large;
 }
@@ -488,20 +504,25 @@ textarea:focus, input:focus{
 .tooltip {
     position: absolute;
     width: auto;
-    max-width: 300px;
+    max-width: 400px;
     height: auto;
     padding: 10px 15px;
-    font-size: 12px;
+    font-size: 14px;
     background: black;
     border: 0px;
     pointer-events: none;
     -webkit-box-shadow: -1px 3px 3px 0 rgba(0, 0, 0, 0.2);
             box-shadow: -1px 3px 3px 0 rgba(0, 0, 0, 0.2);
-    color: #d7d7d8;
+    color: white;
     line-height: 1.1rem;
     -webkit-transition: opacity .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
     transition: opacity .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
     transition: opacity .15s ease-in-out, box-shadow .15s ease-in-out;
     transition: opacity .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
     opacity: 0;
+
+    .tip-intro {
+        margin-bottom: 15px;
+    }
   }
+  
