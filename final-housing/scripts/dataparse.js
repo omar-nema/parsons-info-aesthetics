@@ -2,8 +2,6 @@
 
 var dataCleaned = new Map();
 
-
-
 document.addEventListener("DOMContentLoaded", function() {
 
     d3.csv('./data/acsTEST.json').then((arr) => {
@@ -60,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
       
         }); 
     })
-    .then((pcd) => {
+    .then(async (pcd) => {
 
         pcdCopy = pcd.map(d => d);
         //sort data by metro area
@@ -70,6 +68,14 @@ document.addEventListener("DOMContentLoaded", function() {
         //var t = pcdCopy.forEach(d => d3.csvRow(d));
         // console.log(d3.csvFormat(pcdCopy))
 
+        //calculate medians from all geos in order to get quantile values later
+
+        var allGeoMedians = {
+            incomes: [],
+            rent: [],
+            personsPerRoom: []
+        };
+ 
         //aggregate data
         var distinct = d3.groups(pcd, d => d.geo, d=> d.personsNum+'-'+d.personsAdultTotal+'-'+d.houseBed+'-'+d.houseRoom);        
         //for each geo, aggregate income and other stats based on distinct housing type
@@ -105,7 +111,13 @@ document.addEventListener("DOMContentLoaded", function() {
             var childrenMedian  = d3.median(geoChildren);
             var childrenMean  = d3.mean(geoChildren);
             var rentMedian = d3.median(geoRent);
-      
+
+            var personsPerRoomMean = Math.round(personsMean/bedroomMean * 100) / 100;
+
+            allGeoMedians.incomes.push(incomeMedian);
+            allGeoMedians.rent.push(rentMedian);
+            allGeoMedians.personsPerRoom.push(personsPerRoomMean);
+
             //stats at PUMA level
             var summaryStats = {
                 incomeMedian: incomeMedian,
@@ -117,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 childrenMedian: childrenMedian,
                 childrenMean: childrenMean,
                 personsPerRoom: Math.round(personsMedian/bedroomMedian * 10) / 10,
-                personsPerRoomMean: Math.round(personsMean/bedroomMean * 10) / 10,
+                personsPerRoomMean: personsPerRoomMean,
                 weightTotal: geoWt,
                 weightTotalScaled: geoPersonsWt
             };
@@ -201,16 +213,75 @@ document.addEventListener("DOMContentLoaded", function() {
 
         
         });
+
+        //calculate percentile value of stats for each metro area
+        for (statgrp in allGeoMedians) {
+            statarr = allGeoMedians[statgrp];
+            statarr.sort((a,b)=>  d3.ascending(a,b));
+        };
+        var incomelen = allGeoMedians.incomes.length;
+        var rentlen = allGeoMedians.rent.length;
+        var personsperlen = allGeoMedians.personsPerRoom.length;
+        dataCleaned.forEach(d=> {
+            var incomeindex = allGeoMedians.incomes.indexOf(d.stats.incomeMedian)
+            d.stats.incomePercentile   = Math.round(100*(incomeindex)/incomelen);
+            var rentindex = allGeoMedians.rent.indexOf(d.stats.rentMedian)
+            d.stats.rentPercentile   = Math.round(100*(rentindex)/rentlen);
+            var personsperindex = allGeoMedians.personsPerRoom.indexOf(d.stats.personsPerRoomMean);
+            d.stats.personsPerRoomPercentile = Math.round(100*(personsperindex)/personsperlen);
+      
+        });
+        await createPumaIdMap();
+        await addHighlightData();
         init();
-    })
+    });
     
 });
+
+
+//get exreme neighborhoods for highlights section - i.e. lowest rent, highest income, etc
+function addHighlightData(){
+    var dataCleanedArray = Array.from(dataCleaned);
+    var statTypes = 
+    [
+        {key: 'personsMin',statKey: 'personsPerRoomMean', statQualifier: 'min', displayName: 'Least Crowded Metro Area'},
+        {key: 'personsMax',statKey: 'personsPerRoomMean', statQualifier: 'max', displayName: 'Most Crowded Metro Area'},
+        {key: 'incomeMedianMin',statKey: 'incomeMedian', statQualifier: 'min', displayName: 'Metro Area with Lowest Income'},
+        {key: 'incomeMedianMax',statKey: 'incomeMedian', statQualifier: 'max', displayName: 'Metro Area with Highest Income'},
+        {key: 'rentMin',statKey: 'rentMedian', statQualifier: 'min', displayName: 'Metro Area with Lowest Rent'},
+        {key: 'rentMax',statKey: 'rentMedian', statQualifier: 'max', displayName: 'Metro Area with Highest Rent'},
+
+    ];
+    statTypes.forEach(statType=> {
+        var index, val;
+        if (statType.statQualifier == 'max'){
+            index = d3.maxIndex(dataCleanedArray, d=> d[1].stats[statType.statKey]);
+            val = d3.max(dataCleanedArray, d=> d[1].stats[statType.statKey]);
+        } else {
+            index = d3.minIndex(dataCleanedArray, d=> d[1].stats[statType.statKey]);
+            val = d3.min(dataCleanedArray, d=> d[1].stats[statType.statKey]);
+        };
+
+        var median =  d3.median(dataCleanedArray, d=> d[1].stats[statType.statKey]);
+        var row = dataCleanedArray[index];
+        var statobj = {};
+        var metro = row[0];
+        statobj['value'] = val;
+        statobj['median'] = median;
+        statobj['qualifier'] = statType.statQualifier;
+        statobj['metro'] = row[0];
+        statobj.displayName = statType.displayName;
+        statobj.displayString = helperGetHighlightString(statType.statKey, statobj);
+        dataCleaned.get(metro).highlightData = statobj;
+    });
+    return;
+}
+
 
 async function init(){
     console.log('processed data ', dataCleaned)
     setCurrentData();
-    await createPumaIdMap();
-    getHighlightData();
+    // getHighlightData();
     initLookup();
     createComparisonData();
     draw(dataCleaned);
@@ -250,6 +321,7 @@ function getPumaIdMap(){
     return pumaIdMap;
 };
 
+
 //get comparison data in neighborhood view
 var comparisonData;
 function createComparisonData(){
@@ -271,43 +343,6 @@ function getComparisonData(){
     return comparisonData;
 }
 
-//get exreme neighborhoods for highlights section - i.e. lowest rent, highest income, etc
-function getHighlightData(){
-    var dataCleanedArray = Array.from(dataCleaned);
-    var statTypes = 
-    [
-        {key: 'personsMin',statKey: 'personsPerRoomMean', statQualifier: 'min', displayName: 'Least Crowded Metro Area'},
-        {key: 'personsMax',statKey: 'personsPerRoomMean', statQualifier: 'max', displayName: 'Most Crowded Metro Area'},
-        {key: 'incomeMedianMin',statKey: 'incomeMedian', statQualifier: 'min', displayName: 'Metro Area with Lowest Income'},
-        {key: 'incomeMedianMax',statKey: 'incomeMedian', statQualifier: 'max', displayName: 'Metro Area with Highest Income'},
-        {key: 'rentMin',statKey: 'rentMedian', statQualifier: 'min', displayName: 'Metro Area with Lowest Rent'},
-        {key: 'rentMax',statKey: 'rentMedian', statQualifier: 'max', displayName: 'Metro Area with Highest Rent'},
-
-    ];
-    var highlightData = new Map();
-    statTypes.forEach(statType=> {
-        var index, val;
-        if (statType.statQualifier == 'max'){
-            index = d3.maxIndex(dataCleanedArray, d=> d[1].stats[statType.statKey]);
-            val = d3.max(dataCleanedArray, d=> d[1].stats[statType.statKey]);
-        } else {
-            index = d3.minIndex(dataCleanedArray, d=> d[1].stats[statType.statKey]);
-            val = d3.min(dataCleanedArray, d=> d[1].stats[statType.statKey]);
-        };
-        var median =  d3.median(dataCleanedArray, d=> d[1].stats[statType.statKey]);
-        var row = dataCleanedArray[index];
-        var statobj = {};
-        statobj['value'] = val;
-        statobj['median'] = median;
-        statobj['metro'] = row[0];
-        statobj['qualifier'] = statType.statQualifier;
-        statobj.displayName = statType.displayName;
-        statobj.displayString = helperGetHighlightString(statType.statKey, statobj);
-    
-        highlightData.set(statType.key, statobj); 
-    });
-    return highlightData;
-}
 
 function getOrigData(){
     return dataCleaned;

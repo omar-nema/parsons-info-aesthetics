@@ -1,3 +1,71 @@
+function populateCardBody(){
+    //populate card bodies
+    var statobj = [
+        {label: 'Persons Per Room', value: 'personsPerRoomMean', percentileval: 'personsPerRoomPercentile', scaledir: -1},
+        {label: 'Income', value: 'incomeMedian', percentileval: 'incomePercentile', scaledir: 1},
+        {label: 'Rent', value: 'rentMedian', percentileval: 'rentPercentile', scaledir: -1}
+    ];
+    statobj.forEach((statobj)=> {
+
+        var compdata = getComparisonData()[statobj.value];
+
+        cardDataPt = d3.selectAll('.card-data').append('div').attr('class', 'card-data-pt');
+        //append stat label
+        cardDataPt.append('div').attr('class', 'label').html(statobj.label);
+        cardDataPtValues = cardDataPt.append('div').attr('class', 'value-holder')
+            .on('mouseover',function(e){
+                var pumaname = shortPumaNameById(d3.select(this).data()[0][0]);
+                var currval = d3.select(this).data()[0][1].stats[statobj.value];
+                var pctile =  d3.select(this).data()[0][1].stats[statobj.percentileval];
+                var introline = `<div>${statobj.label} percentile rank: ${pctile} `;
+                var amtDiff = Math.abs(Math.round(100*(currval - compdata.median)/compdata.median));
+                
+                if (currval > compdata.median){
+                    introline =`${introline}(${amtDiff}% above median city value)</div>`
+                } else if (currval < compdata.median) {
+                    introline = `${introline}(${amtDiff}% below median city value)</div>`
+                } else {
+                    introline =`${introline}(${amtDiff} is equal to median city value)</div>`
+                }
+                var line1 = `<div class="card-data-pt"><div class="label">${statobj.label}</div><div class="value">${currval}</div></div>`;
+                var line2 = `<div class="card-data-pt"><div class="label">City Median</div><div class="value">${compdata.median}</div></div>`;
+                var line3 = `<div class="card-data-pt"><div class="label">City Min (Start Scale)</div><div class="value">${compdata.min}</div></div>`;
+                var line4 = `<div class="card-data-pt"><div class="label">City Max (End Scale)</div><div class="value">${compdata.max}</div></div>`;
+
+                var tipdata = `<div class="tip-intro">${introline}</div><div class="card-data">${line1}${line2}${line3}${line4}</div>`;
+        
+                showTooltip(tipdata, e);
+            })
+            .on('mouseout', hideTooltip);
+        ;
+        //append stat content
+        cardDataPtValues.append('div').attr('class', 'value').html(d=> d[1].stats[statobj.value]);
+        cardDataPtScale = cardDataPtValues.append('div').attr('class', 'value').append('div').attr('class', 'scale-holder');
+        cardDataPtScale.append('div').attr('class', 'scale');
+        cardDataPtScale.each( function(d) {
+             //min, max, median
+            //add median dot
+            var markerplacements = [25, 50, 75];
+            markerplacements.forEach(z=>{
+                d3.select(this).append('div').attr('class', 'statval marker').style('left', z + '%');
+            });
+
+
+            //add curr value dot
+            var colorScale = d3.scaleDiverging(d3.interpolatePiYG).domain([0,50, 100]);
+            var currval = d[1].stats[statobj.value];
+            var leftamt = d[1].stats[statobj.percentileval];
+            var scaleamt = (statobj.scaledir == 1) ? leftamt: 100-leftamt;
+
+            d3.select(this).append('div').attr('class', 'statval currval')
+                .style('left', leftamt + '%')
+                .style('background', d=>colorScale(scaleamt))
+            ;
+        })
+    });      
+
+}
+
 function generateCards(datadetail){
 
     var pane = d3.select('.pane-neighb');
@@ -5,61 +73,8 @@ function generateCards(datadetail){
         enter => {
             cards = enter.append("div")
             .attr('class', 'card neighb');
-
             cards.append('div').attr('class', 'card-header').html(d => longPumaNameById(d[0]));
             cardData = cards.append('div').attr('class', 'card-data');
-            var statobj = [
-                {label: 'Persons Per Room', value: 'personsPerRoomMean'},
-                {label: 'Income', value: 'incomeMedian'},
-                {label: 'Rent', value: 'rentMedian'}
-            ];
-            statobj.forEach((statobj)=> {
-
-                var compdata = getComparisonData()[statobj.value];
-
-                cardDataPt = cardData.append('div').attr('class', 'card-data-pt');
-                //append stat label
-                cardDataPt.append('div').attr('class', 'label').html(statobj.label);
-                cardDataPtValues = cardDataPt.append('div').attr('class', 'value-holder')
-                    .on('mouseover',function(e){
-                        var pumaname = shortPumaNameById(d3.select(this).data()[0][0]);
-                        var currval = d3.select(this).data()[0][1].stats[statobj.value];
-                        var introline = `<div>${pumaname} ${statobj.label.toLowerCase()} is `;
-                        var amtDiff = Math.abs(Math.round(100*(currval - compdata.median)/compdata.median));
-                        if (currval > compdata.median){
-                            introline =`${introline}${amtDiff}% above median city value</div>`
-                        } else if (currval < compdata.median) {
-                            introline = `${introline}${amtDiff}% below median city value</div>`
-                        } else {
-                            introline =`${introline}${amtDiff} is equal to median city value</div>`
-                        }
-                        var line1 = `<div class="card-data-pt"><div class="label">${statobj.label}</div><div class="value">${currval}</div></div>`;
-                        var line2 = `<div class="card-data-pt"><div class="label">City Median</div><div class="value">${compdata.median}</div></div>`;
-                        var line3 = `<div class="card-data-pt"><div class="label">City Min (Start Scale)</div><div class="value">${compdata.min}</div></div>`;
-                        var line4 = `<div class="card-data-pt"><div class="label">City Max (End Scale)</div><div class="value">${compdata.max}</div></div>`;
-
-                        var tipdata = `<div class="tip-intro">${introline}</div><div class="card-data">${line1}${line2}${line3}${line4}</div>`;
-                
-                        showTooltip(tipdata, e);
-                    })
-                    .on('mouseout', hideTooltip);
-                ;
-                //append stat content
-                cardDataPtValues.append('div').attr('class', 'value').html(d=> d[1].stats[statobj.value]);
-                cardDataPtScale = cardDataPtValues.append('div').attr('class', 'value').append('div').attr('class', 'scale-holder');
-                cardDataPtScale.append('div').attr('class', 'scale');
-                cardDataPtScale.each( function(d) {
-                     //min, max, median
-                    //add median dot
-                    var leftamt = 100 * (compdata.median - compdata.min) / (compdata.max);
-                    d3.select(this).append('div').attr('class', 'statval median').style('left', leftamt + '%');
-
-                    //add curr value dot
-                    var currval = d[1].stats[statobj.value];
-                    var leftamt = 100 * (currval - compdata.min) / (compdata.max);
-                    d3.select(this).append('div').attr('class', 'statval currval').style('left', leftamt + '%');
-                })
-            });       
             //footer
             cards.append('div').attr('class', 'card-details flat-btn').html('View Details')
             .on('click', function(d,i){
@@ -69,9 +84,33 @@ function generateCards(datadetail){
                 cardSelection(sel, pumaid);
             })
             ;
-
         }
     );
+
+    //now create highlight cards
+    var highlightData = Array.from(datadetail).filter(d=> d[1].highlightData);
+    var hightlightCards = d3.select('.pane-highlights').selectAll('.card').data(highlightData, d=> d[0]);
+    hightlightCards.join(
+        enter => {
+            cards = enter.append("div")
+            .attr('class', 'card highlight');
+        
+            cards.append('div').attr('class', 'card-header').html(d => d[1].highlightData.displayName);
+            cards.append('div').attr('class', 'card-text').html(d=> d[1].highlightData.displayString);
+            cards.append('div').attr('class', 'card-data')
+            
+            //footer
+            cards.append('div').attr('class', 'card-details flat-btn')
+                .html('View Details')
+                .on('click', function(d,i) {
+                    var sel = d3.select(this);
+                    var pumaid = sel.data()[0][1].metro;
+                    cardSelection(sel, pumaid)
+                });
+        }
+    );
+
+    populateCardBody();
    
     d3.select('.overlay-close').on('click',  () => {
         disableCards();
@@ -93,36 +132,6 @@ function cardSelection(sel, pumaid){
     d3.select('.housing-overlay').classed('active', true);
     setCurrentData(pumaid);
     housingDrilldown();
-}
-
-function generateHighlightCards(datadetail){
-   
-    cards = d3.select('.pane-highlights').selectAll('.card').data(datadetail);
-    cards.join(
-        enter => {
-            cards = enter.append("div")
-            .attr('class', 'card highlight');
-            
-        
-            cards.append('div').attr('class', 'card-header').html(d => d[1].displayName);
-            cardText = cards.append('div').attr('class', 'card-text').html(d=> d[1].displayString);
-            cards.append('div').attr('class', 'card-data').html(function(d){
-                //copy pasting pre-created data
-                var copysel = d3.selectAll('.card.neighb .card-data').filter(z=> z[0] == d[1].metro);
-                return copysel['_groups'][0][0].innerHTML;
-            });   
-
-            //footer
-            cards.append('div').attr('class', 'card-details flat-btn')
-                .html('View Details')
-                .on('click', function(d,i) {
-                    var sel = d3.select(this);
-                    var pumaid = sel.data()[0][1].metro;
-                    cardSelection(sel, pumaid)
-                });
-        }
-    );
-
 }
 
 

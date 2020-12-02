@@ -345,16 +345,18 @@ textarea:focus, input:focus {
   border-radius: 100%;
   -webkit-box-shadow: 0px 1px 3px 1px #00000059;
           box-shadow: 0px 1px 3px 1px #00000059;
-  border: 2px solid #b9b9b9;
+  border: 2px solid black;
 }
 
-.card-data-pt .statval.currval {
-  background: #076094;
-}
-
-.card-data-pt .statval.median {
+.card-data-pt .statval.marker {
   background: black;
   border-color: #585858;
+  width: 4px;
+  height: 4px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: #424040;
+  border: none;
 }
 
 .pane.pane-left .card {

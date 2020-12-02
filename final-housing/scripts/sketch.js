@@ -10,6 +10,7 @@ function shortPumaNameById(pumaid){
 }
 
 function longPumaNameById(pumaid){
+    
     var idmap = getPumaIdMap();
     var fullname = idmap.get(pumaid)
     return fullname.replace('NYC-', '').replace('Community ', '').replace('--', ' • ');
@@ -111,7 +112,6 @@ async function initLookup(){
 async function draw(){
     d3.select('.housing-overlay').classed('active', false);
     generateCards(getCurrentData().map);
-    generateHighlightCards(getHighlightData());
     drawMap()
     addTooltips();
 }

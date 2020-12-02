@@ -302,15 +302,19 @@ textarea:focus, input:focus{
         height: 13px;
         border-radius: 100%;
         box-shadow: 0px 1px 3px 1px #00000059;
-        border: 2px solid #b9b9b9;
-        
+        border: 2px solid black;
     }
-    .statval.currval {
-        background:#076094;
-    }
-    .statval.median {
+    // .statval.currval {
+    //     background:#076094;
+    // }
+    .statval.marker {
         background: black;
         border-color: #585858;
+        width: 4px;
+        height: 4px;
+        box-shadow: none;
+        background: #424040;
+        border: none;
     }
 
 }
