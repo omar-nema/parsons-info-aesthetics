@@ -1,10 +1,10 @@
+
+
 async function draw(){
     d3.select('.housing-overlay').classed('active', false);
     generateCards(getCurrentData().map);
-    drawMap()
-    addTooltips();
+    // addTooltips();
 }
-
 
 var selectedPumaId;
 var selectedPumaName;
@@ -45,13 +45,13 @@ function setCurrentData(pumainput){
         selectedPumaId = parseInt(pumainput);
         selectedPumaName = shortPumaNameById(pumainput) 
         var currDataMap = new Map();
-        var dataToSet = getOrigData().get(selectedPumaId);
+        var dataToSet = getOrigData().map.get(selectedPumaId);
         currDataMap.set(selectedPumaId, dataToSet);
         currData = currDataMap;
         currDataDetail = dataToSet.detail;
         currDataStats = dataToSet.stats;
     } else {
-        currData = getOrigData();
+        currData = getOrigData().map;
         currDataDetail = null;
         currDataStats = null;
     }
@@ -65,10 +65,51 @@ function getCurrentData(){
         id: selectedPumaId
     }
 }
+
+
+
+function filterDataByBorough(bor){
+    var allbor = getOrigData().array;
+    return allbor.filter(d=> d[1].borough == bor );
+}
+
+function helperNavBoroughPage(bor){
+    d3.select('.landing').classed('disabled', true);
+    d3.select('.curr-nav').html(`Housing summaries data for ${bor} metro areas`)
+    d3.select('.card-page').classed('disabled', false);
+}
+
+function helperNavBacktoLanding(){
+    d3.select('.landing').classed('disabled', false);
+    d3.select('.card-page').classed('disabled', true); 
+}
+
+function initBoroughSelector(){
+    
+    d3.selectAll('.btn-bor').on('click', function(d){
+        var bor = d3.select(this).attr('bor');
+        var borData = filterDataByBorough(bor);
+        helperNavBoroughPage(bor);        
+
+        generateCards(borData);
+    });
+
+    d3.select('.landing-card.search').on('mouseover', ()=>{
+        d3.select('.bor-holder').classed('disabled', true);
+    }).on('mouseout', ()=>{
+        d3.select('.bor-holder').classed('disabled', false);
+    })
+
+    d3.select('.back-btn').on('click', ()=>{
+        helperNavBacktoLanding();
+    });
+}
+
+
 //lookup init
 async function initLookup(){
     var pumaChoices = [];
-    pumaId = Array.from(getOrigData().keys());
+    pumaId = Array.from(getOrigData().map.keys());
     d3.csv('./data/2010pumanames.txt').then((arr) => {
         nypumas = arr.filter(d => d.STATEFP == '36');
         nypumas.forEach((d)=> {

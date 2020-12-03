@@ -1,10 +1,22 @@
 // const { stat } = require("fs");
 
+
 var dataCleaned = new Map();
+document.addEventListener("DOMContentLoaded", async function() {
 
-document.addEventListener("DOMContentLoaded", function() {
+    await createPumaIdMap();
+    await parseTabularData();
+    await addHighlightData();
+    init();
 
-    d3.csv('./data/acsTEST.json').then((arr) => {
+});
+
+
+
+
+
+async function parseTabularData(){
+    await d3.csv('./data/acsTEST.json').then((arr) => {
 
         //data from ACS comes in at person level. need to change to household level
         var dedupeCluster = d3.groups(arr, d=> d['[["WGTP"']+d.GRNTP+d.HINCP+d.NRC+d.NP);
@@ -207,7 +219,8 @@ document.addEventListener("DOMContentLoaded", function() {
             geoKey = geosplit[0]
             var detailObj = {
                 detail: geoDetail,
-                stats: summaryStats
+                stats: summaryStats,
+                borough: getBorough(geoKey)
             }
             dataCleaned.set(parseInt(geoKey), detailObj);
 
@@ -231,16 +244,22 @@ document.addEventListener("DOMContentLoaded", function() {
             d.stats.personsPerRoomPercentile = Math.round(100*(personsperindex)/personsperlen);
       
         });
-        await createPumaIdMap();
-        await addHighlightData();
-        init();
-    });
-    
-});
 
+        return dataCleaned;
+    });  
+};
+
+function getBorough(pumaid){
+    var sel = getPumaIdMap().get(parseInt(pumaid));
+    var boroughStart = sel.indexOf('-')
+    var boroughEnd = sel.indexOf(' ');
+    var borough = sel.substring(boroughStart, boroughEnd).replace('-', '');
+    return borough.toLowerCase();
+}
 
 //get exreme neighborhoods for highlights section - i.e. lowest rent, highest income, etc
 function addHighlightData(){
+
     var dataCleanedArray = Array.from(dataCleaned);
     var statTypes = 
     [
@@ -275,16 +294,22 @@ function addHighlightData(){
         dataCleaned.get(metro).highlightData = statobj;
     });
     return;
+
+
 }
+
 
 
 async function init(){
     console.log('processed data ', dataCleaned)
     setCurrentData();
-    // getHighlightData();
-    initLookup();
     createComparisonData();
+    initBoroughSelector();
     draw(dataCleaned);
+
+
+        // initLookup();
+   
 }
 
 function helperGetHighlightString(statKey, statData){
@@ -305,7 +330,6 @@ function helperGetHighlightString(statKey, statData){
     return highlightString;
 }
 
-//redundancy in initLookup in sketch.js
 var pumaIdMap;
 async function createPumaIdMap(){
     await d3.csv('./data/2010pumanames.txt').then((arr) => {
@@ -343,11 +367,11 @@ function getComparisonData(){
     return comparisonData;
 }
 
-
 function getOrigData(){
-    return dataCleaned;
+    return {
+        map: dataCleaned,
+        array: Array.from(dataCleaned)
+    }
 }
 
 
-
-//later: add language, fuel, heat

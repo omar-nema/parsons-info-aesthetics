@@ -1,8 +1,96 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap");
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0.01;
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0.01;
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0.99;
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0.99;
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 * {
   font-family: 'Work Sans', sans-serif;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.transitionFade, .landing, .card-page {
+  -webkit-transition: visiblity 0s ease-in-out, opacity .3s ease-in-out, height .3s linear;
+  transition: visiblity 0s ease-in-out, opacity .3s ease-in-out, height .3s linear;
+}
+
+.transitionDisable, .landing.disabled, .card-page.disabled {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+}
+
+.clickable.light:hover, .landing .bor-selector .light.btn-bor:hover, .card-nav .light.back-btn:hover, .pane .card.metro:hover {
+  opacity: 0.9;
+}
+
+.clickable, .landing .bor-selector .btn-bor, .card-nav .back-btn {
+  cursor: pointer;
+  -webkit-transition: opacity .1s linear;
+  transition: opacity .1s linear;
+}
+
+.clickable:hover, .landing .bor-selector .btn-bor:hover, .card-nav .back-btn:hover {
+  opacity: 0.7;
 }
 
 body {
@@ -59,7 +147,7 @@ h1 {
   cursor: pointer;
   -webkit-transition: opacity .15s linear;
   transition: opacity .15s linear;
-  font-size: 16px;
+  font-size: 18px;
   padding-bottom: 5px;
 }
 
@@ -74,6 +162,54 @@ h1 {
 
 .nav .nav-option:hover {
   opacity: 0.8;
+}
+
+.landing .landing-module {
+  margin-bottom: 30px;
+}
+
+.landing .card-explain {
+  margin-bottom: 15px;
+  font-weight: 16px;
+}
+
+.landing .landing-card {
+  padding: 15px;
+  background: #353838;
+  width: 100%;
+  height: auto;
+}
+
+.landing .bor-holder.disabled {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.landing .bor-holder.disabled {
+  -webkit-animation: fadeOut .3s;
+          animation: fadeOut .3s;
+}
+
+.landing .bor-holder {
+  -webkit-transition: visibility 0s ease-in-out, opacity .3s ease-in-out;
+  transition: visibility 0s ease-in-out, opacity .3s ease-in-out;
+  -webkit-animation: fadeIn .15s;
+          animation: fadeIn .15s;
+}
+
+.landing .bor-selector {
+  visibility: visible;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.landing .bor-selector .btn-bor {
+  background: black;
+  padding: 10px;
+  border-radius: 3px;
+  font-weight: 500;
+  margin-right: 10px;
 }
 
 .search {
@@ -251,10 +387,35 @@ textarea:focus, input:focus {
   overflow: hidden;
 }
 
+.card-page {
+  visibility: inherit;
+  opacity: 1;
+  height: 98%;
+}
+
 .card-holder {
-  height: 95%;
+  height: 98%;
   overflow: auto;
   padding-right: 20px;
+}
+
+.card-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.card-nav .curr-nav {
+  color: #c1c1c1;
+}
+
+.card-nav .back-btn {
+  color: #F587EA;
 }
 
 .pane-highlights {
@@ -265,12 +426,6 @@ textarea:focus, input:focus {
 .pane-neighb {
   -webkit-transform: translateX(150%);
           transform: translateX(150%);
-}
-
-.pane.pane-right {
-  margin-left: auto;
-  background: none;
-  overflow: hidden;
 }
 
 .pane.pane-left {
@@ -287,6 +442,10 @@ textarea:focus, input:focus {
 .pane .card-header {
   font-weight: 600;
   margin-bottom: 15px;
+}
+
+.pane .card.metro {
+  cursor: pointer;
 }
 
 .pane .card {
@@ -409,6 +568,30 @@ textarea:focus, input:focus {
 
 .pane-right {
   position: relative;
+  margin-left: auto;
+  overflow: hidden;
+  background: transparent;
+}
+
+.pane-right .housing-underlay {
+  opacity: 0.7;
+  background: rgba(53, 56, 56, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.pane-right .housing-msg {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 100%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  text-align: center;
 }
 
 .pane-right .pane-overview {
@@ -452,17 +635,18 @@ textarea:focus, input:focus {
 }
 
 .pane-right .housing-overlay {
-  position: absolute;
+  z-index: 1000;
   background: #353838;
   width: 100%;
-  height: 0;
-  top: 99%;
-  left: 0;
-  pointer-events: none;
+  height: 100%;
   -webkit-transition: all .2s linear;
   transition: all .2s linear;
   padding: 20px 30px;
   opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .pane-right .housing-overlay .card-header {
@@ -567,8 +751,6 @@ textarea:focus, input:focus {
 .pane-right .housing-overlay.active {
   pointer-events: inherit;
   opacity: 1;
-  top: 0;
-  height: 100%;
 }
 
 .tooltip {

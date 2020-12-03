@@ -11,9 +11,47 @@ $text-color-gray: #b3b3b3;
 $margin-text: 15px;
 $margin-large: 30px;
 
+@keyframes fadeOut {
+    0% { opacity: 1;}
+    99% { opacity: 0.01;width: 100%; height: 100%;}
+    100% { opacity: 0;width: 0; height: 0;}
+}
+@keyframes fadeIn {
+    0% { opacity: 0;}
+    99% { opacity: 0.99;width: 100%; height: 100%;}
+    100% { opacity: 1;width: 100%; height: 100%;}
+}
+
+@mixin transition($dur) {
+    transition: visiblity $dur ease-in-out, opacity $dur ease-in-out;
+}
+
+
+
 * {
     font-family: 'Work Sans', sans-serif;
     box-sizing: border-box;
+}
+
+.transitionFade {
+    transition: visiblity 0s ease-in-out, opacity .3s ease-in-out, height .3s linear;
+}
+.transitionDisable {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+}
+
+.clickable.light:hover {
+    opacity: 0.9;
+}
+
+.clickable {
+    cursor: pointer;
+    transition: opacity .1s linear;
+}
+.clickable:hover {
+    opacity: 0.7;
 }
 
 //page structure
@@ -62,7 +100,7 @@ h1 {
         margin-right: 30px;
         cursor: pointer;
         transition: opacity .15s linear;
-        font-size: 16px;
+        font-size: 18px;
         padding-bottom: 5px;
     }
     .nav-option.selected {
@@ -76,6 +114,62 @@ h1 {
         opacity: 0.8;
     }
 }
+
+.landing.disabled {
+    @extend .transitionDisable;
+}
+
+.landing {
+    @extend .transitionFade;
+
+    .landing-module {
+        margin-bottom: 30px;
+    }
+    .card-explain {
+        margin-bottom: 15px;
+        font-weight: 16px;
+    }
+    .landing-card {
+        padding: $margin-text;
+        background: $color-bg-content;
+        width: 100%;
+        height: auto;
+    }
+    .bor-holder.disabled { 
+        opacity: 0;
+        visibility: hidden;
+
+    }
+
+    .bor-holder.disabled {
+        animation: fadeOut .3s;
+    }
+ 
+    .bor-holder {
+        transition: visibility 0s ease-in-out, opacity .3s ease-in-out;
+        animation: fadeIn .15s;
+    }
+    .bor-selector {    
+        visibility: visible;
+        display: flex;
+       
+        .btn-bor {
+            @extend .clickable;
+            background: black;
+            padding: 10px;
+            border-radius: 3px;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+    }
+}
+
+
+
+
+
+
+
 .search {
     position: relative;
 }
@@ -224,22 +318,46 @@ textarea:focus, input:focus{
 .pane-neighb.sub-pane.active{
     overflow: hidden;
 }
+
+.card-page {
+    visibility: inherit;
+    opacity: 1;
+    @extend .transitionFade;
+    height: 98%;
+}
+.card-page.disabled {
+    @extend .transitionDisable;
+}
+
 .card-holder {
-    height: 95%;
+    height: 98%;
     overflow: auto;
     padding-right: 20px;
+   
 }
+
+.card-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 16px;
+    .curr-nav {
+        color: $color-label;
+    }
+    .back-btn {
+        color: $color-action;
+        @extend .clickable; 
+    }
+}
+
+
 .pane-highlights {
     transform: translateX(-150%);
 }
 .pane-neighb {
     transform: translateX(150%);
 }
-.pane.pane-right {
-    margin-left: auto;
-    background: none;
-    overflow: hidden;
-}
+
 .pane.pane-left {
     position: relative;
     overflow: hidden;
@@ -254,6 +372,10 @@ textarea:focus, input:focus{
     .card-header {
         font-weight: 600;
         margin-bottom: $margin-text;
+    }
+    .card.metro {
+        @extend .clickable.light;
+        cursor: pointer;
     }
     .card {
         background: $color-bg-content;
@@ -364,8 +486,33 @@ textarea:focus, input:focus{
     }
 }
 
+
+
 .pane-right {
     position: relative;
+    margin-left: auto;
+    overflow: hidden;
+    background:  transparent;
+  
+    .housing-underlay{ 
+        opacity: 0.7;
+        background: rgba(53 ,56 ,56,0.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .housing-msg {
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        width: 100%;
+        transform: translate(0, -50%);
+        text-align: center;
+    }
 
     .pane-overview {
         font-size: 14px;
@@ -405,16 +552,18 @@ textarea:focus, input:focus{
     }
 
     .housing-overlay {
-        position: absolute;
+  
+        z-index: 1000;
         background: $color-bg-content;
         width: 100%;
-        height: 0;
-        top: 99%;
-        left: 0;
-        pointer-events: none;
+        height: 100%;
         transition: all .2s linear;
         padding: 20px 30px;
         opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
 
         .card-header {
             display: flex;
@@ -509,12 +658,10 @@ textarea:focus, input:focus{
         }
     }
 
-
     .housing-overlay.active {
         pointer-events: inherit;
         opacity: 1;
-        top: 0;
-        height: 100%;
+  
     }
 }
 

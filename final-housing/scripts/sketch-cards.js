@@ -69,46 +69,47 @@ function populateCardBody(d, dnode){
 
 }
 
+//takes array not map 
 function generateCards(datadetail){
 
     var pane = d3.select('.pane-neighb .card-holder');
     var cards = pane.selectAll('.card.neighb').data(datadetail, d=> d[0]).join(
         enter => {
             cards = enter.append("div")
-            .attr('class', 'card neighb');
+            .attr('class', 'card neighb metro');
             cards.append('div').attr('class', 'card-header').html(d => longPumaNameById(d[0]));
             cardData = cards.append('div').attr('class', 'card-data').each(function(d){populateCardBody(d, d3.select(this))});
             //footer
-            cards.append('div').attr('class', 'card-details flat-btn').html('View Details');
+            // cards.append('div').attr('class', 'card-details flat-btn').html('View Details');
         }
     );
 
-    //now create highlight cards
-    var highlightData = Array.from(datadetail).filter(d=> d[1].highlightData);
+    //now create highlight cards - which always use the raw data rather than filtered
+    var highlightData = getOrigData().array.filter(d=> d[1].highlightData);
     var hightlightCards = d3.select('.pane-highlights').selectAll('.card').data(highlightData, d=> d[0]);
     hightlightCards.join(
         enter => {
             cards = enter.append("div")
-            .attr('class', 'card highlight');
+            .attr('class', 'card highlight metro');
         
             cards.append('div').attr('class', 'card-header').html(d => d[1].highlightData.displayName);
             cards.append('div').attr('class', 'card-text').html(d=> d[1].highlightData.displayString);
             cards.append('div').attr('class', 'card-data').each(function(d){populateCardBody(d, d3.select(this))})
             
             //footer
-            cards.append('div').attr('class', 'card-details flat-btn')
-                .html('View Details')
-                .on('click', function(d,i) {
-                    var sel = d3.select(this);
-                    var pumaid = sel.data()[0][1].metro;
-                    cardSelection(sel, pumaid)
-                });
+            // cards.append('div').attr('class', 'card-details flat-btn')
+            //     .html('View Details')
+            //     .on('click', function(d,i) {
+            //         var sel = d3.select(this);
+            //         var pumaid = sel.data()[0][1].metro;
+            //         cardSelection(sel, pumaid)
+            //     });
         }
     );
 
     //populateCardBody();
 
-    d3.selectAll('.card-details.flat-btn').on('click', function(d,i){
+    d3.selectAll('.card.metro').on('click', function(d,i){
         var sel = d3.select(this)
         var data = sel.data();
         var pumaid = parseInt(data[0]);
