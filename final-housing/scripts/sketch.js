@@ -2,7 +2,8 @@
 
 async function draw(){
     d3.select('.housing-overlay').classed('active', false);
-    generateCards(getCurrentData().map);
+    await generateCards(getCurrentData().map);
+    return;
     // addTooltips();
 }
 
@@ -73,84 +74,60 @@ function filterDataByBorough(bor){
     return allbor.filter(d=> d[1].borough == bor );
 }
 
-function helperNavBoroughPage(bor){
-    d3.select('.landing').classed('disabled', true);
-    d3.select('.curr-nav').html(`Housing summaries data for ${bor} metro areas`)
-    d3.select('.card-page').classed('disabled', false);
-}
 
-function helperNavBacktoLanding(){
-    d3.select('.landing').classed('disabled', false);
-    d3.select('.card-page').classed('disabled', true); 
-}
 
-function initBoroughSelector(){
-    
-    d3.selectAll('.btn-bor').on('click', function(d){
-        var bor = d3.select(this).attr('bor');
-        var borData = filterDataByBorough(bor);
-        helperNavBoroughPage(bor);        
 
-        generateCards(borData);
-    });
 
-    d3.select('.landing-card.search').on('mouseover', ()=>{
-        d3.select('.bor-holder').classed('disabled', true);
-    }).on('mouseout', ()=>{
-        d3.select('.bor-holder').classed('disabled', false);
+
+function initSearch(){
+    //setup before functions
+    var input = d3.select('input.search');
+
+    input.on('click', (e)=> {
+        updateSearchState(true);
+    })
+    .on('mouseout', ()=>{
+        if (input.node().value == ''){
+            updateSearchState(false);
+        }
     })
 
-    d3.select('.back-btn').on('click', ()=>{
-        helperNavBacktoLanding();
+    var typingTimer;                
+    var doneTypingInterval = 200;  
+    input.on('keyup', function(){
+        clearTimeout(typingTimer);
+        if (input.node().value) {
+            typingTimer = setTimeout(doneTyping, doneTypingInterval);
+        } else {
+            updateSearchState(false);
+        }
     });
-}
+    input.on('keydown', function () {
+        clearTimeout(typingTimer);
+        updateSearchState(true);
+    });
 
-
-//lookup init
-async function initLookup(){
-    var pumaChoices = [];
-    pumaId = Array.from(getOrigData().map.keys());
-    d3.csv('./data/2010pumanames.txt').then((arr) => {
-        nypumas = arr.filter(d => d.STATEFP == '36');
-        nypumas.forEach((d)=> {
-            pumaIdMap.set(parseInt(d.PUMA5CE), d['PUMA NAME'])
-        })
-        return pumaIdMap;
-    }).then((idmap)=> {
-        pumaId.forEach((x)=>{
-            pumaChoices.push({
-                value: x,
-                label: idmap.get(x).replace('NYC-', '').replace('Community ', '')
-            })
-        });
-        return pumaChoices;
-    }).then(metros => {
-        var input = document.getElementById('metros');
-   
-        autocomplete({
-            input: input,
-            fetch: function(text, update) {
-                text = text.toLowerCase();
-                var suggestions = metros.filter(n => n.label.toLowerCase().includes(text))
-                update(suggestions);
-            },
-            onSelect: function(item) {
-                input.value = item.label;
-                setCurrentData(item.value);
-                draw();
-            },
-            minLength: 1
-        });
-
-        d3.select('.search-clear').on('click', d => {
-            document.getElementById('metros').value = null;
-            setCurrentData(null);
-
-            draw();
-        })
+    async function doneTyping () {
         
-    })
-};
+        d3.selectAll('.card.neighb').classed('disabled', true);
+
+        var userString = input.node().value.toLowerCase();
+        pn = Array.from(await getPumaNames());
+        var idResults = pn.filter(d=> d[0].toLowerCase().includes(userString)).map(d=> d[1]);
+        idResults.forEach(d=> {
+            var card = d3.select('#metro-'+d.toString())
+
+            card.classed('disabled', false)
+            card.style('visibility', 'visible').style('opacity', '1').style('height', 'auto')
+        })
+    };
+
+    d3.select('.search-clear').on('click', () => {
+        input.node().value = '';
+        updateNav();
+    });
+}
+
 
 
 

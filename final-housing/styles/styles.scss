@@ -27,6 +27,17 @@ $margin-large: 30px;
 }
 
 
+.disabled {
+    margin: 0;
+    padding: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    display: none;
+}
+
+
 
 * {
     font-family: 'Work Sans', sans-serif;
@@ -119,48 +130,35 @@ h1 {
     @extend .transitionDisable;
 }
 
-.landing {
-    @extend .transitionFade;
 
-    .landing-module {
-        margin-bottom: 30px;
-    }
-    .card-explain {
-        margin-bottom: 15px;
-        font-weight: 16px;
-    }
-    .landing-card {
-        padding: $margin-text;
-        background: $color-bg-content;
-        width: 100%;
-        height: auto;
-    }
-    .bor-holder.disabled { 
-        opacity: 0;
-        visibility: hidden;
 
-    }
+.landing-module {
+    margin-bottom: 30px;
+}
 
-    .bor-holder.disabled {
-        animation: fadeOut .3s;
-    }
- 
-    .bor-holder {
-        transition: visibility 0s ease-in-out, opacity .3s ease-in-out;
-        animation: fadeIn .15s;
-    }
-    .bor-selector {    
-        visibility: visible;
-        display: flex;
-       
-        .btn-bor {
-            @extend .clickable;
-            background: black;
-            padding: 10px;
-            border-radius: 3px;
-            font-weight: 500;
-            margin-right: 10px;
-        }
+.landing-card {
+    padding: $margin-text;
+    background: $color-bg-content;
+    width: 100%;
+    height: auto;
+}
+
+
+.bor-holder {
+    transition: visibility 0s ease-in-out, opacity .3s ease-in-out;
+    animation: fadeIn .15s;
+}
+.bor-selector {    
+    visibility: visible;
+    display: flex;
+    
+    .btn-bor {
+        @extend .clickable;
+        background: black;
+        padding: 10px;
+        border-radius: 3px;
+        font-weight: 500;
+        margin-right: 10px;
     }
 }
 
@@ -168,16 +166,25 @@ h1 {
 
 
 
+.search:focus {
+    border: 1px solid $color-action;
+}
 
 
 .search {
     position: relative;
+    box-shadow: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border: 1px solid transparent;
+    transition: all .15s linear;
 }
 .search-clear {
     position: absolute;
-    top: 0;
+    top: 50%;
     right: 20px;
-    transform: translateY(50%);
+    transform: translateY(-50%);
     color: $color-action;
     transition: all .15s linear;
     cursor: pointer;
@@ -296,6 +303,27 @@ textarea:focus, input:focus{
     overflow-y: auto;
 }
 
+.card-explain {
+    margin-bottom: 15px;
+    font-weight: 16px;
+}
+
+.inner-nav {
+
+    display: flex;
+    justify-content: space-between; 
+
+
+    .back-btn {
+        @extend .clickable;
+        color: $color-action;
+    }
+
+
+}
+
+
+
 .sub-pane {
     // opacity: 0;
    // display: none;
@@ -353,6 +381,9 @@ textarea:focus, input:focus{
 
 .pane-highlights {
     transform: translateX(-150%);
+    .card-explain {
+        color: $color-label;
+    }
 }
 .pane-neighb {
     transform: translateX(150%);
@@ -381,7 +412,9 @@ textarea:focus, input:focus{
         background: $color-bg-content;
         padding: 20px 30px;
         border: 1px solid transparent;
+        @extend .transitionFade;
     }
+
     .card.active {
         border: 1px solid $color-action;
     }
@@ -458,34 +491,6 @@ textarea:focus, input:focus{
     margin-bottom: $margin-large;
 }
 
-.pane-neighb {
-    .choices {
-        width: 96%;
-        margin-bottom: 30px;
-    }
-    .choices__inner {
-        padding: 0 8px;
-        background: #fdfcfc;
-        font-weight: 500;
-        font-size: 14px;
-        min-height: 34px !important;
-        background: #353838;
-        border: none;
-    }
-    .choices[data-type*=select-one] .choices__inner {
-        padding-bottom: 0;
-        padding-top: 8px !important;
-    }
-    .choices__list--single .choices__item {
-        width: 80%;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        color: white;
-        background: $color-bg-content;
-    }
-}
-
 
 
 .pane-right {
@@ -493,6 +498,7 @@ textarea:focus, input:focus{
     margin-left: auto;
     overflow: hidden;
     background:  transparent;
+
   
     .housing-underlay{ 
         opacity: 0.7;

@@ -304,11 +304,10 @@ async function init(){
     console.log('processed data ', dataCleaned)
     setCurrentData();
     createComparisonData();
+    await draw(dataCleaned);
+    initSearch();
     initBoroughSelector();
-    draw(dataCleaned);
-
-
-        // initLookup();
+    updateNav();
    
 }
 
@@ -331,15 +330,22 @@ function helperGetHighlightString(statKey, statData){
 }
 
 var pumaIdMap;
+var pumaNames = new Map();
 async function createPumaIdMap(){
     await d3.csv('./data/2010pumanames.txt').then((arr) => {
         nypumas = arr.filter(d => d.STATEFP == '36');
         nypumas.forEach((d)=> {
-            pumaIdMap.set(parseInt(d.PUMA5CE), d['PUMA NAME'])
+            var cleanpuma = d['PUMA NAME'].replace('--', ' • ');
+            pumaNames.set(cleanpuma, parseInt(d.PUMA5CE))
+            pumaIdMap.set(parseInt(d.PUMA5CE), cleanpuma)
         });
         return pumaIdMap;
     });
 };
+
+function getPumaNames(){
+    return pumaNames;
+}
 
 function getPumaIdMap(){
     return pumaIdMap;

@@ -76,7 +76,9 @@ function generateCards(datadetail){
     var cards = pane.selectAll('.card.neighb').data(datadetail, d=> d[0]).join(
         enter => {
             cards = enter.append("div")
-            .attr('class', 'card neighb metro');
+            .attr('class', 'card neighb metro')
+            .attr('id', d => 'metro-'+ d[0].toString())
+            ;
             cards.append('div').attr('class', 'card-header').html(d => longPumaNameById(d[0]));
             cardData = cards.append('div').attr('class', 'card-data').each(function(d){populateCardBody(d, d3.select(this))});
             //footer
@@ -90,7 +92,9 @@ function generateCards(datadetail){
     hightlightCards.join(
         enter => {
             cards = enter.append("div")
-            .attr('class', 'card highlight metro');
+            .attr('class', 'card highlight metro')
+            .attr('id', d => 'metro-'+ d[0].toString())
+            ;
         
             cards.append('div').attr('class', 'card-header').html(d => d[1].highlightData.displayName);
             cards.append('div').attr('class', 'card-text').html(d=> d[1].highlightData.displayString);
@@ -121,6 +125,8 @@ function generateCards(datadetail){
         disableCards();
         d3.select('.housing-overlay').classed('active', false);
     });
+
+    return;
 
 }
 

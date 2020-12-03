@@ -24,18 +24,24 @@
          <div class="panes">
             <div class="pane-left pane">
                <div class="pane-highlights sub-pane active">
+                  <div class="card-explain">Click to view detailed info on the highlighted metro area</div>
                </div>
                <div class="pane-neighb sub-pane">
-                  <!-- <div class="search">
-                     <input type="text" id="metros" placeholder="Search for metro area">
-                     <div class="search-clear">Clear</div>
-                  </div> -->
+  
 
-                  <div class="landing">
                      <div class="landing-module">
-                        <div class="card-explain">Search for your neighborhood</div>
-                        <div class="landing-card search">Search me</div>
+                        <div class="inner-nav">
+                           <div class="card-explain">Search for your neighborhood</div>
+                           <div class="back-btn"> Back</div>
+                        </div>
+                        <div class="search">
+                           <input type="text" class="landing-card search" placeholder="Search for metro area">
+                           <div class="search-clear">Clear</div>
+                        </div>
+
+                        <!-- <input class="landing-card search" placeholder="Search for metro area"></input> -->
                      </div>
+                    
                      <div class="bor-holder landing-module">
                         <div class="card-explain">Compare housing across borough neighorhoods</div>
                         <div class="bor-selector landing-card">
@@ -46,16 +52,18 @@
                            <div class='btn-bor' bor="queens">Queens</div>
                         </div>
                      </div>
-                  </div>
-                  <div class='card-page disabled'>
-                     <div class='card-nav'>
-                        <div class="curr-nav"></div>
-                        <div class="back-btn">< Back</div>
+
+                     <div class='card-page'>
+                        <!-- <div class='card-nav'>
+                           <div class="curr-nav"></div>
+                           <div class="back-btn">< Back</div>
+                        </div> -->
+                        <div class="card-holder">
+                        
+                        </div>
                      </div>
-                     <div class="card-holder">
-                     
-                     </div>
-                  </div>
+               </div>
+         
           
                </div>
             </div>
@@ -102,6 +110,7 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script> -->
 <script src="./scripts/autocomplete.min.js"></script>
 <script src="https://d3js.org/d3.v6.min.js"></script>
+<!-- <script src="scripts/list.min.js"></script> -->
 <script src='./scripts/ui.js'></script>
 <script src='./scripts/dataparse.js'></script>
 <script src='./scripts/sketch.js'></script>

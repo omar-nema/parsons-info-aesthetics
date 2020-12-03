@@ -62,13 +62,23 @@
   }
 }
 
+.disabled {
+  margin: 0;
+  padding: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  display: none;
+}
+
 * {
   font-family: 'Work Sans', sans-serif;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-.transitionFade, .landing, .card-page {
+.transitionFade, .card-page, .pane .card {
   -webkit-transition: visiblity 0s ease-in-out, opacity .3s ease-in-out, height .3s linear;
   transition: visiblity 0s ease-in-out, opacity .3s ease-in-out, height .3s linear;
 }
@@ -79,17 +89,17 @@
   height: 0;
 }
 
-.clickable.light:hover, .landing .bor-selector .light.btn-bor:hover, .card-nav .light.back-btn:hover, .pane .card.metro:hover {
+.clickable.light:hover, .bor-selector .light.btn-bor:hover, .inner-nav .light.back-btn:hover, .card-nav .light.back-btn:hover, .pane .card.metro:hover {
   opacity: 0.9;
 }
 
-.clickable, .landing .bor-selector .btn-bor, .card-nav .back-btn {
+.clickable, .bor-selector .btn-bor, .inner-nav .back-btn, .card-nav .back-btn {
   cursor: pointer;
   -webkit-transition: opacity .1s linear;
   transition: opacity .1s linear;
 }
 
-.clickable:hover, .landing .bor-selector .btn-bor:hover, .card-nav .back-btn:hover {
+.clickable:hover, .bor-selector .btn-bor:hover, .inner-nav .back-btn:hover, .card-nav .back-btn:hover {
   opacity: 0.7;
 }
 
@@ -164,47 +174,32 @@ h1 {
   opacity: 0.8;
 }
 
-.landing .landing-module {
+.landing-module {
   margin-bottom: 30px;
 }
 
-.landing .card-explain {
-  margin-bottom: 15px;
-  font-weight: 16px;
-}
-
-.landing .landing-card {
+.landing-card {
   padding: 15px;
   background: #353838;
   width: 100%;
   height: auto;
 }
 
-.landing .bor-holder.disabled {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.landing .bor-holder.disabled {
-  -webkit-animation: fadeOut .3s;
-          animation: fadeOut .3s;
-}
-
-.landing .bor-holder {
+.bor-holder {
   -webkit-transition: visibility 0s ease-in-out, opacity .3s ease-in-out;
   transition: visibility 0s ease-in-out, opacity .3s ease-in-out;
   -webkit-animation: fadeIn .15s;
           animation: fadeIn .15s;
 }
 
-.landing .bor-selector {
+.bor-selector {
   visibility: visible;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.landing .bor-selector .btn-bor {
+.bor-selector .btn-bor {
   background: black;
   padding: 10px;
   border-radius: 3px;
@@ -212,16 +207,28 @@ h1 {
   margin-right: 10px;
 }
 
+.search:focus {
+  border: 1px solid #F587EA;
+}
+
 .search {
   position: relative;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border: 1px solid transparent;
+  -webkit-transition: all .15s linear;
+  transition: all .15s linear;
 }
 
 .search-clear {
   position: absolute;
-  top: 0;
+  top: 50%;
   right: 20px;
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   color: #F587EA;
   -webkit-transition: all .15s linear;
   transition: all .15s linear;
@@ -360,6 +367,24 @@ textarea:focus, input:focus {
   overflow-y: auto;
 }
 
+.card-explain {
+  margin-bottom: 15px;
+  font-weight: 16px;
+}
+
+.inner-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.inner-nav .back-btn {
+  color: #F587EA;
+}
+
 .sub-pane {
   -webkit-transition: -webkit-transform .3s ease-in-out;
   transition: -webkit-transform .3s ease-in-out;
@@ -421,6 +446,10 @@ textarea:focus, input:focus {
 .pane-highlights {
   -webkit-transform: translateX(-150%);
           transform: translateX(-150%);
+}
+
+.pane-highlights .card-explain {
+  color: #c1c1c1;
 }
 
 .pane-neighb {
@@ -535,35 +564,6 @@ textarea:focus, input:focus {
 
 .pane.pane-left .card {
   margin-bottom: 30px;
-}
-
-.pane-neighb .choices {
-  width: 96%;
-  margin-bottom: 30px;
-}
-
-.pane-neighb .choices__inner {
-  padding: 0 8px;
-  background: #fdfcfc;
-  font-weight: 500;
-  font-size: 14px;
-  min-height: 34px !important;
-  background: #353838;
-  border: none;
-}
-
-.pane-neighb .choices[data-type*=select-one] .choices__inner {
-  padding-bottom: 0;
-  padding-top: 8px !important;
-}
-
-.pane-neighb .choices__list--single .choices__item {
-  width: 80%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  color: white;
-  background: #353838;
 }
 
 .pane-right {
