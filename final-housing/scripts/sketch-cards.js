@@ -139,7 +139,6 @@ function cardSelection(sel, pumaid){
     disableCards();
     d3.select(sel.node().parentNode).classed('active', true);
     sel.classed('active', true);
-    sel.classed('disabled', true);
     d3.select('.housing-overlay').classed('active', true);
     setCurrentData(pumaid);
     housingDrilldown();
