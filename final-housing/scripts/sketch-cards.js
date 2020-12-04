@@ -163,8 +163,8 @@ function housingDrilldown(){
 
     var transitionTime = 700;
     var houseRows = table.selectAll('.row-house').data(currDataDetail, d=> {return d.geo + '-' + d.weightPersons})
-    .join(enter => {
-
+    .join(
+            enter => {
             houseRows = enter.append('tr').attr('class', 'row-house').style('opacity', '0').transition().duration(transitionTime).style('opacity', '1');
             houseRows.each(function(d, i){
                 var currRow = d3.select(this);
@@ -180,16 +180,12 @@ function housingDrilldown(){
             update.transition().duration(transitionTime).style('opacity', '1');
         }, 
         exit => {
-            exit.transition().duration(transitionTime).style('opacity', '0').on('end', exit.remove());
+            exit.transition().duration(transitionTime).style('opacity', '0').on('end', ()=>{ exit.remove() });
             
             //.on('end', d=> d3.select(d).remove());
         }
     
     );
-
-    //sort functionality
-
-
 
     d3.select('#sort').on('change', function(d){
         var sortSel = d3.select(this).node().value;
@@ -211,17 +207,14 @@ function housingDrilldown(){
         var selectedItem = occNode.children[occNode.selectedIndex];
         var minVal = parseInt(d3.select(selectedItem).attr('min'));
         var maxVal = parseInt(d3.select(selectedItem).attr('max'));
+        if (typeof(minVal) == 'number' || typeof(maxVal) == 'number' ){
+            d3.select(this).classed('active', true);
+        } else {
+            d3.select(this).classed('active', false);
+        }
         updateFilter(d3.select(this).attr('id'), minVal, maxVal);
         housingDrilldown();
     });
 
-
-
-
-
-    //filter functionality
-    //get current data and filter
-    //set current data
-    //call housing drilldown again
 
 };

@@ -609,6 +609,10 @@ textarea:focus, input:focus {
       flex-basis: 22%;
 }
 
+.pane-right select.active, .pane-right select:focus {
+  border-color: #F587EA;
+}
+
 .pane-right select {
   font-size: 14px;
   background: black;
@@ -619,6 +623,9 @@ textarea:focus, input:focus {
   width: 100%;
   text-overflow: ellipsis;
   margin-top: 3px;
+  border: 1px solid transparent;
+  -webkit-transition: border-color .15s linear;
+  transition: border-color .15s linear;
 }
 
 .pane-right label {

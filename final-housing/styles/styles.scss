@@ -521,6 +521,9 @@ textarea:focus, input:focus{
     .filter {
         flex-basis: 22%;
     }
+    select.active, select:focus {
+        border-color: $color-action;
+    }
     select {
         font-size: 14px;
         background: black;
@@ -531,6 +534,8 @@ textarea:focus, input:focus{
         width: 100%;
         text-overflow: ellipsis;
         margin-top: 3px;
+        border: 1px solid transparent;
+        transition: border-color .15s linear;
         @extend .clickable;
     }
     label {
