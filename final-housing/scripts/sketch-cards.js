@@ -1,4 +1,3 @@
-const { exists } = require("fs");
 
 function populateCardBody(d, dnode){
     //populate card bodies
@@ -75,18 +74,22 @@ function generateCards(datadetail){
 
     var pane = d3.select('.pane-neighb .card-holder');
     var cards = pane.selectAll('.card.neighb').data(datadetail, d=> d[0]).join(
+
+     
         enter => {
             cards = enter.append("div")
             .attr('class', 'card neighb metro')
             .attr('id', d => 'metro-'+ d[0].toString())
+            .classed('disabled', false)
             ;
             cards.append('div').attr('class', 'card-header').html(d => longPumaNameById(d[0]));
-            cardData = cards.append('div').attr('class', 'card-data').each(function(d){populateCardBody(d, d3.select(this))});
+            cardData = cards.append('div').attr('class', 'card-data').each(function(d){populateCardBody(d, d3.select(this))})
+            ;
             //footer
             // cards.append('div').attr('class', 'card-details flat-btn').html('View Details');
         },
         update => {
-            // update.style('background', 'blue')
+            update.classed('disabled', false);
         },
         exit => {
             exit.classed('disabled', true);
@@ -139,7 +142,7 @@ function generateCards(datadetail){
 
 function disableCards(){
     d3.selectAll('.card').classed('active', false);
-    d3.selectAll('.card-details').classed('disabled', false);
+    //d3.selectAll('.card-details').classed('disabled', false);
 }
 
 function cardSelection(sel, pumaid){

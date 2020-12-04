@@ -7,7 +7,7 @@ function drawFloorPlans(d, dselection){
     var r = 26;
     var colNum = 0;
     var rowNum = 0;
-    var rectPerRow = 3;
+    var rectPerRow = 4;
     var padding = 6;
     var strokewidth = 1;
     function incrementCol(){
@@ -255,13 +255,13 @@ function updateOccupantColors(){
 function populateDetails(){
         //add row details 
         d3.selectAll('.detail-stats').each(function(d,i){
-            var txtweight = 'Pct Representation: ' + Math.round(d.weightPct * 100)/100 + '%';
-            var txtpersons = 'Persons Represented: ' + d.weightPersons;
+            var txtweight = '% Persons: ' + Math.round(d.weightPct * 100)/100 + '%';
+            var txtpersons = 'Number Persons: ' + d.weightPersons;
             var txtrent = '';
             if (d.statsRent){
-                txtrent = 'Median Rent: $' + d.statsRent;
+                txtrent = 'Rent Avg: $' + d.statsRent;
             };
-            var txtincome = 'Median Household Income: $' + d.statsIncome;
+            var txtincome = 'House Income Avg: $' + d.statsIncome;
             var txtstats = '<div>' + txtweight + '<br>' + txtpersons + '<br>' + txtincome + '<br>' + txtrent + '</div>';
             var planVis = d3.select(this).html(txtstats);
             
