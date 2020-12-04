@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 
 async function parseTabularData(){
-    await d3.csv('./data/acsTEST.json').then((arr) => {
+    await d3.csv('./data/acsallbor.json').then((arr) => {
 
         //data from ACS comes in at person level. need to change to household level
         var dedupeCluster = d3.groups(arr, d=> d['[["WGTP"']+d.GRNTP+d.HINCP+d.NRC+d.NP);
