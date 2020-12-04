@@ -1,4 +1,5 @@
 
+
 function populateCardBody(d, dnode){
     //populate card bodies
     var statobj = [
@@ -160,20 +161,31 @@ function housingDrilldown(){
     table = d3.select('.housing-data tbody');
     var currDataDetail = getCurrentData().detail;
 
+    var transitionTime = 700;
     var houseRows = table.selectAll('.row-house').data(currDataDetail, d=> {return d.geo + '-' + d.weightPersons})
     .join(enter => {
 
-        houseRows = enter.append('tr').attr('class', 'row-house');
-        houseRows.each(function(d, i){
-            var currRow = d3.select(this);
-            currRow.append('td').attr('class', 'row-structure').each(function(d){drawFloorPlans(d, d3.select(this))})
-            //currRow.append('td').attr('class', 'row-occupants');
-            currRow.append('td').attr('class', 'row-details').append('div').attr('class', 'detail-stats');                
-        });
-        updateOccupantColors();
-        populateDetails();
+            houseRows = enter.append('tr').attr('class', 'row-house').style('opacity', '0').transition().duration(transitionTime).style('opacity', '1');
+            houseRows.each(function(d, i){
+                var currRow = d3.select(this);
+                currRow.append('td').attr('class', 'row-structure').each(function(d){drawFloorPlans(d, d3.select(this))})
+                //currRow.append('td').attr('class', 'row-occupants');
+                currRow.append('td').attr('class', 'row-details').append('div').attr('class', 'detail-stats');                
+            });
+            updateOccupantColors();
+            populateDetails();
 
-    });
+        },
+        update => {
+            update.transition().duration(transitionTime).style('opacity', '1');
+        }, 
+        exit => {
+            exit.transition().duration(transitionTime).style('opacity', '0').on('end', exit.remove());
+            
+            //.on('end', d=> d3.select(d).remove());
+        }
+    
+    );
 
     //sort functionality
 

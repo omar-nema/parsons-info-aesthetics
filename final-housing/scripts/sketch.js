@@ -1,11 +1,10 @@
-
-
 async function draw(){
     d3.select('.housing-overlay').classed('active', false);
     await generateCards(getCurrentData().map);
     return;
-    // addTooltips();
 }
+
+
 
 var selectedPumaId;
 var selectedPumaName;
@@ -93,8 +92,6 @@ function filterCurrentDataDetail(){
         } 
     })
 }
-
-
 function getCurrentData(){
     return {
         map: currData,
@@ -105,19 +102,10 @@ function getCurrentData(){
         id: selectedPumaId
     }
 }
-
-
-
 function filterDataByBorough(bor){
     var allbor = getOrigData().array;
     return allbor.filter(d=> d[1].borough == bor );
 }
-
-
-
-
-
-
 function initSearch(){
     //setup before functions
     var input = d3.select('input.search');
