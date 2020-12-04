@@ -90,7 +90,7 @@ function drawFloorPlans(d, dselection){
         sv.style('height', ht)
     }
 
-
+    //tooltips
     d3.selectAll('.housing-unit')
     .on('mouseover',function(e){
         hd = d3.select(this).data()[0];
@@ -105,7 +105,6 @@ function drawFloorPlans(d, dselection){
 
     d3.selectAll('.house-head')
     .on('mouseover', function(e){
-        console.log('steady mousin');
         showTooltip('<img style="margin: -8.5px -13.5px" src="./legend-room.svg"/>',e)
     })
     .on('mouseout', hideTooltip);
@@ -116,10 +115,9 @@ function drawFloorPlans(d, dselection){
         showTooltip(tiptext, e);
     })
     .on('mouseout', hideTooltip);
- 
-
 
 }
+
 
 
 function updateOccupantColors(){

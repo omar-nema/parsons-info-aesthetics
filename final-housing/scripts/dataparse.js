@@ -232,6 +232,9 @@ async function parseTabularData(){
             statarr = allGeoMedians[statgrp];
             statarr.sort((a,b)=>  d3.ascending(a,b));
         };
+        console.log(allGeoMedians, d3.quantile(allGeoMedians.incomes, .25), d3.quantile(allGeoMedians.incomes, .5), d3.quantile(allGeoMedians.incomes, .75))
+        console.log(allGeoMedians, d3.quantile(allGeoMedians.personsPerRoom, .25), d3.quantile(allGeoMedians.personsPerRoom, .5), d3.quantile(allGeoMedians.personsPerRoom, .75))
+        console.log(allGeoMedians, d3.quantile(allGeoMedians.rent, .25), d3.quantile(allGeoMedians.rent, .5), d3.quantile(allGeoMedians.rent, .75));
         var incomelen = allGeoMedians.incomes.length;
         var rentlen = allGeoMedians.rent.length;
         var personsperlen = allGeoMedians.personsPerRoom.length;
@@ -306,6 +309,7 @@ async function init(){
     createComparisonData();
     await draw(dataCleaned);
     initSearch();
+    initFilters();
     initBoroughSelector();
     updateNav();
    

@@ -425,7 +425,7 @@ textarea:focus, input:focus{
         background: $color-bg-content;
         padding: 20px 30px;
         border: 1px solid transparent;
-        @extend .transitionFade;
+        transition: all .1s linear;
     }
 
     .card.active {
@@ -504,14 +504,39 @@ textarea:focus, input:focus{
     margin-bottom: $margin-large;
 }
 
-
-
 .pane-right {
     position: relative;
     margin-left: auto;
     overflow: hidden;
     background:  transparent;
 
+
+    .card-filters {
+        margin-top: 25px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .filter {
+        flex-basis: 22%;
+    }
+    select {
+        font-size: 14px;
+        background: black;
+        color: white;
+        border: none;
+        padding: 3px 5px;
+        border-radius: 3px;
+        width: 100%;
+        text-overflow: ellipsis;
+        margin-top: 3px;
+        @extend .clickable;
+    }
+    label {
+        font-size: 12px;
+        color: $color-label;
+    }
   
     .housing-underlay{ 
         opacity: 0.7;

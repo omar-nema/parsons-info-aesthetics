@@ -159,6 +159,7 @@ function housingDrilldown(){
 
     table = d3.select('.housing-data tbody');
     var currDataDetail = getCurrentData().detail;
+
     var houseRows = table.selectAll('.row-house').data(currDataDetail, d=> {return d.geo + '-' + d.weightPersons})
     .join(enter => {
 
@@ -169,11 +170,46 @@ function housingDrilldown(){
             //currRow.append('td').attr('class', 'row-occupants');
             currRow.append('td').attr('class', 'row-details').append('div').attr('class', 'detail-stats');                
         });
-        ///calls functions from sketch-housing file
-        //drawFloorPlans();
         updateOccupantColors();
         populateDetails();
 
     });
+
+    //sort functionality
+
+
+
+    d3.select('#sort').on('change', function(d){
+        var sortSel = d3.select(this).node().value;
+        var houseRows = d3.selectAll('.row-house')
+        if (sortSel == 'income'){
+            houseRows.sort((a,b)=>  b.statsIncome - a.statsIncome);
+        }
+        else if (sortSel == 'rent'){
+            houseRows.sort((a,b)=>  b.statsRent - a.statsRent);
+        }  
+        else if (sortSel == 'rep'){
+            houseRows.sort((a,b)=>  b.weightPersons - a.weightPersons);
+        }                 
+    });
+
+    d3.selectAll('.select-filter').on('change', function(d){
+        var occNode = d3.select(this).node();
+        var sortSel = d3.select(this).node().value;
+        var selectedItem = occNode.children[occNode.selectedIndex];
+        var minVal = parseInt(d3.select(selectedItem).attr('min'));
+        var maxVal = parseInt(d3.select(selectedItem).attr('max'));
+        updateFilter(d3.select(this).attr('id'), minVal, maxVal);
+        housingDrilldown();
+    });
+
+
+
+
+
+    //filter functionality
+    //get current data and filter
+    //set current data
+    //call housing drilldown again
 
 };

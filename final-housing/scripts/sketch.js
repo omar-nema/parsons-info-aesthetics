@@ -12,6 +12,7 @@ var selectedPumaName;
 var pumaIdMap = new Map();
 var pumaSelect;
 var currDataDetail, currDataStats, selectedPumaName, selectedPumaId;
+var currDataDetailOriginal;
 
 //name lookup helpers
 function shortPumaNameById(pumaid){
@@ -50,6 +51,7 @@ function setCurrentData(pumainput){
         currDataMap.set(selectedPumaId, dataToSet);
         currData = currDataMap;
         currDataDetail = dataToSet.detail;
+        currDataDetailOriginal = dataToSet.detail;
         currDataStats = dataToSet.stats;
     } else {
         currData = getOrigData().map;
@@ -57,10 +59,47 @@ function setCurrentData(pumainput){
         currDataStats = null;
     }
 }
+
+var filters = new Map();
+function initFilters(){
+    var filterTypes = ['personsNum', 'statsRent', 'statsIncome'];
+    
+    filterTypes.forEach(d=>{
+        filters.set(d, {min: null, max: null});
+    })
+}
+function updateFilter(type, min, max){
+    var filterToUpdate = filters.get(type);
+    if (min == ''){
+        filterToUpdate.min =  null;
+    } else {
+        filterToUpdate.min = min;
+    }
+    if (max == ''){
+        filterToUpdate.max = null;
+    } else {
+        filterToUpdate.max = max;
+    } ;
+    filterCurrentDataDetail();
+}
+
+//does not auto reset when nulls are given
+function filterCurrentDataDetail(){
+    var currDataReplica = currDataDetailOriginal.map(d => d);
+    currDataDetail = currDataReplica;
+    filters.forEach((val, key) => {
+        if (val.min || val.max){
+            currDataDetail = currDataDetail.filter(d => d[key] > val.min && d[key] <= val.max )
+        } 
+    })
+}
+
+
 function getCurrentData(){
     return {
         map: currData,
         detail: currDataDetail,
+        detailOriginal: currDataDetailOriginal,
         stats: currDataStats,
         name: selectedPumaName,
         id: selectedPumaId

@@ -70,13 +70,54 @@
                <div class="housing-overlay">
                   <div class="card-header">
                      <div>
-                        Occupany Detail
+                        Occupany Detail<span class="info-icon">?</span>
                      </div>
                      <div class="overlay-close">
                         Close
                      </div>
                   </div>
-                  <div class="pane-overview">Shown below are living arrangements in the selected metro area, ordered by representation. Each combination of persons, bedrooms, and other rooms in a household constitute a distinct 'living arrangement'.</div>
+                  <!-- <div class="pane-overview">Shown below are living arrangements in the selected metro area, ordered by representation. Each combination of persons, bedrooms, and other rooms in a household constitute a distinct 'living arrangement'.</div> -->
+                  <div class="card-filters">
+                     <div class="filter">
+                        <label for="sort">Sort By</label>
+                        <select name="sort" id="sort">
+                           <option value="rep">Persons Represented</option>
+                           <option value="income">Income</option>
+                           <option value="rent">Rent</option>
+                        </select>
+                     </div>
+                     <div class="filter">
+                        <label for="personsNum">Occupants</label>
+                        <select class="select-filter" id="personsNum">
+                           <option min='' max=''>All</option>
+                           <option min='0' max='1'>1 person</option>
+                           <option min='1' max='2'>2 persons</option>
+                           <option min='2' max='3'>3 persons</option>
+                           <option min='3' max='5'>4 persons</option>
+                           <option min='4' max=''>5+ persons</option>
+                        </select>
+                     </div>                      
+                     <div class="filter">
+                        <label for="statsRent">Rent Filter</label>
+                        <select class="select-filter"  id="statsRent">
+                           <option  min='' max=''>All</option>
+                           <option  min='0' max='1305'> $0 - $1,305 (q1) </option>
+                           <option  min='1305' max='1480'> $1,305 - $1480 (q2) </option>
+                           <option  min='1480' max='1765'> $1480 (q3) </option>
+                           <option  min='1765' max=''> $1765+ (q4) </option>
+                        </select>
+                     </div>       
+                     <div class="filter">
+                        <label for="statsIncome">Income Filter</label>
+                        <select class="select-filter"  id="statsIncome">
+                           <option min='' max=''>All</option>
+                           <option min='0' max='51000'> $0 - $51,000 (q1) </option>
+                           <option min='51000' max='69360'> $51,000 - 69,360 (q2) </option>
+                           <option min='69360' max='85250'> $69,360 - 85,250 (q3) </option>
+                           <option min='85250' max=''> $85,250+ (q4) </option>
+                        </select>
+                     </div>                                                            
+                  </div>
                   <div class="card-body">
                      <table class="housing-data">
                         <thead class="table-header">
