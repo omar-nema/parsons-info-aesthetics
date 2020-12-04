@@ -82,7 +82,6 @@ function filterDataByBorough(bor){
 function initSearch(){
     //setup before functions
     var input = d3.select('input.search');
-
     input.on('click', (e)=> {
         updateSearchState(true);
     })
@@ -116,7 +115,7 @@ function initSearch(){
         var idResults = pn.filter(d=> d[0].toLowerCase().includes(userString)).map(d=> d[1]);
         idResults.forEach(d=> {
             var card = d3.select('#metro-'+d.toString())
-
+            console.log(card);
             card.classed('disabled', false)
             card.style('visibility', 'visible').style('opacity', '1').style('height', 'auto')
         })

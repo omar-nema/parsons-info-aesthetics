@@ -15,13 +15,15 @@ function updateNav(){
 
     var bor = 'brooklyn';
     if (navPage == 'landing' && !searchState){
-        draw(getOrigData().map)
+        setCurrentData();
+        draw();
         d3.select('.back-btn').classed('disabled', true);
         d3.select('.bor-holder').classed('disabled', false);
         d3.selectAll('.card.neighb').classed('disabled', true);
     }
     else if (navPage == 'landing' && searchState){
         d3.select('.bor-holder').classed('disabled', true);
+        d3.select('.back-btn').classed('disabled', true);
     }
     else if (navPage == 'bor' && !searchState){
         d3.select('.back-btn').classed('disabled', false);
