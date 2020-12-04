@@ -172,31 +172,7 @@ function addTooltips(){
         hideTooltip();
     });
 
-    d3.selectAll('.housing-unit')
-    .on('mouseover',function(e){
-        hd = d3.select(this).data()[0];
-        var txtbeds = hd.houseBed + ' bedrooms';
-        var personsPerRoom = Math.round(hd.personsNum/hd.houseBed * 10) / 10 ;
-        var txtoccupants = hd.personsNum + ' occupants, ' + personsPerRoom + ' per room';
-        var txtrooms = hd.houseRoom + ' total rooms'; 
-        var tiptext = '<div class="tip-header">Housing Structure Detail</div><div>' + txtoccupants + '<br>' + txtbeds + '<br>' +  txtrooms +'</div>'
-        showTooltip(tiptext, e);
-    })
-    .on('mouseout', hideTooltip);
-
-    d3.selectAll('.house-head')
-    .on('mouseover', function(e){
-        showTooltip('<img style="margin: -8.5px -13.5px" src="./legend-room.svg"/>',e)
-    })
-    .on('mouseout', hideTooltip);
-
-    d3.selectAll('.demo-head')
-    .on('mouseover', function(e){
-        var tiptext = '<div>Household demographic information for unique combination of occupant composition (quantity and age), and room structure.</div>'
-        showTooltip(tiptext, e);
-    })
-    .on('mouseout', hideTooltip);
- 
+    
 
     d3.selectAll('.occ-head')
     .on('mouseover', function(e){

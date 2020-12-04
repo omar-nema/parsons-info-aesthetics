@@ -294,7 +294,7 @@ textarea:focus, input:focus{
     line-height: 1.1rem;
     transition: opacity .15s ease-in-out, box-shadow .15s ease-in-out;
     opacity: 0;
-    z-index: 1000;
+    z-index: 10000000;
 }
 .tip-header {
     font-size: 14px;
@@ -531,6 +531,10 @@ textarea:focus, input:focus{
         width: 100%;
         transform: translate(0, -50%);
         text-align: center;
+    }
+
+    .housing-unit {
+        @extend .clickable;
     }
 
     .pane-overview {
