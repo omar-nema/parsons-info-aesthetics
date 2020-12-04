@@ -63,13 +63,14 @@
 }
 
 .disabled {
-  margin: 0;
-  padding: 0;
-  height: 0;
-  opacity: 0;
-  visibility: hidden;
-  overflow: hidden;
-  display: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  overflow: hidden !important;
+  border: none !important;
+  min-height: 0 !important;
 }
 
 * {
@@ -78,12 +79,17 @@
           box-sizing: border-box;
 }
 
-.transitionFade, .card-page, .pane .card {
+.standardTrans, .bor-holder, .card-page {
+  -webkit-transition: visibility .2s ease-in-out, opacity .2s ease-in-out, height .3s linear, min-height .3s linear;
+  transition: visibility .2s ease-in-out, opacity .2s ease-in-out, height .3s linear, min-height .3s linear;
+}
+
+.transitionFade, .pane .card {
   -webkit-transition: visiblity 0s ease-in-out, opacity .3s ease-in-out, height .3s linear;
   transition: visiblity 0s ease-in-out, opacity .3s ease-in-out, height .3s linear;
 }
 
-.transitionDisable, .landing.disabled, .card-page.disabled {
+.transitionDisable, .landing.disabled {
   visibility: hidden;
   opacity: 0;
   height: 0;
@@ -185,10 +191,9 @@ h1 {
 }
 
 .bor-holder {
-  -webkit-transition: visibility 0s ease-in-out, opacity .3s ease-in-out;
-  transition: visibility 0s ease-in-out, opacity .3s ease-in-out;
-  -webkit-animation: fadeIn .15s;
-          animation: fadeIn .15s;
+  visibility: visible;
+  opacity: 1;
+  min-height: 100px;
 }
 
 .bor-selector {

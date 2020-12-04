@@ -28,13 +28,14 @@ $margin-large: 30px;
 
 
 .disabled {
-    margin: 0;
-    padding: 0;
-    height: 0;
-    opacity: 0;
-    visibility: hidden;
-    overflow: hidden;
-    display: none;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    overflow: hidden !important;
+    border: none !important;
+    min-height: 0 !important;
 }
 
 
@@ -42,6 +43,10 @@ $margin-large: 30px;
 * {
     font-family: 'Work Sans', sans-serif;
     box-sizing: border-box;
+}
+
+.standardTrans {
+    transition: visibility .2s ease-in-out, opacity .2s ease-in-out, height .3s linear, min-height .3s linear;
 }
 
 .transitionFade {
@@ -145,8 +150,10 @@ h1 {
 
 
 .bor-holder {
-    transition: visibility 0s ease-in-out, opacity .3s ease-in-out;
-    animation: fadeIn .15s;
+    visibility: visible;
+    opacity: 1;
+    min-height: 100px;
+    @extend .standardTrans;
 }
 .bor-selector {    
     visibility: visible;
@@ -356,12 +363,10 @@ textarea:focus, input:focus{
 .card-page {
     visibility: inherit;
     opacity: 1;
-    @extend .transitionFade;
+    @extend .standardTrans;;
     height: 98%;
 }
-.card-page.disabled {
-    @extend .transitionDisable;
-}
+
 
 .card-holder {
     height: 98%;

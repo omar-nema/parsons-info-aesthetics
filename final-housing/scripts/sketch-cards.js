@@ -55,14 +55,14 @@ function populateCardBody(d, dnode){
 
 
             //add curr value dot
-            var colorScale = d3.scaleDiverging(d3.interpolatePiYG).domain([0,50, 100]);
+            //var colorScale = d3.scaleDiverging(d3.interpolatePiYG).domain([0,50, 100]);
             var currval = d[1].stats[statobj.value];
             var leftamt = d[1].stats[statobj.percentileval];
             var scaleamt = (statobj.scaledir == 1) ? leftamt: 100-leftamt;
 
             d3.select(this).append('div').attr('class', 'statval currval')
                 .style('left', leftamt + '%')
-                .style('background', d=>colorScale(scaleamt))
+                .style('background', '#7dabe4')
             ;
         })
     });      
