@@ -11,9 +11,13 @@ function updateNavPage(page){
     updateNav();
 };
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+};
+  
+
 function updateNav(){
 
-    var bor = 'brooklyn';
     if (navPage == 'landing' && !searchState){
         setCurrentData();
         draw();
@@ -26,22 +30,21 @@ function updateNav(){
         d3.select('.back-btn').classed('disabled', true);
     }
     else if (navPage == 'bor' && !searchState){
+        d3.select('.inner-nav .card-explain').html(`Search for metro areas in ${capitalizeFirstLetter(bor)}`)        
         d3.select('.back-btn').classed('disabled', false);
         d3.select('.bor-holder').classed('disabled', true);
         d3.selectAll('.card.neighb').classed('disabled', false);
-        d3.select('.card-explain').html(`Search for metro areas in ${bor}`)
+        bor = capitalizeFirstLetter(bor);
     } 
 }
 
 
 var pageNav = 'landing';
-//landing, search, borough
-
-
+var bor = '';
 function initBoroughSelector(){
     
     d3.selectAll('.btn-bor').on('click', function(d){
-        var bor = d3.select(this).attr('bor');
+        bor = d3.select(this).attr('bor');
         d3.select('.pane-neighb').attr('page', 'bor');
         var borData = filterDataByBorough(bor);     
         generateCards(borData);
