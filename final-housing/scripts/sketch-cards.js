@@ -1,3 +1,5 @@
+const { exists } = require("fs");
+
 function populateCardBody(d, dnode){
     //populate card bodies
     var statobj = [
@@ -82,6 +84,12 @@ function generateCards(datadetail){
             cardData = cards.append('div').attr('class', 'card-data').each(function(d){populateCardBody(d, d3.select(this))});
             //footer
             // cards.append('div').attr('class', 'card-details flat-btn').html('View Details');
+        },
+        update => {
+            // update.style('background', 'blue')
+        },
+        exit => {
+            exit.classed('disabled', true);
         }
     );
 
