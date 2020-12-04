@@ -563,7 +563,7 @@ textarea:focus, input:focus {
 }
 
 .card-data-pt .statval.currval {
-  background: #076094;
+  background: #c1d4de;
 }
 
 .card-data-pt .statval.marker {
@@ -573,7 +573,7 @@ textarea:focus, input:focus {
   height: 4px;
   -webkit-box-shadow: none;
           box-shadow: none;
-  background: #70b4dc;
+  background: #585858;
   border: none;
 }
 
