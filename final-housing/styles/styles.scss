@@ -83,7 +83,6 @@ h1 {
     font-size: 22px;
     color: #a09696;
     text-align: center;
-    text-decoration: underline;
 }
 .content {
     width: 87%;
@@ -365,6 +364,7 @@ textarea:focus, input:focus{
 .card-page {
     visibility: inherit;
     opacity: 1;
+    background: $color-bg;
     @extend .standardTrans;;
     height: 98%;
 }
