@@ -380,6 +380,7 @@ textarea:focus, input:focus {
 .card-explain {
   margin-bottom: 15px;
   font-weight: 16px;
+  color: #eae8e8;
 }
 
 .inner-nav {
