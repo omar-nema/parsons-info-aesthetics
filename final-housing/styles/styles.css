@@ -120,8 +120,10 @@ body {
 
 h1 {
   font-weight: 500;
-  font-size: 24px;
+  font-size: 22px;
   color: #a09696;
+  text-align: center;
+  text-decoration: underline;
 }
 
 .content {
@@ -239,7 +241,7 @@ h1 {
   right: 20px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  color: #F587EA;
+  color: white;
   -webkit-transition: all .15s linear;
   transition: all .15s linear;
   cursor: pointer;

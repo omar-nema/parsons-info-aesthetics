@@ -18,14 +18,17 @@ function capitalizeFirstLetter(string) {
 
 function updateNav(){
 
+ 
     if (navPage == 'landing' && !searchState){
         setCurrentData();
         draw();
+        d3.select('.inner-nav .card-explain').html(`Search for housing stats on any NYC neighborhood`)  
         d3.select('.back-btn').classed('disabled', true);
         d3.select('.bor-holder').classed('disabled', false);
         d3.selectAll('.card.neighb').classed('disabled', true);
     }
     else if (navPage == 'landing' && searchState){
+        d3.select('.inner-nav .card-explain').html(`Search for housing stats on any NYC neighborhood`)   
         d3.select('.bor-holder').classed('disabled', true);
         d3.select('.back-btn').classed('disabled', true);
     }
