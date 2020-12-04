@@ -62,7 +62,6 @@ function populateCardBody(d, dnode){
 
             d3.select(this).append('div').attr('class', 'statval currval')
                 .style('left', leftamt + '%')
-                .style('background', '#7dabe4')
             ;
         })
     });      
