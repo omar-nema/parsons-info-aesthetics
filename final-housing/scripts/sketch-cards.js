@@ -207,7 +207,7 @@ function housingDrilldown(){
         var selectedItem = occNode.children[occNode.selectedIndex];
         var minVal = parseInt(d3.select(selectedItem).attr('min'));
         var maxVal = parseInt(d3.select(selectedItem).attr('max'));
-        if (typeof(minVal) == 'number' || typeof(maxVal) == 'number' ){
+        if (minVal > -1 || maxVal > -1 ){
             d3.select(this).classed('active', true);
         } else {
             d3.select(this).classed('active', false);
