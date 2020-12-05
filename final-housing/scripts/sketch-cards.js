@@ -156,6 +156,7 @@ function cardSelection(sel, pumaid){
 }
 
 
+
 function housingDrilldown(){
 
     table = d3.select('.housing-data tbody');

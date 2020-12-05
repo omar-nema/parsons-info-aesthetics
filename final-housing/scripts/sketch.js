@@ -42,6 +42,7 @@ function cleanPumaName(sel){
 }
 //get and set
 function setCurrentData(pumainput){
+    resetHousingFilters();
     if (pumainput){
         selectedPumaId = parseInt(pumainput);
         selectedPumaName = shortPumaNameById(pumainput) 
@@ -81,6 +82,14 @@ function updateFilter(type, min, max){
     } ;
     filterCurrentDataDetail();
 }
+function resetHousingFilters(){
+    d3.selectAll('.select-filter').each(function(d){
+        d3.select(this).classed('active', false);
+        d3.select(this).node().selectedIndex = 0;
+    })
+}
+
+
 
 //does not auto reset when nulls are given
 function filterCurrentDataDetail(){
