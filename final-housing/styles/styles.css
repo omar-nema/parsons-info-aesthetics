@@ -95,17 +95,17 @@
   height: 0;
 }
 
-.clickable.light:hover, .bor-selector .light.btn-bor:hover, .inner-nav .light.back-btn:hover, .card-nav .light.back-btn:hover, .pane .card.metro:hover, .pane-right select.light:hover, .pane-right .light.housing-unit:hover {
+.clickable.light:hover, .bor-selector .light.btn-bor:hover, .inner-nav .light.back-btn:hover, .card-nav .light.back-btn:hover, .pane .card.metro:hover, .pane-right select.light:hover, .pane-right .light.housing-unit:hover, .pane-right .housing-overlay .card-header .light.housing-detail:hover {
   opacity: 0.9;
 }
 
-.clickable, .bor-selector .btn-bor, .inner-nav .back-btn, .card-nav .back-btn, .pane-right select, .pane-right .housing-unit {
+.clickable, .bor-selector .btn-bor, .inner-nav .back-btn, .card-nav .back-btn, .pane-right select, .pane-right .housing-unit, .pane-right .housing-overlay .card-header .housing-detail {
   cursor: pointer;
   -webkit-transition: opacity .1s linear;
   transition: opacity .1s linear;
 }
 
-.clickable:hover, .bor-selector .btn-bor:hover, .inner-nav .back-btn:hover, .card-nav .back-btn:hover, .pane-right select:hover, .pane-right .housing-unit:hover {
+.clickable:hover, .bor-selector .btn-bor:hover, .inner-nav .back-btn:hover, .card-nav .back-btn:hover, .pane-right select:hover, .pane-right .housing-unit:hover, .pane-right .housing-overlay .card-header .housing-detail:hover {
   opacity: 0.7;
 }
 

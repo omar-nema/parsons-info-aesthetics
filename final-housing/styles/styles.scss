@@ -617,9 +617,14 @@ textarea:focus, input:focus{
         top: 0;
         left: 0;
 
+        .card-header .housing-detail {
+            @extend .clickable;
+        };
+
         .card-header {
             display: flex;
             justify-content: space-between;
+          
             .overlay-close {
                 cursor: pointer;
                 transition: all .15s linear;

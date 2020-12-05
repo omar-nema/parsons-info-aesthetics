@@ -62,6 +62,7 @@ function initUI(){
     initSearch();
     initBoroughSelector();
     initNavTabs();
+    initTooltips();
     updateNav();
 }
 var pageNav = 'landing';
@@ -101,6 +102,14 @@ function initNavTabs(){
 
     });
 };
+function initTooltips(){
+    d3.select('.housing-detail').on('mouseover', function(e){
+        var tipdata = 'Shown below are living arrangements in the selected metro area, ordered by representation (items higher on the list are more common). Each combination of adults, children, and rooms in a household constitute a distinct living arrangement. ' 
+        showTooltip(tipdata, e);
+    })
+    .on('mouseout', hideTooltip);
+}
+
 //included in UI b/c it does not actually filter, it's just hiding and showing elements that exist
 function initSearch(){
     //setup before functions
