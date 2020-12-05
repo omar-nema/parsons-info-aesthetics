@@ -1,23 +1,22 @@
-// const { stat } = require("fs");
+// 1) Parse data and create map + array, with getter and setter
+// 2) Initialize sketching
 
-
-var dataCleaned = new Map();
 document.addEventListener("DOMContentLoaded", async function() {
-
     await createPumaIdMap();
     await parseTabularData();
     await addHighlightData();
-    init();
-
+    setCurrentData();
+    console.log('processed data ', dataCleaned)
+    createComparisonData();
+    initFilters();
+    initUI();
 });
 
 
-
-
-
+//core data parsing functions
+var dataCleaned = new Map();
 async function parseTabularData(){
     await d3.csv('./data/acsallbor.json').then((arr) => {
-
         //data from ACS comes in at person level. need to change to household level
         var dedupeCluster = d3.groups(arr, d=> d['[["WGTP"']+d.GRNTP+d.HINCP+d.NRC+d.NP);
         console.log('raw data ',arr);
@@ -220,7 +219,7 @@ async function parseTabularData(){
             var detailObj = {
                 detail: geoDetail,
                 stats: summaryStats,
-                borough: getBorough(geoKey)
+                borough: helperGetBorough(geoKey)
             }
             dataCleaned.set(parseInt(geoKey), detailObj);
 
@@ -232,9 +231,6 @@ async function parseTabularData(){
             statarr = allGeoMedians[statgrp];
             statarr.sort((a,b)=>  d3.ascending(a,b));
         };
-        console.log(allGeoMedians, d3.quantile(allGeoMedians.incomes, .25), d3.quantile(allGeoMedians.incomes, .5), d3.quantile(allGeoMedians.incomes, .75))
-        console.log(allGeoMedians, d3.quantile(allGeoMedians.personsPerRoom, .25), d3.quantile(allGeoMedians.personsPerRoom, .5), d3.quantile(allGeoMedians.personsPerRoom, .75))
-        console.log(allGeoMedians, d3.quantile(allGeoMedians.rent, .25), d3.quantile(allGeoMedians.rent, .5), d3.quantile(allGeoMedians.rent, .75));
         var incomelen = allGeoMedians.incomes.length;
         var rentlen = allGeoMedians.rent.length;
         var personsperlen = allGeoMedians.personsPerRoom.length;
@@ -251,16 +247,6 @@ async function parseTabularData(){
         return dataCleaned;
     });  
 };
-
-function getBorough(pumaid){
-    var sel = getPumaIdMap().get(parseInt(pumaid));
-    var boroughStart = sel.indexOf('-')
-    var boroughEnd = sel.indexOf(' ');
-    var borough = sel.substring(boroughStart, boroughEnd).replace('-', '');
-    return borough.toLowerCase();
-}
-
-//get exreme neighborhoods for highlights section - i.e. lowest rent, highest income, etc
 function addHighlightData(){
 
     var dataCleanedArray = Array.from(dataCleaned);
@@ -302,37 +288,7 @@ function addHighlightData(){
 }
 
 
-
-async function init(){
-    console.log('processed data ', dataCleaned)
-    setCurrentData();
-    createComparisonData();
-    await draw(dataCleaned);
-    initSearch();
-    initFilters();
-    initBoroughSelector();
-    updateNav();
-   
-}
-
-function helperGetHighlightString(statKey, statData){
-   
-    var highlightString ='';
-    var neighborhood = longPumaNameById(statData.metro);
-    var qualifier = (statData.qualifier == 'min') ? "lowest": "highest";
-    var value = statData.value;
-    var median = statData.median;
-    if (statKey == 'rentMedian'){
-        highlightString = `Residents of ${neighborhood} pay the ${qualifier} in rent: $${value} as compared to a median of $${median}.`;
-    } else if (statKey == 'incomeMedian'){
-        highlightString = `${neighborhood} has the ${qualifier} average income: $${value} as compared to a median of $${median}.`;
-    } else if (statKey == 'personsPerRoomMean'){
-        var qualifier = (statData.qualifier == 'min') ? "least": "most";
-        highlightString = `${neighborhood} is the ${qualifier} crowded neighorhood, with ${value} occupants per room (as compared to a median of ${median}).`;
-    }
-    return highlightString;
-}
-
+//get and set: orig data, comparison data, puma id to name map
 var pumaIdMap;
 var pumaNames = new Map();
 async function createPumaIdMap(){
@@ -346,17 +302,12 @@ async function createPumaIdMap(){
         return pumaIdMap;
     });
 };
-
 function getPumaNames(){
     return pumaNames;
 }
-
 function getPumaIdMap(){
     return pumaIdMap;
 };
-
-
-//get comparison data in neighborhood view
 var comparisonData;
 function createComparisonData(){
     var dataCleanedArray = Array.from(dataCleaned);
@@ -376,7 +327,6 @@ function createComparisonData(){
 function getComparisonData(){
     return comparisonData;
 }
-
 function getOrigData(){
     return {
         map: dataCleaned,
@@ -385,3 +335,28 @@ function getOrigData(){
 }
 
 
+//helpers for parsing data
+function helperGetBorough(pumaid){
+    var sel = getPumaIdMap().get(parseInt(pumaid));
+    var boroughStart = sel.indexOf('-')
+    var boroughEnd = sel.indexOf(' ');
+    var borough = sel.substring(boroughStart, boroughEnd).replace('-', '');
+    return borough.toLowerCase();
+}
+function helperGetHighlightString(statKey, statData){
+   
+    var highlightString ='';
+    var neighborhood = longPumaNameById(statData.metro);
+    var qualifier = (statData.qualifier == 'min') ? "lowest": "highest";
+    var value = statData.value;
+    var median = statData.median;
+    if (statKey == 'rentMedian'){
+        highlightString = `Residents of ${neighborhood} pay the ${qualifier} in rent: $${value} as compared to a median of $${median}.`;
+    } else if (statKey == 'incomeMedian'){
+        highlightString = `${neighborhood} has the ${qualifier} average income: $${value} as compared to a median of $${median}.`;
+    } else if (statKey == 'personsPerRoomMean'){
+        var qualifier = (statData.qualifier == 'min') ? "least": "most";
+        highlightString = `${neighborhood} is the ${qualifier} crowded neighorhood, with ${value} occupants per room (as compared to a median of ${median}).`;
+    }
+    return highlightString;
+}

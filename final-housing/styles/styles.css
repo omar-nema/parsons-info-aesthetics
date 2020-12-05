@@ -79,7 +79,7 @@
           box-sizing: border-box;
 }
 
-.standardTrans, .bor-holder, .card-page {
+.standardTrans, .bor-holder, .card-page, .pane-right .housing-overlay {
   -webkit-transition: visibility .2s ease-in-out, opacity .2s ease-in-out, height .3s linear, min-height .3s linear;
   transition: visibility .2s ease-in-out, opacity .2s ease-in-out, height .3s linear, min-height .3s linear;
 }
@@ -494,8 +494,6 @@ textarea:focus, input:focus {
   background: #353838;
   padding: 20px 30px;
   border: 1px solid transparent;
-  -webkit-transition: all .1s linear;
-  transition: all .1s linear;
 }
 
 .pane .card.active {
@@ -699,8 +697,6 @@ textarea:focus, input:focus {
   background: #353838;
   width: 100%;
   height: 100%;
-  -webkit-transition: all .2s linear;
-  transition: all .2s linear;
   padding: 20px 30px;
   opacity: 0;
   pointer-events: none;
@@ -792,6 +788,12 @@ textarea:focus, input:focus {
   overflow-x: hidden;
   font-size: 14px;
   height: calc(100vh - 350px);
+  -webkit-transition: opacity .1s ease-in-out;
+  transition: opacity .1s ease-in-out;
+}
+
+.pane-right .housing-overlay table tbody.loading {
+  opacity: 0;
 }
 
 .pane-right .housing-overlay table tbody td, .pane-right .housing-overlay table thead th {

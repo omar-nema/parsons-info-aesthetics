@@ -3,8 +3,6 @@
    <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
       <title>sketch</title>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"/>
-      <link rel="stylesheet" type="text/css" href="./styles/autocomplete.min.css">
       <link rel="stylesheet" type="text/css" href="./styles/styles.css">
    </head>
    <!-- <div class="tooltip">a real tip yes</div> -->
@@ -87,7 +85,7 @@
                         </select>
                      </div>
                      <div class="filter">
-                        <label for="personsNum">Occupants</label>
+                        <label for="personsNum">Filter Persons</label>
                         <select class="select-filter" id="personsNum">
                            <option min='' max=''>All</option>
                            <option min='0' max='1'>1 person</option>
@@ -98,7 +96,7 @@
                         </select>
                      </div>                      
                      <div class="filter">
-                        <label for="statsRent">Rent Filter</label>
+                        <label for="statsRent">Filter Rent</label>
                         <select class="select-filter"  id="statsRent">
                            <option  min='' max=''>All</option>
                            <option  min='0' max='1305'> $0 - $1,305 (q1) </option>
@@ -108,7 +106,7 @@
                         </select>
                      </div>       
                      <div class="filter">
-                        <label for="statsIncome">Income Filter</label>
+                        <label for="statsIncome">Filter Income</label>
                         <select class="select-filter"  id="statsIncome">
                            <option min='' max=''>All</option>
                            <option min='0' max='51000'> $0 - $51,000 (q1) </option>
@@ -139,13 +137,11 @@
       </div>
    </body>
 </html>
-<!-- <script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script> -->
-<script src="./scripts/autocomplete.min.js"></script>
+
 <script src="https://d3js.org/d3.v6.min.js"></script>
-<!-- <script src="scripts/list.min.js"></script> -->
 <script src='./scripts/ui.js'></script>
 <script src='./scripts/dataparse.js'></script>
-<script src='./scripts/sketch.js'></script>
+<script src='./scripts/filter.js'></script>
 <script src='./scripts/sketch-housing.js'></script>
 <script src='./scripts/sketch-cards.js'></script>
 <script src='./scripts/sketch-map.js'></script>

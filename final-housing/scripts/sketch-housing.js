@@ -90,6 +90,18 @@ function drawFloorPlans(d, dselection){
         sv.style('height', ht)
     }
 
+    //update colors
+    d3.selectAll('.occupant')
+    .attr('fill', function(d,i) 
+    {   
+        sel = d3.select(this);
+        if (sel.classed('adultPartnered') || sel.classed('adult')){
+            return '#72B1F0';
+        } else if (sel.classed('child')){
+            return '#D9ECFF';
+        }
+    });
+
     //tooltips
     d3.selectAll('.housing-unit')
     .on('mouseover',function(e){
@@ -117,22 +129,6 @@ function drawFloorPlans(d, dselection){
     .on('mouseout', hideTooltip);
 
 }
-
-
-
-function updateOccupantColors(){
-        //update colors
-        d3.selectAll('.occupant')
-        .attr('fill', function(d,i) 
-        {   
-            sel = d3.select(this);
-            if (sel.classed('adultPartnered') || sel.classed('adult')){
-                return '#72B1F0';
-            } else if (sel.classed('child')){
-                return '#D9ECFF';
-            }
-        });
-};
 
 function populateDetails(){
         //add row details 

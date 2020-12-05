@@ -1,30 +1,23 @@
+//dynamic page navigation functions
 var navPage = 'landing';
 var searchState = false;
-
 function updateSearchState(state){
     searchState = state;
     updateNav();
 };
-
 function updateNavPage(page){
     navPage = page;
     updateNav();
 };
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-};
-  
-
 function updateNav(){
-
     if (navPage == 'landing' && !searchState){
         setCurrentData();
-        draw();
+        d3.select('.housing-overlay').classed('active', false);
         d3.select('.inner-nav .card-explain').html(`Search for housing stats on any NYC neighborhood`)  
         d3.select('.back-btn').classed('disabled', true);
         d3.select('.bor-holder').classed('disabled', false);
         d3.selectAll('.card.neighb').classed('disabled', true);
+        generateCards(getCurrentData().map);
     }
     else if (navPage == 'landing' && searchState){
         d3.select('.inner-nav .card-explain').html(`Search for housing stats on any NYC neighborhood`)   
@@ -33,16 +26,43 @@ function updateNav(){
     }
     else if (navPage == 'bor' && !searchState){
 
-        d3.select('.inner-nav .card-explain').html(`Search for metro areas in ${capitalizeFirstLetter(bor)}`)        
+        d3.select('.inner-nav .card-explain').html(`Search for metro areas in ${helperCapitalizeFirstLetter(bor)}`)        
         d3.select('.back-btn').classed('disabled', false);
-        d3.select('.bor-holder').classed('disabled', true);
-     
-        //draw()
-       
+        d3.select('.bor-holder').classed('disabled', true);       
     } 
 }
 
+//helpers - local and global
 
+//tooltips: break out separately
+tooltip = d3.select('.tooltip');
+function showTooltip(html, e){
+    tooltip
+    .html(html)
+    .style("visibility", "visible")
+    .transition().duration(200)
+    .style("opacity", .95)
+    .style("left", (e.pageX) + "px")
+    .style("top", (e.pageY + 22) + "px")
+    .style('pointer-events', 'inherit')
+;    
+}
+function hideTooltip(){
+    tooltip.style("opacity", 0).style('pointer-events', 'none').style("visibility", "hidden");
+}
+function helperCapitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+
+
+//initilization for UI elements - called once
+function initUI(){
+    initSearch();
+    initBoroughSelector();
+    initNavTabs();
+    updateNav();
+}
 var pageNav = 'landing';
 var bor = '';
 function initBoroughSelector(){
@@ -59,57 +79,7 @@ function initBoroughSelector(){
         updateNavPage('landing');
     });
 }
-
-
-//lookup init
-async function initLookup(){
-    var pumaChoices = [];
-    pumaId = Array.from(getOrigData().map.keys());
-    d3.csv('./data/2010pumanames.txt').then((arr) => {
-        nypumas = arr.filter(d => d.STATEFP == '36');
-        nypumas.forEach((d)=> {
-            pumaIdMap.set(parseInt(d.PUMA5CE), d['PUMA NAME'])
-        })
-        return pumaIdMap;
-    }).then((idmap)=> {
-        pumaId.forEach((x)=>{
-            pumaChoices.push({
-                value: x,
-                label: idmap.get(x).replace('NYC-', '').replace('Community ', '')
-            })
-        });
-        return pumaChoices;
-    }).then(metros => {
-        var input = document.getElementById('metros');
-   
-        autocomplete({
-            input: input,
-            fetch: function(text, update) {
-                text = text.toLowerCase();
-                var suggestions = metros.filter(n => n.label.toLowerCase().includes(text))
-                update(suggestions);
-            },
-            onSelect: function(item) {
-                input.value = item.label;
-                setCurrentData(item.value);
-                draw();
-            },
-            minLength: 1
-        });
-
-        d3.select('.search-clear').on('click', d => {
-            document.getElementById('metros').value = null;
-            setCurrentData(null);
-
-            draw();
-        })
-        
-    })
-};
-
-window.addEventListener("load", function(){
-   
-    //enable/disable panes
+function initNavTabs(){
     d3.selectAll('.nav-option').on('click', function(d,i) {
         d3.selectAll('.nav-option').classed('selected', false);
         sel = d3.select(this);
@@ -129,4 +99,53 @@ window.addEventListener("load", function(){
         }
 
     });
-});
+};
+//included in UI b/c it does not actually filter, it's just hiding and showing elements that exist
+function initSearch(){
+    //setup before functions
+    var input = d3.select('input.search');
+    input.on('click', (e)=> {
+        updateSearchState(true);
+    })
+    .on('mouseout', ()=>{
+        if (input.node().value == ''){
+            updateSearchState(false);
+        }
+    })
+
+    var typingTimer;                
+    var doneTypingInterval = 200;  
+    input.on('keyup', function(){
+        clearTimeout(typingTimer);
+        if (input.node().value) {
+            typingTimer = setTimeout(doneTyping, doneTypingInterval);
+        } else {
+            updateSearchState(false);
+        }
+    });
+    input.on('keydown', function () {
+        clearTimeout(typingTimer);
+        updateSearchState(true);
+    });
+
+    async function doneTyping () {
+        
+        d3.selectAll('.card.neighb').classed('disabled', true);
+
+        var userString = input.node().value.toLowerCase();
+        pn = Array.from(await getPumaNames());
+        var idResults = pn.filter(d=> d[0].toLowerCase().includes(userString)).map(d=> d[1]);
+        idResults.forEach(d=> {
+            var card = d3.select('#metro-'+d.toString())
+            console.log(card);
+            card.classed('disabled', false)
+            card.style('visibility', 'visible').style('opacity', '1').style('height', 'auto')
+        })
+    };
+
+    d3.select('.search-clear').on('click', () => {
+        input.node().value = '';
+        updateNav();
+    });
+}
+
