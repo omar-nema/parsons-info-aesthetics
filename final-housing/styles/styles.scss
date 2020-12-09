@@ -866,6 +866,16 @@ textarea:focus, input:focus{
         left: 50%;
         transform: translate(-50%);
     }
+    .overlay-image {
+        margin-top: 60px;
+        width: 60%;
+        transform: translateX(-50%);
+        left: 50%;
+        position: relative;
+    }
+    .overlay-image.ppl {
+        width: 80%
+    }
     
     .btn-explore {
         background: #7B1772;

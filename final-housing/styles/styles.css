@@ -973,6 +973,19 @@ textarea:focus, input:focus {
           transform: translate(-50%);
 }
 
+.scroll-holder .overlay-image {
+  margin-top: 60px;
+  width: 60%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  left: 50%;
+  position: relative;
+}
+
+.scroll-holder .overlay-image.ppl {
+  width: 80%;
+}
+
 .scroll-holder .btn-explore {
   background: #7B1772;
   width: 50%;
