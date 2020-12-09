@@ -867,12 +867,14 @@ textarea:focus, input:focus {
   font-weight: 500;
   font-size: 22px;
   padding: 20px 0;
+  text-decoration: underline;
+  padding-bottom: 0;
 }
 
 .scroll-holder .scroll-nav {
   font-size: 18px;
   margin-top: 30px;
-  border-bottom: 1px dashed #c1c1c1;
+  border-bottom: 1px dashed #595656;
   padding-bottom: 30px;
 }
 

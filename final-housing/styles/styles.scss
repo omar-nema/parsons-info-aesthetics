@@ -785,11 +785,13 @@ textarea:focus, input:focus{
         font-weight: 500;
         font-size: 22px;
         padding: 20px 0;
+        text-decoration: underline;
+        padding-bottom: 0;
     }
     .scroll-nav {
         font-size: 18px;
         margin-top: 30px;
-        border-bottom: 1px dashed $color-label;
+        border-bottom:1px dashed #595656;
         padding-bottom: 30px;
     }
 
