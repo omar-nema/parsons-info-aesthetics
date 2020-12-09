@@ -2,6 +2,8 @@
 // 2) Initialize sketching
 
 document.addEventListener("DOMContentLoaded", async function() {
+
+    
     initIntro();
     await createPumaIdMap();
     await parseTabularData();
@@ -11,6 +13,9 @@ document.addEventListener("DOMContentLoaded", async function() {
     createComparisonData();
     initFilters();
     initUI();
+    d3.select('.loading-ind').classed('disabled', true);
+    d3.select('.content').classed('disabled', false)
+
 });
 
 
