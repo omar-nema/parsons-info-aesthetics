@@ -192,7 +192,7 @@ function initIntro(){
             n = blocks[i];
             var yPos = n.getBoundingClientRect().top - contOffset;
             if (scrollDir == 'down'){
-                if (yPos < windowHt*.8 && yPos > 10){
+                if (yPos < windowHt*.75 && yPos > 10){
                     
                     d3.select(blocks[i-1]).style('opacity', 0);
                 }

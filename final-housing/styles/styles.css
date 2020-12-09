@@ -885,15 +885,16 @@ textarea:focus, input:focus {
   padding-top: 50px;
   color: white;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 28px;
   padding: 20px 0;
-  padding-bottom: 0;
+  text-decoration: underline;
+  -webkit-text-decoration-color: gray;
+          text-decoration-color: gray;
 }
 
 .scroll-holder .scroll-nav {
   font-size: 18px;
   margin-top: 30px;
-  border-bottom: 1px dashed #595656;
   padding-bottom: 30px;
 }
 
