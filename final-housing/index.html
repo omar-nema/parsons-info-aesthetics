@@ -9,11 +9,15 @@
    <body>
       <!-- <div class="loading-ind loading">Loading...</div> -->
       <div class="tooltip"></div>
+
+    
       <div class="content">
          <div class="header-row row">
             <h1 class="header">
                NYC Housing Explorer
+               <span class="info-icon big btn-context">?</span>
             </h1>
+            
          </div>
          <div class="nav row">
             <div class="nav-option highlights selected">Highlights</div>
@@ -135,6 +139,49 @@
 
       </div>
       </div>
+
+
+      <div class="scroll-holder disabled">
+         <div class="scroll-overlay">
+            <h1 class="scroll-header">
+               NYC Housing Explorer
+            </h1>
+            <div class="scroll-nav">
+               <div class="scroll-nav-left">
+                  <div>Introduction</div>
+                  <div class="inactive">&nbsp > Visual</div>
+               </div>
+               <div class="btn-skip">
+                  <div>Skip to Visual</div>
+               </div>
+            </div>
+            <div class="scroll-content">
+               <div class="scroll-block" >
+                  Living spaces - their size, quality, and structure - are critical to our well-being. <strong>What does housing look like in the most dense city in the US?</strong>
+               </div>
+               <div class="scroll-block"  >
+                  Every year, the American Census Survey (ACS) asks millions of households detailed questions about their living conditions - down to the exact room structure.
+                  <br><br>
+                  <strong>This project presents housing data drawn from the ACS in an exploratory visual format</strong>. Prior to diving into the data, let's talk a look at some summary statistics.
+               </div>
+               <div class="scroll-block" id="vis-block">
+                     In this project, we define a 'living arrangement' as a <strong>distinct combination of adults, children, bedrooms, and other rooms</strong> (kitchen, office, storage, etc). The most common living arrangement follows.
+                     <img class="legend-intro" src="./assets/introlegend.svg" />
+               </div>
+               <div class="scroll-block" id="vis-block">
+                  Even though this is the most common living arrangement, it <strong>represents just 3.5% of all New Yorkers!</strong>
+               </div>
+               <div class="scroll-block" id="vis-block">
+                  Summary statistics cannot capture the rich variety of housing and occupancy composition in New York. Now that we're warmed up, <strong>let's dive into the data.</strong>
+                  <div class="btn-explore">Explore Housing Data</div>
+               </div>
+               <div class="scroll-block" style="height: 30px; width: 100%"></div>
+            </div>
+            <div class="text-cont"></div>
+         </div>
+      </div>
+    
+
    </body>
 </html>
 

@@ -159,3 +159,45 @@ function initSearch(){
     });
 }
 
+
+//called first while data loads
+
+
+//relativity to vh should be changed
+function initIntro(){
+
+
+    d3.select('.btn-context').on('click', ()=>{
+        d3.select('.scroll-holder').classed('disabled', false);
+    });
+
+    d3.select('.btn-skip').on('click', ()=>{
+        d3.select('.scroll-holder').classed('disabled', true);
+    });
+   
+    d3.select('.btn-explore').on('click', ()=>{
+        d3.select('.scroll-holder').classed('disabled', true);
+    }); 
+ 
+
+    //scrolltelling for intro piece
+    var contOffset = d3.select('.scroll-content').node().getBoundingClientRect().top;
+    var blocks = d3.selectAll('.scroll-block').nodes();
+    d3.select('.scroll-content').on('wheel', d=> {
+        var scrollDir = (d.wheelDeltaY > 0) ? 'up': 'down';
+        for (i=0; i<blocks.length-1; i++){
+            n = blocks[i];
+            var yPos = n.getBoundingClientRect().top - contOffset;
+            if (scrollDir == 'down'){
+                if (yPos < 700 && yPos > 10){
+                    console.log(yPos);
+                    d3.select(blocks[i-1]).style('opacity', 0);
+                }
+            } else {
+                if (yPos > 300){
+                    d3.select(blocks[i-1]).style('opacity', 1);
+                }
+            }
+        }
+    })
+}

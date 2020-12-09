@@ -2,6 +2,7 @@
 // 2) Initialize sketching
 
 document.addEventListener("DOMContentLoaded", async function() {
+    initIntro();
     await createPumaIdMap();
     await parseTabularData();
     await addHighlightData();

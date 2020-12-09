@@ -1,3 +1,74 @@
+
+
+
+.scroll-holder {
+    margin: auto;
+    width: 90%;
+    max-width: 900px;
+    height: 95vh;
+}
+.scroll-holder.disabled {
+    display: none;
+}
+h1.scroll-header {
+    padding-top: 50px;
+    padding: 40px 0;
+    /* color: white; */
+    font-weight: 600;
+    font-size: 26px;
+}
+.scroll-nav {
+    font-size: 22px;
+}
+body, .scroll-overlay {
+    overflow: hidden;
+}
+.scroll-overlay {
+    height: 100%;
+}
+.scroll-nav {
+    display: flex;
+    justify-content: space-between;
+}
+.scroll-nav-left {
+    display: flex;
+}
+.scroll-nav-left .active {
+    color: white;
+}
+.scroll-content {
+    margin-top: 40px;
+    font-size: 22px;
+    height: calc(100% - 200px);
+    max-height: 900px;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+.scroll-block {
+    margin-bottom: 70vh;
+    position: sticky;
+    top:0;
+    transition: opacity .3s ease-in-out;
+}
+.scroll-block.fixed {
+    position: fixed;
+    top: 250px;
+}
+.legend-intro {
+    background: #3f3d3d;
+    margin-top: 50px;
+    padding: 15px 20px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+
+
+
+
+
+
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap");
 @-webkit-keyframes fadeOut {
   0% {
@@ -84,11 +155,6 @@
   transition: visibility .2s ease-in-out, opacity .2s ease-in-out, height .3s linear, min-height .3s linear;
 }
 
-.slowTrans, .scroll-holder {
-  -webkit-transition: visibility .4s ease-in-out, opacity .2s ease-in-out, height .4s linear, min-height .4s linear;
-  transition: visibility .4s ease-in-out, opacity .2s ease-in-out, height .4s linear, min-height .4s linear;
-}
-
 .transitionFade {
   -webkit-transition: visiblity 0s ease-in-out, opacity .3s ease-in-out, height .3s linear;
   transition: visiblity 0s ease-in-out, opacity .3s ease-in-out, height .3s linear;
@@ -100,24 +166,23 @@
   height: 0;
 }
 
-.clickable.light:hover, .bor-selector .light.btn-bor:hover, .light.info-icon.big:hover, .inner-nav .light.back-btn:hover, .card-nav .light.back-btn:hover, .pane .card.metro:hover, .pane-right select.light:hover, .pane-right .light.housing-unit:hover, .pane-right .housing-overlay .card-header .light.housing-detail:hover, .scroll-holder .light.btn-skip:hover, .scroll-holder .light.btn-explore:hover {
+.clickable.light:hover, .bor-selector .light.btn-bor:hover, .inner-nav .light.back-btn:hover, .card-nav .light.back-btn:hover, .pane .card.metro:hover, .pane-right select.light:hover, .pane-right .light.housing-unit:hover, .pane-right .housing-overlay .card-header .light.housing-detail:hover {
   opacity: 0.9;
 }
 
-.clickable, .bor-selector .btn-bor, .info-icon.big, .inner-nav .back-btn, .card-nav .back-btn, .pane-right select, .pane-right .housing-unit, .pane-right .housing-overlay .card-header .housing-detail, .scroll-holder .btn-skip, .scroll-holder .btn-explore {
+.clickable, .bor-selector .btn-bor, .inner-nav .back-btn, .card-nav .back-btn, .pane-right select, .pane-right .housing-unit, .pane-right .housing-overlay .card-header .housing-detail {
   cursor: pointer;
   -webkit-transition: opacity .1s linear;
   transition: opacity .1s linear;
 }
 
-.clickable:hover, .bor-selector .btn-bor:hover, .info-icon.big:hover, .inner-nav .back-btn:hover, .card-nav .back-btn:hover, .pane-right select:hover, .pane-right .housing-unit:hover, .pane-right .housing-overlay .card-header .housing-detail:hover, .scroll-holder .btn-skip:hover, .scroll-holder .btn-explore:hover {
+.clickable:hover, .bor-selector .btn-bor:hover, .inner-nav .back-btn:hover, .card-nav .back-btn:hover, .pane-right select:hover, .pane-right .housing-unit:hover, .pane-right .housing-overlay .card-header .housing-detail:hover {
   opacity: 0.7;
 }
 
 body {
   background: #0D0D0D;
   color: white;
-  overflow: hidden;
 }
 
 .header-row {
@@ -338,11 +403,6 @@ textarea:focus, input:focus {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
   position: relative;
-}
-
-.info-icon.big {
-  font-size: 18px;
-  padding: 1.5px 7px;
 }
 
 .tooltip {
@@ -849,115 +909,5 @@ textarea:focus, input:focus {
 
 .tooltip .tip-intro {
   margin-bottom: 15px;
-}
-
-.scroll-holder {
-  background: black;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1000000;
-  width: 100%;
-  height: 100%;
-}
-
-.scroll-holder h1.scroll-header {
-  padding-top: 50px;
-  /* color: white; */
-  font-weight: 500;
-  font-size: 22px;
-  padding: 20px 0;
-}
-
-.scroll-holder .scroll-nav {
-  font-size: 18px;
-  margin-top: 30px;
-  border-bottom: 1px dashed #c1c1c1;
-  padding-bottom: 30px;
-}
-
-.scroll-holder .scroll-overlay {
-  height: 100%;
-  margin: auto;
-  width: 90%;
-  max-width: 900px;
-  height: 95vh;
-}
-
-.scroll-holder .scroll-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.scroll-holder .scroll-nav-left {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.scroll-holder .scroll-nav-left .inactive {
-  color: #c1c1c1;
-}
-
-.scroll-holder .btn-skip {
-  color: #F587EA;
-}
-
-.scroll-holder .scroll-content {
-  margin-top: 50px;
-  font-size: 24px;
-  height: calc(100% - 240px);
-  max-height: 900px;
-  overflow: auto;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
-.scroll-holder .scroll-block {
-  margin-bottom: 70vh;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  -webkit-transition: opacity .3s ease-in-out;
-  transition: opacity .3s ease-in-out;
-  color: #eae8e8;
-}
-
-.scroll-holder .scroll-block strong {
-  font-weight: 600;
-  color: white;
-}
-
-.scroll-holder .scroll-block.fixed {
-  position: fixed;
-  top: 250px;
-}
-
-.scroll-holder .legend-intro {
-  background: #3f3d3d;
-  margin-top: 50px;
-  padding: 15px 20px;
-  position: relative;
-  left: 50%;
-  -webkit-transform: translate(-50%);
-          transform: translate(-50%);
-}
-
-.scroll-holder .btn-explore {
-  background: #7B1772;
-  width: 50%;
-  text-align: center;
-  padding: 20px;
-  border-radius: 3px;
-  color: white;
-  font-weight: 600;
-  min-width: 300px;
-  border-bottom: 5px solid #3d0c38;
-  margin: auto;
-  margin-top: 50px;
 }
 /*# sourceMappingURL=styles.css.map */

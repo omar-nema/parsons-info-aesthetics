@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="663" height="194" viewBox="0 0 663 194">
+  <defs>
+    <clipPath id="clip-introlegend">
+      <rect width="663" height="194"/>
+    </clipPath>
+  </defs>
+  <g id="introlegend" clip-path="url(#clip-introlegend)">
+    <g id="Group_699" data-name="Group 699" transform="translate(-341 -494)">
+      <g id="Group_707" data-name="Group 707" transform="translate(5 -51)">
+        <g id="Group_695" data-name="Group 695" transform="translate(179 62)">
+          <g id="Rectangle_274" data-name="Rectangle 274" transform="translate(656 511)" fill="#1e191c" stroke="#120303" stroke-width="1">
+            <rect width="70" height="70" stroke="none"/>
+            <rect x="0.5" y="0.5" width="69" height="69" fill="none"/>
+          </g>
+          <g id="Rectangle_372" data-name="Rectangle 372" transform="translate(739 511)" fill="#1e191c" stroke="#120303" stroke-width="1">
+            <rect width="70" height="70" stroke="none"/>
+            <rect x="0.5" y="0.5" width="69" height="69" fill="none"/>
+          </g>
+          <text id="Other_room" data-name="Other room" transform="translate(682 623)" fill="#bca8b3" font-size="16" font-family="WorkSans-Medium, Work Sans" font-weight="500"><tspan x="0" y="15">Other room</tspan></text>
+          <g id="Group_696" data-name="Group 696" transform="translate(-7)">
+            <g id="Group_691" data-name="Group 691" transform="translate(-34)">
+              <g id="Rectangle_276" data-name="Rectangle 276" transform="translate(520 511)" fill="#cf8eb5" stroke="#120303" stroke-width="1">
+                <rect width="70" height="70" stroke="none"/>
+                <rect x="0.5" y="0.5" width="69" height="69" fill="none"/>
+              </g>
+              <g id="Ellipse_247" data-name="Ellipse 247" transform="translate(544.706 523.353)" fill="#72b1f0" stroke="#000" stroke-width="1">
+                <circle cx="10.294" cy="10.294" r="10.294" stroke="none"/>
+                <circle cx="10.294" cy="10.294" r="9.794" fill="none"/>
+              </g>
+              <g id="Ellipse_270" data-name="Ellipse 270" transform="translate(544.706 550.804)" fill="#72b1f0" stroke="#000" stroke-width="1">
+                <circle cx="10.294" cy="10.294" r="10.294" stroke="none"/>
+                <circle cx="10.294" cy="10.294" r="9.794" fill="none"/>
+              </g>
+            </g>
+            <text id="Bedroom_crowded" data-name="Bedroom, crowded" transform="translate(481 623)" fill="#ff8ad0" font-size="16" font-family="WorkSans-Medium, Work Sans" font-weight="500"><tspan x="2.98" y="15">Bedroom, </tspan><tspan x="6.74" y="34">crowded</tspan></text>
+            <line id="Line_74" data-name="Line 74" y2="21.828" transform="translate(521.5 593.5)" fill="none" stroke="#535567" stroke-width="1"/>
+          </g>
+          <g id="Group_697" data-name="Group 697">
+            <g id="Group_692" data-name="Group 692" transform="translate(-8)">
+              <g id="Rectangle_275" data-name="Rectangle 275" transform="translate(576 511)" fill="#cbcdde" stroke="#120303" stroke-width="1">
+                <rect width="70" height="70" stroke="none"/>
+                <rect x="0.5" y="0.5" width="69" height="69" fill="none"/>
+              </g>
+              <g id="Ellipse_285" data-name="Ellipse 285" transform="translate(599.333 535.706)" fill="#fff" stroke="#000" stroke-width="1">
+                <circle cx="10.294" cy="10.294" r="10.294" stroke="none"/>
+                <circle cx="10.294" cy="10.294" r="9.794" fill="none"/>
+              </g>
+            </g>
+            <text id="Bedroom" transform="translate(567 638)" fill="#cbcdde" font-size="16" font-family="WorkSans-Medium, Work Sans" font-weight="500"><tspan x="0" y="0">Bedroom</tspan></text>
+            <line id="Line_75" data-name="Line 75" y2="21.828" transform="translate(603.5 593.5)" fill="none" stroke="#535567" stroke-width="1"/>
+          </g>
+          <line id="Line_76" data-name="Line 76" y2="21.828" transform="translate(699.5 593.5)" fill="none" stroke="#535567" stroke-width="1"/>
+          <line id="Line_77" data-name="Line 77" y2="21.828" transform="translate(752.5 593.5)" fill="none" stroke="#535567" stroke-width="1"/>
+        </g>
+        <g id="Group_698" data-name="Group 698" transform="translate(107 1)">
+          <text id="Adult_2_" data-name="Adult (2)" transform="translate(278 566)" fill="#72b1f0" font-size="16" font-family="WorkSans-Regular, Work Sans"><tspan x="0" y="0">Adult (2)</tspan></text>
+          <g id="Ellipse_289" data-name="Ellipse 289" transform="translate(239.706 552.353)" fill="#72b1f0" stroke="#000" stroke-width="1">
+            <circle cx="8.5" cy="8.5" r="8.5" stroke="none"/>
+            <circle cx="8.5" cy="8.5" r="8" fill="none"/>
+          </g>
+          <text id="Child_1_" data-name="Child (1)" transform="translate(278 603)" fill="#fff" font-size="16" font-family="WorkSans-Regular, Work Sans"><tspan x="0" y="0">Child (1)</tspan></text>
+          <g id="Ellipse_290" data-name="Ellipse 290" transform="translate(239.706 590.353)" fill="#fff" stroke="#000" stroke-width="1">
+            <circle cx="8.5" cy="8.5" r="8.5" stroke="none"/>
+            <circle cx="8.5" cy="8.5" r="8" fill="none"/>
+          </g>
+          <text id="Bedroom_crowded_1_" data-name="Bedroom, crowded (1)" transform="translate(278 643)" fill="#e4c4d7" font-size="16" font-family="WorkSans-Regular, Work Sans"><tspan x="0" y="0">Bedroom, crowded (1)</tspan></text>
+          <g id="Rectangle_373" data-name="Rectangle 373" transform="translate(240 629)" fill="#cf8eb5" stroke="#000" stroke-width="1">
+            <rect width="18" height="18" stroke="none"/>
+            <rect x="0.5" y="0.5" width="17" height="17" fill="none"/>
+          </g>
+          <text id="Bedroom_standard_1_" data-name="Bedroom, standard (1)" transform="translate(278 681)" fill="#cbcdde" font-size="16" font-family="WorkSans-Regular, Work Sans"><tspan x="0" y="0">Bedroom, standard (1)</tspan></text>
+          <g id="Rectangle_374" data-name="Rectangle 374" transform="translate(240 667)" fill="#cbcdde" stroke="#000" stroke-width="1">
+            <rect width="18" height="18" stroke="none"/>
+            <rect x="0.5" y="0.5" width="17" height="17" fill="none"/>
+          </g>
+          <text id="Other_room_1_" data-name="Other room (1)" transform="translate(278 718)" fill="#bca8b3" font-size="16" font-family="WorkSans-Regular, Work Sans"><tspan x="0" y="0">Other room (1)</tspan></text>
+          <g id="Rectangle_374-2" data-name="Rectangle 374" transform="translate(240 704)" fill="#1e191c" stroke="#000" stroke-width="1">
+            <rect width="18" height="18" stroke="none"/>
+            <rect x="0.5" y="0.5" width="17" height="17" fill="none"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

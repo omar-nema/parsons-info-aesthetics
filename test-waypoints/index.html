@@ -3,145 +3,62 @@
    <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
       <title>sketch</title>
-      <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+      <link rel="stylesheet" type="text/css" href="./style.css">
    </head>
    <!-- <div class="tooltip">a real tip yes</div> -->
    <body>
       <!-- <div class="loading-ind loading">Loading...</div> -->
-      <div class="tooltip"></div>
-      <div class="content">
-         <div class="header-row row">
-            <h1 class="header">
+
+      <div class="scroll-holder">
+         <div class="scroll-overlay">
+            <h1 class="scroll-header">
                NYC Housing Explorer
             </h1>
-         </div>
-         <div class="nav row">
-            <div class="nav-option highlights selected">Highlights</div>
-            <div class="nav-option neighb">Search</div>
-         </div>
-         <div class="panes">
-            <div class="pane-left pane">
-               <div class="pane-highlights sub-pane active">
-                  <div class="card-explain">Click to view detailed info on the highlighted metro area</div>
+            <div class="scroll-nav">
+               <div class="scroll-nav-left">
+                  <div class="active">Introduction</div>
+                  <div>&nbsp > Visual</div>
                </div>
-               <div class="pane-neighb sub-pane">
-                  <div class="landing-module">
-                     <div class="inner-nav">
-                        <div class="card-explain"></div>
-                        <div class="back-btn"> < Back</div>
-                     </div>
-                     <div class="search">
-                        <input type="text" class="landing-card search" placeholder="Search for metro area">
-                        <div class="search-clear">Clear</div>
-                     </div>
-                     <!-- <input class="landing-card search" placeholder="Search for metro area"></input> -->
-                  </div>
-                  <div class="bor-holder landing-module">
-                     <div class="card-explain">Compare housing across borough neighorhoods</div>
-                     <div class="bor-selector landing-card">
-                        <div class='btn-bor' bor="bronx">Bronx</div>
-                        <div class='btn-bor' bor="brooklyn">Brooklyn</div>
-                        <div class='btn-bor' bor="manhattan">Manhattan</div>
-                        <div class='btn-bor' bor="staten">Staten</div>
-                        <div class='btn-bor' bor="queens">Queens</div>
-                     </div>
-                  </div>
-                  <div class='card-page'>
-                     <!-- <div class='card-nav'>
-                        <div class="curr-nav"></div>
-                        <div class="back-btn">< Back</div>
-                        </div> -->
-                     <div class="card-holder">
-                     </div>
-                  </div>
+               <div class="scroll-nav-skip">
+                  <div>Skip to Visual</div>
                </div>
             </div>
+            <div class="scroll-content">
+               <div class="scroll-block" >
+                  Living spaces - their size, quality, and structure - are critical to our well-being. What does housing look like in the most dense city in the US?
+               </div>
+               <div class="scroll-block"  >
+                  Every year, the American Census Survey (ACS) asks millions of households detailed questions about their living conditions - down to the exact room structure.
+                  <br><br>
+                  This project presents housing data drawn from the ACS in an exploratory visual format. Prior to diving into the data, let's talk a look at some summary statistics.
+               </div>
+               
+               <div class="scroll-block" id="vis-block">
+                     In this project, we define a 'living arrangement' as a distinct combination of adults, children, bedrooms, and other rooms (kitchen, office, storage, etc). The most common living arrangement follows.
 
-            <div class="pane-right pane">
-               <!-- <div class="map-cont cont card">
-                  <div class="card-header">Housing Map<span class="info-icon">?</span></div>
-                  <div class="map"></div>
-                  </div> -->
-               <div class="housing-underlay">
-                  <div class="housing-msg">Select a card from the left to view detailed stats</div>
+                     <img class="legend-intro" src="introlegend.svg" />
+                     
+                 
+
                </div>
-               <div class="housing-overlay">
-                  <div class="card-header">
-                     <div class="housing-detail">
-                        Occupany Detail<span class="info-icon housing-detail">?</span>
-                     </div>
-                     <div class="overlay-close">
-                        Close
-                     </div>
-                  </div>
-                  <!-- <div class="pane-overview">Shown below are living arrangements in the selected metro area, ordered by representation. Each combination of persons, bedrooms, and other rooms in a household constitute a distinct 'living arrangement'.</div> -->
-                  <div class="card-filters">
-                     <div class="filter">
-                        <label for="sort">Sort By</label>
-                        <select name="sort" id="sort">
-                           <option value="rep">Persons Represented</option>
-                           <option value="income">Income</option>
-                           <option value="rent">Rent</option>
-                        </select>
-                     </div>
-                     <div class="filter">
-                        <label for="personsNum">Filter Persons</label>
-                        <select class="select-filter" id="personsNum">
-                           <option min='' max=''>All</option>
-                           <option min='0' max='1'>1 person</option>
-                           <option min='1' max='2'>2 persons</option>
-                           <option min='2' max='3'>3 persons</option>
-                           <option min='3' max='5'>4 persons</option>
-                           <option min='4' max='999999'>5+ persons</option>
-                        </select>
-                     </div>                      
-                     <div class="filter">
-                        <label for="statsRent">Filter Rent</label>
-                        <select class="select-filter"  id="statsRent">
-                           <option  min='' max=''>All</option>
-                           <option  min='0' max='1305'> $0 - $1,305 (q1) </option>
-                           <option  min='1305' max='1480'> $1,305 - $1,480 (q2) </option>
-                           <option  min='1480' max='1765'> $1,480 - $1,765 (q3) </option>
-                           <option  min='1765' max='999999'> $1,765+ (q4) </option>
-                        </select>
-                     </div>       
-                     <div class="filter">
-                        <label for="statsIncome">Filter Income</label>
-                        <select class="select-filter"  id="statsIncome">
-                           <option min='' max=''>All</option>
-                           <option min='0' max='51000'> $0 - $51,000 (q1) </option>
-                           <option min='51000' max='69360'> $51,000 - 69,360 (q2) </option>
-                           <option min='69360' max='85250'> $69,360 - 85,250 (q3) </option>
-                           <option min='85250' max='999999'> $85,250+ (q4) </option>
-                        </select>
-                     </div>                                                            
-                  </div>
-                  <div class="card-body">
-                     <table class="housing-data">
-                        <thead class="table-header">
-                           <tr>
-                              <th class="house-head inf">Structure<span class="info-icon">?</span></th>
-                              <!-- <th class="occ-head inf">Occupants<span class="info-icon">?</span></th> -->
-                              <th class="demo-head inf">Demographics<span class="info-icon">?</span></th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                     </table>
-                  </div>
+       
+               <div class="scroll-block" id="vis-block">
+                  Even though this is the most common living arrangement, it represents just 3.5% of all New Yorkers!
                </div>
+               <div class="scroll-block" id="vis-block">
+                  Summary statistics cannot capture the rich variety of housing and occupancy composition in New York. Now that we're warmed up, let's dive into the data, and explore New York housing data in detail.
+               </div>
+               <div class="scroll-block" style="height: 30px; width: 100%"></div>
             </div>
+            <div class="text-cont"></div>
          </div>
-
+         
       </div>
-      </div>
+    
+ 
    </body>
 </html>
 
 <script src="https://d3js.org/d3.v6.min.js"></script>
-<script src='./scripts/ui.js'></script>
-<script src='./scripts/dataparse.js'></script>
-<script src='./scripts/filter.js'></script>
-<script src='./scripts/sketch-housing.js'></script>
-<script src='./scripts/sketch-cards.js'></script>
-<script src='./scripts/sketch-map.js'></script>
+<script src="./noframework.waypoints.min.js"></script>
+<script src='./intro.js'></script>
