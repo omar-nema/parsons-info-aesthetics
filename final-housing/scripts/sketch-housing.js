@@ -1,3 +1,39 @@
+function housingDrilldown(){
+
+    var table = d3.select('.housing-data tbody');
+    var currDataDetail = getCurrentData().detail;
+
+    var transitionTime = 500;
+    var houseRows = table.selectAll('.row-house').data(currDataDetail, d=> {return d.geo + '-' + d.weightPersons})
+    .join(
+            enter => {
+            houseRows = enter.append('tr').attr('class', 'row-house').style('opacity', '0').transition().duration(transitionTime).style('opacity', '1');
+            houseRows.each(function(d, i){
+                var currRow = d3.select(this);
+                currRow.append('td').attr('class', 'row-structure').each(function(d){drawFloorPlans(d, d3.select(this))})
+                currRow.append('td').attr('class', 'row-persons').append('div').attr('class', 'detail-persons')
+                    .html(d=> '<div>' + d.weightPersons + '</div>')
+                ; 
+                currRow.append('td').attr('class', 'row-persons').append('div').attr('class', 'detail-remt')
+                .html(d=> (d.statsRent > 0) ? ('<div>$' + d.statsRent + '</div>') : ('n/a'));      
+                currRow.append('td').attr('class', 'row-persons').append('div').attr('class', 'detail-income')
+                .html(d=> (d.statsIncome > 0) ? ('<div>$' + d.statsIncome + '</div>') : ('n/a') ); 
+                 
+            });
+  
+
+        },
+        update => {
+            update.transition().duration(transitionTime).style('opacity', '1');
+        }, 
+        exit => {
+            exit.transition().duration(transitionTime).style('opacity', '0').on('end', ()=>{ exit.remove() });
+        }
+    );
+    d3.select('.housing-data tbody').classed('loading', false);
+
+};
+
 function drawFloorPlans(d, dselection){
     //add floor plans
 
@@ -130,18 +166,3 @@ function drawFloorPlans(d, dselection){
 
 }
 
-function populateDetails(){
-        //add row details 
-        d3.selectAll('.detail-stats').each(function(d,i){
-            var txtweight = '% Persons: ' + Math.round(d.weightPct * 100)/100 + '%';
-            var txtpersons = 'Number Persons: ' + d.weightPersons;
-            var txtrent = '';
-            if (d.statsRent){
-                txtrent = 'Rent Avg: $' + d.statsRent;
-            };
-            var txtincome = 'House Income Avg: $' + d.statsIncome;
-            var txtstats = '<div>' + txtweight + '<br>' + txtpersons + '<br>' + txtincome + '<br>' + txtrent + '</div>';
-            var planVis = d3.select(this).html(txtstats);
-            
-        });
-};

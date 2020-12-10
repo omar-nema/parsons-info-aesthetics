@@ -120,10 +120,6 @@ body {
   overflow: hidden;
 }
 
-.header-row {
-  margin: 20px 0;
-}
-
 h1 {
   font-weight: 500;
   font-size: 22px;
@@ -603,7 +599,7 @@ textarea:focus, input:focus {
 
 .pane-right .card-filters {
   margin-top: 25px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -808,9 +804,20 @@ textarea:focus, input:focus {
 }
 
 .pane-right .housing-overlay table tbody td, .pane-right .housing-overlay table thead th {
-  width: 48%;
   float: left;
   text-align: left;
+}
+
+.pane-right .housing-overlay table th.table-head-struct, .pane-right .housing-overlay table tbody td.row-structure {
+  width: 40%;
+}
+
+.pane-right .housing-overlay table tbody td, .pane-right .housing-overlay table th.table-head-demo {
+  width: 19%;
+}
+
+.pane-right .housing-overlay table td {
+  font-size: 16px;
 }
 
 .pane-right .housing-overlay table td svg {

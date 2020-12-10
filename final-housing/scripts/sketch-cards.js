@@ -60,8 +60,8 @@ function populateCardBody(d, dnode){
 
     //populate card bodies
     var statobj = [
-        {label: 'Persons Per Room', value: 'personsPerRoomMean', percentileval: 'personsPerRoomPercentile', dollarVal: 0},
-        {label: 'Persons', value: 'personsMean', percentileval: 'personsMeanPercentile', dollarVal:  0},
+        {label: 'Occupants/Room', value: 'personsPerRoomMean', percentileval: 'personsPerRoomPercentile', dollarVal: 0},
+        {label: 'Occupants', value: 'personsMean', percentileval: 'personsMeanPercentile', dollarVal:  0},
         {label: 'Income', value: 'incomeMedian', percentileval: 'incomePercentile', dollarVal: 1},
         {label: 'Rent', value: 'rentMedian', percentileval: 'rentPercentile', dollarVal: 1}
     ];
@@ -139,32 +139,5 @@ function cardSelection(sel, pumaid){
     }, 20);
 }
 
-function housingDrilldown(){
 
-    var table = d3.select('.housing-data tbody');
-    var currDataDetail = getCurrentData().detail;
-
-    var transitionTime = 500;
-    var houseRows = table.selectAll('.row-house').data(currDataDetail, d=> {return d.geo + '-' + d.weightPersons})
-    .join(
-            enter => {
-            houseRows = enter.append('tr').attr('class', 'row-house').style('opacity', '0').transition().duration(transitionTime).style('opacity', '1');
-            houseRows.each(function(d, i){
-                var currRow = d3.select(this);
-                currRow.append('td').attr('class', 'row-structure').each(function(d){drawFloorPlans(d, d3.select(this))})
-                currRow.append('td').attr('class', 'row-details').append('div').attr('class', 'detail-stats');                
-            });
-            populateDetails();
-
-        },
-        update => {
-            update.transition().duration(transitionTime).style('opacity', '1');
-        }, 
-        exit => {
-            exit.transition().duration(transitionTime).style('opacity', '0').on('end', ()=>{ exit.remove() });
-        }
-    );
-    d3.select('.housing-data tbody').classed('loading', false);
-
-};
 

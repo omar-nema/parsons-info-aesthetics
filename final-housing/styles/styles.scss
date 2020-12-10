@@ -80,9 +80,7 @@ body {
     color: $text-default-color;
     overflow: hidden;
 }
-.header-row {
-    margin: 20px 0;
-}
+
 h1 {
     font-weight: 500;
     font-size: 22px;
@@ -522,7 +520,7 @@ textarea:focus, input:focus{
 
     .card-filters {
         margin-top: 25px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -714,10 +712,20 @@ textarea:focus, input:focus{
             }
             
             tbody td, thead th {
-                width: 48%;
+           
                 float: left;
                 text-align: left;
             }
+            th.table-head-struct, tbody td.row-structure{
+                width: 40%;
+            }
+            tbody td, th.table-head-demo {
+                width: 19%;
+            }
+            td {
+                font-size: 16px;
+            }
+         
                     
             td svg {
                 height: 100px;
