@@ -60,10 +60,10 @@ function populateCardBody(d, dnode){
 
     //populate card bodies
     var statobj = [
-        {label: 'Persons Per Room', value: 'personsPerRoomMean', percentileval: 'personsPerRoomPercentile'},
-        {label: 'Persons', value: 'personsMean', percentileval: 'personsMeanPercentile'},
-        {label: 'Income', value: 'incomeMedian', percentileval: 'incomePercentile'},
-        {label: 'Rent', value: 'rentMedian', percentileval: 'rentPercentile'}
+        {label: 'Persons Per Room', value: 'personsPerRoomMean', percentileval: 'personsPerRoomPercentile', dollarVal: 0},
+        {label: 'Persons', value: 'personsMean', percentileval: 'personsMeanPercentile', dollarVal:  0},
+        {label: 'Income', value: 'incomeMedian', percentileval: 'incomePercentile', dollarVal: 1},
+        {label: 'Rent', value: 'rentMedian', percentileval: 'rentPercentile', dollarVal: 1}
     ];
 
     statobj.forEach((statobj)=> {
