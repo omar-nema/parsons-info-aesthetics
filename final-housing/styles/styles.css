@@ -983,7 +983,7 @@ textarea:focus, input:focus {
 }
 
 .scroll-holder .overlay-image.ppl {
-  width: 80%;
+  width: 100%;
 }
 
 .scroll-holder .btn-explore {

@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     initFilters();
     initUI();
     d3.select('.loading-ind').classed('disabled', true);
-    d3.select('.content').classed('disabled', false)
+    d3.select('.content').classed('disabled', false);
 
 });
 
@@ -51,8 +51,11 @@ async function parseTabularData(){
                 fuel = 1;
             }
 
+
             var numAdultsOther = parseInt(d.NP) - parseInt(d.NRC) - parseInt(d.R65);
-           if ( parseInt(d.NP) !== 0 && parseInt(d.BDSP) !== -1 ){
+
+           if ( parseInt(d.NP) !== 0 && parseInt(d.BDSP) !== -1  && d.BDSP > 0){
+       
             return {
                 geo: d.PUMA,
                 weight: parseInt(houseWt),
@@ -71,28 +74,36 @@ async function parseTabularData(){
                 income: parseInt(d.ADJINC)*parseInt(d.HINCP),
                 multiLang: +d.LANX
             }
+
+
            }
-      
+    
         }); 
     })
     .then(async (pcd) => {
 
-        pcdCopy = pcd.map(d => d);
         //sort data by metro area
         pcd = pcd.sort(function(x, y){ 
             return d3.ascending(parseInt(x.geo), parseInt(y.geo));
          });
+
+        //BAD no idea why this is necessary. somehow filtering for > 0 bedrooms brings in blank data that need to be filtered
+         pcd = pcd.filter(d => {if (d) return d} ) 
+
+        //to get csv dump
+        //pcdCopy = pcd.map(d => d);
         //var t = pcdCopy.forEach(d => d3.csvRow(d));
         // console.log(d3.csvFormat(pcdCopy))
 
-        //calculate medians from all geos in order to get quantile values later
 
+        //calculate medians from all geos in order to get quantile values later
         var allGeoMedians = {
             incomes: [],
             rent: [],
-            personsPerRoom: []
+            personsPerRoom: [],
+            persons: []
         };
- 
+
         //aggregate data
         var distinct = d3.groups(pcd, d => d.geo, d=> d.personsNum+'-'+d.personsAdultTotal+'-'+d.houseBed+'-'+d.houseRoom);        
         //for each geo, aggregate income and other stats based on distinct housing type
@@ -124,16 +135,16 @@ async function parseTabularData(){
             var bedroomMedian  = d3.median(geoBedrooms);
             var bedroomMean  = d3.mean(geoBedrooms);
             var personsMedian  = d3.median(geoPersons);
-            var personsMean  = d3.mean(geoPersons);
+            var personsMean = Math.round(d3.mean(geoPersons) * 10) / 10;
             var childrenMedian  = d3.median(geoChildren);
             var childrenMean  = d3.mean(geoChildren);
             var rentMedian = d3.median(geoRent);
-
             var personsPerRoomMean = Math.round(personsMean/bedroomMean * 100) / 100;
 
             allGeoMedians.incomes.push(incomeMedian);
             allGeoMedians.rent.push(rentMedian);
             allGeoMedians.personsPerRoom.push(personsPerRoomMean);
+            allGeoMedians.persons.push(personsMean);
 
             //stats at PUMA level
             var summaryStats = {
@@ -240,6 +251,10 @@ async function parseTabularData(){
         var incomelen = allGeoMedians.incomes.length;
         var rentlen = allGeoMedians.rent.length;
         var personsperlen = allGeoMedians.personsPerRoom.length;
+        var personslen = allGeoMedians.persons.length;
+
+        console.log(allGeoMedians)
+
         dataCleaned.forEach(d=> {
             var incomeindex = allGeoMedians.incomes.indexOf(d.stats.incomeMedian)
             d.stats.incomePercentile   = Math.round(100*(incomeindex)/incomelen);
@@ -247,7 +262,9 @@ async function parseTabularData(){
             d.stats.rentPercentile   = Math.round(100*(rentindex)/rentlen);
             var personsperindex = allGeoMedians.personsPerRoom.indexOf(d.stats.personsPerRoomMean);
             d.stats.personsPerRoomPercentile = Math.round(100*(personsperindex)/personsperlen);
-      
+            var personsindex = allGeoMedians.persons.indexOf(d.stats.personsMean);
+            d.stats.personsMeanPercentile = Math.round(100*(personsindex)/personslen);
+    
         });
 
         return dataCleaned;
@@ -317,7 +334,7 @@ function getPumaIdMap(){
 var comparisonData;
 function createComparisonData(){
     var dataCleanedArray = Array.from(dataCleaned);
-    var statTypes = ['personsPerRoomMean', 'incomeMedian', 'rentMedian'];
+    var statTypes = ['personsPerRoomMean', 'incomeMedian', 'rentMedian', 'personsMean'];
     statobj = {};
     statTypes.forEach( s => {
         var statvals = {

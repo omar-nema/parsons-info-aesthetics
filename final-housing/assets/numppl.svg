@@ -5,10 +5,7 @@
     </clipPath>
   </defs>
   <g id="numppl" clip-path="url(#clip-numppl)">
-    <g id="Ellipse_296" data-name="Ellipse 296" transform="translate(4 3)" fill="#2cf3e6" stroke="#6b6a6a" stroke-width="1">
-      <circle cx="7.5" cy="7.5" r="7.5" stroke="none"/>
-      <circle cx="7.5" cy="7.5" r="7" fill="none"/>
-    </g>
+    <circle id="Ellipse_296" data-name="Ellipse 296" cx="7.5" cy="7.5" r="7.5" transform="translate(4 3)" fill="#2cf3e6"/>
     <g id="Ellipse_308" data-name="Ellipse 308" transform="translate(4 33)" fill="#635f5f" stroke="#707070" stroke-width="1">
       <circle cx="7.5" cy="7.5" r="7.5" stroke="none"/>
       <circle cx="7.5" cy="7.5" r="7" fill="none"/>
@@ -165,10 +162,7 @@
       <circle cx="7.5" cy="7.5" r="7.5" stroke="none"/>
       <circle cx="7.5" cy="7.5" r="7" fill="none"/>
     </g>
-    <g id="Ellipse_297" data-name="Ellipse 297" transform="translate(40 3)" fill="#2cf3e6" stroke="#6b6a6a" stroke-width="1">
-      <circle cx="7.5" cy="7.5" r="7.5" stroke="none"/>
-      <circle cx="7.5" cy="7.5" r="7" fill="none"/>
-    </g>
+    <circle id="Ellipse_297" data-name="Ellipse 297" cx="7.5" cy="7.5" r="7.5" transform="translate(40 3)" fill="#2cf3e6"/>
     <g id="Ellipse_312" data-name="Ellipse 312" transform="translate(40 33)" fill="#635f5f" stroke="#707070" stroke-width="1">
       <circle cx="7.5" cy="7.5" r="7.5" stroke="none"/>
       <circle cx="7.5" cy="7.5" r="7" fill="none"/>
@@ -325,10 +319,7 @@
       <circle cx="7.5" cy="7.5" r="7.5" stroke="none"/>
       <circle cx="7.5" cy="7.5" r="7" fill="none"/>
     </g>
-    <g id="Ellipse_298" data-name="Ellipse 298" transform="translate(76 3)" fill="#2cf3e6" stroke="#6b6a6a" stroke-width="1">
-      <circle cx="7.5" cy="7.5" r="7.5" stroke="none"/>
-      <circle cx="7.5" cy="7.5" r="7" fill="none"/>
-    </g>
+    <circle id="Ellipse_298" data-name="Ellipse 298" cx="7.5" cy="7.5" r="7.5" transform="translate(76 3)" fill="#2cf3e6"/>
     <g id="Ellipse_316" data-name="Ellipse 316" transform="translate(76 33)" fill="#635f5f" stroke="#707070" stroke-width="1">
       <circle cx="7.5" cy="7.5" r="7.5" stroke="none"/>
       <circle cx="7.5" cy="7.5" r="7" fill="none"/>

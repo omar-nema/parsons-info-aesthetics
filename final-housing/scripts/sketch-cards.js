@@ -57,11 +57,13 @@ function generateCards(datadetail){
 
 //separated b/c it's big and applies to diff selections
 function populateCardBody(d, dnode){
+
     //populate card bodies
     var statobj = [
-        {label: 'Persons Per Room', value: 'personsPerRoomMean', percentileval: 'personsPerRoomPercentile', scaledir: -1},
-        {label: 'Income', value: 'incomeMedian', percentileval: 'incomePercentile', scaledir: 1},
-        {label: 'Rent', value: 'rentMedian', percentileval: 'rentPercentile', scaledir: -1}
+        {label: 'Persons Per Room', value: 'personsPerRoomMean', percentileval: 'personsPerRoomPercentile'},
+        {label: 'Persons', value: 'personsMean', percentileval: 'personsMeanPercentile'},
+        {label: 'Income', value: 'incomeMedian', percentileval: 'incomePercentile'},
+        {label: 'Rent', value: 'rentMedian', percentileval: 'rentPercentile'}
     ];
 
     statobj.forEach((statobj)=> {
@@ -114,7 +116,6 @@ function populateCardBody(d, dnode){
             //var colorScale = d3.scaleDiverging(d3.interpolatePiYG).domain([0,50, 100]);
             var currval = d[1].stats[statobj.value];
             var leftamt = d[1].stats[statobj.percentileval];
-            var scaleamt = (statobj.scaledir == 1) ? leftamt: 100-leftamt;
 
             d3.select(this).append('div').attr('class', 'statval currval')
                 .style('left', leftamt + '%')

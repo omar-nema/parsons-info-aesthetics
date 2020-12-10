@@ -6,6 +6,7 @@ $color-bg-content: #353838;
 $color-action: #F587EA;
 $color-text-secondary: #eae8e8;
 $color-label: #c1c1c1;
+$color-accent: #008fff;
 $text-default-color: white;
 $text-color-gray: #b3b3b3;
 $margin-text: 15px;
@@ -657,8 +658,8 @@ textarea:focus, input:focus{
             
             th {
                 text-decoration: underline;
-                -webkit-text-decoration-color: #008fff;
-                        text-decoration-color: #008fff;
+                -webkit-text-decoration-color: $color-accent;
+                        text-decoration-color:$color-accent;
                 font-weight: 500;
                 font-size: 14px;
                 margin-bottom: 30px;
@@ -874,7 +875,7 @@ textarea:focus, input:focus{
         position: relative;
     }
     .overlay-image.ppl {
-        width: 80%
+        width: 100%
     }
     
     .btn-explore {
