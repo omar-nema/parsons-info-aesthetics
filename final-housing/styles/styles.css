@@ -573,7 +573,7 @@ textarea:focus, input:focus {
 }
 
 .card-data-pt .statval.currval {
-  background: #c1d4de;
+  background: white;
 }
 
 .card-data-pt .statval.marker {
@@ -824,7 +824,7 @@ textarea:focus, input:focus {
 }
 
 .pane-right .housing-overlay table tbody td, .pane-right .housing-overlay table th.table-head-demo {
-  width: 19%;
+  width: 20%;
 }
 
 .pane-right .housing-overlay table td {
@@ -911,7 +911,7 @@ textarea:focus, input:focus {
 }
 
 .scroll-holder .scroll-nav {
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 30px;
   padding-bottom: 30px;
 }

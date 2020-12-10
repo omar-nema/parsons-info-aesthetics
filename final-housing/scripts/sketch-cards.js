@@ -113,12 +113,15 @@ function populateCardBody(d, dnode){
 
 
             //add curr value dot
-            //var colorScale = d3.scaleDiverging(d3.interpolatePiYG).domain([0,50, 100]);
-            var currval = d[1].stats[statobj.value];
+            // var colorScale = d3.scaleLinear().domain([0,100]).range(['rgb(30, 30, 30)', 'white']);
+            // var colorScale = d3.scaleDiverging(d3.interpolatePuOr).domain([0,50, 100]);
+            //var currval = d[1].stats[statobj.value]; //if adding value judgment
             var leftamt = d[1].stats[statobj.percentileval];
+
 
             d3.select(this).append('div').attr('class', 'statval currval')
                 .style('left', leftamt + '%')
+                // .style('background', ()=> colorScale(leftamt))
             ;
         })
     });      

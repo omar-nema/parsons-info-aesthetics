@@ -494,7 +494,7 @@ textarea:focus, input:focus{
         border: 2px solid black;
     }
     .statval.currval {
-        background: #c1d4de;
+        background: white;
     }
     .statval.marker {
         background: black;
@@ -730,7 +730,7 @@ textarea:focus, input:focus{
                 width: 40%;
             }
             tbody td, th.table-head-demo {
-                width: 19%;
+                width: 20%;
             }
             td {
                 font-size: 16px;
@@ -824,7 +824,7 @@ textarea:focus, input:focus{
         text-decoration-color: gray;
     }
     .scroll-nav {
-        font-size: 18px;
+        font-size: 20px;
         margin-top: 30px;
         padding-bottom: 30px;
     }
