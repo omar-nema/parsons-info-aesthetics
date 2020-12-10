@@ -122,7 +122,7 @@ function drawFloorPlans(d, dselection){
         incrementCol();
     }
     if (rowNum > 1){
-        var ht = 100 + (rowNum-1)*30; //should not have hardcoded num here
+        var ht = 90 + (rowNum-1)*30; //should not have hardcoded num here
         sv.style('height', ht)
     }
 
@@ -151,7 +151,7 @@ function drawFloorPlans(d, dselection){
     })
     .on('mouseout', hideTooltip);
 
-    d3.selectAll('.house-head')
+    d3.selectAll('.table-head-struct')
     .on('mouseover', function(e){
         showTooltip('<img style="margin: -8.5px -13.5px" src="./legend-room.svg"/>',e)
     })

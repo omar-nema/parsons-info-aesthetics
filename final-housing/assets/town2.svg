@@ -32,7 +32,7 @@
       <rect id="Rectangle_398" data-name="Rectangle 398" width="18" height="18" transform="translate(459 148)" fill="#1f1f1d"/>
       <rect id="Rectangle_399" data-name="Rectangle 399" width="18" height="18" transform="translate(401.5 189)" fill="#1f1f1d"/>
       <rect id="Rectangle_400" data-name="Rectangle 400" width="18" height="18" transform="translate(430.5 189)" fill="#1f1f1d"/>
-      <rect id="Rectangle_401" data-name="Rectangle 401" width="18" height="18" transform="translate(459.5 189)" fill="#2cf3e6"/>
+      <rect id="Rectangle_401" data-name="Rectangle 401" width="18" height="18" transform="translate(459.5 189)" fill="#f1fb65"/>
       <rect id="Rectangle_402" data-name="Rectangle 402" width="18" height="18" transform="translate(402 230)" fill="#1f1f1d"/>
       <rect id="Rectangle_403" data-name="Rectangle 403" width="18" height="18" transform="translate(431 230)" fill="#1f1f1d"/>
       <rect id="Rectangle_404" data-name="Rectangle 404" width="18" height="18" transform="translate(460 230)" fill="#1f1f1d"/>
@@ -68,20 +68,10 @@
       <rect id="Rectangle_434" data-name="Rectangle 434" width="18" height="18" transform="translate(612 394)" fill="#1f1f1d"/>
       <rect id="Rectangle_435" data-name="Rectangle 435" width="8" height="20.151" transform="translate(648 218)" fill="#3f3d56"/>
       <rect id="Rectangle_436" data-name="Rectangle 436" width="888" height="2.241" transform="translate(0.244 475.792)" fill="#3f3d56"/>
-      <circle id="Ellipse_417" data-name="Ellipse 417" cx="26.041" cy="26.041" r="26.041" transform="translate(706.619 378)" fill="#7d8787"/>
-      <path id="Path_68" data-name="Path 68" d="M907.908,597.631a26.043,26.043,0,0,1-43.391,27.561,26.043,26.043,0,1,0,43.391-27.561Z" transform="translate(-155.878 -210.984)" opacity="0.2"/>
-      <path id="Path_69" data-name="Path 69" d="M732.731,404.041h.072l1.287,73.829h-2.718Z" fill="#3f3d56"/>
-      <rect id="Rectangle_437" data-name="Rectangle 437" width="1.288" height="4.865" transform="translate(736.872 443.118) rotate(62.234)" fill="#3f3d56"/>
-      <path id="Path_70" data-name="Path 70" d="M994.553,550.134a39.6,39.6,0,0,1-65.984,41.911,39.6,39.6,0,1,0,65.984-41.911Z" transform="translate(-155.878 -210.984)" opacity="0.2"/>
-      <circle id="Ellipse_419" data-name="Ellipse 419" cx="26.041" cy="26.041" r="26.041" transform="translate(0.619 377)" fill="#7d8787"/>
-      <path id="Path_72" data-name="Path 72" d="M201.908,596.631a26.043,26.043,0,0,1-43.391,27.561,26.043,26.043,0,1,0,43.391-27.561Z" transform="translate(-155.878 -210.984)" opacity="0.2"/>
-      <path id="Path_73" data-name="Path 73" d="M26.731,403.041H26.8L28.09,476.87H25.372Z" fill="#3f3d56"/>
-      <rect id="Rectangle_439" data-name="Rectangle 439" width="1.288" height="4.865" transform="translate(30.872 442.117) rotate(62.234)" fill="#3f3d56"/>
       <path id="Path_80" data-name="Path 80" d="M106,456H44v2h9.669v19h2V458H93.331v19h2V458H106Z" fill="#3f3d56"/>
       <path id="Path_81" data-name="Path 81" d="M324.878,674.984a13.919,13.919,0,0,0-6.971,1.871,14.982,14.982,0,0,0-25.029,11.129h45.949a13.991,13.991,0,0,0-13.949-13Z" transform="translate(-155.878 -210.984)" fill="#3f3d56"/>
       <path id="Path_82" data-name="Path 82" d="M561.878,674.984a13.919,13.919,0,0,0-6.971,1.871,14.982,14.982,0,0,0-25.029,11.129h45.95a13.99,13.99,0,0,0-13.95-13Z" transform="translate(-155.878 -210.984)" fill="#3f3d56"/>
       <path id="Path_83" data-name="Path 83" d="M716.878,674.984a13.919,13.919,0,0,0-6.971,1.871,14.982,14.982,0,0,0-25.029,11.129h45.95a13.99,13.99,0,0,0-13.95-13Z" transform="translate(-155.878 -210.984)" fill="#3f3d56"/>
-      <path id="Path_84" data-name="Path 84" d="M920.878,674.984a13.919,13.919,0,0,0-6.971,1.871,14.982,14.982,0,0,0-25.029,11.129h45.95a13.99,13.99,0,0,0-13.95-13Z" transform="translate(-155.878 -210.984)" fill="#3f3d56"/>
       <path id="Path_86" data-name="Path 86" d="M129,407H113v16h7.417v53.912h2V423H129Z" fill="#3f3d56"/>
       <rect id="Rectangle_440" data-name="Rectangle 440" width="62" height="2" transform="translate(44.122 450.016)" fill="#3f3d56"/>
       <rect id="Rectangle_441" data-name="Rectangle 441" width="62" height="2" transform="translate(44.122 445.016)" fill="#3f3d56"/>
