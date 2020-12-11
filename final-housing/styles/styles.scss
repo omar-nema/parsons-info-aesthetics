@@ -88,7 +88,7 @@ h1 {
     text-align: center;
 }
 .content {
-    width: 87%;
+    width: 90%;
     margin: auto;
 
     max-width: 1300px;
@@ -303,6 +303,9 @@ textarea:focus, input:focus{
     transition: opacity .15s ease-in-out, box-shadow .15s ease-in-out;
     opacity: 0;
     z-index: 10000000;
+    strong {
+        font-weight: 600;
+    }
 }
 .tip-header {
     font-size: 14px;
@@ -424,6 +427,7 @@ textarea:focus, input:focus{
     }
     .card-header {
         font-weight: 600;
+        font-size: 16px;
         margin-bottom: $margin-text;
     }
     .card.metro {
@@ -434,6 +438,7 @@ textarea:focus, input:focus{
         background: $color-bg-content;
         padding: 20px 30px;
         border: 1px solid transparent;
+        font-size: 14px;
     }
 
     .card.active {
@@ -448,11 +453,14 @@ textarea:focus, input:focus{
     .card-details {
         margin: auto;
     }
-    .card-data {
-        margin-bottom: $margin-text;
-    }
+ 
   
 
+}
+
+
+.card-data-pt.floor-plan {
+    width: 100%;
 }
 
 .card-data-pt {
@@ -470,6 +478,13 @@ textarea:focus, input:focus{
     .value-holder {
         cursor: pointer;
     }
+    .card-plan svg.row-0 {
+        height: 33px !important;
+    }
+    .card-plan svg.row-1 {
+        height: 66px !important;
+    }
+
     .scale-holder {
         width: 80px;
         position: relative;

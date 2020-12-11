@@ -128,7 +128,7 @@ h1 {
 }
 
 .content {
-  width: 87%;
+  width: 90%;
   margin: auto;
   max-width: 1300px;
   -webkit-transition: opacity .5s ease-in-out;
@@ -364,6 +364,10 @@ textarea:focus, input:focus {
   z-index: 10000000;
 }
 
+.tooltip strong {
+  font-weight: 600;
+}
+
 .tip-header {
   font-size: 14px;
   font-weight: 600;
@@ -491,6 +495,7 @@ textarea:focus, input:focus {
 
 .pane .card-header {
   font-weight: 600;
+  font-size: 16px;
   margin-bottom: 15px;
 }
 
@@ -502,6 +507,7 @@ textarea:focus, input:focus {
   background: #353838;
   padding: 20px 30px;
   border: 1px solid transparent;
+  font-size: 14px;
 }
 
 .pane .card.active {
@@ -520,8 +526,8 @@ textarea:focus, input:focus {
   margin: auto;
 }
 
-.pane .card-data {
-  margin-bottom: 15px;
+.card-data-pt.floor-plan {
+  width: 100%;
 }
 
 .card-data-pt {
@@ -542,6 +548,14 @@ textarea:focus, input:focus {
 
 .card-data-pt .value-holder {
   cursor: pointer;
+}
+
+.card-data-pt .card-plan svg.row-0 {
+  height: 33px !important;
+}
+
+.card-data-pt .card-plan svg.row-1 {
+  height: 66px !important;
 }
 
 .card-data-pt .scale-holder {

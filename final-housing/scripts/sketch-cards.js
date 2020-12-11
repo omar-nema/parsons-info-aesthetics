@@ -58,10 +58,11 @@ function generateCards(datadetail){
 //separated b/c it's big and applies to diff selections
 function populateCardBody(d, dnode){
 
-    //populate card bodies
+
+    //populate card bodies with stats
     var statobj = [
-        {label: 'Occupants/Room', value: 'personsPerRoomMean', percentileval: 'personsPerRoomPercentile', dollarVal: 0},
-        {label: 'Occupants', value: 'personsMean', percentileval: 'personsMeanPercentile', dollarVal:  0},
+        // {label: 'Occupants/Room', value: 'personsPerRoomMean', percentileval: 'personsPerRoomPercentile', dollarVal: 0},
+        // {label: 'Occupants', value: 'personsMean', percentileval: 'personsMeanPercentile', dollarVal:  0},
         {label: 'Income', value: 'incomeMedian', percentileval: 'incomePercentile', dollarVal: 1},
         {label: 'Rent', value: 'rentMedian', percentileval: 'rentPercentile', dollarVal: 1}
     ];
@@ -78,15 +79,15 @@ function populateCardBody(d, dnode){
                 var pumaname = shortPumaNameById(d3.select(this).data()[0][0]);
                 var currval = d3.select(this).data()[0][1].stats[statobj.value];
                 var pctile =  d3.select(this).data()[0][1].stats[statobj.percentileval];
-                var introline = `<div>${statobj.label} percentile rank: ${pctile} `;
+                var introline = `<div><strong>${statobj.label} percentile rank: ${pctile} `;
                 var amtDiff = Math.abs(Math.round(100*(currval - compdata.median)/compdata.median));
                 
                 if (currval > compdata.median){
-                    introline =`${introline}(${amtDiff}% above median city value)</div>`
+                    introline =`${introline}</strong>(${amtDiff}% above median)</div>`
                 } else if (currval < compdata.median) {
-                    introline = `${introline}(${amtDiff}% below median city value)</div>`
+                    introline = `${introline}</strong>(${amtDiff}% below median)</div>`
                 } else {
-                    introline =`${introline}(${amtDiff} is equal to median city value)</div>`
+                    introline =`${introline}(${amtDiff} is equal to median)</div>`
                 }
                 var line1 = `<div class="card-data-pt"><div class="label">${statobj.label}</div><div class="value">${currval}</div></div>`;
                 var line2 = `<div class="card-data-pt"><div class="label">City Median</div><div class="value">${compdata.median}</div></div>`;
@@ -126,6 +127,12 @@ function populateCardBody(d, dnode){
         })
     });      
 
+    //add floor plan
+    var floorplan = dnode.append('div').attr('class', 'card-data-pt floor-plan')
+    floorplan.append('div').attr('class', 'label').html('Housing Avg');
+    floorplan.append('div').attr('class', 'value-holder card-plan').each(function(z){
+        drawFloorPlans(d[1].stats, d3.select(this))
+    })  
 }
 
 function cardSelection(sel, pumaid){

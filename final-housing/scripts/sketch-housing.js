@@ -14,6 +14,7 @@ function housingDrilldown(){
                 currRow.append('td').attr('class', 'row-persons').append('div').attr('class', 'detail-persons')
                     .html(d=> '<div>' + d.weightPersons + '</div>')
                 ; 
+
                 currRow.append('td').attr('class', 'row-persons').append('div').attr('class', 'detail-remt')
                 .html(d=> (d.statsRent > 0) ? ('<div>$' + d.statsRent + '</div>') : ('n/a'));      
                 currRow.append('td').attr('class', 'row-persons').append('div').attr('class', 'detail-income')
@@ -35,7 +36,8 @@ function housingDrilldown(){
 };
 
 function drawFloorPlans(d, dselection){
-    //add floor plans
+
+    //creates generative floor plan based on array of adults, children, rooms
 
     var sv = dselection.append('svg');        
     sel = sv.append('g').attr('class', 'housing-unit');
@@ -106,7 +108,7 @@ function drawFloorPlans(d, dselection){
     var nonbedstroke = 3;
 
     //add rooms outside of bedrooms
-    for (var i=0; i< (d.houseRoom - d.houseBed); i++){
+    for (var i=0; i< (d.houseRoom - d.houseArray.length); i++){
         rectX = (colNum)*(padding+r);
         rectY = (rowNum)*(r+padding);
         sel.append('rect')
@@ -139,17 +141,28 @@ function drawFloorPlans(d, dselection){
     });
 
     //tooltips
-    d3.selectAll('.housing-unit')
+    d3.selectAll('.pane-right .housing-unit')
     .on('mouseover',function(e){
         hd = d3.select(this).data()[0];
-        var txtbeds = hd.houseBed + ' bedrooms';
-        var personsPerRoom = Math.round(hd.personsNum/hd.houseBed * 10) / 10 ;
+        var txtbeds = hd.houseArray.length + ' bedrooms';
+        var personsPerRoom = Math.round(hd.personsNum/hd.houseArray.length * 10) / 10 ;
         var txtoccupants = hd.personsNum + ' occupants, ' + personsPerRoom + ' per room';
         var txtrooms = hd.houseRoom + ' total rooms'; 
         var tiptext = '<div class="tip-header">Housing Structure Detail</div><div>' + txtoccupants + '<br>' + txtbeds + '<br>' +  txtrooms +'</div>'
         showTooltip(tiptext, e);
     })
     .on('mouseout', hideTooltip);
+
+    d3.selectAll('.pane-left .housing-unit')
+    .on('mouseover',function(e){
+        console.log(d3.select(this).data());
+        d = d3.select(this).data()[0][1].stats;
+        var desc = `${d.personsMedian} occupants distributed across ${d.houseArray.length} bedrooms, with ${d.houseRoom-d.houseArray.length} other rooms`;
+        var disclaimer = 'Housing average created with median number of persons in median number of rooms. This is different from the most common housing structure (which can be accessed by clicking on this card).'
+        var tiptext = desc + '<br><br>' + disclaimer;
+        showTooltip(tiptext, e);
+    })
+    .on('mouseout', hideTooltip);    
 
     d3.selectAll('.table-head-struct')
     .on('mouseover', function(e){
@@ -164,5 +177,11 @@ function drawFloorPlans(d, dselection){
     })
     .on('mouseout', hideTooltip);
 
+    //weird workaround to get the heights right outside of detail container (in cards)
+    var classNum = rowNum;
+    if (colNum == 0){
+        classNum = rowNum - 1;
+    }
+    sv.classed('row-'+classNum.toString(), true);
 }
 
