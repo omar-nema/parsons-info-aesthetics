@@ -42,7 +42,7 @@ function showTooltip(html, e){
     .html(html)
     .style("visibility", "visible")
     .transition().duration(200)
-    .style("opacity", .95)
+    .style("opacity", 1)
     .style("left", (e.pageX) + "px")
     .style("top", (e.pageY + 22) + "px")
     .style('pointer-events', 'inherit')

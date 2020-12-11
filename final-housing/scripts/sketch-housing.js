@@ -43,7 +43,7 @@ function housingDetailTooltips(){
 
     housingOverlay.selectAll('.table-head-struct')
     .on('mouseover', function(e){
-        showTooltip('<img style="margin: -8.5px -13.5px" src="./legend-room.svg"/>',e)
+        showTooltip('<img style="margin: -8.5px -13.5px" src="./assets/legend-room-updated.svg"/>',e)
     })
     .on('mouseout', hideTooltip);
 
