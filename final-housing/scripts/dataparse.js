@@ -27,7 +27,7 @@ var allGeoMedians = {
 };
 
 async function parseTabularData() {
-    await d3.csv('./data/acsallbor.json').then((arr) => {
+    await d3.csv('./data/pumaAllTenancy.json').then((arr) => {
             return dataProcessRaw(arr);
         })
         .then(async (pcd) => {
@@ -106,7 +106,8 @@ function dataProcessRaw(arr) {
 
         var numAdultsOther = parseInt(d.NP) - parseInt(d.NRC) - parseInt(d.R65);
 
-        if (parseInt(d.NP) !== 0 && parseInt(d.BDSP) !== -1 && d.BDSP > 0) {
+     
+        if (parseInt(d.NP) !== 0 && parseInt(d.BDSP) !== -1 && d.BDSP > 0 && parseInt(d.GRNTP) > 0 && parseInt(d.TEN) == 3) {
 
             return {
                 geo: d.PUMA,
@@ -149,7 +150,9 @@ function dataProcessMetroArea(distinct) {
         geosplit[1].forEach((geoCluster) => {
             geoCluster[1].forEach((rowVal) => { //housing type level
                 for (i = 0; i < rowVal.weight; i++) { //individual response level
-                    geoIncomes.push(rowVal.income);
+                    if (rowVal.income > 0){
+                        geoIncomes.push(rowVal.income);
+                    }
                     geoBedrooms.push(rowVal.houseBed);
                     geoPersons.push(rowVal.personsNum);
                     geoChildren.push(rowVal.personsChild);
@@ -242,14 +245,22 @@ function dataProcessMetroArea(distinct) {
         //create new clean data object
         geoDetail = d3.sort(geoDetail, (a, b) => b.weightPersons - a.weightPersons); //sort by weight desc    
         geoKey = geosplit[0]
+
         var detailObj = {
             detail: geoDetail,
             stats: summaryStats,
-            borough: helperGetBorough(geoKey)
+            borough: helperGetBorough(geoKey),
+            district: parseInt(pumaIdMap.get(parseInt(geoKey)).match(/\d+/g).join(''))
+         
         }
         dataCleaned.set(parseInt(geoKey), detailObj);
 
     });
+
+    dataCleaned = new Map([...dataCleaned.entries()].sort((a,b)=> {
+        return a[1].district - b[1].district
+    }));
+  
     return dataCleaned;
 
 }

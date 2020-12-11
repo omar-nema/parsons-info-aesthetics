@@ -33,7 +33,39 @@ function housingDrilldown(){
     );
     d3.select('.housing-data tbody').classed('loading', false);
 
+    housingDetailTooltips();
+
 };
+
+function housingDetailTooltips(){
+
+    var housingOverlay = d3.select('.housing-overlay');
+
+    housingOverlay.selectAll('.table-head-struct')
+    .on('mouseover', function(e){
+        showTooltip('<img style="margin: -8.5px -13.5px" src="./legend-room.svg"/>',e)
+    })
+    .on('mouseout', hideTooltip);
+
+    housingOverlay.select('.table-head-demo.persons')
+    .on('mouseover', function(e){
+        showTooltip('<div>Number of persons represented by the living arrangement</div>',e)
+    })
+    .on('mouseout', hideTooltip);
+
+    housingOverlay.select('.table-head-demo.rent')
+    .on('mouseover', function(e){
+        showTooltip('<div>Median rent for occupants of a given living arrangement</div>',e)
+    })
+    .on('mouseout', hideTooltip);    
+
+    housingOverlay.select('.table-head-demo.income')
+    .on('mouseover', function(e){
+        showTooltip('<div>Median income for occupants of a given living arrangement</div>',e)
+    })
+    .on('mouseout', hideTooltip);    
+    
+}
 
 function drawFloorPlans(d, dselection){
 
@@ -149,30 +181,6 @@ function drawFloorPlans(d, dselection){
         var txtoccupants = hd.personsNum + ' occupants, ' + personsPerRoom + ' per room';
         var txtrooms = hd.houseRoom + ' total rooms'; 
         var tiptext = '<div class="tip-header">Housing Structure Detail</div><div>' + txtoccupants + '<br>' + txtbeds + '<br>' +  txtrooms +'</div>'
-        showTooltip(tiptext, e);
-    })
-    .on('mouseout', hideTooltip);
-
-    d3.selectAll('.pane-left .housing-unit')
-    .on('mouseover',function(e){
-        console.log(d3.select(this).data());
-        d = d3.select(this).data()[0][1].stats;
-        var desc = `${d.personsMedian} occupants distributed across ${d.houseArray.length} bedrooms, with ${d.houseRoom-d.houseArray.length} other rooms`;
-        var disclaimer = 'Housing average created with median number of persons in median number of rooms. This is different from the most common housing structure (which can be accessed by clicking on this card).'
-        var tiptext = desc + '<br><br>' + disclaimer;
-        showTooltip(tiptext, e);
-    })
-    .on('mouseout', hideTooltip);    
-
-    d3.selectAll('.table-head-struct')
-    .on('mouseover', function(e){
-        showTooltip('<img style="margin: -8.5px -13.5px" src="./legend-room.svg"/>',e)
-    })
-    .on('mouseout', hideTooltip);
-
-    d3.selectAll('.demo-head')
-    .on('mouseover', function(e){
-        var tiptext = '<div>Household demographic information for unique combination of occupant composition (quantity and age), and room structure.</div>'
         showTooltip(tiptext, e);
     })
     .on('mouseout', hideTooltip);

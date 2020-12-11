@@ -760,7 +760,7 @@ textarea:focus, input:focus {
 }
 
 .pane-right .housing-overlay table th {
-  text-decoration: underline;
+  text-decoration: none;
   -webkit-text-decoration-color: #008fff;
           text-decoration-color: #008fff;
   font-weight: 500;
@@ -769,14 +769,15 @@ textarea:focus, input:focus {
   padding-left: 2px;
 }
 
-.pane-right .housing-overlay table th.table-head-struct {
-  text-decoration: none;
-}
-
-.pane-right .housing-overlay table th.table-head-struct .headspan {
+.pane-right .housing-overlay table th .headspan {
   text-decoration: underline;
   -webkit-text-decoration-color: #008fff;
           text-decoration-color: #008fff;
+}
+
+.pane-right .housing-overlay table th .info-icon {
+  font-size: 9px;
+  padding: 2px 5px;
 }
 
 .pane-right .housing-overlay table h2 {
@@ -834,11 +835,11 @@ textarea:focus, input:focus {
 }
 
 .pane-right .housing-overlay table th.table-head-struct, .pane-right .housing-overlay table tbody td.row-structure {
-  width: 40%;
+  width: 32%;
 }
 
 .pane-right .housing-overlay table tbody td, .pane-right .housing-overlay table th.table-head-demo {
-  width: 20%;
+  width: 22.6%;
 }
 
 .pane-right .housing-overlay table td {

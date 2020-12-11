@@ -159,11 +159,6 @@ function initSearch(){
     });
 }
 
-
-//called first while data loads
-
-
-//relativity to vh should be changed
 function initIntro(){
 
     d3.select('.btn-context').on('click', ()=>{
