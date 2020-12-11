@@ -133,3 +133,15 @@ function cleanPumaName(sel){
     var districtNum = sel.substring(startInd, startInd +lookup.length+3).replace('-', '');
     return borough + ' ' + districtNum;
 }
+
+
+var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+});
+function formatDollar(int){
+    return formatter.format(int);
+}
+

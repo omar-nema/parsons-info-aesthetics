@@ -16,9 +16,9 @@ function housingDrilldown(){
                 ; 
 
                 currRow.append('td').attr('class', 'row-persons').append('div').attr('class', 'detail-remt')
-                .html(d=> (d.statsRent > 0) ? ('<div>$' + d.statsRent + '</div>') : ('n/a'));      
+                .html(d=> (d.statsRent > 0) ? ('<div>' + formatDollar(d.statsRent) + '</div>') : ('n/a'));      
                 currRow.append('td').attr('class', 'row-persons').append('div').attr('class', 'detail-income')
-                .html(d=> (d.statsIncome > 0) ? ('<div>$' + d.statsIncome + '</div>') : ('n/a') ); 
+                .html(d=> (d.statsIncome > 0) ? ('<div>' + formatDollar(d.statsIncome) + '</div>') : ('n/a') ); 
                  
             });
   

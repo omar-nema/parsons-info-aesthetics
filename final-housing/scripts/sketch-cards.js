@@ -64,8 +64,8 @@ function populateCardBody(d, dnode){
     var statobj = [
         // {label: 'Occupants/Room', value: 'personsPerRoomMean', percentileval: 'personsPerRoomPercentile', dollarVal: 0},
         // {label: 'Occupants', value: 'personsMean', percentileval: 'personsMeanPercentile', dollarVal:  0},
-        {label: 'Income', value: 'incomeMedian', percentileval: 'incomePercentile', dollarVal: 1},
-        {label: 'Rent', value: 'rentMedian', percentileval: 'rentPercentile', dollarVal: 1}
+        {label: 'Income', value: 'incomeMedian', percentileval: 'incomePercentile'},
+        {label: 'Rent', value: 'rentMedian', percentileval: 'rentPercentile'}
     ];
 
     statobj.forEach((statobj)=> {
@@ -102,7 +102,7 @@ function populateCardBody(d, dnode){
             .on('mouseout', hideTooltip);
         ;
         //append stat content
-        cardDataPtValues.append('div').attr('class', 'value').html(d=> d[1].stats[statobj.value]);
+        cardDataPtValues.append('div').attr('class', 'value').html(d=> formatDollar(d[1].stats[statobj.value]));
         cardDataPtScale = cardDataPtValues.append('div').attr('class', 'value').append('div').attr('class', 'scale-holder');
         cardDataPtScale.append('div').attr('class', 'scale');
         cardDataPtScale.each( function(d) {
