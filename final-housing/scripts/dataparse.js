@@ -115,6 +115,7 @@ async function parseTabularData(){
             var geoChildren = [];
             var geoRent = [];
             var geoWtScaledPerson = [];
+            var geoRooms = [];
             geosplit[1].forEach((geoCluster)=>{ 
                 geoCluster[1].forEach((rowVal)=>{ //housing type level
                     for (i=0; i<rowVal.weight; i++){ //individual response level
@@ -122,6 +123,7 @@ async function parseTabularData(){
                         geoBedrooms.push(rowVal.houseBed);
                         geoPersons.push(rowVal.personsNum);
                         geoChildren.push(rowVal.personsChild);
+                        geoRooms.push(rowVal.houseRoom)
                         if (rowVal.rent > 0){
                             geoRent.push(rowVal.rent)
                         }
@@ -139,7 +141,9 @@ async function parseTabularData(){
             var childrenMedian  = d3.median(geoChildren);
             var childrenMean  = d3.mean(geoChildren);
             var rentMedian = d3.median(geoRent);
+            var roomsMedian = d3.median(geoRooms);
             var personsPerRoomMean = Math.round(personsMean/bedroomMean * 100) / 100;
+             
 
             allGeoMedians.incomes.push(incomeMedian);
             allGeoMedians.rent.push(rentMedian);
@@ -152,6 +156,7 @@ async function parseTabularData(){
                 rentMedian: rentMedian,
                 bedroomMedian: bedroomMedian,
                 bedroomMean: Math.round(bedroomMean * 10) / 10,
+                roomMedian: roomsMedian,
                 personsMedian: personsMedian,
                 personsMean:  Math.round(personsMean * 10) / 10,
                 childrenMedian: childrenMedian,
