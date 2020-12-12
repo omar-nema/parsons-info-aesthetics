@@ -8,6 +8,7 @@ function updateSearchState(state){
 function updateNavPage(page){
     navPage = page;
     updateNav();
+        
 };
 function updateNav(){
     if (navPage == 'landing' && !searchState){
@@ -18,7 +19,6 @@ function updateNav(){
         d3.select('.back-btn').classed('disabled', true);
         d3.select('.bor-holder').classed('disabled', false);
         d3.selectAll('.card.neighb').classed('disabled', true);
-        
     }
     else if (navPage == 'landing' && searchState){
         d3.select('.inner-nav .card-explain').html(`Search for housing stats on any NYC neighborhood`)   
@@ -26,11 +26,11 @@ function updateNav(){
         d3.select('.back-btn').classed('disabled', true);
     }
     else if (navPage == 'bor' && !searchState){
-
         d3.select('.inner-nav .card-explain').html(`Search for metro areas in ${helperCapitalizeFirstLetter(bor)}`)        
         d3.select('.back-btn').classed('disabled', false);
         d3.select('.bor-holder').classed('disabled', true);       
     } 
+    updateMapHighlight();
 }
 
 //helpers - local and global
@@ -59,6 +59,7 @@ function helperCapitalizeFirstLetter(string) {
 
 //initilization for UI elements - called once
 function initUI(){
+    drawMap();
     initSearch();
     initBoroughSelector();
     initNavTabs();
@@ -99,6 +100,7 @@ function initNavTabs(){
             slide('.pane-highlights', '.pane-neighb');
             
         }
+        updateNav();
 
     });
 };
@@ -201,3 +203,28 @@ function initIntro(){
 
     return;
 }
+
+
+function updateMapHighlight(){
+    var sel = d3.select('.nav-option.selected');
+    if (sel.classed('highlights')){
+        d3.selectAll('.card.highlight').each(d=>{
+            var puma = d[0];
+            console.log(puma)
+            mapHighlightLowkey(puma);
+        });
+    } else {
+        mapHighlightRemove();
+        d3.selectAll('.card.neighb').each(function(d){
+            var puma = d[0];
+            console.log('k now')
+            if (!d3.select(this).classed('disabled')){
+                mapHighlightLowkey(puma);
+            }            
+        });
+    }
+    //get page
+    //get cards on page
+    //get pumas from cards on page
+    //get corresponding paths (highlightlowkey on each id)
+};

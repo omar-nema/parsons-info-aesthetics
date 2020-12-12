@@ -46,6 +46,18 @@ function generateCards(datadetail){
         cardSelection(sel, pumaid);
     })
     ;
+
+    d3.selectAll('.card').on('mouseover', function(d){
+        var sel = d3.select(this)
+        var data = sel.data();
+        var pumaid = parseInt(data[0]);
+        mapHighlightHighkey(pumaid);
+    }).on('mouseleave', function(d){
+        var sel = d3.select(this)
+        var data = sel.data();
+        var pumaid = parseInt(data[0]);
+        mapReturnState(pumaid);    
+    })
    
     d3.select('.overlay-close').on('click',  () => {
         d3.selectAll('.card').classed('active', false);

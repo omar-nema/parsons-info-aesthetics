@@ -100,7 +100,7 @@
   height: 0;
 }
 
-.clickable.light:hover, .bor-selector .light.btn-bor:hover, .light.info-icon.big:hover, .inner-nav .light.back-btn:hover, .card-nav .light.back-btn:hover, .pane .card.metro:hover, .pane-right select.light:hover, .pane-right .light.housing-unit:hover, .pane-right .housing-overlay .card-header .light.housing-detail:hover, .scroll-holder .light.btn-skip:hover, .scroll-holder .light.btn-explore:hover {
+.clickable.light:hover, .bor-selector .light.btn-bor:hover, .light.info-icon.big:hover, .inner-nav .light.back-btn:hover, .card-nav .light.back-btn:hover, .pane-right select.light:hover, .pane-right .light.housing-unit:hover, .pane-right .housing-overlay .card-header .light.housing-detail:hover, .scroll-holder .light.btn-skip:hover, .scroll-holder .light.btn-explore:hover {
   opacity: 0.9;
 }
 
@@ -508,6 +508,12 @@ textarea:focus, input:focus {
   padding: 20px 30px;
   border: 1px solid transparent;
   font-size: 14px;
+  -webkit-transition: opacity .1s linear, border-color .1s linear;
+  transition: opacity .1s linear, border-color .1s linear;
+}
+
+.pane .card:hover {
+  border-color: #994791;
 }
 
 .pane .card.active {
@@ -654,14 +660,19 @@ textarea:focus, input:focus {
 }
 
 .pane-right .housing-underlay {
-  opacity: 0.7;
-  background: rgba(53, 56, 56, 0.5);
+  background: #1d1e1e;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 99%;
   z-index: 1;
+}
+
+.pane-right .map {
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
 }
 
 .pane-right .housing-msg {
@@ -700,13 +711,26 @@ textarea:focus, input:focus {
 
 .pane-right .map svg .puma-path {
   cursor: pointer;
-  -webkit-transition: opacity .1s linear, stroke .1s linear;
-  transition: opacity .1s linear, stroke .1s linear;
-  stroke-width: 0.7px;
+  -webkit-transition: all .2s linear;
+  transition: all .2s linear;
+  stroke-width: 0.2px;
+  stroke: #7d7070;
+  fill: black;
+}
+
+.pane-right .map svg .puma-path.highlight-lowkey {
+  fill: #879494;
+  stroke: #242727;
+}
+
+.pane-right .map svg .puma-path.highlight-highkey {
+  fill: #ba6db1 !important;
+  stroke: black !important;
 }
 
 .pane-right .map svg .puma-path:hover {
-  opacity: 0.7;
+  fill: #691a61;
+  stroke: #F587EA;
 }
 
 .pane-right .map svg .puma-path.active {
