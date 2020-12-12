@@ -44,6 +44,7 @@ function generateCards(datadetail){
         var data = sel.data();
         var pumaid = parseInt(data[0]);
         cardSelection(sel, pumaid);
+        d3.select('.housing-msg').classed('disabled', true);
     })
     ;
 

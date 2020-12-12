@@ -573,7 +573,6 @@ textarea:focus, input:focus{
     }
   
     .housing-underlay{ 
-        background: #1d1e1e;
         position: absolute;
         top: 0;
         left: 0;
@@ -581,6 +580,8 @@ textarea:focus, input:focus{
         height: 99%;
         max-height: 900px;
         z-index: 1;
+        border: 1px dashed #433f3f;
+        background: #141414;
     }
     .map {
         width: 100%;
@@ -590,7 +591,8 @@ textarea:focus, input:focus{
 
     .housing-msg {
         position: absolute;
-        top: 50%;
+        top: 50px;
+        opacity: .4;
         left: 0%;
         width: 100%;
         transform: translate(0, -50%);
@@ -628,11 +630,11 @@ textarea:focus, input:focus{
             cursor: pointer;
             transition: all .2s linear;
             stroke-width: 0.2px;
-            stroke: #6d5c5c;
+            stroke: #827272;
             fill: black;
         }
         .puma-path.highlight-lowkey {
-            fill: #879494 ;
+            fill: #626f6f ;
             stroke: #242727; 
         }
         .puma-path.highlight-highkey {
