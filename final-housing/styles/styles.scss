@@ -581,7 +581,7 @@ textarea:focus, input:focus{
         max-height: 900px;
         z-index: 1;
         border: 1px solid #252323;
-        background: black;
+        background: #121111;
     }
     .map {
         width: 100%;
@@ -629,7 +629,7 @@ textarea:focus, input:focus{
         .puma-path {
             cursor: pointer;
             transition: all .2s linear;
-            stroke-width: .5px;
+            stroke-width: .35px;
             stroke: #544949;
             fill: black;
         }
