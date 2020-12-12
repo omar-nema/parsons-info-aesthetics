@@ -440,7 +440,7 @@ textarea:focus, input:focus {
   visibility: inherit;
   opacity: 1;
   background: #0D0D0D;
-  height: 98%;
+  height: calc(100% - 100px);
 }
 
 .card-holder {
@@ -532,8 +532,10 @@ textarea:focus, input:focus {
   margin: auto;
 }
 
-.card-data-pt.floor-plan {
-  width: 100%;
+.vis-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .card-data-pt {

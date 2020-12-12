@@ -210,21 +210,15 @@ function updateMapHighlight(){
     if (sel.classed('highlights')){
         d3.selectAll('.card.highlight').each(d=>{
             var puma = d[0];
-            console.log(puma)
             mapHighlightLowkey(puma);
         });
     } else {
         mapHighlightRemove();
         d3.selectAll('.card.neighb').each(function(d){
             var puma = d[0];
-            console.log('k now')
             if (!d3.select(this).classed('disabled')){
                 mapHighlightLowkey(puma);
             }            
         });
     }
-    //get page
-    //get cards on page
-    //get pumas from cards on page
-    //get corresponding paths (highlightlowkey on each id)
 };

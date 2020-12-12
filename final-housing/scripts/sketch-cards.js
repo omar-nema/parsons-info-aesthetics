@@ -141,8 +141,11 @@ function populateCardBody(d, dnode){
         })
     });      
 
+    //add more visual stats
+    var visHolder =  dnode.append('div').attr('class', 'vis-holder');
+
     //add floor plan
-    var floorplan = dnode.append('div').attr('class', 'card-data-pt floor-plan')
+    var floorplan = visHolder.append('div').attr('class', 'card-data-pt floor-plan')
     floorplan.append('div').attr('class', 'label').html('Housing Avg');
     floorplan.append('div').attr('class', 'value-holder card-plan').each(function(z){
         drawFloorPlans(d[1].stats, d3.select(this))
@@ -156,6 +159,44 @@ function populateCardBody(d, dnode){
         showTooltip(tiptext, e);
     })
     .on('mouseout', hideTooltip);   
+
+    //add building structure
+    var bld = visHolder.append('div').attr('class', 'card-data-pt building')
+    .on('mouseover',function(e){
+        bld = d3.select(this).data()[0][1].stats.buildingTop;
+        var bldString = '';
+        if (bld == 4){
+            bldString= '2 apartments';
+        }
+        else if (bld == 5){
+            bldString= '3-4 apartments';
+        }
+        else if (bld == 6){
+            bldString= '5-9 apartments';
+        }
+        else if (bld == 7){
+            bldString= '10-19 apartments';
+        }
+        else if (bld == 8){
+            bldString= '20-49 apartments';
+        }
+        else if (bld == 9){
+            bldString= '50+ apartments';
+        }        
+        var tiptext = `Most common dwelling contains <strong>${bldString}</strong>`;
+        showTooltip(tiptext, e);
+    })
+    .on('mouseout', hideTooltip);   
+    ;
+    bld.append('div').attr('class', 'label').html('Building Avg');
+    bld.append('div').attr('class', 'value-holder building').append('img').attr('src', d=> {
+        var dir = "./assets/building-";
+        var unit = d[1].stats.buildingTop;
+        if (unit){
+            return dir + unit.toString() + '.svg'; 
+        }
+       
+    })
 }
 
 function cardSelection(sel, pumaid){

@@ -380,7 +380,7 @@ textarea:focus, input:focus{
     opacity: 1;
     background: $color-bg;
     @extend .standardTrans;;
-    height: 98%;
+    height: calc(100% - 100px);
 }
 
 
@@ -464,9 +464,8 @@ textarea:focus, input:focus{
 
 }
 
-
-.card-data-pt.floor-plan {
-    width: 100%;
+.vis-holder {
+    display: flex;
 }
 
 .card-data-pt {

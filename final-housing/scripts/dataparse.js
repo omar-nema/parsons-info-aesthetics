@@ -23,11 +23,12 @@ var allGeoMedians = {
     incomes: [],
     rent: [],
     personsPerRoom: [],
-    persons: []
+    persons: [],
+    buildings: []
 };
 
 async function parseTabularData() {
-    await d3.csv('./data/pumaAllTenancy.json').then((arr) => {
+    await d3.csv('./data/pumaAllBuilding.json').then((arr) => {
             return dataProcessRaw(arr);
         })
         .then(async (pcd) => {
@@ -54,6 +55,7 @@ async function parseTabularData() {
             var rentlen = allGeoMedians.rent.length;
             var personsperlen = allGeoMedians.personsPerRoom.length;
             var personslen = allGeoMedians.persons.length;
+            var buildings = allGeoMedians.persons.length;
          
             dataCleaned.forEach(d => {
                 var incomeindex = allGeoMedians.incomes.indexOf(d.stats.incomeMedian)
@@ -125,7 +127,8 @@ function dataProcessRaw(arr) {
                 amenityHeat: fuel,
                 rent: parseInt(d.GRNTP),
                 income: parseInt(d.ADJINC) * parseInt(d.HINCP),
-                multiLang: +d.LANX
+                multiLang: +d.LANX,
+                building: +d.BLD
             }
 
 
@@ -147,6 +150,7 @@ function dataProcessMetroArea(distinct) {
         var geoRent = [];
         var geoWtScaledPerson = [];
         var geoRooms = [];
+        var geoBuildings = [];
         geosplit[1].forEach((geoCluster) => {
             geoCluster[1].forEach((rowVal) => { //housing type level
                 for (i = 0; i < rowVal.weight; i++) { //individual response level
@@ -159,6 +163,9 @@ function dataProcessMetroArea(distinct) {
                     geoRooms.push(rowVal.houseRoom)
                     if (rowVal.rent > 0) {
                         geoRent.push(rowVal.rent)
+                    }
+                    if (rowVal.building > 0){
+                        geoBuildings.push(rowVal.building);
                     }
                 }
                 geoWtScaledPerson.push(rowVal.weight * rowVal.personsNum)
@@ -177,16 +184,19 @@ function dataProcessMetroArea(distinct) {
         var roomsMedian = d3.median(geoRooms);
         var personsPerRoomMean = Math.round(personsMean / bedroomMean * 100) / 100;
 
+        var buildingsMedian = d3.median(geoBuildings);
         allGeoMedians.incomes.push(incomeMedian);
         allGeoMedians.rent.push(rentMedian);
         allGeoMedians.personsPerRoom.push(personsPerRoomMean);
         allGeoMedians.persons.push(personsMean);
+        allGeoMedians.buildings.push(buildingsMedian);
 
 
         //stats at PUMA level
         var summaryStats = {
             incomeMedian: incomeMedian,
             rentMedian: rentMedian,
+            buildingTop: buildingsMedian,
             bedroomMedian: bedroomMedian,
             bedroomMean: Math.round(bedroomMean * 10) / 10,
             houseRoom: roomsMedian,
