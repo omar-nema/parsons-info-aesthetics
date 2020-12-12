@@ -558,11 +558,8 @@ textarea:focus, input:focus {
   cursor: pointer;
 }
 
-.card-data-pt .value-holder.card-plan {
-  width: 150px;
-  height: 80px;
-  background: #2a2c2c;
-  padding: 10px;
+.card-data-pt .building-svg {
+  width: 60px;
 }
 
 .card-data-pt .card-plan svg.row-0 {

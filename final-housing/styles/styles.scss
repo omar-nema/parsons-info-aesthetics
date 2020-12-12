@@ -483,12 +483,10 @@ textarea:focus, input:focus{
     .value-holder {
         cursor: pointer;
     }
-    .value-holder.card-plan {
-        width: 150px;
-        height: 80px;
-        background: #2a2c2c;
-        padding: 10px;
+    .building-svg {
+        width: 60px;
     }
+
     .card-plan svg.row-0 {
         height: 33px !important;
     }
