@@ -667,8 +667,8 @@ textarea:focus, input:focus {
   height: 99%;
   max-height: 900px;
   z-index: 1;
-  border: 1px dashed #302d2d;
-  background: #141414;
+  border: 1px solid #252323;
+  background: black;
 }
 
 .pane-right .map {
@@ -717,7 +717,7 @@ textarea:focus, input:focus {
   -webkit-transition: all .2s linear;
   transition: all .2s linear;
   stroke-width: 0.2px;
-  stroke: #827272;
+  stroke: #a79292;
   fill: black;
 }
 
