@@ -558,6 +558,13 @@ textarea:focus, input:focus {
   cursor: pointer;
 }
 
+.card-data-pt .value-holder.card-plan {
+  width: 150px;
+  height: 80px;
+  background: #2a2c2c;
+  padding: 10px;
+}
+
 .card-data-pt .card-plan svg.row-0 {
   height: 33px !important;
 }
@@ -681,13 +688,15 @@ textarea:focus, input:focus {
 
 .pane-right .housing-msg {
   position: absolute;
-  top: 50px;
+  top: 45px;
   opacity: .4;
   left: 0%;
   width: 100%;
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
   text-align: center;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .pane-right .pane-overview {

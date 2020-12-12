@@ -144,22 +144,7 @@ function populateCardBody(d, dnode){
     //add more visual stats
     var visHolder =  dnode.append('div').attr('class', 'vis-holder');
 
-    //add floor plan
-    var floorplan = visHolder.append('div').attr('class', 'card-data-pt floor-plan')
-    floorplan.append('div').attr('class', 'label').html('Housing Avg');
-    floorplan.append('div').attr('class', 'value-holder card-plan').each(function(z){
-        drawFloorPlans(d[1].stats, d3.select(this))
-    });
-    d3.selectAll('.pane-left .housing-unit')
-    .on('mouseover',function(e){
-        d = d3.select(this).data()[0][1].stats;
-        var desc = `${d.personsMedian} occupants distributed across ${d.houseArray.length} bedrooms, with ${d.houseRoom-d.houseArray.length} other rooms`;
-        var disclaimer = 'Housing average is determined by placing median number of persons in median number of rooms. This is different from the most common housing structure (which can be accessed by clicking on this card).'
-        var tiptext = desc + '<br><br>' + disclaimer;
-        showTooltip(tiptext, e);
-    })
-    .on('mouseout', hideTooltip);   
-
+ 
     //add building structure
     var bld = visHolder.append('div').attr('class', 'card-data-pt building')
     .on('mouseover',function(e){
@@ -197,6 +182,24 @@ function populateCardBody(d, dnode){
         }
        
     })
+
+
+   //add floor plan
+   var floorplan = visHolder.append('div').attr('class', 'card-data-pt floor-plan')
+   floorplan.append('div').attr('class', 'label').html('Housing Avg');
+   floorplan.append('div').attr('class', 'value-holder card-plan').each(function(z){
+       drawFloorPlans(d[1].stats, d3.select(this))
+   });
+   d3.selectAll('.pane-left .housing-unit')
+   .on('mouseover',function(e){
+       d = d3.select(this).data()[0][1].stats;
+       var desc = `${d.personsMedian} occupants distributed across ${d.houseArray.length} bedrooms, with ${d.houseRoom-d.houseArray.length} other rooms`;
+       var disclaimer = 'Housing average is determined by placing median number of persons in median number of rooms. This is different from the most common housing structure (which can be accessed by clicking on this card).'
+       var tiptext = desc + '<br><br>' + disclaimer;
+       showTooltip(tiptext, e);
+   })
+   .on('mouseout', hideTooltip);   
+
 }
 
 function cardSelection(sel, pumaid){

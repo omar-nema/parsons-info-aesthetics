@@ -5,414 +5,421 @@
     </clipPath>
   </defs>
   <g id="building-9" clip-path="url(#clip-building-9)">
-    <g id="Group_871" data-name="Group 871">
-      <g id="Group_870" data-name="Group 870" transform="translate(0 -1)">
-        <g id="Group_869" data-name="Group 869">
-          <rect id="Rectangle_501" data-name="Rectangle 501" width="81" height="79.35" transform="translate(2 2)" fill="#fff"/>
-          <g id="Group_830" data-name="Group 830" transform="translate(7.507 7.575)">
-            <rect id="Rectangle_332" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335" data-name="Rectangle 335" width="7.101" height="1.86"/>
+    <rect width="86" height="82" fill="#2a2c2c"/>
+    <g id="Group_906" data-name="Group 906" transform="translate(4.226 5.568)">
+      <g id="Group_900" data-name="Group 900">
+        <g id="Group_899" data-name="Group 899">
+          <g id="Group_871" data-name="Group 871">
+            <g id="Group_870" data-name="Group 870" transform="translate(1.819 0.956)">
+              <g id="Group_869" data-name="Group 869">
+                <rect id="Rectangle_501" data-name="Rectangle 501" width="73.681" height="75.822" fill="#fff"/>
+                <g id="Group_830" data-name="Group 830" transform="translate(5.01 5.327)">
+                  <rect id="Rectangle_332" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_835" data-name="Group 835" transform="translate(14.696 5.327)">
+                  <rect id="Rectangle_332-2" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-2" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-2" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-2" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_844" data-name="Group 844" transform="translate(24.383 5.327)">
+                  <rect id="Rectangle_332-3" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-3" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-3" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-3" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_852" data-name="Group 852" transform="translate(34.069 5.327)">
+                  <rect id="Rectangle_332-4" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-4" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-4" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-4" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_865" data-name="Group 865" transform="translate(43.755 5.327)">
+                  <rect id="Rectangle_332-5" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-5" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-5" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-5" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_873" data-name="Group 873" transform="translate(52.852 5.327)">
+                  <rect id="Rectangle_332-6" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-6" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-6" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-6" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_897" data-name="Group 897" transform="translate(62.858 5.327)">
+                  <rect id="Rectangle_332-7" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-7" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-7" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-7" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_831" data-name="Group 831" transform="translate(5.01 13.455)">
+                  <rect id="Rectangle_332-8" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-8" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-8" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-8" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_836" data-name="Group 836" transform="translate(14.696 13.455)">
+                  <rect id="Rectangle_332-9" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-9" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-9" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-9" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_842" data-name="Group 842" transform="translate(24.383 13.455)">
+                  <rect id="Rectangle_332-10" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-10" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-10" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-10" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_851" data-name="Group 851" transform="translate(34.069 13.455)">
+                  <rect id="Rectangle_332-11" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-11" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-11" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-11" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_866" data-name="Group 866" transform="translate(43.755 13.455)">
+                  <rect id="Rectangle_332-12" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-12" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-12" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-12" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_874" data-name="Group 874" transform="translate(52.852 13.455)">
+                  <rect id="Rectangle_332-13" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-13" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-13" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-13" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_898" data-name="Group 898" transform="translate(62.858 13.455)">
+                  <rect id="Rectangle_332-14" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-14" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-14" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-14" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_832" data-name="Group 832" transform="translate(5.01 21.582)">
+                  <rect id="Rectangle_332-15" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-15" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-15" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-15" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_837" data-name="Group 837" transform="translate(14.696 21.582)">
+                  <rect id="Rectangle_332-16" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-16" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-16" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-16" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_843" data-name="Group 843" transform="translate(24.383 21.582)">
+                  <rect id="Rectangle_332-17" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-17" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-17" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-17" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_849" data-name="Group 849" transform="translate(34.069 21.582)">
+                  <rect id="Rectangle_332-18" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-18" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-18" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-18" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_863" data-name="Group 863" transform="translate(43.755 21.582)">
+                  <rect id="Rectangle_332-19" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-19" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-19" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-19" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_875" data-name="Group 875" transform="translate(52.852 21.582)">
+                  <rect id="Rectangle_332-20" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-20" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-20" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-20" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_896" data-name="Group 896" transform="translate(62.858 21.582)">
+                  <rect id="Rectangle_332-21" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-21" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-21" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-21" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_833" data-name="Group 833" transform="translate(5.01 29.71)">
+                  <rect id="Rectangle_332-22" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-22" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-22" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-22" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_859" data-name="Group 859" transform="translate(5.01 45.535)">
+                  <rect id="Rectangle_332-23" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-23" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-23" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-23" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_879" data-name="Group 879" transform="translate(5.01 53.179)">
+                  <rect id="Rectangle_332-24" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-24" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-24" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-24" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_885" data-name="Group 885" transform="translate(5.01 60.824)">
+                  <rect id="Rectangle_332-25" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-25" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-25" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-25" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_838" data-name="Group 838" transform="translate(14.696 29.71)">
+                  <rect id="Rectangle_332-26" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-26" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-26" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-26" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_856" data-name="Group 856" transform="translate(14.696 45.535)">
+                  <rect id="Rectangle_332-27" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-27" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-27" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-27" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_880" data-name="Group 880" transform="translate(14.696 53.179)">
+                  <rect id="Rectangle_332-28" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-28" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-28" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-28" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_886" data-name="Group 886" transform="translate(14.696 60.824)">
+                  <rect id="Rectangle_332-29" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-29" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-29" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-29" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_841" data-name="Group 841" transform="translate(24.383 29.71)">
+                  <rect id="Rectangle_332-30" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-30" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-30" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-30" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_857" data-name="Group 857" transform="translate(24.383 45.535)">
+                  <rect id="Rectangle_332-31" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-31" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-31" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-31" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_881" data-name="Group 881" transform="translate(24.383 53.179)">
+                  <rect id="Rectangle_332-32" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-32" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-32" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-32" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_887" data-name="Group 887" transform="translate(24.383 60.824)">
+                  <rect id="Rectangle_332-33" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-33" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-33" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-33" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_850" data-name="Group 850" transform="translate(34.069 29.71)">
+                  <rect id="Rectangle_332-34" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-34" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-34" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-34" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_864" data-name="Group 864" transform="translate(43.755 29.71)">
+                  <rect id="Rectangle_332-35" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-35" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-35" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-35" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_876" data-name="Group 876" transform="translate(52.852 29.71)">
+                  <rect id="Rectangle_332-36" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-36" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-36" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-36" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_895" data-name="Group 895" transform="translate(62.858 29.71)">
+                  <rect id="Rectangle_332-37" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-37" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-37" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-37" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_858" data-name="Group 858" transform="translate(34.069 45.535)">
+                  <rect id="Rectangle_332-38" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-38" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-38" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-38" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_882" data-name="Group 882" transform="translate(34.069 53.179)">
+                  <rect id="Rectangle_332-39" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-39" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-39" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-39" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_888" data-name="Group 888" transform="translate(34.069 60.824)">
+                  <rect id="Rectangle_332-40" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-40" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-40" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-40" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_861" data-name="Group 861" transform="translate(43.755 45.535)">
+                  <rect id="Rectangle_332-41" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-41" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-41" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-41" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_883" data-name="Group 883" transform="translate(43.755 53.179)">
+                  <rect id="Rectangle_332-42" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-42" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-42" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-42" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_889" data-name="Group 889" transform="translate(43.755 60.824)">
+                  <rect id="Rectangle_332-43" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-43" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-43" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-43" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_878" data-name="Group 878" transform="translate(52.852 45.535)">
+                  <rect id="Rectangle_332-44" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-44" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-44" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-44" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_891" data-name="Group 891" transform="translate(62.858 45.535)">
+                  <rect id="Rectangle_332-45" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-45" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-45" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-45" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_884" data-name="Group 884" transform="translate(52.852 53.179)">
+                  <rect id="Rectangle_332-46" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-46" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-46" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-46" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_892" data-name="Group 892" transform="translate(62.858 53.179)">
+                  <rect id="Rectangle_332-47" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-47" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-47" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-47" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_890" data-name="Group 890" transform="translate(52.852 60.824)">
+                  <rect id="Rectangle_332-48" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-48" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-48" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-48" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_893" data-name="Group 893" transform="translate(62.858 60.824)">
+                  <rect id="Rectangle_332-49" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-49" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-49" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-49" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_834" data-name="Group 834" transform="translate(5.01 37.838)">
+                  <rect id="Rectangle_332-50" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-50" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-50" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-50" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_839" data-name="Group 839" transform="translate(14.696 37.838)">
+                  <rect id="Rectangle_332-51" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-51" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-51" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-51" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_840" data-name="Group 840" transform="translate(24.383 37.838)">
+                  <rect id="Rectangle_332-52" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-52" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-52" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-52" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_848" data-name="Group 848" transform="translate(34.069 37.838)">
+                  <rect id="Rectangle_332-53" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-53" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-53" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-53" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_862" data-name="Group 862" transform="translate(43.755 37.838)">
+                  <rect id="Rectangle_332-54" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-54" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-54" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-54" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_877" data-name="Group 877" transform="translate(52.852 37.838)">
+                  <rect id="Rectangle_332-55" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-55" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-55" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-55" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+                <g id="Group_894" data-name="Group 894" transform="translate(62.858 37.838)">
+                  <rect id="Rectangle_332-56" data-name="Rectangle 332" width="7.228" height="0.782" transform="translate(0 4.159)" opacity="0.1"/>
+                  <rect id="Rectangle_333-56" data-name="Rectangle 333" width="6.46" height="4.479" transform="translate(0.384 0)" fill="#060606" opacity="0.5"/>
+                  <g id="Group_536-56" data-name="Group 536" transform="translate(0.384 0)" opacity="0.1">
+                    <rect id="Rectangle_335-56" data-name="Rectangle 335" width="6.46" height="1.777"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <g id="Rectangle_502" data-name="Rectangle 502" transform="translate(-0.226 0.432)" fill="#fff" stroke="#707070" stroke-width="1">
+              <rect width="78" height="2" stroke="none"/>
+              <rect x="0.5" y="0.5" width="77" height="1" fill="none"/>
             </g>
           </g>
-          <g id="Group_835" data-name="Group 835" transform="translate(18.156 7.575)">
-            <rect id="Rectangle_332-2" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-2" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-2" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-2" data-name="Rectangle 335" width="7.101" height="1.86"/>
+          <g id="Group_872" data-name="Group 872" transform="translate(37.518 71.327)">
+            <g id="Group_732" data-name="Group 732" transform="translate(0 0)">
+              <g id="Group_737" data-name="Group 737">
+                <rect id="Rectangle_331" data-name="Rectangle 331" width="3.842" height="5.437" fill="#535461"/>
+                <ellipse id="Ellipse_257" data-name="Ellipse 257" cx="0.215" cy="0.236" rx="0.215" ry="0.236" transform="translate(3.197 2.482)" fill="#e0e0e0"/>
+              </g>
             </g>
           </g>
-          <g id="Group_844" data-name="Group 844" transform="translate(28.804 7.575)">
-            <rect id="Rectangle_332-3" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-3" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-3" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-3" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_852" data-name="Group 852" transform="translate(39.453 7.575)">
-            <rect id="Rectangle_332-4" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-4" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-4" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-4" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_865" data-name="Group 865" transform="translate(50.102 7.575)">
-            <rect id="Rectangle_332-5" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-5" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-5" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-5" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_873" data-name="Group 873" transform="translate(60.102 7.575)">
-            <rect id="Rectangle_332-6" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-6" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-6" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-6" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_897" data-name="Group 897" transform="translate(71.102 7.575)">
-            <rect id="Rectangle_332-7" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-7" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-7" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-7" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_831" data-name="Group 831" transform="translate(7.507 16.081)">
-            <rect id="Rectangle_332-8" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-8" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-8" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-8" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_836" data-name="Group 836" transform="translate(18.156 16.081)">
-            <rect id="Rectangle_332-9" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-9" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-9" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-9" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_842" data-name="Group 842" transform="translate(28.804 16.081)">
-            <rect id="Rectangle_332-10" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-10" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-10" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-10" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_851" data-name="Group 851" transform="translate(39.453 16.081)">
-            <rect id="Rectangle_332-11" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-11" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-11" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-11" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_866" data-name="Group 866" transform="translate(50.102 16.081)">
-            <rect id="Rectangle_332-12" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-12" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-12" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-12" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_874" data-name="Group 874" transform="translate(60.102 16.081)">
-            <rect id="Rectangle_332-13" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-13" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-13" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-13" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_898" data-name="Group 898" transform="translate(71.102 16.081)">
-            <rect id="Rectangle_332-14" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-14" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-14" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-14" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_832" data-name="Group 832" transform="translate(7.507 24.587)">
-            <rect id="Rectangle_332-15" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-15" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-15" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-15" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_837" data-name="Group 837" transform="translate(18.156 24.587)">
-            <rect id="Rectangle_332-16" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-16" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-16" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-16" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_843" data-name="Group 843" transform="translate(28.804 24.587)">
-            <rect id="Rectangle_332-17" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-17" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-17" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-17" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_849" data-name="Group 849" transform="translate(39.453 24.587)">
-            <rect id="Rectangle_332-18" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-18" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-18" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-18" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_863" data-name="Group 863" transform="translate(50.102 24.587)">
-            <rect id="Rectangle_332-19" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-19" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-19" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-19" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_875" data-name="Group 875" transform="translate(60.102 24.587)">
-            <rect id="Rectangle_332-20" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-20" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-20" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-20" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_896" data-name="Group 896" transform="translate(71.102 24.587)">
-            <rect id="Rectangle_332-21" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-21" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-21" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-21" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_833" data-name="Group 833" transform="translate(7.507 33.093)">
-            <rect id="Rectangle_332-22" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-22" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-22" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-22" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_859" data-name="Group 859" transform="translate(7.507 49.654)">
-            <rect id="Rectangle_332-23" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-23" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-23" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-23" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_879" data-name="Group 879" transform="translate(7.507 57.654)">
-            <rect id="Rectangle_332-24" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-24" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-24" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-24" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_885" data-name="Group 885" transform="translate(7.507 65.654)">
-            <rect id="Rectangle_332-25" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-25" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-25" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-25" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_838" data-name="Group 838" transform="translate(18.156 33.093)">
-            <rect id="Rectangle_332-26" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-26" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-26" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-26" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_856" data-name="Group 856" transform="translate(18.156 49.654)">
-            <rect id="Rectangle_332-27" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-27" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-27" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-27" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_880" data-name="Group 880" transform="translate(18.156 57.654)">
-            <rect id="Rectangle_332-28" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-28" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-28" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-28" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_886" data-name="Group 886" transform="translate(18.156 65.654)">
-            <rect id="Rectangle_332-29" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-29" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-29" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-29" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_841" data-name="Group 841" transform="translate(28.804 33.093)">
-            <rect id="Rectangle_332-30" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-30" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-30" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-30" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_857" data-name="Group 857" transform="translate(28.804 49.654)">
-            <rect id="Rectangle_332-31" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-31" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-31" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-31" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_881" data-name="Group 881" transform="translate(28.804 57.654)">
-            <rect id="Rectangle_332-32" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-32" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-32" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-32" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_887" data-name="Group 887" transform="translate(28.804 65.654)">
-            <rect id="Rectangle_332-33" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-33" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-33" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-33" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_850" data-name="Group 850" transform="translate(39.453 33.093)">
-            <rect id="Rectangle_332-34" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-34" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-34" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-34" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_864" data-name="Group 864" transform="translate(50.102 33.093)">
-            <rect id="Rectangle_332-35" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-35" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-35" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-35" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_876" data-name="Group 876" transform="translate(60.102 33.093)">
-            <rect id="Rectangle_332-36" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-36" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-36" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-36" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_895" data-name="Group 895" transform="translate(71.102 33.093)">
-            <rect id="Rectangle_332-37" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-37" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-37" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-37" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_858" data-name="Group 858" transform="translate(39.453 49.654)">
-            <rect id="Rectangle_332-38" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-38" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-38" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-38" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_882" data-name="Group 882" transform="translate(39.453 57.654)">
-            <rect id="Rectangle_332-39" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-39" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-39" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-39" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_888" data-name="Group 888" transform="translate(39.453 65.654)">
-            <rect id="Rectangle_332-40" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-40" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-40" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-40" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_861" data-name="Group 861" transform="translate(50.102 49.654)">
-            <rect id="Rectangle_332-41" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-41" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-41" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-41" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_883" data-name="Group 883" transform="translate(50.102 57.654)">
-            <rect id="Rectangle_332-42" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-42" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-42" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-42" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_889" data-name="Group 889" transform="translate(50.102 65.654)">
-            <rect id="Rectangle_332-43" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-43" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-43" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-43" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_878" data-name="Group 878" transform="translate(60.102 49.654)">
-            <rect id="Rectangle_332-44" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-44" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-44" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-44" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_891" data-name="Group 891" transform="translate(71.102 49.654)">
-            <rect id="Rectangle_332-45" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-45" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-45" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-45" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_884" data-name="Group 884" transform="translate(60.102 57.654)">
-            <rect id="Rectangle_332-46" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-46" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-46" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-46" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_892" data-name="Group 892" transform="translate(71.102 57.654)">
-            <rect id="Rectangle_332-47" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-47" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-47" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-47" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_890" data-name="Group 890" transform="translate(60.102 65.654)">
-            <rect id="Rectangle_332-48" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-48" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-48" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-48" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_893" data-name="Group 893" transform="translate(71.102 65.654)">
-            <rect id="Rectangle_332-49" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-49" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-49" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-49" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_834" data-name="Group 834" transform="translate(7.507 41.599)">
-            <rect id="Rectangle_332-50" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-50" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-50" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-50" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_839" data-name="Group 839" transform="translate(18.156 41.599)">
-            <rect id="Rectangle_332-51" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-51" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-51" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-51" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_840" data-name="Group 840" transform="translate(28.804 41.599)">
-            <rect id="Rectangle_332-52" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-52" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-52" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-52" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_848" data-name="Group 848" transform="translate(39.453 41.599)">
-            <rect id="Rectangle_332-53" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-53" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-53" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-53" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_862" data-name="Group 862" transform="translate(50.102 41.599)">
-            <rect id="Rectangle_332-54" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-54" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-54" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-54" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_877" data-name="Group 877" transform="translate(60.102 41.599)">
-            <rect id="Rectangle_332-55" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-55" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-55" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-55" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-          <g id="Group_894" data-name="Group 894" transform="translate(71.102 41.599)">
-            <rect id="Rectangle_332-56" data-name="Rectangle 332" width="7.945" height="0.819" transform="translate(0 4.353)" opacity="0.1"/>
-            <rect id="Rectangle_333-56" data-name="Rectangle 333" width="7.101" height="4.687" transform="translate(0.422 0)" fill="#060606" opacity="0.5"/>
-            <g id="Group_536-56" data-name="Group 536" transform="translate(0.422 0)" opacity="0.1">
-              <rect id="Rectangle_335-56" data-name="Rectangle 335" width="7.101" height="1.86"/>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g id="Rectangle_502" data-name="Rectangle 502" fill="#fff" stroke="#707070" stroke-width="1">
-        <rect width="88" height="2" stroke="none"/>
-        <rect x="0.5" y="0.5" width="87" height="1" fill="none"/>
-      </g>
-    </g>
-    <g id="Group_872" data-name="Group 872" transform="translate(41.244 73.646)">
-      <g id="Group_732" data-name="Group 732" transform="translate(0 1)">
-        <g id="Group_737" data-name="Group 737">
-          <rect id="Rectangle_331" data-name="Rectangle 331" width="4.224" height="5.689" fill="#535461"/>
-          <ellipse id="Ellipse_257" data-name="Ellipse 257" cx="0.237" cy="0.247" rx="0.237" ry="0.247" transform="translate(3.514 2.597)" fill="#e0e0e0"/>
         </g>
       </g>
     </g>
