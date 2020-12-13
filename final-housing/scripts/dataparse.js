@@ -105,14 +105,10 @@ function dataProcessRaw(arr) {
         if (parseInt(d.HFL) !== 9) {
             fuel = 1;
         }
-
-
         var numAdultsOther = parseInt(d.NP) - parseInt(d.NRC) - parseInt(d.R65);
 
-     
         // && parseInt(d.GRNTP) > 0 && parseInt(d.TEN) == 3
-        if (parseInt(d.NP) !== 0 && parseInt(d.BDSP) !== -1 && d.BDSP > 0) {
-
+        if (parseInt(d.NP) !== 0 && parseInt(d.BDSP) !== -1 && d.BDSP > 0 && parseInt(d.NP) > 0) {
             return {
                 geo: d.PUMA,
                 weight: parseInt(houseWt),
@@ -155,6 +151,7 @@ function dataProcessMetroArea(distinct) {
         var geoBuildings = [];
         var geoPersonsPerRoomRatio = [];
 
+        //stats within metro area 
         geosplit[1].forEach((geoCluster) => {
             geoCluster[1].forEach((rowVal) => { //housing type level
                 for (i = 0; i < rowVal.weight; i++) { //individual response level
@@ -176,6 +173,9 @@ function dataProcessMetroArea(distinct) {
                 geoWtScaledPerson.push(rowVal.weight * rowVal.personsNum)
             })
         });
+
+
+        //stat at metro area level
         var geoPersonsWt = d3.sum(geoWtScaledPerson);
         var geoWt = geoBedrooms.length; //basically we pushed 1 row per weight value. so taking length array gives you total weight.
         var incomeMedian = d3.median(geoIncomes);
@@ -188,7 +188,6 @@ function dataProcessMetroArea(distinct) {
         var rentMedian = d3.median(geoRent);
         var roomsMedian = d3.median(geoRooms);
         var personsPerRoomMean = Math.round(personsMean / bedroomMean * 100) / 100;
-
         var personsPerRoomRatioMedian = d3.median(geoPersonsPerRoomRatio);
 
         var buildingsMedian = d3.median(geoBuildings);
@@ -197,18 +196,16 @@ function dataProcessMetroArea(distinct) {
         allGeoMedians.personsPerRoom.push(personsPerRoomMean);
         allGeoMedians.persons.push(personsMean);
         allGeoMedians.buildings.push(buildingsMedian);
-        allGeoMedians.personsPerRoomRatio.push(personsPerRoomRatioMedian)
-      
+        allGeoMedians.personsPerRoomRatio.push(personsPerRoomRatioMedian);
 
-        //stats at PUMA level
+
+        //stats at PUMA level - except for floor plan
         var summaryStats = {
             incomeMedian: incomeMedian,
             rentMedian: rentMedian,
             buildingTop: buildingsMedian,
             bedroomMedian: bedroomMedian,
             bedroomMean: Math.round(bedroomMean * 10) / 10,
-            houseRoom: roomsMedian,
-            houseArray: createFloorPlans(personsMedian-childrenMedian, childrenMedian, bedroomMedian),
             personsMedian: personsMedian,
             personsMean: Math.round(personsMean * 10) / 10,
             childrenMedian: childrenMedian,
@@ -217,7 +214,7 @@ function dataProcessMetroArea(distinct) {
             personsPerRoomMean: personsPerRoomMean,
             personsPerRoomRatio: personsPerRoomRatioMedian,
             weightTotal: geoWt,
-            weightTotalScaled: geoPersonsWt
+            weightTotalScaled: geoPersonsWt,
         };
 
         //detailed data at housing combo level
@@ -261,9 +258,21 @@ function dataProcessMetroArea(distinct) {
 
         });
 
+        //getting house arrays is complicated. we index off median persons and get number of beds.
+        var dataFilteredMedianBed = geoDetail.filter(d=> d.houseBed == bedroomMedian);
+        var dataFilteredMedianBedPerson = d3.median(dataFilteredMedianBed.map(d => d.personsNum));
+        var dataFilteredMedianBedRoom = d3.median(dataFilteredMedianBed.map(d => d.houseRoom));
+        var dataFilteredMedianBedChildren = d3.median(dataFilteredMedianBed.map(d => d.personsChild));
+
+        if (!dataFilteredMedianBedRoom){
+            console.log(bedroomMedian, geoDetail)
+        }
+        summaryStats.houseArray = createFloorPlans(dataFilteredMedianBedPerson-dataFilteredMedianBedChildren, dataFilteredMedianBedChildren, bedroomMedian);
+        summaryStats.houseRoom = dataFilteredMedianBedRoom;
+
         //create new clean data object
         geoDetail = d3.sort(geoDetail, (a, b) => b.weightPersons - a.weightPersons); //sort by weight desc    
-        geoKey = geosplit[0]
+        geoKey = geosplit[0];
 
         var detailObj = {
             detail: geoDetail,
