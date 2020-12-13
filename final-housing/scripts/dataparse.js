@@ -310,37 +310,43 @@ function addHighlightData() {
             key: 'personsMin',
             statKey: 'personsPerRoomMean',
             statQualifier: 'min',
-            displayName: 'Least Crowded Metro Area'
+            displayName: 'Metro Area with Least Crowded Apts', 
+            displayOrder: 1
         },
         {
             key: 'personsMax',
             statKey: 'personsPerRoomMean',
             statQualifier: 'max',
-            displayName: 'Most Crowded Metro Area'
+            displayName: 'Metro Area with Most Crowded Apts', 
+            displayOrder: 2
         },
         {
             key: 'incomeMedianMin',
             statKey: 'incomeMedian',
             statQualifier: 'min',
-            displayName: 'Metro Area with Lowest Income'
+            displayName: 'Metro Area with Lowest Income', 
+            displayOrder: 5
         },
         {
             key: 'incomeMedianMax',
             statKey: 'incomeMedian',
             statQualifier: 'max',
-            displayName: 'Metro Area with Highest Income'
+            displayName: 'Metro Area with Highest Income', 
+            displayOrder: 6
         },
         {
             key: 'rentMin',
             statKey: 'rentMedian',
             statQualifier: 'min',
-            displayName: 'Metro Area with Lowest Rent'
+            displayName: 'Metro Area with Least Crowded Apts & Lowest Rent', 
+            displayOrder: 3
         },
         {
             key: 'rentMax',
             statKey: 'rentMedian',
             statQualifier: 'max',
-            displayName: 'Metro Area with Highest Rent'
+            displayName: 'Metro Area with Highest Rent', 
+            displayOrder: 4
         },
 
     ];
@@ -362,6 +368,7 @@ function addHighlightData() {
         statobj['median'] = median;
         statobj['qualifier'] = statType.statQualifier;
         statobj['metro'] = row[0];
+        statobj['displayOrder'] = statType.displayOrder;
         statobj.displayName = statType.displayName;
         statobj.displayString = helperGetHighlightString(statType.statKey, statobj);
         dataCleaned.get(metro).highlightData = statobj;
@@ -440,7 +447,7 @@ function helperGetHighlightString(statKey, statData) {
     var value = statData.value;
     var median = statData.median;
     if (statKey == 'rentMedian') {
-        highlightString = `Residents of ${neighborhood} pay the ${qualifier} in rent: $${value} as compared to a median of $${median}.`;
+        highlightString = `Residents of ${neighborhood} pay the ${qualifier} in rent: $${value} as compared to a median of $${median}. They also, on average, enjoy the highest number of bedrooms per individual.`;
     } else if (statKey == 'incomeMedian') {
         highlightString = `${neighborhood} has the ${qualifier} average income: $${value} as compared to a median of $${median}.`;
     } else if (statKey == 'personsPerRoomMean') {

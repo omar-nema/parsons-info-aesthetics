@@ -11,8 +11,6 @@ function generateCards(datadetail){
             cards.append('div').attr('class', 'card-header').html(d => longPumaNameById(d[0]));
             cardData = cards.append('div').attr('class', 'card-data').each(function(d){populateCardBody(d, d3.select(this))})
             ;
-            //footer
-            // cards.append('div').attr('class', 'card-details flat-btn').html('View Details');
         },
         update => {
             update.classed('disabled', false);
@@ -24,6 +22,7 @@ function generateCards(datadetail){
 
     //now create highlight cards - which always use the raw data rather than filtered
     var highlightData = getOrigData().array.filter(d=> d[1].highlightData);
+    highlightData.sort((a,b) => a[1].highlightData.displayOrder - b[1].highlightData.displayOrder);
     var hightlightCards = d3.select('.pane-highlights').selectAll('.card').data(highlightData, d=> d[0]);
     hightlightCards.join(
         enter => {
