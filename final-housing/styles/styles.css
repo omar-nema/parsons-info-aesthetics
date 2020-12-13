@@ -561,6 +561,8 @@ textarea:focus, input:focus {
 
 .card-data-pt .building-svg {
   width: 100px;
+  -webkit-transform: translateX(-10px);
+          transform: translateX(-10px);
 }
 
 .card-data-pt .card-plan svg.row-0 {
@@ -642,7 +644,7 @@ textarea:focus, input:focus {
       flex-basis: 22%;
 }
 
-.pane-right select.active, .pane-right select:focus {
+.pane-right select.active, .pane-right select:focus, .pane-right select:focus-visible, .pane-right select:focus-within, .pane-right select:active {
   border-color: #F587EA;
 }
 
@@ -675,7 +677,7 @@ textarea:focus, input:focus {
   max-height: 900px;
   z-index: 1;
   border: 1px solid #252323;
-  background: #121111;
+  background: #1e2020;
 }
 
 .pane-right .map {
@@ -726,7 +728,7 @@ textarea:focus, input:focus {
   -webkit-transition: all .2s linear;
   transition: all .2s linear;
   stroke-width: .35px;
-  stroke: #544949;
+  stroke: #948282;
   fill: black;
 }
 

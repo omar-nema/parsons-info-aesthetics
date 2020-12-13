@@ -486,6 +486,7 @@ textarea:focus, input:focus{
     }
     .building-svg {
         width: 100px;
+        transform: translateX(-10px);
     }
 
     .card-plan svg.row-0 {
@@ -554,7 +555,7 @@ textarea:focus, input:focus{
     .filter {
         flex-basis: 22%;
     }
-    select.active, select:focus {
+    select.active, select:focus, select:focus-visible, select:focus-within, select:active {
         border-color: $color-action;
     }
     select {
@@ -585,7 +586,7 @@ textarea:focus, input:focus{
         max-height: 900px;
         z-index: 1;
         border: 1px solid #252323;
-        background: #121111;
+        background: #1e2020;
     }
     .map {
         width: 100%;
@@ -636,7 +637,7 @@ textarea:focus, input:focus{
             cursor: pointer;
             transition: all .2s linear;
             stroke-width: .35px;
-            stroke: #544949;
+            stroke: #948282;
             fill: black;
         }
         .puma-path.highlight-lowkey {

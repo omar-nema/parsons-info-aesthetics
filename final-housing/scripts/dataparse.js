@@ -23,6 +23,7 @@ var allGeoMedians = {
     incomes: [],
     rent: [],
     personsPerRoom: [],
+    personsPerRoomRatio: [],
     persons: [],
     buildings: []
 };
@@ -109,7 +110,8 @@ function dataProcessRaw(arr) {
         var numAdultsOther = parseInt(d.NP) - parseInt(d.NRC) - parseInt(d.R65);
 
      
-        if (parseInt(d.NP) !== 0 && parseInt(d.BDSP) !== -1 && d.BDSP > 0 && parseInt(d.GRNTP) > 0 && parseInt(d.TEN) == 3) {
+        // && parseInt(d.GRNTP) > 0 && parseInt(d.TEN) == 3
+        if (parseInt(d.NP) !== 0 && parseInt(d.BDSP) !== -1 && d.BDSP > 0) {
 
             return {
                 geo: d.PUMA,
@@ -151,6 +153,8 @@ function dataProcessMetroArea(distinct) {
         var geoWtScaledPerson = [];
         var geoRooms = [];
         var geoBuildings = [];
+        var geoPersonsPerRoomRatio = [];
+
         geosplit[1].forEach((geoCluster) => {
             geoCluster[1].forEach((rowVal) => { //housing type level
                 for (i = 0; i < rowVal.weight; i++) { //individual response level
@@ -161,6 +165,7 @@ function dataProcessMetroArea(distinct) {
                     geoPersons.push(rowVal.personsNum);
                     geoChildren.push(rowVal.personsChild);
                     geoRooms.push(rowVal.houseRoom)
+                    geoPersonsPerRoomRatio.push(rowVal.personsNum/rowVal.houseBed);
                     if (rowVal.rent > 0) {
                         geoRent.push(rowVal.rent)
                     }
@@ -184,13 +189,16 @@ function dataProcessMetroArea(distinct) {
         var roomsMedian = d3.median(geoRooms);
         var personsPerRoomMean = Math.round(personsMean / bedroomMean * 100) / 100;
 
+        var personsPerRoomRatioMedian = d3.median(geoPersonsPerRoomRatio);
+
         var buildingsMedian = d3.median(geoBuildings);
         allGeoMedians.incomes.push(incomeMedian);
         allGeoMedians.rent.push(rentMedian);
         allGeoMedians.personsPerRoom.push(personsPerRoomMean);
         allGeoMedians.persons.push(personsMean);
         allGeoMedians.buildings.push(buildingsMedian);
-
+        allGeoMedians.personsPerRoomRatio.push(personsPerRoomRatioMedian)
+      
 
         //stats at PUMA level
         var summaryStats = {
@@ -207,6 +215,7 @@ function dataProcessMetroArea(distinct) {
             childrenMean: childrenMean,
             personsPerRoom: Math.round(personsMedian / bedroomMedian * 10) / 10,
             personsPerRoomMean: personsPerRoomMean,
+            personsPerRoomRatio: personsPerRoomRatioMedian,
             weightTotal: geoWt,
             weightTotalScaled: geoPersonsWt
         };
@@ -338,7 +347,7 @@ function addHighlightData() {
             key: 'rentMin',
             statKey: 'rentMedian',
             statQualifier: 'min',
-            displayName: 'Metro Area with Least Crowded Apts & Lowest Rent', 
+            displayName: 'Metro Area with Lowest Rent', 
             displayOrder: 3
         },
         {

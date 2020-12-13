@@ -166,7 +166,10 @@ function populateCardBody(d, dnode){
     .on('mouseover',function(e){
         bld = d3.select(this).data()[0][1].stats.buildingTop;
         var bldString = '';
-        if (bld == 4){
+        if (bld == 3){
+            bldString= 'one-family house';
+        }
+        else if (bld == 4){
             bldString= '2 apartments';
         }
         else if (bld == 5){

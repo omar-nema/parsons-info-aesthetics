@@ -1,12 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="82" viewBox="0 0 120 82">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="76" viewBox="0 0 120 76">
   <defs>
     <clipPath id="clip-building-8">
-      <rect width="120" height="82"/>
+      <rect width="120" height="76"/>
     </clipPath>
   </defs>
   <g id="building-8" clip-path="url(#clip-building-8)">
-    <rect width="120" height="82" fill="#2a2c2c"/>
-    <g id="Group_907" data-name="Group 907" transform="translate(19)">
+    <g id="Group_907" data-name="Group 907" transform="translate(20 -12)">
       <g id="Group_905" data-name="Group 905" transform="translate(2 1)">
         <g id="Group_871" data-name="Group 871" transform="translate(7 17)">
           <g id="Group_870" data-name="Group 870" transform="translate(0 -1)">
@@ -238,6 +237,10 @@
           </g>
         </g>
       </g>
+    </g>
+    <g id="Rectangle_508" data-name="Rectangle 508" transform="translate(24 69)" fill="#fff" stroke="#707070" stroke-width="1">
+      <rect width="71" height="2" stroke="none"/>
+      <rect x="0.5" y="0.5" width="70" height="1" fill="none"/>
     </g>
   </g>
 </svg>
