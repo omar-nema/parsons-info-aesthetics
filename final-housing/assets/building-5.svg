@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="69" height="82" viewBox="0 0 69 82">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="82" viewBox="0 0 120 82">
   <defs>
     <linearGradient id="linear-gradient" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
       <stop offset="0" stop-color="gray" stop-opacity="0.251"/>
@@ -7,12 +7,12 @@
     </linearGradient>
     <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="0" xlink:href="#linear-gradient"/>
     <clipPath id="clip-building-5">
-      <rect width="69" height="82"/>
+      <rect width="120" height="82"/>
     </clipPath>
   </defs>
   <g id="building-5" clip-path="url(#clip-building-5)">
-    <rect width="69" height="82" fill="#2a2c2c"/>
-    <g id="Group_824" data-name="Group 824" transform="translate(38 25)">
+    <rect width="120" height="82" fill="#2a2c2c"/>
+    <g id="Group_824" data-name="Group 824" transform="translate(64 25)">
       <g id="undraw_houses3_xwf7" transform="translate(-13.409 17)">
         <g id="Group_527" data-name="Group 527" transform="translate(2.589 0.669)" opacity="0.7">
           <rect id="Rectangle_309" data-name="Rectangle 309" width="2.666" height="5.261" fill="url(#linear-gradient)"/>

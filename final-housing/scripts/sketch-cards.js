@@ -185,7 +185,7 @@ function populateCardBody(d, dnode){
         else if (bld == 9){
             bldString= '50+ apartments';
         }        
-        var tiptext = `Most common dwelling contains <strong>${bldString}</strong>`;
+        var tiptext = `Most common dwelling structure contains <strong>${bldString}</strong>`;
         showTooltip(tiptext, e);
     })
     .on('mouseout', hideTooltip);   
