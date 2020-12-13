@@ -542,6 +542,7 @@ textarea:focus, input:focus {
   display: inline-block;
   width: 48%;
   margin-bottom: 15px;
+  cursor: inherit;
 }
 
 .card-data-pt .label {

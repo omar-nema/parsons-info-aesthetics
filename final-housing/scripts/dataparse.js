@@ -447,7 +447,7 @@ function helperGetHighlightString(statKey, statData) {
     var value = statData.value;
     var median = statData.median;
     if (statKey == 'rentMedian') {
-        highlightString = `Residents of ${neighborhood} pay the ${qualifier} in rent: $${value} as compared to a median of $${median}. They also, on average, enjoy the highest number of bedrooms per individual.`;
+        highlightString = `Residents of ${neighborhood} pay the ${qualifier} in rent: $${value} as compared to a median of $${median}.`;
     } else if (statKey == 'incomeMedian') {
         highlightString = `${neighborhood} has the ${qualifier} average income: $${value} as compared to a median of $${median}.`;
     } else if (statKey == 'personsPerRoomMean') {

@@ -57,7 +57,12 @@ async function drawMap(){
                 data = d3.select(this).data()[0];
                 var puma = parseInt(data.properties.puma);
                 var name = longPumaNameById(puma);
-                showTooltip(name, e);
+                var linkedData = getOrigData().map.get(puma);
+                var displayString = name;
+                if (linkedData.highlightData){
+                    displayString = `<strong>${linkedData.highlightData.displayName}</strong><br>${name}`
+                } 
+                showTooltip(displayString, e);
             })
             .on('mouseleave', hideTooltip)
         ;

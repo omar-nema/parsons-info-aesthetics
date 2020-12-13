@@ -472,6 +472,7 @@ textarea:focus, input:focus{
     display: inline-block;
     width: 48%;
     margin-bottom: $margin-text;
+    cursor: inherit;
     .label {
         color: $color-label;
         margin-bottom: 5px;
