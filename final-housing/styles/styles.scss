@@ -468,6 +468,10 @@ textarea:focus, input:focus{
     display: flex;
 }
 
+.vis-holder.plan .card-data-pt {
+    margin-bottom: 5px;
+}
+
 .card-data-pt {
     display: inline-block;
     width: 48%;
@@ -485,15 +489,19 @@ textarea:focus, input:focus{
         cursor: pointer;
     }
     .building-svg {
-        width: 100px;
-        transform: translateX(-10px);
+      padding-left: 5px;
+      max-height:60px;
+    }
+
+    .card-plan svg {
+        transform: scale(0.8) translateX(-13%);
     }
 
     .card-plan svg.row-0 {
-        height: 33px !important;
+        height: 28px !important;
     }
     .card-plan svg.row-1 {
-        height: 66px !important;
+        height: 60px !important;
     }
 
     .scale-holder {

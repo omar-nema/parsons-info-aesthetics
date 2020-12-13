@@ -249,6 +249,10 @@ function dataProcessMetroArea(distinct) {
                 personsAdultNonPartnered: d.personsAdultOther - d.personsPartnered,
                 houseBed: d.houseBed,
                 houseRoom: d.houseRoom,
+                houseData: {
+                    houseArray: createFloorPlans(d.personsAdultTotal, d.personsChild, d.houseBed),
+                    roomsOther: d.houseRoom - d.houseBed,
+                },
                 houseArray: createFloorPlans(d.personsAdultTotal, d.personsChild, d.houseBed),
                 amenityInternet: d.amenityInternet,
                 amenityHeat: d.amenityHeat,
@@ -259,16 +263,41 @@ function dataProcessMetroArea(distinct) {
         });
 
         //getting house arrays is complicated. we index off median persons and get number of beds.
-        var dataFilteredMedianBed = geoDetail.filter(d=> d.houseBed == bedroomMedian);
-        var dataFilteredMedianBedPerson = d3.median(dataFilteredMedianBed.map(d => d.personsNum));
-        var dataFilteredMedianBedRoom = d3.median(dataFilteredMedianBed.map(d => d.houseRoom));
-        var dataFilteredMedianBedChildren = d3.median(dataFilteredMedianBed.map(d => d.personsChild));
+        // var dataFilteredMedianBed = geoDetail.filter(d=> d.houseBed == bedroomMedian);
+        // var dataFilteredMedianBedPerson = d3.median(dataFilteredMedianBed.map(d => d.personsNum));
+        // var dataFilteredMedianBedRoom = d3.median(dataFilteredMedianBed.map(d => d.houseRoom));
+        // var dataFilteredMedianBedChildren = d3.median(dataFilteredMedianBed.map(d => d.personsChild));
+        // summaryStats.houseArray = createFloorPlans(dataFilteredMedianBedPerson-dataFilteredMedianBedChildren, dataFilteredMedianBedChildren, bedroomMedian);
+        // summaryStats.houseRoom = dataFilteredMedianBedRoom;
 
-        if (!dataFilteredMedianBedRoom){
-            console.log(bedroomMedian, geoDetail)
-        }
-        summaryStats.houseArray = createFloorPlans(dataFilteredMedianBedPerson-dataFilteredMedianBedChildren, dataFilteredMedianBedChildren, bedroomMedian);
-        summaryStats.houseRoom = dataFilteredMedianBedRoom;
+        var dataFilteredBy2 = geoDetail.filter(d=> d.personsNum == 2);
+        var dataFilteredBy4 = geoDetail.filter(d=> d.personsNum == 4);
+        var stats2Person = {
+            children: d3.median(dataFilteredBy2.map(d => d.personsChild)),
+            bedrooms: d3.median(dataFilteredBy2.map(d => d.houseBed)),
+            rooms: d3.median(dataFilteredBy2.map(d => d.houseRoom))
+        };
+        var stats4Person = {
+            children: d3.median(dataFilteredBy4.map(d => d.personsChild)),
+            bedrooms: d3.median(dataFilteredBy4.map(d => d.houseBed)),
+            rooms: d3.median(dataFilteredBy4.map(d => d.houseRoom))
+        };
+        var houseData = [
+            {
+                houseArray: createFloorPlans(2-stats2Person.children, stats2Person.children, stats2Person.bedrooms),
+                roomsOther: stats2Person.rooms-stats2Person.bedrooms,
+                type: '2'
+            },
+            {
+                houseArray: createFloorPlans(4-stats4Person.children, stats4Person.children, stats4Person.bedrooms),
+                roomsOther: stats4Person.rooms-stats4Person.bedrooms, 
+                type: '4'
+            },
+        ];
+        summaryStats.houseData = houseData;
+
+        // summaryStats.houseArray = createFloorPlans(4, 0, dataFilteredByMedianBedrooms);
+        // summaryStats.houseRoom = dataFilteredByMedianTotalRooms;
 
         //create new clean data object
         geoDetail = d3.sort(geoDetail, (a, b) => b.weightPersons - a.weightPersons); //sort by weight desc    

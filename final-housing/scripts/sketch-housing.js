@@ -10,7 +10,7 @@ function housingDrilldown(){
             houseRows = enter.append('tr').attr('class', 'row-house').style('opacity', '0').transition().duration(transitionTime).style('opacity', '1');
             houseRows.each(function(d, i){
                 var currRow = d3.select(this);
-                currRow.append('td').attr('class', 'row-structure').each(function(d){drawFloorPlans(d, d3.select(this))})
+                currRow.append('td').attr('class', 'row-structure').each(function(d){drawFloorPlans(d.houseData, d3.select(this))})
                 currRow.append('td').attr('class', 'row-persons').append('div').attr('class', 'detail-persons')
                     .html(d=> '<div>' + d.weightPersons + '</div>')
                 ; 
@@ -140,7 +140,7 @@ function drawFloorPlans(d, dselection){
     var nonbedstroke = 3;
 
     //add rooms outside of bedrooms
-    for (var i=0; i< (d.houseRoom - d.houseArray.length); i++){
+    for (var i=0; i< (d.roomsOther); i++){
         rectX = (colNum)*(padding+r);
         rectY = (rowNum)*(r+padding);
         sel.append('rect')

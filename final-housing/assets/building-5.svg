@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="55" viewBox="0 0 120 55">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="54" viewBox="0 0 28 54">
   <defs>
     <linearGradient id="linear-gradient" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
       <stop offset="0" stop-color="gray" stop-opacity="0.251"/>
@@ -7,44 +7,46 @@
     </linearGradient>
     <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="0" xlink:href="#linear-gradient"/>
     <clipPath id="clip-building-5">
-      <rect width="120" height="55"/>
+      <rect width="28" height="54"/>
     </clipPath>
   </defs>
   <g id="building-5" clip-path="url(#clip-building-5)">
-    <g id="Group_824" data-name="Group 824" transform="translate(65 -13)">
-      <g id="undraw_houses3_xwf7" transform="translate(-13.409 17)">
-        <g id="Group_527" data-name="Group 527" transform="translate(3.01 0.778)" opacity="0.7">
-          <rect id="Rectangle_309" data-name="Rectangle 309" width="3.1" height="6.117" fill="url(#linear-gradient)"/>
+    <g id="Group_910" data-name="Group 910" transform="translate(-50)">
+      <g id="Group_824" data-name="Group 824" transform="translate(65 -13)">
+        <g id="undraw_houses3_xwf7" transform="translate(-13.409 17)">
+          <g id="Group_527" data-name="Group 527" transform="translate(3.01 0.778)" opacity="0.7">
+            <rect id="Rectangle_309" data-name="Rectangle 309" width="3.1" height="6.117" fill="url(#linear-gradient)"/>
+          </g>
+          <g id="Group_534" data-name="Group 534" opacity="0.7">
+            <path id="Path_54" data-name="Path 54" d="M694.01,9.59,683.678,1.6l-10,7.986L672.89,8.6,683.666,0,694.78,8.6Z" transform="translate(-672.89)" fill="url(#linear-gradient-2)"/>
+          </g>
+          <rect id="Rectangle_330" data-name="Rectangle 330" width="2.933" height="6.033" transform="translate(3.094 0.862)" fill="#535461"/>
+          <g id="Group_535" data-name="Group 535" transform="translate(1.377 8.151)" opacity="0.7">
+            <path id="Path_55" data-name="Path 55" d="M699.517,84.71H680.75V46.865l9.465-.345,9.3.345Z" transform="translate(-680.75 -46.52)" fill="url(#linear-gradient-2)"/>
+          </g>
+          <path id="Path_56" data-name="Path 56" d="M700.444,53.36H682.18V14.983l9.132-6.473,9.3,6.711Z" transform="translate(-680.552 -7.019)" fill="#fff"/>
+          <rect id="Rectangle_331" data-name="Rectangle 331" width="4.608" height="7.708" transform="translate(8.456 38.634)" fill="#535461"/>
+          <rect id="Rectangle_332" data-name="Rectangle 332" width="9.467" height="0.922" transform="translate(6.027 34.458)" opacity="0.1"/>
+          <rect id="Rectangle_333" data-name="Rectangle 333" width="8.461" height="5.278" transform="translate(6.53 29.557)" fill="#060606" opacity="0.5"/>
+          <g id="Group_536" data-name="Group 536" transform="translate(6.53 29.557)" opacity="0.1">
+            <rect id="Rectangle_335" data-name="Rectangle 335" width="8.461" height="2.094"/>
+          </g>
+          <rect id="Rectangle_336" data-name="Rectangle 336" width="8.461" height="5.278" transform="translate(6.53 19.211)" fill="#060606" opacity="0.5"/>
+          <g id="Group_537" data-name="Group 537" transform="translate(6.53 19.211)" opacity="0.1">
+            <rect id="Rectangle_338" data-name="Rectangle 338" width="8.461" height="2.094"/>
+          </g>
+          <rect id="Rectangle_339" data-name="Rectangle 339" width="8.461" height="5.278" transform="translate(6.53 8.862)" fill="#060606" opacity="0.5"/>
+          <g id="Group_538" data-name="Group 538" transform="translate(6.53 8.862)" opacity="0.1">
+            <rect id="Rectangle_341" data-name="Rectangle 341" width="8.461" height="2.094"/>
+          </g>
+          <path id="Path_57" data-name="Path 57" d="M694.01,11.261,683.678,3.268l-10,7.986-.785-.981,10.776-8.6,11.114,8.6Z" transform="translate(-672.89 -1.377)" fill="#060606"/>
+          <circle id="Ellipse_257" data-name="Ellipse 257" cx="0.335" cy="0.335" r="0.335" transform="translate(12.06 41.578)" fill="#e0e0e0"/>
         </g>
-        <g id="Group_534" data-name="Group 534" opacity="0.7">
-          <path id="Path_54" data-name="Path 54" d="M694.01,9.59,683.678,1.6l-10,7.986L672.89,8.6,683.666,0,694.78,8.6Z" transform="translate(-672.89)" fill="url(#linear-gradient-2)"/>
-        </g>
-        <rect id="Rectangle_330" data-name="Rectangle 330" width="2.933" height="6.033" transform="translate(3.094 0.862)" fill="#535461"/>
-        <g id="Group_535" data-name="Group 535" transform="translate(1.377 8.151)" opacity="0.7">
-          <path id="Path_55" data-name="Path 55" d="M699.517,84.71H680.75V46.865l9.465-.345,9.3.345Z" transform="translate(-680.75 -46.52)" fill="url(#linear-gradient-2)"/>
-        </g>
-        <path id="Path_56" data-name="Path 56" d="M700.444,53.36H682.18V14.983l9.132-6.473,9.3,6.711Z" transform="translate(-680.552 -7.019)" fill="#fff"/>
-        <rect id="Rectangle_331" data-name="Rectangle 331" width="4.608" height="7.708" transform="translate(8.456 38.634)" fill="#535461"/>
-        <rect id="Rectangle_332" data-name="Rectangle 332" width="9.467" height="0.922" transform="translate(6.027 34.458)" opacity="0.1"/>
-        <rect id="Rectangle_333" data-name="Rectangle 333" width="8.461" height="5.278" transform="translate(6.53 29.557)" fill="#060606" opacity="0.5"/>
-        <g id="Group_536" data-name="Group 536" transform="translate(6.53 29.557)" opacity="0.1">
-          <rect id="Rectangle_335" data-name="Rectangle 335" width="8.461" height="2.094"/>
-        </g>
-        <rect id="Rectangle_336" data-name="Rectangle 336" width="8.461" height="5.278" transform="translate(6.53 19.211)" fill="#060606" opacity="0.5"/>
-        <g id="Group_537" data-name="Group 537" transform="translate(6.53 19.211)" opacity="0.1">
-          <rect id="Rectangle_338" data-name="Rectangle 338" width="8.461" height="2.094"/>
-        </g>
-        <rect id="Rectangle_339" data-name="Rectangle 339" width="8.461" height="5.278" transform="translate(6.53 8.862)" fill="#060606" opacity="0.5"/>
-        <g id="Group_538" data-name="Group 538" transform="translate(6.53 8.862)" opacity="0.1">
-          <rect id="Rectangle_341" data-name="Rectangle 341" width="8.461" height="2.094"/>
-        </g>
-        <path id="Path_57" data-name="Path 57" d="M694.01,11.261,683.678,3.268l-10,7.986-.785-.981,10.776-8.6,11.114,8.6Z" transform="translate(-672.89 -1.377)" fill="#060606"/>
-        <circle id="Ellipse_257" data-name="Ellipse 257" cx="0.335" cy="0.335" r="0.335" transform="translate(12.06 41.578)" fill="#e0e0e0"/>
       </g>
-    </g>
-    <g id="Rectangle_504" data-name="Rectangle 504" transform="translate(50 49)" fill="#fff" stroke="#707070" stroke-width="1">
-      <rect width="26" height="2" stroke="none"/>
-      <rect x="0.5" y="0.5" width="25" height="1" fill="none"/>
+      <g id="Rectangle_504" data-name="Rectangle 504" transform="translate(50 49)" fill="#fff" stroke="#707070" stroke-width="1">
+        <rect width="26" height="2" stroke="none"/>
+        <rect x="0.5" y="0.5" width="25" height="1" fill="none"/>
+      </g>
     </g>
   </g>
 </svg>
