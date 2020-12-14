@@ -455,6 +455,7 @@ textarea:focus, input:focus{
     }
     .card-text {
         margin-bottom: $margin-text;
+        margin-top: 10px;
         font-weight: 400;
         strong {
             font-weight: 600;
@@ -473,8 +474,12 @@ textarea:focus, input:focus{
 }
 
 .vis-holder.plan .card-data-pt {
+    margin-bottom: 10px;
+}
+.card-data-pt.building {
     margin-bottom: 5px;
 }
+
 
 .card-data-pt {
     display: inline-block;

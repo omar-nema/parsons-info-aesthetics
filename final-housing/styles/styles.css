@@ -527,6 +527,7 @@ textarea:focus, input:focus {
 
 .pane .card-text {
   margin-bottom: 15px;
+  margin-top: 10px;
   font-weight: 400;
 }
 
@@ -545,6 +546,10 @@ textarea:focus, input:focus {
 }
 
 .vis-holder.plan .card-data-pt {
+  margin-bottom: 10px;
+}
+
+.card-data-pt.building {
   margin-bottom: 5px;
 }
 
