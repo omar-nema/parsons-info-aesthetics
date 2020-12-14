@@ -498,6 +498,11 @@ textarea:focus, input:focus {
   font-weight: 600;
   font-size: 16px;
   margin-bottom: 20px;
+  border-bottom: 1px solid #5e5d5d;
+  padding-bottom: 15px;
+  color: white;
+  padding-left: 30px;
+  padding-bottom: 17.5px;
 }
 
 .pane .card.metro {
@@ -506,11 +511,11 @@ textarea:focus, input:focus {
 
 .pane .card {
   background: #414444;
-  padding: 20px 30px;
   border: 1px solid transparent;
   font-size: 14px;
   -webkit-transition: opacity .1s linear, border-color .1s linear;
   transition: opacity .1s linear, border-color .1s linear;
+  padding: 17.5px 0;
 }
 
 .pane .card:hover {
@@ -525,14 +530,20 @@ textarea:focus, input:focus {
   margin-left: auto;
 }
 
+.pane .card-text, .pane .card-data {
+  padding: 0 30px;
+}
+
 .pane .card-text {
   margin-bottom: 15px;
   margin-top: 10px;
   font-weight: 400;
+  color: #dfdede;
 }
 
 .pane .card-text strong {
   font-weight: 600;
+  color: white;
 }
 
 .pane .card-details {
@@ -568,6 +579,7 @@ textarea:focus, input:focus {
 .card-data-pt .value {
   display: inline-block;
   margin-right: 20px;
+  color: #dfdede;
 }
 
 .card-data-pt .value-holder {

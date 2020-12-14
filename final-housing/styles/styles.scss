@@ -423,6 +423,8 @@ textarea:focus, input:focus{
 
 
 //pane content
+
+$card-vertical-padding: 17.5px;
 .pane {
     .card-header-row {
         display: flex;
@@ -431,16 +433,21 @@ textarea:focus, input:focus{
         font-weight: 600;
         font-size: 16px;
         margin-bottom: 20px;
+        border-bottom: 1px solid #5e5d5d;
+        padding-bottom: 15px;
+        color: white;
+        padding-left: 30px;
+        padding-bottom: $card-vertical-padding;
     }
     .card.metro {
         cursor: pointer;
     }
     .card {
         background: $color-bg-content;
-        padding: 20px 30px;
         border: 1px solid transparent;
         font-size: 14px;
         transition: opacity .1s linear, border-color .1s linear;
+        padding: $card-vertical-padding 0;
     }
     .card:hover {
         border-color: #994791;
@@ -453,12 +460,17 @@ textarea:focus, input:focus{
     .card-num {
         margin-left: auto;
     }
+    .card-text, .card-data {
+        padding: 0 30px;
+    }
     .card-text {
         margin-bottom: $margin-text;
         margin-top: 10px;
         font-weight: 400;
+        color: #dfdede;
         strong {
             font-weight: 600;
+            color: white;
         }
     }
     .card-details {
@@ -493,6 +505,7 @@ textarea:focus, input:focus{
     .value {
         display: inline-block;
         margin-right: 20px;
+        color: #dfdede;
     }
     .value-holder {
         cursor: pointer;
@@ -699,6 +712,7 @@ textarea:focus, input:focus{
         .card-header {
             display: flex;
             justify-content: space-between;
+    
           
             .overlay-close {
                 cursor: pointer;
