@@ -165,7 +165,7 @@ function initIntro(){
 
     d3.select('.btn-context').on('click', ()=>{
         d3.select('.scroll-holder').classed('disabled', false);
-        d3.select('.scroll-block').style('opacity', '1');
+        d3.selectAll('.scroll-block').style('opacity', '1');
     });
 
     d3.select('.btn-skip').on('click', ()=>{

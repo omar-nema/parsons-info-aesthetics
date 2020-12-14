@@ -159,7 +159,7 @@ function populateCardBody(d, dnode){
    ;
    floorplan.append('div').attr('class', 'label').html( (d,i)=> {
        if (i==0){
-        return '2 Person Housing Avg'
+        return '2-Person Housing Avg'
        } else {
         return '4-Person Housing Avg'
        }

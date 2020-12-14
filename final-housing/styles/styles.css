@@ -569,8 +569,9 @@ textarea:focus, input:focus {
 }
 
 .card-data-pt .card-plan svg {
-  -webkit-transform: scale(0.8) translateX(-13%);
-          transform: scale(0.8) translateX(-13%);
+  -webkit-transform: scale(0.7) translateX(-20%);
+          transform: scale(0.7) translateX(-20%);
+  max-width: 150px;
 }
 
 .card-data-pt .card-plan svg.row-0 {
@@ -604,8 +605,6 @@ textarea:focus, input:focus {
   width: 13px;
   height: 13px;
   border-radius: 100%;
-  -webkit-box-shadow: 0px 1px 3px 1px #00000059;
-          box-shadow: 0px 1px 3px 1px #00000059;
   border: 2px solid black;
 }
 
@@ -697,7 +696,6 @@ textarea:focus, input:focus {
 .pane-right .housing-msg {
   position: absolute;
   top: 45px;
-  opacity: .4;
   left: 0%;
   width: 100%;
   -webkit-transform: translate(0, -50%);
@@ -705,6 +703,8 @@ textarea:focus, input:focus {
   text-align: center;
   font-size: 14px;
   font-weight: 400;
+  color: gray;
+  letter-spacing: 0.2px;
 }
 
 .pane-right .pane-overview {
@@ -735,8 +735,8 @@ textarea:focus, input:focus {
   cursor: pointer;
   -webkit-transition: all .2s linear;
   transition: all .2s linear;
-  stroke-width: .35px;
-  stroke: #948282;
+  stroke-width: .5px;
+  stroke: #514747;
   fill: black;
 }
 
