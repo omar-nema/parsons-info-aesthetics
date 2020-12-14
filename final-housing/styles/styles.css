@@ -491,7 +491,8 @@ textarea:focus, input:focus {
 .pane.pane-left .card-header {
   padding: 17.5px 0;
   padding-left: 30px;
-  background: #343636;
+  background: #383a3a;
+  border-bottom: 1px solid #2e2e2e;
 }
 
 .pane .card-header-row {
