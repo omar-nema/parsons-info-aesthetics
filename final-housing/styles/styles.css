@@ -527,6 +527,11 @@ textarea:focus, input:focus {
 
 .pane .card-text {
   margin-bottom: 15px;
+  font-weight: 400;
+}
+
+.pane .card-text strong {
+  font-weight: 600;
 }
 
 .pane .card-details {
@@ -570,8 +575,8 @@ textarea:focus, input:focus {
 }
 
 .card-data-pt .card-plan svg {
-  -webkit-transform: scale(0.7) translateX(-20%) translateY(-15%);
-          transform: scale(0.7) translateX(-20%) translateY(-15%);
+  -webkit-transform: scale(0.75) translateX(-16%) translateY(0%);
+          transform: scale(0.75) translateX(-16%) translateY(0%);
   max-width: 150px;
 }
 
@@ -584,7 +589,7 @@ textarea:focus, input:focus {
 }
 
 .card-data-pt .scale-holder {
-  width: 80px;
+  width: 65px;
   position: relative;
   top: -5px;
 }

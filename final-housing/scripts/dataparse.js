@@ -325,7 +325,6 @@ function createFloorPlans(adults, children, bedrooms){
     for (var z = 0; z < children; z++) {
         personsArray.push('child');
     }
-
     var houseArray = [];
     for (var i = 0; i < bedrooms; i++) {
         houseArray.push([]);
@@ -341,7 +340,6 @@ function createFloorPlans(adults, children, bedrooms){
             }
         }
     }; 
-
     return houseArray;
 }
 
@@ -490,12 +488,12 @@ function helperGetHighlightString(statKey, statData) {
     var value = statData.value;
     var median = statData.median;
     if (statKey == 'rentMedian') {
-        highlightString = `Residents of ${neighborhood} pay the ${qualifier} in rent: $${value} as compared to a median of $${median}.`;
+        highlightString = `Residents of <strong>${neighborhood}</strong> pay the ${qualifier} in rent: $${value} as compared to a median of $${median}.`;
     } else if (statKey == 'incomeMedian') {
-        highlightString = `${neighborhood} has the ${qualifier} average income: $${value} as compared to a median of $${median}.`;
+        highlightString = `<strong>${neighborhood}</strong> has the ${qualifier} average income: $${value} as compared to a median of $${median}.`;
     } else if (statKey == 'personsPerRoomMean') {
         var qualifier = (statData.qualifier == 'min') ? "least" : "most";
-        highlightString = `${neighborhood} is the ${qualifier} crowded neighorhood, with ${value} occupants per room (as compared to a median of ${median}).`;
+        highlightString = `<strong>${neighborhood}</strong> is the ${qualifier} crowded neighorhood, with ${value} occupants per room (as compared to a median of ${median}).`;
     }
     return highlightString;
 }

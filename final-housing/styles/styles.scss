@@ -455,6 +455,10 @@ textarea:focus, input:focus{
     }
     .card-text {
         margin-bottom: $margin-text;
+        font-weight: 400;
+        strong {
+            font-weight: 600;
+        }
     }
     .card-details {
         margin: auto;
@@ -494,7 +498,7 @@ textarea:focus, input:focus{
     }
 
     .card-plan svg {
-        transform: scale(0.7) translateX(-20%) translateY(-15%);
+        transform: scale(0.75) translateX(-16%) translateY(0%);
         max-width: 150px;
     }
 
@@ -506,7 +510,7 @@ textarea:focus, input:focus{
     }
 
     .scale-holder {
-        width: 80px;
+        width: 65px;
         position: relative;
         top: -5px;
     }
