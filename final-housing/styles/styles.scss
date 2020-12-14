@@ -14,6 +14,9 @@ $text-color-gray: #b3b3b3;
 $margin-text: 15px;
 $margin-large: 30px;
 
+$card-horizontal-padding: 30px;
+$card-vertical-padding: 17.5px;
+
 @keyframes fadeOut {
     0% { opacity: 1;}
     99% { opacity: 0.01;width: 100%; height: 100%;}
@@ -421,12 +424,13 @@ textarea:focus, input:focus{
     overflow: hidden;
 }
 
-$card-vertical-padding: 17.5px;
-.pane.pane-left .card-header {
+.card-header {
     padding: $card-vertical-padding 0;
-    padding-left: 30px;
     background: #383a3a;
     border-bottom: 1px solid #2e2e2e;
+}
+.pane .card-text, .pane .card-data, .pane .card-body, .pane .card-filters {
+    padding: 0 $card-horizontal-padding;
 }
 
 
@@ -441,6 +445,8 @@ $card-vertical-padding: 17.5px;
         font-size: 16px;
         margin-bottom: 20px;
         color: white;
+        padding-left: $card-horizontal-padding;
+        padding-right: $card-horizontal-padding;
     }
     .card.metro {
         cursor: pointer;
@@ -462,9 +468,6 @@ $card-vertical-padding: 17.5px;
     }
     .card-num {
         margin-left: auto;
-    }
-    .card-text, .card-data {
-        padding: 0 30px;
     }
     .card-text {
         margin-bottom: $margin-text;
@@ -701,7 +704,6 @@ $card-vertical-padding: 17.5px;
         width: 100%;
         height: 100%;
         @extend .standardTrans; 
-        padding: 20px 30px;
         opacity: 0;
         pointer-events: none;
         position: absolute;
@@ -716,7 +718,6 @@ $card-vertical-padding: 17.5px;
             display: flex;
             justify-content: space-between;
     
-          
             .overlay-close {
                 cursor: pointer;
                 transition: all .15s linear;
