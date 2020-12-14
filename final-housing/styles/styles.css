@@ -490,7 +490,7 @@ textarea:focus, input:focus {
 
 .card-header {
   padding: 17.5px 0;
-  background: #383a3a;
+  background: #343838;
   border-bottom: 1px solid #2e2e2e;
 }
 
@@ -733,7 +733,10 @@ textarea:focus, input:focus {
   background: #0f1010;
   padding: 10px;
   border-radius: 3px;
-  opacity: .75;
+  opacity: .8;
+  color: #eae8e8;
+  font-weight: 500;
+  letter-spacing: 0.2px;
 }
 
 .pane-right .pane-overview {
