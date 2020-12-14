@@ -45,7 +45,7 @@ function showTooltip(html, e){
     .style("opacity", 1)
     .style("left", (e.pageX-20) + "px")
     .style("top", (e.pageY + 40) + "px")
-    .style('pointer-events', 'inherit')
+
 ;    
 }
 function hideTooltip(){

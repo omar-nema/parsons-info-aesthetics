@@ -92,7 +92,7 @@ h1 {
 .content {
     width: 90%;
     margin: auto;
-
+    background: inherit;
     max-width: 1300px;
     transition: opacity .5s ease-in-out;
     overflow: hidden;
@@ -430,7 +430,7 @@ textarea:focus, input:focus{
     .card-header {
         font-weight: 600;
         font-size: 16px;
-        margin-bottom: $margin-text;
+        margin-bottom: 20px;
     }
     .card.metro {
         cursor: pointer;
@@ -475,7 +475,7 @@ textarea:focus, input:focus{
 .card-data-pt {
     display: inline-block;
     width: 48%;
-    margin-bottom: $margin-text;
+    margin-bottom: 20px;
     cursor: inherit;
     .label {
         color: $color-label;
@@ -494,7 +494,7 @@ textarea:focus, input:focus{
     }
 
     .card-plan svg {
-        transform: scale(0.7) translateX(-20%);
+        transform: scale(0.7) translateX(-20%) translateY(-15%);
         max-width: 150px;
     }
 
@@ -515,7 +515,7 @@ textarea:focus, input:focus{
         transform: translateY(-50%);
     }
     .scale {
-        background:black;
+        background:#1e191c;
         height: 4px;
         width: 100%;
         border-radius: 10px;
@@ -605,14 +605,17 @@ textarea:focus, input:focus{
     .housing-msg {
         position: absolute;
         top: 45px;
-        left: 0%;
-        width: 100%;
-        transform: translate(0, -50%);
+        left: 50%;
+        transform: translate(-50%, -50%);
         text-align: center;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 400;
-        color: gray;
-        letter-spacing: 0.2px;
+        width: 450px;
+        background: #0f1010;
+        padding: 10px;
+        border-radius: 3px;
+        opacity: .75;
+
     }
 
     .housing-unit {
@@ -645,7 +648,7 @@ textarea:focus, input:focus{
         .puma-path {
             cursor: pointer;
             transition: all .2s linear;
-            stroke-width: .5px;
+            stroke-width: .4px;
             stroke: #514747;
             fill: black;
         }
@@ -833,6 +836,10 @@ textarea:focus, input:focus{
     transition: opacity .15s ease-in-out, box-shadow .15s ease-in-out;
     transition: opacity .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
     opacity: 0;
+
+    .card-data {
+        margin-top: 15px;
+    }
 
     .tip-intro {
         margin-bottom: 15px;

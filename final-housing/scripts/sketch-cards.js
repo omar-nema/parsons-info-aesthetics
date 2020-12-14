@@ -96,11 +96,17 @@ function populateCardBody(d, dnode){
                 var amtDiff = Math.abs(Math.round(100*(currval - compdata.median)/compdata.median));
                 
                 if (currval > compdata.median){
-                    introline =`${introline}</strong>(${amtDiff}% above median)</div>`
+                    introline =`${introline}</strong>(${amtDiff}% above median)`
                 } else if (currval < compdata.median) {
-                    introline = `${introline}</strong>(${amtDiff}% below median)</div>`
+                    introline = `${introline}</strong>(${amtDiff}% below median)`
                 } else {
-                    introline =`${introline}(${amtDiff} is equal to median)</div>`
+                    introline =`${introline}(${amtDiff} is equal to median)`
+                }
+            
+                if (statobj.label == 'Rent'){
+                    introline = introline + '. Homeowners excluded from calculation.'
+                } else {
+                    introline = introline + '</div>';
                 }
                 var line1 = `<div class="card-data-pt"><div class="label">${statobj.label}</div><div class="value">${currval}</div></div>`;
                 var line2 = `<div class="card-data-pt"><div class="label">City Median</div><div class="value">${compdata.median}</div></div>`;

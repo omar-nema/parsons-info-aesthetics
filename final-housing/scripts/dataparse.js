@@ -262,14 +262,8 @@ function dataProcessMetroArea(distinct) {
 
         });
 
-        //getting house arrays is complicated. we index off median persons and get number of beds.
-        // var dataFilteredMedianBed = geoDetail.filter(d=> d.houseBed == bedroomMedian);
-        // var dataFilteredMedianBedPerson = d3.median(dataFilteredMedianBed.map(d => d.personsNum));
-        // var dataFilteredMedianBedRoom = d3.median(dataFilteredMedianBed.map(d => d.houseRoom));
-        // var dataFilteredMedianBedChildren = d3.median(dataFilteredMedianBed.map(d => d.personsChild));
-        // summaryStats.houseArray = createFloorPlans(dataFilteredMedianBedPerson-dataFilteredMedianBedChildren, dataFilteredMedianBedChildren, bedroomMedian);
-        // summaryStats.houseRoom = dataFilteredMedianBedRoom;
-
+        //for highlight cards, get 2 and 4 person bed avgs
+    
         var dataFilteredBy2 = geoDetail.filter(d=> d.personsNum == 2);
         var dataFilteredBy4 = geoDetail.filter(d=> d.personsNum == 4);
         var stats2Person = {
@@ -331,6 +325,7 @@ function createFloorPlans(adults, children, bedrooms){
     for (var z = 0; z < children; z++) {
         personsArray.push('child');
     }
+
     var houseArray = [];
     for (var i = 0; i < bedrooms; i++) {
         houseArray.push([]);
@@ -346,6 +341,7 @@ function createFloorPlans(adults, children, bedrooms){
             }
         }
     }; 
+
     return houseArray;
 }
 
@@ -357,14 +353,14 @@ function addHighlightData() {
             key: 'personsMin',
             statKey: 'personsPerRoomMean',
             statQualifier: 'min',
-            displayName: 'Metro Area with Least Crowded Apts', 
+            displayName: 'Metro Area with Least Crowded Housing', 
             displayOrder: 1
         },
         {
             key: 'personsMax',
             statKey: 'personsPerRoomMean',
             statQualifier: 'max',
-            displayName: 'Metro Area with Most Crowded Apts', 
+            displayName: 'Metro Area with Most Crowded Housing', 
             displayOrder: 2
         },
         {

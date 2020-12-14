@@ -55,7 +55,7 @@ function housingDetailTooltips(){
 
     housingOverlay.select('.table-head-demo.rent')
     .on('mouseover', function(e){
-        showTooltip('<div>Median rent for occupants of a given living arrangement</div>',e)
+        showTooltip('<div>Median rent for occupants of a given living arrangement (homeowners excluded)</div>',e)
     })
     .on('mouseout', hideTooltip);    
 
