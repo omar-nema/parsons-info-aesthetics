@@ -488,6 +488,12 @@ textarea:focus, input:focus {
   overflow: hidden;
 }
 
+.pane.pane-left .card-header {
+  padding: 17.5px 0;
+  padding-left: 30px;
+  background: #343636;
+}
+
 .pane .card-header-row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -498,11 +504,7 @@ textarea:focus, input:focus {
   font-weight: 600;
   font-size: 16px;
   margin-bottom: 20px;
-  border-bottom: 1px solid #5e5d5d;
-  padding-bottom: 15px;
   color: white;
-  padding-left: 30px;
-  padding-bottom: 17.5px;
 }
 
 .pane .card.metro {
@@ -515,7 +517,7 @@ textarea:focus, input:focus {
   font-size: 14px;
   -webkit-transition: opacity .1s linear, border-color .1s linear;
   transition: opacity .1s linear, border-color .1s linear;
-  padding: 17.5px 0;
+  padding-bottom: 17.5px;
 }
 
 .pane .card:hover {

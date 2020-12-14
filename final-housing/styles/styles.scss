@@ -421,10 +421,16 @@ textarea:focus, input:focus{
     overflow: hidden;
 }
 
+$card-vertical-padding: 17.5px;
+.pane.pane-left .card-header {
+    padding: $card-vertical-padding 0;
+    padding-left: 30px;
+    background: #343636;
+}
+
 
 //pane content
 
-$card-vertical-padding: 17.5px;
 .pane {
     .card-header-row {
         display: flex;
@@ -433,11 +439,7 @@ $card-vertical-padding: 17.5px;
         font-weight: 600;
         font-size: 16px;
         margin-bottom: 20px;
-        border-bottom: 1px solid #5e5d5d;
-        padding-bottom: 15px;
         color: white;
-        padding-left: 30px;
-        padding-bottom: $card-vertical-padding;
     }
     .card.metro {
         cursor: pointer;
@@ -447,7 +449,7 @@ $card-vertical-padding: 17.5px;
         border: 1px solid transparent;
         font-size: 14px;
         transition: opacity .1s linear, border-color .1s linear;
-        padding: $card-vertical-padding 0;
+        padding-bottom: $card-vertical-padding;
     }
     .card:hover {
         border-color: #994791;
