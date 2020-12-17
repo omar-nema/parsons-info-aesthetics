@@ -107,7 +107,7 @@ b {
 .btn {
   transition: opacity .1s linear;
   font-weight: 400;
-  background: #651da5;
+  background: #292930;
   position: absolute;
   top: 30px;
   color: white;
@@ -116,7 +116,7 @@ b {
   font-size: 14px;
 }
 .btn:hover {
-  opacity: 0.7;
+  opacity: 0.7 !important;
 }
 .back-home-btn {
   right: 20px;
