@@ -100,17 +100,17 @@
   height: 0;
 }
 
-.clickable.light:hover, .bor-selector .light.btn-bor:hover, .light.info-icon.big:hover, .inner-nav .light.back-btn:hover, .card-nav .light.back-btn:hover, .pane-right select.light:hover, .pane-right .light.housing-unit:hover, .pane-right .housing-overlay .card-header .light.housing-detail:hover, .scroll-holder .light.btn-skip:hover, .scroll-holder .light.btn-explore:hover {
+.clickable.light:hover, .nav .light.home-page-btn:hover, .bor-selector .light.btn-bor:hover, .light.info-icon.big:hover, .inner-nav .light.back-btn:hover, .card-nav .light.back-btn:hover, .pane-right select.light:hover, .pane-right .light.housing-unit:hover, .pane-right .housing-overlay .card-header .light.housing-detail:hover, .scroll-holder .light.btn-skip:hover, .scroll-holder .light.btn-explore:hover {
   opacity: 0.9;
 }
 
-.clickable, .bor-selector .btn-bor, .info-icon.big, .inner-nav .back-btn, .card-nav .back-btn, .pane-right select, .pane-right .housing-unit, .pane-right .housing-overlay .card-header .housing-detail, .scroll-holder .btn-skip, .scroll-holder .btn-explore {
+.clickable, .nav .home-page-btn, .bor-selector .btn-bor, .info-icon.big, .inner-nav .back-btn, .card-nav .back-btn, .pane-right select, .pane-right .housing-unit, .pane-right .housing-overlay .card-header .housing-detail, .scroll-holder .btn-skip, .scroll-holder .btn-explore {
   cursor: pointer;
   -webkit-transition: opacity .1s linear;
   transition: opacity .1s linear;
 }
 
-.clickable:hover, .bor-selector .btn-bor:hover, .info-icon.big:hover, .inner-nav .back-btn:hover, .card-nav .back-btn:hover, .pane-right select:hover, .pane-right .housing-unit:hover, .pane-right .housing-overlay .card-header .housing-detail:hover, .scroll-holder .btn-skip:hover, .scroll-holder .btn-explore:hover {
+.clickable:hover, .nav .home-page-btn:hover, .bor-selector .btn-bor:hover, .info-icon.big:hover, .inner-nav .back-btn:hover, .card-nav .back-btn:hover, .pane-right select:hover, .pane-right .housing-unit:hover, .pane-right .housing-overlay .card-header .housing-detail:hover, .scroll-holder .btn-skip:hover, .scroll-holder .btn-explore:hover {
   opacity: 0.7;
 }
 
@@ -159,6 +159,20 @@ h1 {
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.nav .row-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nav .home-page-btn {
+  text-decoration: none;
+  color: #F587EA;
 }
 
 .nav .nav-option {
@@ -489,7 +503,7 @@ textarea:focus, input:focus {
 }
 
 .card-header {
-  padding: 17.5px 0;
+  padding: 16px 0;
   background: #343838;
   border-bottom: 1px solid #2e2e2e;
 }
@@ -523,7 +537,7 @@ textarea:focus, input:focus {
   font-size: 14px;
   -webkit-transition: opacity .1s linear, border-color .1s linear;
   transition: opacity .1s linear, border-color .1s linear;
-  padding-bottom: 17.5px;
+  padding-bottom: 16px;
 }
 
 .pane .card:hover {
@@ -732,7 +746,6 @@ textarea:focus, input:focus {
   width: 450px;
   background: #0f1010;
   padding: 10px;
-  border-radius: 3px;
   opacity: .8;
   color: #eae8e8;
   font-weight: 500;

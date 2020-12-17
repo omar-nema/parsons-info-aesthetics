@@ -15,7 +15,7 @@ $margin-text: 15px;
 $margin-large: 30px;
 
 $card-horizontal-padding: 30px;
-$card-vertical-padding: 17.5px;
+$card-vertical-padding: 16px;
 
 @keyframes fadeOut {
     0% { opacity: 1;}
@@ -120,6 +120,15 @@ h1 {
 .nav {
     display: flex;
     margin-bottom: 20px;
+    justify-content: space-between;
+    .row-left {
+        display: flex;
+    }
+    .home-page-btn {
+        text-decoration: none;
+        color: $color-action;
+        @extend .clickable; 
+    }
     .nav-option {
         margin-right: 30px;
         cursor: pointer;
@@ -641,7 +650,6 @@ textarea:focus, input:focus{
         width: 450px;
         background: #0f1010;
         padding: 10px;
-        border-radius: 3px;
         opacity: .8;
         color: $color-text-secondary;
         font-weight: 500;
