@@ -122,11 +122,13 @@ b {
   right: 20px;
   text-decoration: none;
 }
-
 .help-main {
   right: 220px;
 }
-
+.btn.process {
+  right: 320px;
+  text-decoration: none;
+}
 
 .instruction {
   position: absolute;
@@ -139,6 +141,7 @@ b {
   opacity: 0;
   transition: opacity .3s;
   font-size: 14px;
+  pointer-events: none;
 }
 .floating {
   transform: translateX(-50%) translateY(-50%);
